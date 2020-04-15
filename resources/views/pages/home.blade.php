@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
-            <img src="img/banner/illustration.png" alt="">
+            <img src="{{ asset('portal_resources') }}/img/banner/illustration.png" alt="">
         </div>
     </div>
     <!-- slider_area_end -->
@@ -172,7 +172,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/1.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/1.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Software Engineer</h4></a>
@@ -201,7 +201,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/2.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/2.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Digital Marketer</h4></a>
@@ -230,7 +230,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/3.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/3.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Wordpress Developer</h4></a>
@@ -259,7 +259,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/4.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/4.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Visual Designer</h4></a>
@@ -288,7 +288,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/5.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/5.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Software Engineer</h4></a>
@@ -317,7 +317,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/1.svg" alt="">
+                                    <img src="{{ asset('portal_resources') }}/img/svg_icon/1.svg" alt="">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="job_details.html"><h4>Creative Designer</h4></a>
@@ -363,91 +363,91 @@
                     <div class="candidate_active owl-carousel">
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/1.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/1.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/2.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/2.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/3.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/3.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/4.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/4.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/5.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/5.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/6.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/6.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/7.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/7.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/8.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/8.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/9.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/9.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/9.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/10.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/10.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/3.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/3.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
                         </div>
                         <div class="single_candidates text-center">
                             <div class="thumb">
-                                <img src="img/candiateds/4.png" alt="">
+                                <img src="{{ asset('portal_resources') }}/img/candiateds/4.png" alt="">
                             </div>
                             <a href="#"><h4>Markary Jondon</h4></a>
                             <p>Software Engineer</p>
@@ -477,7 +477,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/5.svg" alt="">
+                            <img src="{{ asset('portal_resources') }}/img/svg_icon/5.svg" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -486,7 +486,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/4.svg" alt="">
+                            <img src="{{ asset('portal_resources') }}/img/svg_icon/4.svg" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -495,7 +495,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/3.svg" alt="">
+                            <img src="{{ asset('portal_resources') }}/img/svg_icon/3.svg" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -504,7 +504,7 @@
                 <div class="col-lg-4 col-xl-3 col-md-6">
                     <div class="single_company">
                         <div class="thumb">
-                            <img src="img/svg_icon/1.svg" alt="">
+                            <img src="{{ asset('portal_resources') }}/img/svg_icon/1.svg" alt="">
                         </div>
                         <a href="jobs.html"><h3>Snack Studio</h3></a>
                         <p> <span>50</span> Available position</p>
@@ -553,7 +553,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{{ asset('portal_resources') }}/img/testmonial/author.png" alt="">
                                             <div class="quote_icon">
                                                 <i class="Flaticon flaticon-quote"></i>
                                             </div>
@@ -571,7 +571,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{{ asset('portal_resources') }}/img/testmonial/author.png" alt="">
                                             <div class="quote_icon">
                                                 <i class=" Flaticon flaticon-quote"></i>
                                             </div>
@@ -589,7 +589,7 @@
                                 <div class="col-lg-11">
                                     <div class="single_testmonial d-flex align-items-center">
                                         <div class="thumb">
-                                            <img src="img/testmonial/author.png" alt="">
+                                            <img src="{{ asset('portal_resources') }}/img/testmonial/author.png" alt="">
                                             <div class="quote_icon">
                                                 <i class="Flaticon flaticon-quote"></i>
                                             </div>
