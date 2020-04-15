@@ -3,6 +3,7 @@
 
 <head>
 
+    {{-- html head --}}
     @include('dashboard.partials._head')
 
 </head>

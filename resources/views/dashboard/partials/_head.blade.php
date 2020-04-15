@@ -11,5 +11,6 @@
     <link rel="stylesheet" href="{{ asset('dashboard_resources') }}/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    {{-- own's page script/stylesheets --}}
+    
+    {{-- own's page scripts/stylesheets --}}
     @yield('stylesheets')
