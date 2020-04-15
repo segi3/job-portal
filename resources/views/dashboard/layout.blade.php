@@ -16,7 +16,12 @@
     @include('dashboard.navbars._navbar')
 
     {{-- sidebar --}}
-    @include('dashboard.navbars._sidebar')
+    {{-- @if( {{ session('role') }} == 'employer')
+        @include('dashboard.navbars.sidebars._employer') --}}
+    {{-- @elseif( {{ session('role') }} == 'employer') --}}
+        @include('dashboard.navbars.sidebars._admin')
+    {{-- @endif --}}
+
 
     {{-- content --}}
     <div class="content-wrapper">

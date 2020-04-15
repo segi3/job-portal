@@ -9,7 +9,7 @@
     <!-- <link rel="manifest" href="site.webmanifest"> -->
 
     {{-- <link rel="shortcut icon" href="{{ asset('portal_resources') }}/img/favicon.png"> --}}
-    <link rel="icon" href="{{ asset('portal_resources') }}/img/favicon.png">
+    <link rel="icon" href="favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
