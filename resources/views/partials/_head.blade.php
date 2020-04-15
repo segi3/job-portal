@@ -7,7 +7,9 @@
     <title>@yield('title')</title>
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('portal_resources') }}/img/favicon.png">
+
+    {{-- <link rel="shortcut icon" href="{{ asset('portal_resources') }}/img/favicon.png"> --}}
+    <link rel="icon" href="{{ asset('portal_resources') }}/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->

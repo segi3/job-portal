@@ -29,6 +29,8 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   font-style: normal;
+
+  overflow-y: hidden;
 }
 
 /* line 13, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
