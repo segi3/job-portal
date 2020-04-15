@@ -6,8 +6,19 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function getHome() {
+    public function getHome(Request $request) {
 
-        return view('dashboard.pages.home');
+        if ($request->session()->get('role') == 'admin') {
+
+            return view('dashboard.pages.admins.home');
+
+        } elseif ($request->session()->get('role') == 'employer') {
+            
+            return view('dashboard.pages.employers.home');
+
+        }
+
+        return view('/');
+        
     }
 }
