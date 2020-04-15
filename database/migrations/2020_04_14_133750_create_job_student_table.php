@@ -19,7 +19,7 @@ class CreateJobStudentTable extends Migration
             $table->bigInteger('job_id')->nullable()->unsigned();
             $table->string('status', 1);
             $table->text('motivation_letter');
-            $table->string('CV');
+            $table->string('cv');
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
