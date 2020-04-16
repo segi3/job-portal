@@ -82,6 +82,12 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
+                    <p>New jobs</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
                     <p>Approved jobs</p>
                     </a>
                 </li>
@@ -106,6 +112,12 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
+                    <p>New seminars</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
                     <p>Approved seminars</p>
                     </a>
                 </li>
@@ -116,16 +128,6 @@
                     </a>
                 </li>
                 </ul>
-            </li>
-            
-            <li class="nav-item">
-                <a href="/dashboard" class="nav-link " target="_blank">
-                <i class="nav-icon fas fa-address-card"></i>
-                <p>
-                    Your Profile
-                    {{-- <span class="right badge badge-danger">New</span> --}}
-                </p>
-                </a>
             </li>
             </ul>
         </nav>

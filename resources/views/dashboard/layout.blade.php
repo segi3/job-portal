@@ -12,15 +12,17 @@
 
 <div class="wrapper">
 
+    @include('partials._messages')
+
     {{-- navbar --}}
     @include('dashboard.navbars._navbar')
 
     {{-- sidebar --}}
-    {{-- @if( {{ session('role') }} == 'employer')
-        @include('dashboard.navbars.sidebars._employer') --}}
-    {{-- @elseif( {{ session('role') }} == 'employer') --}}
+    @if( session('role') == 'employer' )
+        @include('dashboard.navbars.sidebars._employer')
+    @elseif( session('role') == 'admin' )
         @include('dashboard.navbars.sidebars._admin')
-    {{-- @endif --}}
+    @endif
 
 
     {{-- content --}}
