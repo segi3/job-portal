@@ -12,7 +12,7 @@
 
 <div class="wrapper">
 
-    @include('partials._messages')
+    
 
     {{-- navbar --}}
     @include('dashboard.navbars._navbar')
@@ -27,6 +27,7 @@
 
     {{-- content --}}
     <div class="content-wrapper">
+        @include('partials._messages')
         @yield('content')
     </div>
 
