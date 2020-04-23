@@ -34,12 +34,15 @@ Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/user-list', 'DashboardController@getUserList');
+
     Route::get('admin/new-employers', 'DashboardController@getNewEmployers');
     Route::get('admin/approved-employers', 'DashboardController@getAprrovedEmployers');
     Route::get('admin/unapproved-employers', 'DashboardController@getUnapprovedEmployers');
+
     Route::get('admin/new-jobs', 'DashboardController@getNewJobs');
     Route::get('admin/approved-jobs', 'DashboardController@getApprovedJobs');
     Route::get('admin/unapproved-jobs', 'DashboardController@getUnapprovedJobs');
+    
     Route::get('admin/new-seminars', 'DashboardController@getNewSeminars');
     Route::get('admin/approved-seminars', 'DashboardController@getApprovedSeminars');
     Route::get('admin/unapproved-seminars', 'DashboardController@getUnapprovedSeminars');
