@@ -31,48 +31,34 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Bordered Table</h3>
+                    <h3 class="card-title">Daftar pengguna</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                     <table class="table table-bordered">
                         <thead>                  
                         <tr>
-                            <th style="width: 10px">#</th>
                             <th>Name</th>
                             <th>NRP</th>
-                            <th style="width: 40px">Label</th>
+                            <th>Email</th>
+                            <th style="width: 40px">Column</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <tr>
+                            <td>Rafi Nizar</td>
+                            <td>05-18-094</td>
+                            <td>rafi.nizar15@gmail.com</td>
+                            <td>row</td>
+                        </tr>
                         @foreach($students as $student)
                             <tr>
-                                <th>{{ $student->name }}</th>
-                                <th>{{ $student->nrp }}</th>
-                                <th> p </th>
+                                <td>{{ $student->name }}</td>
+                                <td>{{ $student->nrp }}</td>
+                                <td>{{ $student->email }}</td>
+                                <td> p </td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Clean database</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
-                        
                         </tbody>
                     </table>
                     </div>
@@ -80,11 +66,11 @@
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
                         {{ $students->links() }}
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
                     </ul>
                     </div>
                 </div>

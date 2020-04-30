@@ -26,7 +26,7 @@ class DashboardController extends Controller
     // manage users admin
     public function getUserList() {
 
-        $students = Student::paginate(20);
+        $students = Student::select('name', 'nrp', 'email')->paginate(20);
 
         return view ('dashboard.pages.admins.userlist')->with('students', $students);
     }
@@ -56,19 +56,32 @@ class DashboardController extends Controller
     // manage jobs admin
     public function getNewJobs() {
 
-        $jobs = Job::where('status', '2')->paginate(20);
+        $jobs = Job::where('jobs.status', '2')
+                ->leftjoin('employers', 'employers.id', 'employer_id')
+                ->leftjoin('job_categories', 'job_categories.id', 'job_category_id')
+                ->select('jobs.*', 'employers.name as employer_name', 'job_categories.name as category_name')
+                ->paginate(20);
 
         return view ('dashboard.pages.admins.newjobs')->with('jobs', $jobs);
     }
     public function getApprovedJobs() {
 
-        $jobs = Job::where('status', '1')->paginate(20);
+        $jobs = Job::where('jobs.status', '1')
+                ->leftjoin('employers', 'employers.id', 'employer_id')
+                ->leftjoin('job_categories', 'job_categories.id', 'job_category_id')
+                ->select('jobs.*', 'employers.name as employer_name', 'job_categories.name as category_name')
+                ->paginate(20);
 
         return view ('dashboard.pages.admins.approvedjobs')->with('jobs', $jobs);
     }
     public function getUnapprovedJobs() {
 
-        $jobs = Job::where('status', '0')->paginate(20);
+        $jobs = Job::where('jobs.status', '0')
+        ->leftjoin('employers', 'employers.id', 'employer_id')
+        ->leftjoin('job_categories', 'job_categories.id', 'job_category_id')
+        ->select('jobs.*', 'employers.name as employer_name', 'job_categories.name as category_name')
+        ->paginate(20);
+
 
         return view ('dashboard.pages.admins.unapprovedjobs')->with('jobs', $jobs);
     }

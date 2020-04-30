@@ -33,7 +33,7 @@
     <!-- slider_area_end -->
 
     <!-- catagory_area -->
-    <div class="catagory_area">
+    {{-- <div class="catagory_area">
         <div class="container">
             <div class="row cat_search">
                 <div class="col-lg-3 col-md-4">
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--/ catagory_area -->
 
     <!-- popular_catagory_area_start  -->
@@ -349,7 +349,7 @@
     <!-- job_listing_area_end  -->
 
     <!-- featured_candidates_area_start  -->
-    <div class="featured_candidates_area">
+    {{-- <div class="featured_candidates_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -456,7 +456,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- featured_candidates_area_end  -->
 
     <div class="top_companies_area">

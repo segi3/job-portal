@@ -27,56 +27,45 @@
 
 {{-- main content --}}
 <section class="content">
+    
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Table</h3>
+                    <h3 class="card-title">Unapproved Employers</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead>                  
-                        <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Name</th>
-                            <th>NRP</th>
-                            <th style="width: 40px">Label</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{-- @foreach($students as $student) --}}
-                            <tr>
-                                <th>Placeholder</th>
-                                {{-- <th>{{ $student->name }}</th>
-                                <th>{{ $student->nrp }}</th> --}}
-                                <th> p </th>
-                            </tr>
-                        {{-- @endforeach --}}
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Clean database</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
-                        
-                        </tbody>
-                    </table>
+                        <table class="table table-bordered">
+                            <thead>                  
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Contact person</th>
+                                    <th>Contact Number</th>
+                                    <th>website</th>
+                                    <th style="width: 87px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($employers as $employer)
+                                <tr>
+                                    <td>{{ $employer->name }}</td>
+                                    <td>{{ $employer->address }}, {{ $employer->city }}, {{ $employer->province }}</td>
+                                    <td>{{ $employer->email }}</td>
+                                    <td>{{ $employer->contact_person }}</td>
+                                    <td>{{ $employer->contact_no }}</td>
+                                    <td>{{ $employer->website }}</td>
+                                    <td>
+                                        <button class="btn btn-success btn-sm">Approve</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">

@@ -22,7 +22,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview {{ Request::is('admin/user-list') ? "menu-open" : "" }}">
                 <a href="#" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
@@ -108,7 +108,11 @@
                 </ul>
             </li>
 
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview
+                {{ Request::is('admin/new-seminars') ? "menu-open" : "" }}
+                {{ Request::is('admin/approved-seminars') ? "menu-open" : "" }}
+                {{ Request::is('admin/unapproved-seminars') ? "menu-open" : "" }}
+            ">
                 <a href="#" class="nav-link
                     {{ Request::is('admin/new-seminars') ? "active" : "" }}
                     {{ Request::is('admin/approved-seminars') ? "active" : "" }}
