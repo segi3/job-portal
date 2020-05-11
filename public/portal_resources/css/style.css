@@ -912,8 +912,8 @@ h3 {
 
 /* line 16, ../../Arafath/CL/December/235. Job board/HTML/scss/_header.scss */
 .header-area .main-header-area {
-  background: #fff;
-  background: transparent;
+  background: #013880;
+  /* background: transparent; */
   padding: 0px 150px;
 }
 

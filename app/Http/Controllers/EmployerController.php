@@ -10,8 +10,10 @@ use App\Employer;
 class EmployerController extends Controller
 {
     public function showLogin() {
-
-        return view('dashboard.pages.admins.auth.login');
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);   
+        return view('pages.employer.auth.login-employer');
         
     }
 
@@ -22,38 +24,39 @@ class EmployerController extends Controller
         if($employer) {
             if(Hash::check($request->input('password'), $employer->password)) {
 
-                // $request->session()->put([
-                //     'login'     => true,
-                //     'name'      => $admin->name,
-                //     'email'     => $admin->email,
-                //     'role'      => 'admin',
-                //     'mobile_no' => $admin->mobile_no,
-                // ]);
+                $request->session()->put([
+                    'login'     => true,
+                    'id'        => $employer->id,
+                    'name'      => $employer->name,
+                    'email'     => $admin->email,
+                    'role'      => 'employer',
+                ]);
 
                 Session::flash('success', 'Anda berhasil Login');
                 return redirect('/');
             }else{
                 // password salah
-                return redirect('/login');
+                return redirect()->route('employer.showLogin');
             }
         }
         else
         {
-            return redirect('/register');
+            return redirect()->route('employer.showRegister');
         }
 
     }
 
     public function showRegister() {
-
-        return view('dashboard.pages.admins.auth.register');
-        
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        return view('pages.employer.auth.register-employer');
     }
 
     public function Register(Request $request) 
     {
         
-        $request->validate([
+        $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
@@ -80,13 +83,14 @@ class EmployerController extends Controller
             ]);
 
             Session::flash('success', 'User berhasil didaftarkan');
-            return redirect('/login');
+            return redirect()->route('employer.showLogin');
 
-        }catch(\Illuminate\Database\QueryException $e){
-
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return redirect('/register');
+                return redirect()->route('employer.showRegister');
             }
         }
     }
