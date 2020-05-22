@@ -39,6 +39,9 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
 
+Route::get('/jobs', 'JobController@index');
+
+
 Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
