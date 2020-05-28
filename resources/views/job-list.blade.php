@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40">
-                        <h3>Categories</h3>
+                        <h4>Categories</h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -69,6 +69,9 @@
                                         <div class="jobs_conetent">
                                             <a href="job_details.html"><h4>Software Engineer</h4></a>
                                             <div class="links_locat d-flex align-items-center">
+                                                <p>GOJEK </p>
+                                            </div>
+                                            <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
                                                     <p> <i class="fa fa-map-marker"></i> California, USA</p>
                                                 </div>
@@ -76,6 +79,7 @@
                                                     <p> <i class="fa fa-clock-o"></i> Part-time</p>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="jobs_right">
