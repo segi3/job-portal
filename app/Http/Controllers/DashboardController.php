@@ -18,7 +18,7 @@ class DashboardController extends Controller
         if ($request->session()->get('role') == 'admin') {
             return view('dashboard.pages.admins.home');
         } elseif ($request->session()->get('role') == 'employer') {
-            return view('dashboard.pages.employers.home');
+            return view('dashboard.pages.employer.home');
         }
         return view('/');
     }

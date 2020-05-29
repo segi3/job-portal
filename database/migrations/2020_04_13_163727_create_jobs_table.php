@@ -15,9 +15,10 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default('2');
+            $table->integer('status')->default('0');
             $table->string('name');
             $table->string('position');
+            $table->string('kompesasi');
             $table->text('description');
             $table->string('job_type');
             $table->string('location');

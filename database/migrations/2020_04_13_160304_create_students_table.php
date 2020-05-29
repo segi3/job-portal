@@ -20,6 +20,10 @@ class CreateStudentsTable extends Migration
             $table->string('mobile_no');
             $table->string('email')->unique();;
             $table->string('password');
+            $table->string('hobby');
+            $table->string('skill');
+            $table->string('achievment');
+            $table->string('experience');
             $table->string('gender', 1);
             $table->date('birthdate');
             $table->string('address');
