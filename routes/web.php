@@ -22,10 +22,8 @@ Route::post('logout', function () {
 // portal
 Route::get('/', 'PageController@getHome');
 
-// dashboard
-Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
 
-//login
+//login register akun
 Route::get('login-welcome', 'PageController@showWelcomeLogin');
 
 Route::get('login-er', 'EmployerController@showLogin')->name('employer.showLogin');
@@ -34,13 +32,13 @@ Route::post('login-er', 'EmployerController@Login')->name('employer.login');
 Route::get('register-er', 'EmployerController@showRegister')->name('employer.showRegister');
 Route::post('register-er', 'EmployerController@Register')->name('employer.register');
 
-Route::get('login-warning-test', 'PageController@showLoginWarning');
+Route::get('login-st', 'StudentController@showLogin')->name('student.showLogin');
+Route::post('login-st', 'StudentController@Login')->name('student.login');
 
-//logout
-Route::post('/logout', function () {
-    Session::flush();
-    return redirect('/');
-})->name('logout');
+Route::get('register-st', 'StudentController@showRegister')->name('student.showRegister');
+Route::post('register-st', 'StudentController@Register')->name('student.register');
+
+// Route::get('login-warning-test', 'PageController@showLoginWarning');
 
 
 // admin
@@ -52,6 +50,9 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 
 Route::get('/jobs', 'JobController@index');
 
+
+// dashboard
+Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
 
 Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
-        'name', 'nrp', 'email', 'password', 'gender',
-        'birthdate', 'address', 'city', 'province',
+        'name', 'nrp', 'email', 'password', 'gender', 'mobile_no',
+        'birthdate', 'address', 'city', 'province', 'hobby', 'skill', 'achievment', 'experience'
     ];
 
     // many to many jobs

@@ -87,8 +87,8 @@
 							</div>
 							<div class="mt-10">
 								<label for="contact_no" class="">{{ __('Contact Phone Number') }}</label><span class="red-str">*</span>
-								<input type="text" name="contact_no" placeholder="Contact Person Number" 
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Person Number'" required class="single-input">
+								<input type="text" name="contact_no" placeholder="Nomor HP aktif" 
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nmor HP aktif'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="fax" class="">{{ __('Fax') }}</label>
