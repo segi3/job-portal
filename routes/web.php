@@ -34,6 +34,15 @@ Route::post('login-er', 'EmployerController@Login')->name('employer.login');
 Route::get('register-er', 'EmployerController@showRegister')->name('employer.showRegister');
 Route::post('register-er', 'EmployerController@Register')->name('employer.register');
 
+Route::get('login-warning-test', 'PageController@showLoginWarning');
+
+//logout
+Route::post('/logout', function () {
+    Session::flush();
+    return redirect('/');
+})->name('logout');
+
+
 // admin
 Route::get('adminsuperscretloginY', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');

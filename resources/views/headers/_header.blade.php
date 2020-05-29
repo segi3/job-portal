@@ -44,9 +44,20 @@
                                     {{-- <div class="phone_num d-none d-xl-block">
                                         <a href="#">Log in</a>
                                     </div> --}}
+                                    @if(session()->has('login'))
+                                    <div class="d-none d-lg-block">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Logout') }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                    @else
                                     <div class="d-none d-lg-block">
                                         <a class="boxed-btn3" href="/login-welcome">Login</a>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12">

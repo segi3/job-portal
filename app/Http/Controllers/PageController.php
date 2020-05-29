@@ -15,4 +15,9 @@ class PageController extends Controller
 
         return view('pages.login-welcome');
     }
+
+    public function showLoginWarning() {
+
+        return view('pages.employer.login-warning');
+    }
 }

@@ -20,28 +20,50 @@ class EmployerController extends Controller
     // login 
     public function Login(Request $request) {
 
+        
         $employer = Employer::where('email', '=', $request->input('email'))->first();
+
+        // if($employer){
+        //     if($employer->status == 0){
+        //         Session::flash('error', 'status : tidak aktif');
+        //     }else if ($employer->status == 1){
+        //         Session::flash('error', 'status : aktif');
+        //     }else if ($employer->status == 2){
+        //         Session::flash('error', 'status : ditolak');
+        //     }
+        //     return redirect()->route('employer.showLogin');
+        // }
+
+
+
         if($employer) {
-            if(Hash::check($request->input('password'), $employer->password)) {
+            if($employer->status == 1){
+                if(Hash::check($request->input('password'), $employer->password)) {
 
-                $request->session()->put([
-                    'login'     => true,
-                    'id'        => $employer->id,
-                    'name'      => $employer->name,
-                    'email'     => $admin->email,
-                    'role'      => 'employer',
-                ]);
-
-                Session::flash('success', 'Anda berhasil Login');
-                return redirect('/');
-            }else{
-                // password salah
-                return redirect()->route('employer.showLogin');
+                    $request->session()->put([
+                        'login'     => true,
+                        'id'        => $employer->id,
+                        'name'      => $employer->name,
+                        'email'     => $employer->email,
+                        'role'      => 'employer',
+                    ]);
+    
+                    Session::flash('success', 'Anda berhasil Login');
+                    return redirect('/');
+                }else{
+                    // password salah
+                    Session::flash('error', 'Password tidak cocok');
+                    return redirect()->route('employer.showLogin');
+                }
+            }else if($employer->status == 0){
+                return view('pages.employer.login-warning');
+            }else if($employer->status == 2){
+                return view('pages.employer.login-reject');
             }
-        }
-        else
-        {
-            return redirect()->route('employer.showRegister');
+            
+        }else {
+            Session::flash('error', 'Akun tidak ditemukan');
+            return redirect()->route('employer.showLogin');
         }
 
     }
@@ -87,8 +109,8 @@ class EmployerController extends Controller
                 'password' => Hash::make($request->input('password')),
             ]);
 
-            Session::flash('success', 'User berhasil didaftarkan');
-            return redirect('/login-er');
+            Session::flash('success', 'Akun berhasil didaftarkan, silahkan menunggu akun untuk diverifikasi');
+            return view('pages.employer.login-warning');
             // return redirect()->route('employer.showLogin');
 
         }

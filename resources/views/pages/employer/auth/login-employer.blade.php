@@ -28,7 +28,11 @@
 					<strong>Success:</strong> {{ Session::get('success') }}
 				</div>
 
-			@endif
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
 
 			@if (count($errors) > 0)
 
@@ -43,7 +47,7 @@
 
 			@endif
 
-        <div class="container">
+        
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-lg-offset-3" style="height: 600px;">
                     <div class="apply_job_form white-bg mt-5">
