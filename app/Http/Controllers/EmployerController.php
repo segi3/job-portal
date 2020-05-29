@@ -47,15 +47,18 @@ class EmployerController extends Controller
     }
 
     public function showRegister() {
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
+        // ini_set('display_errors', 1);
+        // ini_set('display_startup_errors', 1);
+        // error_reporting(E_ALL);
+        
         return view('pages.employer.auth.register-employer');
     }
 
     public function Register(Request $request) 
     {
-        
+        // dd($request);
+        $input = $request->all();
+        // dd($input);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:employers',
@@ -63,11 +66,12 @@ class EmployerController extends Controller
             'city' => 'required',
             'province' => 'required',
             'website' => 'required',
-            'contact_person' => 'required|max:13',
+            'contact_person' => 'required',
             'contact_no' => 'required|max:13',
             'fax' => 'nullable',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
         ]);
+
         try {
             Employer::create([
                 'name' => $request->input('name'),
@@ -79,18 +83,20 @@ class EmployerController extends Controller
                 'contact_no' => $request->input('contact_no'),
                 'contact_person' => $request->input('contact_person'),
                 'fax' => $request->input('fax'),
+                'status' => 0,
                 'password' => Hash::make($request->input('password')),
             ]);
 
             Session::flash('success', 'User berhasil didaftarkan');
-            return redirect()->route('employer.showLogin');
+            return redirect('/login-er');
+            // return redirect()->route('employer.showLogin');
 
         }
         catch(\Illuminate\Database\QueryException $e)
         {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return redirect()->route('employer.showRegister');
+                return redirect('/register-er');
             }
         }
     }

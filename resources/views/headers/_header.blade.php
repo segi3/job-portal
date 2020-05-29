@@ -6,7 +6,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <img src="img/logo.png" alt="">
                                     </a>
                                 </div>
@@ -41,11 +41,11 @@
                             </div>
                             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="phone_num d-none d-xl-block">
+                                    {{-- <div class="phone_num d-none d-xl-block">
                                         <a href="#">Log in</a>
-                                    </div>
+                                    </div> --}}
                                     <div class="d-none d-lg-block">
-                                        <a class="boxed-btn3" href="#">Post a Job</a>
+                                        <a class="boxed-btn3" href="/login-welcome">Login</a>
                                     </div>
                                 </div>
                             </div>

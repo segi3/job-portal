@@ -25,12 +25,14 @@ Route::get('/', 'PageController@getHome');
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
 
-//employer
-Route::get('login-employer', 'EmployerController@showLogin')->name('employer.showLogin');
-Route::post('login-employer', 'EmployerController@Login')->name('employer.login');
+//login
+Route::get('login-welcome', 'PageController@showWelcomeLogin');
 
-Route::get('register-employer', 'EmployerController@showRegister')->name('employer.showRegister');
-Route::post('register-employer', 'EmployerController@Register')->name('employer.register');
+Route::get('login-er', 'EmployerController@showLogin')->name('employer.showLogin');
+Route::post('login-er', 'EmployerController@Login')->name('employer.login');
+
+Route::get('register-er', 'EmployerController@showRegister')->name('employer.showRegister');
+Route::post('register-er', 'EmployerController@Register')->name('employer.register');
 
 // admin
 Route::get('adminsuperscretloginY', 'AdminController@showLogin')->name('admin.showlogin');

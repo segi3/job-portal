@@ -10,4 +10,9 @@ class PageController extends Controller
 
         return view('pages.home');
     }
+
+    public function showWelcomeLogin() {
+
+        return view('pages.login-welcome');
+    }
 }
