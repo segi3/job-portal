@@ -38,6 +38,12 @@ Route::post('login-st', 'StudentController@Login')->name('student.login');
 Route::get('register-st', 'StudentController@showRegister')->name('student.showRegister');
 Route::post('register-st', 'StudentController@Register')->name('student.register');
 
+Route::get('login-gs', 'GuestController@showLogin')->name('guest.showLogin');
+Route::post('login-gs', 'GuestController@Login')->name('guest.login');
+
+Route::get('register-gs', 'GuestController@showRegister')->name('guest.showRegister');
+Route::post('register-gs', 'GuestController@Register')->name('guest.register');
+
 // Route::get('login-warning-test', 'PageController@showLoginWarning');
 
 
