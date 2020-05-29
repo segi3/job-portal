@@ -30,7 +30,7 @@
                         <p>
                             Anda mahasiswa ITS sedang mencari pekerjaan atau ingin menjual jasa?
                         </p>
-                        <form method="GET" action="#" class="mb-4">
+                        <form method="GET" action="/register-st" class="mb-4">
                             <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Daftar sebagai student') }}
                             </button>
@@ -46,7 +46,7 @@
                         <p>
                             Anda sedang mencari jasa oleh mahasiswa ITS?
                         </p>
-                        <form method="GET" action="#" class="mb-3">
+                        <form method="GET" action="register-gs" class="mb-3">
                             <button type="submit" class="btn btn-primary btn-block">
                                 {{ __('Daftar sebagai guest') }}
                             </button>

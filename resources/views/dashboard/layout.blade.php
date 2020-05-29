@@ -22,6 +22,10 @@
         @include('dashboard.navbars.sidebars._employer')
     @elseif( session('role') == 'admin' )
         @include('dashboard.navbars.sidebars._admin')
+    @elseif( session('role') == 'guest')
+        @include('dashboard.navbars.sidebars._guest')
+    @elseif( session('role') == 'student')
+        @include('dashboard.navbars.sidebars._student')
     @endif
 
 

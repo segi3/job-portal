@@ -15,7 +15,7 @@ class AdminCheck
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->get('role')=='forda'){
+        if($request->session()->get('role')=='admin'){
             return $next($request);
         }else{
             return redirect('/dashboard');

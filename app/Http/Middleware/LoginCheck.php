@@ -18,7 +18,7 @@ class LoginCheck
         if($request->session()->has('login')) {
             return $next($request);
         }else{
-            return redirect('/');
+            return redirect('/login-welcome');
         }
     }
 }

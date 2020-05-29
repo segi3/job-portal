@@ -32,7 +32,7 @@
                                                     <li><a href="single-blog.html">single-blog</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Contact</a></li>
+                                            <li><a href="/dashboard">Dashboard</a></li>
                                         </ul>
                                     </nav>
                                     {{-- end of navbar --}}
