@@ -15,7 +15,7 @@ class CreateSeminarsTable extends Migration
     {
         Schema::create('seminars', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default('2');
+            $table->integer('status')->default('0');
             $table->string('name');
             $table->string('description');
             $table->integer('fee');
