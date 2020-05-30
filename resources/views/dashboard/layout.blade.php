@@ -31,7 +31,7 @@
 
     {{-- content --}}
     <div class="content-wrapper">
-        @include('partials._messages')
+        {{-- @include('partials._messages') --}}
         @yield('content')
     </div>
 

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Seminar extends Model
 {
     protected $fillable = [
-        'name', 'description', 'fee', 'location', 'contact_person', 'contact_no',
+        'name', 'description', 'fee', 'location', 'contact_person', 'contact_no', 'seminar_category_id',
+        'employer_id', 'admin_id',
     ];
 
     // many to one employer

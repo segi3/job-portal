@@ -8,7 +8,8 @@ class Job extends Model
 {
     protected $fillable = [
         'name', 'position', 'description', 'job_type', 'location', 'expected_salary',
-        'required_skill', 'minimal_qualification', 'extra_skill',
+        'required_skill', 'minimal_qualification', 'extra_skill', 'employer_id', 'status',
+        'job_category_id', 'kompesasi', 'admin_id', 
     ];
 
     // many to many students
