@@ -35,7 +35,7 @@
                     <div class="popular_search d-flex align-items-center">
                         <ul>
                         @foreach($jobcategory as $c)
-                            <li><a href="#">{{ $c->name }}</a></li>
+                            <li><a href=" {{ url('jobs/category/'.$c->slug) }} ">{{ $c->name }}</a></li>
                         @endforeach
                         </ul>
                     </div>
@@ -60,6 +60,7 @@
                     </div>
                     <div class="job_lists m-0">
                         <div class="row">
+                            @foreach($job as $j)
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
@@ -67,16 +68,16 @@
                                             <img src="img/svg_icon/1.svg" alt="">
                                         </div>
                                         <div class="jobs_conetent">
-                                            <a href="job_details.html"><h4>Software Engineer</h4></a>
+                                            <a href="job_details.html"><h4>{{ $j->name }}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
-                                                <p>GOJEK </p>
+                                                <p>{{ $j->employername }} </p>
                                             </div>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
-                                                    <p> <i class="fa fa-map-marker"></i> California, USA</p>
+                                                    <p> <i class="fa fa-map-marker"></i> {{ $j->location }}</p>
                                                 </div>
                                                 <div class="location">
-                                                    <p> <i class="fa fa-clock-o"></i> Part-time</p>
+                                                    <p> <i class="fa fa-clock-o"></i> {{ $j->job_type }}</p>
                                                 </div>
                                             </div>
 
@@ -84,13 +85,14 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
                                             <a href="job_details.html" class="boxed-btn3">Apply Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
+                        
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="pagination_wrap">
