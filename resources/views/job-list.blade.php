@@ -68,7 +68,7 @@
                                             <img src="img/svg_icon/1.svg" alt="">
                                         </div>
                                         <div class="jobs_conetent">
-                                            <a href="job_details.html"><h4>{{ $j->name }}</h4></a>
+                                            <a href=" {{ url('jobs/'.$j->id) }} "><h4>{{ $j->name }}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
                                                 <p>{{ $j->employername }} </p>
                                             </div>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a href="job_details.html" class="boxed-btn3">Apply Now</a>
+                                            <a href=" {{ url('jobs/'.$j->id) }} " class="boxed-btn3">Apply Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,14 +95,7 @@
                         
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="pagination_wrap">
-                                    <ul>
-                                        <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
-                                        <li><a href="#"><span>01</span></a></li>
-                                        <li><a href="#"><span>02</span></a></li>
-                                        <li><a href="#"> <i class="ti-angle-right"></i> </a></li>
-                                    </ul>
-                                </div>
+                                {{ $job->links() }}
                             </div>
                         </div>
                     </div>
@@ -110,8 +103,6 @@
             </div>
         </div>
     </div>
-    <!-- job_listing_area_end  -->
-
 @endsection
 
 @section('scripts')

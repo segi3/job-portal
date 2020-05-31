@@ -18,7 +18,7 @@ class JobController extends Controller
       $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
-                            ->select('jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
+                            ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
                             ->where('jobs.status', '=', 1)
                             ->paginate(8);
       return view('job-list',compact('jobcategory', 'job'));
@@ -34,10 +34,17 @@ class JobController extends Controller
         $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
-                            ->select('jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
+                            ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
                             ->where($where_pending)
                             ->paginate(8);
       return view('job-list',compact('jobcategory', 'job'));
+
+    }
+
+    public function detail($id)
+    {
+      $job= Job::where('id',$id)->first();
+		  return view('job-detail',['job' => $job]);
 
     }
 }

@@ -56,6 +56,7 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 
 Route::get('/jobs', 'JobController@index');
 Route::get('/jobs/category/{slug}', 'JobController@filterCategory');
+Route::get('/jobs/{id}', 'JobController@detail');
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
