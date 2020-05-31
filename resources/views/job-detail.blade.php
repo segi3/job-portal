@@ -105,10 +105,10 @@
                         </div>
                         <div class="job_content">
                             <ul>
-                                <li>Published on: <span>{{ $job->created_at }}</span></li>
-                                <li>Salary: <span>{{ $job->expected_salary }}</span></li>
-                                <li>Location: <span>{{ $job->location }}</span></li>
-                                <li>Job Type: <span> {{ $job->job_type }}</span></li>
+                                <li>Published on   : <span>{{ $job->created_at }}</span></li>
+                                <li>Expected Salary: <span>Rp {{ $job->expected_salary }}</span></li>
+                                <li>Location       : <span>{{ $job->location }}</span></li>
+                                <li>Job Type       : <span> {{ $job->job_type }}</span></li>
                             </ul>
                         </div>
                     </div>

@@ -7,7 +7,7 @@
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
                                     <a href="/">
-                                        <img src="img/logo.png" alt="">
+                                        <img src="/img/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -17,19 +17,19 @@
                                     {{-- navbar  --}}
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a href="#">home</a></li>
-                                            <li><a href="#">Pekerjaan</a></li>
-                                            <li><a href="#">Kategori Pekerjaan <i class="ti-angle-down"></i></a>
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/jobs">Pekerjaan</a></li>
+                                            <li><a href="/jobs">Kategori Pekerjaan <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="#">Pertanian</a></li>
-                                                    <li><a href="#">Pertambangan</a></li>
-                                                    <li><a href="#">Industri Dasar dan Kimia</a></li>
-                                                    <li><a href="#">Aneka Industri</a></li>
-                                                    <li><a href="#">Industri Barang Konsumsi</a></li>
-                                                    <li><a href="#">Properti, Real Estate, dan Konstruksi</a></li>
-                                                    <li><a href="#">Infrastruktur, Utilitas, dan Transportasi</a></li>
-                                                    <li><a href="#">Finansial</a></li>
-                                                    <li><a href="#">Perdagangan, Jasa dan Transportasi</a></li>
+                                                    <li><a href="/jobs/category/pertanian">Pertanian</a></li>
+                                                    <li><a href="/jobs/category/pertambangan">Pertambangan</a></li>
+                                                    <li><a href="/jobs/category/industri-dasar-dan-kimia">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="/jobs/category/aneka-industri">Aneka Industri</a></li>
+                                                    <li><a href="/jobs/category/industri-barang-konsumsi">Industri Barang Konsumsi</a></li>
+                                                    <li><a href="/jobs/category/properti-real-estate-dan-konstruksi">Properti, Real Estate, dan Konstruksi</a></li>
+                                                    <li><a href="/jobs/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="/jobs/category/finansial">Finansial</a></li>
+                                                    <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Jasa</a></li>
