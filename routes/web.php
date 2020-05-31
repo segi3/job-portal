@@ -64,6 +64,11 @@ Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck')
 Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
+Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
+
+    Route::get('dashboard/gs/list-jasa', 'DashboardGuestController@getListJasa');
+});
+
 Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/create-service', 'DashboardStudentController@getCreateService');
     Route::post('dashboard/st/create-service', 'DashboardStudentController@postCreateService')->name('dashboard.student.createService');

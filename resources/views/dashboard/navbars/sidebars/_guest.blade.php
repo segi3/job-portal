@@ -23,10 +23,10 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
         <li class="nav-item">
-            <a href="/dashboard" class="nav-link " target="_blank">
+            <a href="/dashboard/gs/list-jasa" class="nav-link {{ Request::is('dashboard/gs/list-jasa') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
             <p>
-                List Jasa Mahasiswa
+                Services Approval
                 {{-- <span class="right badge badge-danger">New</span> --}}
             </p>
             </a>
