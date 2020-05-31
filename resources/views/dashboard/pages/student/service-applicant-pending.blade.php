@@ -57,16 +57,18 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form action="" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-sm btn-block btn-success">Accept</button>
-                                                </form>
+                                                <form action="{{ route('service-applicant.accept', $applicant->gsid) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('put') }}
+                                                    <button type="submit" class="btn btn-sm btn-block btn-success mr-4">Accept</button>
+                                                  </form>
                                             </div>
                                             <div class="col-lg-6">
-                                                <form action="" method="POST">
-                                                    @csrf
+                                                <form action="{{ route('service-applicant.reject', $applicant->gsid) }}" method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('put') }}
                                                     <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
-                                                </form>
+                                                  </form>
                                             </div>
                                         </div>
                                         

@@ -78,13 +78,36 @@ class DashboardStudentController extends Controller
                         ->join('guests', 'guest_services.guest_id', 'guests.id')
                         ->join('services', 'guest_services.service_id', 'services.id')
                         ->join('students', 'services.student_id', 'students.id')
-                        ->select('guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status')
+                        ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status')
                         ->where($where_pending)
                         ->paginate(20);
         
         // dd($applicants);
 
         return view('dashboard.pages.student.service-applicant-pending')->with('applicants', $applicants);
+    }
+
+    public function acceptNewApplicants(Request $request, $id)
+    {
+
+        $acc = DB::table('guest_services')
+                    ->where('id', $id)
+                    ->update([
+                        'status' => 1,
+                    ]);
+
+        return redirect()->back();
+    }
+
+    public function rejectNewApplicants(Request $request, $id)
+    {
+        $acc = DB::table('guest_services')
+                    ->where('id', $id)
+                    ->update([
+                        'status' => 2,
+                    ]);
+
+        return redirect()->back();
     }
 
     public function getServicesApplicantAccepted(Request $request)

@@ -49,14 +49,36 @@ class DashboardEmployerController extends Controller
                                 ->join('students', 'job_student.student_id', 'students.id')
                                 ->join('jobs', 'job_student.job_id', 'jobs.id')
                                 ->join('employers', 'jobs.employer_id', 'employers.id')
-                                ->select('students.*', 'jobs.name as jobname', 'jobs.id as idjob', 'job_student.status as status', 'job_student.motivation_letter as motlet', 'job_student.cv as cv', 'employers.id as employerid')
+                                ->select('students.*', 'jobs.name as jobname', 'jobs.id as idjob', 'job_student.id as jsid', 'job_student.status as status', 'job_student.motivation_letter as motlet', 'job_student.cv as cv', 'employers.id as employerid')
                                 ->where($where_pending)
                                 ->paginate(20);
 
-        
         // dd($applicants_pending);
 
         return view('dashboard.pages.employer.job-applicant-pending')->with('applicants_pending', $applicants_pending);
+    }
+
+    public function acceptNewApplicants(Request $request, $id)
+    {
+
+        $acc = DB::table('job_student')
+                    ->where('id', $id)
+                    ->update([
+                        'status' => 1,
+                    ]);
+
+        return redirect()->back();
+    }
+
+    public function rejectNewApplicants(Request $request, $id)
+    {
+        $acc = DB::table('job_student')
+                    ->where('id', $id)
+                    ->update([
+                        'status' => 2,
+                    ]);
+
+        return redirect()->back();
     }
 
     public function getJobsApplicantAccepted(Request $request)

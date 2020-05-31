@@ -142,13 +142,15 @@
                                         <!-- /.modal -->
                                     </td>
                                     <td>
-                                        <form action="" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-block btn-success">Accept</button>
+                                        <form action="{{ route('job-applicant.accept', $applicant->jsid) }}" method="post">
+                                          {{ csrf_field() }}
+                                          {{ method_field('put') }}
+                                          <button type="submit" class="btn btn-sm btn-block btn-success mr-4">Accept</button>
                                         </form>
-                                        <form action="" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-block btn-danger mt-2">Reject</button>
+                                        <form action="{{ route('job-applicant.reject', $applicant->jsid) }}" method="post">
+                                          {{ csrf_field() }}
+                                          {{ method_field('put') }}
+                                          <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
                                         </form>
                                     </td>
                                 </tr>

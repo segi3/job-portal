@@ -76,6 +76,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/service-approval', 'DashboardStudentController@getServicesApproval');
     Route::get('dashboard/st/service-applicant-pending', 'DashboardStudentController@getServicesApplicantPending');
     Route::get('dashboard/st/service-applicant-accepted', 'DashboardStudentController@getServicesApplicantAccepted');
+    Route::put('dashboard/st/service-applicant/a/{guest}', 'DashboardStudentController@acceptNewApplicants')->name('service-applicant.accept');
+    Route::put('dashboard/st/service-applicant/d/{guest}', 'DashboardStudentController@rejectNewApplicants')->name('service-applicant.reject');
 
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
 });
@@ -87,6 +89,8 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/job-approval', 'DashboardEmployerController@getJobsApproval');
     Route::get('dashboard/er/job-applicant-pending', 'DashboardEmployerController@getJobsApplicantPending');
     Route::get('dashboard/er/job-applicant-accepted', 'DashboardEmployerController@getJobsApplicantAccepted');
+    Route::put('dashboard/er/job-applicant/a/{student}', 'DashboardEmployerController@acceptNewApplicants')->name('job-applicant.accept');
+    Route::put('dashboard/er/job-applicant/d/{student}', 'DashboardEmployerController@rejectNewApplicants')->name('job-applicant.reject');
 
     Route::get('dashboard/er/create-seminar', 'DashboardEmployerController@getCreateSeminar');
     Route::post('dashboard/er/create-seminar', 'DashboardEmployerController@postCreateSeminar')->name('dashboard.employer.createSeminar');
