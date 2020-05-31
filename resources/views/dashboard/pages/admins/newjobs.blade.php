@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'New Jobs')
 
 @section('stylesheets')
     {{--  --}}
@@ -33,7 +33,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">New Jobs</h3>
+                    <h3 class="card-title">New Job Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -45,7 +45,7 @@
                                 <th>Job type</th>
                                 <th>Job Location</th>
                                 <th>Details</th>
-                                <th style="width: 154px">Action</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -121,7 +121,7 @@
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                                  {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                                                 </div>
                                               </div>
                                               <!-- /.modal-content -->
@@ -131,8 +131,22 @@
                                           <!-- /.modal -->
                                     </td>
                                     <td>
-                                        <button class="btn btn-success btn-sm">Approve</button>
-                                        <button class="btn btn-danger btn-sm">Reject</button>
+                                      <div class="row">
+                                        <div class="col-lg-6">
+                                            <form action="{{ route('job.approve', $job->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-block btn-success mr-4">approve</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form action="{{ route('job.reject', $job->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     </td>
                                 </tr>
                             @endforeach

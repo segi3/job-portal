@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'Unapproved Jobs')
 
 @section('stylesheets')
     {{--  --}}
@@ -32,7 +32,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Unapproved Jobs</h3>
+                    <h3 class="card-title">Unapproved Job Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -130,7 +130,11 @@
                                           <!-- /.modal -->
                                     </td>
                                     <td>
-                                        <button class="btn btn-success btn-sm">Approve</button>
+                                      <form action="{{ route('job.approve', $job->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('put') }}
+                                        <button type="submit" class="btn btn-sm btn-block btn-success mr-4">approve</button>
+                                    </form>
                                     </td>
                                 </tr>
                             @endforeach

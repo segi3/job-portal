@@ -100,14 +100,20 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/new-employers', 'DashboardController@getNewEmployers');
     Route::get('admin/approved-employers', 'DashboardController@getAprrovedEmployers');
     Route::get('admin/unapproved-employers', 'DashboardController@getUnapprovedEmployers');
+    Route::put('admin/new-employers/a/{post}', 'DashboardController@approveNewEmployers')->name('employer.approve');
+    Route::put('admin/new-employers/d/{post}', 'DashboardController@rejectNewEmployers')->name('employer.reject');
 
     Route::get('admin/new-jobs', 'DashboardController@getNewJobs');
     Route::get('admin/approved-jobs', 'DashboardController@getApprovedJobs');
     Route::get('admin/unapproved-jobs', 'DashboardController@getUnapprovedJobs');
+    Route::put('admin/new-jobs/a/{job}', 'DashboardController@approveNewJobs')->name('job.approve');
+    Route::put('admin/new-jobs/d/{job}', 'DashboardController@rejectNewJobs')->name('job.reject');
     
     Route::get('admin/new-seminars', 'DashboardController@getNewSeminars');
     Route::get('admin/approved-seminars', 'DashboardController@getApprovedSeminars');
     Route::get('admin/unapproved-seminars', 'DashboardController@getUnapprovedSeminars');
+    Route::put('admin/new-seminars/a/{seminar}', 'DashboardController@approveNewSeminars')->name('seminar.approve');
+    Route::put('admin/new-seminars/d/{seminar}', 'DashboardController@rejectNewSeminars')->name('seminar.reject');
 });
 
 

@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'New Employers')
 
 @section('stylesheets')
 
@@ -32,7 +32,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">New Employers</h3>
+                    <h3 class="card-title">New Employer Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -45,7 +45,7 @@
                             <th>Contact person</th>
                             <th>Contact Number</th>
                             <th>website</th>
-                            <th style="width: 154px">Action</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,8 +58,22 @@
                                 <td>{{ $employer->contact_no }}</td>
                                 <td>{{ $employer->website }}</td>
                                 <td>
-                                    <button class="btn btn-success btn-sm">Approve</button>
-                                    <button class="btn btn-danger btn-sm">Reject</button>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <form action="{{ route('employer.approve', $employer->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-block btn-success mr-4">approve</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form action="{{ route('employer.reject', $employer->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

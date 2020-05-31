@@ -26,7 +26,7 @@
                 <a href="#" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
-                    Manage users
+                    Manage Students
                     <i class="right fas fa-angle-left"></i>
                 </p>
                 </a>
@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a href="/admin/user-list" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>User list</p>
+                    <p>Student list</p>
                     </a>
                 </li>
                 </ul>

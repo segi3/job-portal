@@ -8,7 +8,7 @@ class Employer extends Model
 {
     protected $fillable = [
         'name', 'website', 'address', 'city', 'province', 'fax',
-        'contact_person', 'contact_no', 'email', 'password', 'status',
+        'contact_person', 'contact_no', 'email', 'password', 'status', 'admin_id',
     ];
 
     // one to many jobs

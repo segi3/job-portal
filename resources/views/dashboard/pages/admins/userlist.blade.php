@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'Student List')
 
 @section('stylesheets')
     {{--  --}}
@@ -12,12 +12,13 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">User seeker list</h1>
+        <h1 class="m-0 text-dark">Student List</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item active">user-list</li>
+            <li class="breadcrumb-item active">Manage-Students</li>
+            <li class="breadcrumb-item active">Student-list</li>
         </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -31,7 +32,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Daftar pengguna</h3>
+                    <h3 class="card-title">Student Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -41,22 +42,14 @@
                             <th>Name</th>
                             <th>NRP</th>
                             <th>Email</th>
-                            <th style="width: 40px">Column</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Rafi Nizar</td>
-                            <td>05-18-094</td>
-                            <td>rafi.nizar15@gmail.com</td>
-                            <td>row</td>
-                        </tr>
                         @foreach($students as $student)
                             <tr>
                                 <td>{{ $student->name }}</td>
                                 <td>{{ $student->nrp }}</td>
                                 <td>{{ $student->email }}</td>
-                                <td> p </td>
                             </tr>
                         @endforeach
                         </tbody>

@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'Unapproved Employers')
 
 @section('stylesheets')
     {{--  --}}
@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Unapproved Employers</h3>
+                    <h3 class="card-title">Unapproved Employer Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -60,7 +60,11 @@
                                     <td>{{ $employer->contact_no }}</td>
                                     <td>{{ $employer->website }}</td>
                                     <td>
-                                        <button class="btn btn-success btn-sm">Approve</button>
+                                        <form action="{{ route('employer.approve', $employer->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('put') }}
+                                            <button type="submit" class="btn btn-sm btn-block btn-success mr-4">approve</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -70,12 +74,12 @@
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{-- {{ $students->links() }} --}}
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        {{ $employers->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
                     </ul>
                     </div>
                 </div>

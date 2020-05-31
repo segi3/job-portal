@@ -26,6 +26,7 @@ class AdminController extends Controller
                 $request->session()->put([
                     'login'     => true,
                     'name'      => $admin->name,
+                    'id'        => $admin->id,
                     'email'     => $admin->email,
                     'role'      => 'admin',
                     'mobile_no' => $admin->mobile_no,

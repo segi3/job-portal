@@ -38,9 +38,33 @@ class DashboardController extends Controller
     //manage employers admin
     public function getNewEmployers() {
 
-        $employers = Employer::where('status', '2')->paginate(20);
+        $employers = Employer::where('status', '0')->paginate(20);
 
         return view ('dashboard.pages.admins.newemployers')->with('employers', $employers);
+    }
+
+    public function approveNewEmployers(Request $request, $id)
+    {
+        $employer = Employer::find($id);
+
+        $employer->status = 1;
+        $employer->admin_id = $request->session()->get('id');
+
+        $employer->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewEmployers(Request $request, $id)
+    {
+        $employer = Employer::find($id);
+
+        $employer->status = 2;
+        $employer->admin_id = $request->session()->get('id');
+
+        $employer->save();
+
+        return redirect()->back();
     }
 
     public function getAprrovedEmployers() {
@@ -52,7 +76,7 @@ class DashboardController extends Controller
 
     public function getUnapprovedEmployers() {
 
-        $employers = Employer::where('status', '0')->paginate(20);
+        $employers = Employer::where('status', '2')->paginate(20);
 
         return view ('dashboard.pages.admins.unapprovedemployers')->with('employers', $employers);
     }
@@ -60,7 +84,7 @@ class DashboardController extends Controller
     // manage jobs admin
     public function getNewJobs() {
 
-        $jobs = Job::where('jobs.status', '2')
+        $jobs = Job::where('jobs.status', '0')
                 ->leftjoin('employers', 'employers.id', 'employer_id')
                 ->leftjoin('job_categories', 'job_categories.id', 'job_category_id')
                 ->select('jobs.*', 'employers.name as employer_name', 'job_categories.name as category_name')
@@ -68,6 +92,31 @@ class DashboardController extends Controller
 
         return view ('dashboard.pages.admins.newjobs')->with('jobs', $jobs);
     }
+
+    public function approveNewJobs(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        $job->status = 1;
+        $job->admin_id = $request->session()->get('id');
+
+        $job->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewJobs(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        $job->status = 2;
+        $job->admin_id = $request->session()->get('id');
+
+        $job->save();
+
+        return redirect()->back();
+    }
+
     public function getApprovedJobs() {
 
         $jobs = Job::where('jobs.status', '1')
@@ -80,7 +129,7 @@ class DashboardController extends Controller
     }
     public function getUnapprovedJobs() {
 
-        $jobs = Job::where('jobs.status', '0')
+        $jobs = Job::where('jobs.status', '2')
         ->leftjoin('employers', 'employers.id', 'employer_id')
         ->leftjoin('job_categories', 'job_categories.id', 'job_category_id')
         ->select('jobs.*', 'employers.name as employer_name', 'job_categories.name as category_name')
@@ -93,10 +142,35 @@ class DashboardController extends Controller
     // manage jobs admin
     public function getNewSeminars() {
 
-        $seminars = Seminar::where('status', '2')->paginate(20);
+        $seminars = Seminar::where('status', '0')->paginate(20);
 
         return view ('dashboard.pages.admins.newseminars')->with('seminars', $seminars);
     }
+
+    public function approveNewSeminars(Request $request, $id)
+    {
+        $seminar = Seminar::find($id);
+
+        $seminar->status = 1;
+        $seminar->admin_id = $request->session()->get('id');
+
+        $seminar->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewSeminars(Request $request, $id)
+    {
+        $seminar = Seminar::find($id);
+
+        $seminar->status = 2;
+        $seminar->admin_id = $request->session()->get('id');
+
+        $seminar->save();
+
+        return redirect()->back();
+    }
+
     public function getApprovedSeminars() {
 
         $seminars = Seminar::where('status', '1')->paginate(20);
@@ -105,7 +179,7 @@ class DashboardController extends Controller
     }
     public function getUnapprovedSeminars() {
 
-        $seminars = Seminar::where('status', '0')->paginate(20);
+        $seminars = Seminar::where('status', '2')->paginate(20);
 
         return view ('dashboard.pages.admins.unapprovedseminars')->with('seminars', $seminars);
     }

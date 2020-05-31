@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'Approved Jobs')
 
 @section('stylesheets')
     {{--  --}}
@@ -130,7 +130,11 @@
                                           <!-- /.modal -->
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger btn-sm">Reject</button>
+                                      <form action="{{ route('job.reject', $job->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('put') }}
+                                        <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
+                                    </form>
                                     </td>
                                 </tr>
                             @endforeach

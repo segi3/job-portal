@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'User List')
+@section('title', 'Approved Seminars')
 
 @section('stylesheets')
     {{--  --}}
@@ -32,48 +32,92 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Table</h3>
+                    <h3 class="card-title">Approved Seminar Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                     <table class="table table-bordered">
                         <thead>                  
                         <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Name</th>
-                            <th>NRP</th>
-                            <th style="width: 40px">Label</th>
+                            <th>Nama Seminar</th>
+                            <th>Lokasi</th>
+                            <th>Fee</th>
+                            <th>Detail</th>
+                            <th style="width: 150px;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {{-- @foreach($students as $student) --}}
+                        @foreach($seminars as $seminar)
                             <tr>
-                                <th>Placeholder</th>
-                                {{-- <th>{{ $student->name }}</th>
-                                <th>{{ $student->nrp }}</th> --}}
-                                <th> p </th>
+                                <td>{{ $seminar->name }}</td>
+                                <td>{{ $seminar->location }}</td>
+                                <td>Rp {{ $seminar->fee }}</td>
+                                <td>
+                                    
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $seminar->id }}">
+                                        Details
+                                    </button>
+                                    <div class="modal fade" id="modal-{{ $seminar->id }}">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Seminar Details</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <table class="table table-borderless">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nama seminar</td>
+                                                        <td>{{ $seminar->name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Lokasi</td>
+                                                        <td>{{ $seminar->location }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fee</td>
+                                                        <td>Rp {{ $seminar->fee }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Deskripsi</td>
+                                                        <td>{{ $seminar->description }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Contact Person</td>
+                                                        <td>{{ $seminar->contact_person }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Contact Number</td>
+                                                        <td>{{ $seminar->contact_no }}</td>
+                                                    </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                      <!-- /.modal -->
+                                </td>
+                                <td>
+                                    
+                                    <form action="{{ route('seminar.reject', $seminar->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('put') }}
+                                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                    </form>
+                                      
+                                </td>
                             </tr>
-                        {{-- @endforeach --}}
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-danger">55%</span></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Clean database</td>
-                            <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                            </div>
-                            </td>
-                            <td><span class="badge bg-warning">70%</span></td>
-                        </tr>
+                        @endforeach
                         
                         </tbody>
                     </table>
@@ -81,12 +125,12 @@
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{-- {{ $students->links() }} --}}
-                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        {{ $seminars->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
                     </ul>
                     </div>
                 </div>
