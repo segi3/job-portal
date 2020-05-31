@@ -20,8 +20,14 @@ insert into seminar_categories values ('8', 'Finansial', 'finansial', null, null
 insert into seminar_categories values ('9', 'Perdagangan, Jasa dan Transportasi', 'perdagangan-jasa-dan-transportasi', null, null);
 
 
-insert into job_student values ('1', '6', '4', '0', 'motlet', 'cv', null, null);
-insert into job_student values ('2', '7', '4', '0', 'motlet', 'cv', null, null);
+insert into job_student values ('1', '1', '1', '0', 'motlet', 'cv', null, null);
+insert into job_student values ('2', '2', '1', '1', 'motlet', 'cv', null, null);
 
-insert into job_student values ('3', '6', '5', '1', 'motlet', 'cv', null, null);
-insert into job_student values ('4', '7', '5', '1', 'motlet', 'cv', null, null);
+insert into job_student values ('3', '1', '2', '1', 'motlet', 'cv', null, null);
+insert into job_student values ('4', '2', '2', '0', 'motlet', 'cv', null, null);
+
+insert into guest_services values ('1', '2', '1', '0', null, null);
+insert into guest_services values ('2', '2', '2', '1', null, null);
+
+insert into guest_services values ('3', '3', '1', '1', null, null);
+insert into guest_services values ('4', '3', '2', '0', null, null);

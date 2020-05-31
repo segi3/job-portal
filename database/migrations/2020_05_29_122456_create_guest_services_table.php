@@ -16,11 +16,13 @@ class CreateGuestServicesTable extends Migration
         Schema::create('guest_services', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('student_id')->nullable()->unsigned();
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('service_id')->nullable()->unsigned();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
 
             $table->bigInteger('guest_id')->nullable()->unsigned();
             $table->foreign('guest_id')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->string('status', 1);
             
             $table->timestamps();
         });
