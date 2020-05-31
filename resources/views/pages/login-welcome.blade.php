@@ -30,27 +30,63 @@
                         <p>
                             Anda mahasiswa ITS sedang mencari pekerjaan atau ingin menjual jasa?
                         </p>
-                        <form method="GET" action="/register-st" class="mb-4">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                {{ __('Daftar sebagai student') }}
-                            </button>
-                        </form>
+                        <div class="row">
+                            <div class="col-8">
+                                <form method="GET" action="/register-st" class="mb-4">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        {{ __('Daftar akun student') }}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-4 pl-0">
+                                <form method="GET" action="/login-st" class="mb-4">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        {{ __('Login') }}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
                         <p>
                             Anda dosen ITS atau perusahaan ingin menawarkan pekerjaan kepada mahasiswa ITS?
                         </p>
-                        <form method="GET" action="/register-er" class="mb-4">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                {{ __('Daftar sebagai employer') }}
-                            </button>
-                        </form>
+                        <div class="row">
+                            <div class="col-8 pr-0">
+                                <form method="GET" action="/register-er" class="mb-4">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        {{ __('Daftar akun employer') }}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-4">
+                                <form method="GET" action="/login-er" class="mb-4">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        {{ __('Login') }}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
                         <p>
                             Anda sedang mencari jasa oleh mahasiswa ITS?
                         </p>
-                        <form method="GET" action="register-gs" class="mb-3">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                {{ __('Daftar sebagai guest') }}
-                            </button>
-                        </form>
+                        <div class="row">
+                            <div class="col-8">
+                                <form method="GET" action="register-gs" class="mb-3">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        {{ __('Daftar akun guest') }}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-4 pl-0">
+                                <form method="GET" action="/login-gs" class="mb-4">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        {{ __('Login') }}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
                         
 					</div>
                 </div>

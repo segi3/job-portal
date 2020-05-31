@@ -18,18 +18,32 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="#">home</a></li>
-                                            <li><a href="#">Browse Job</a></li>
-                                            {{-- <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Pekerjaan</a></li>
+                                            <li><a href="#">Kategori Pekerjaan <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="candidate.html">Candidates </a></li>
-                                                    <li><a href="job_details.html">job details </a></li>
-                                                    <li><a href="elements.html">elements</a></li>
+                                                    <li><a href="#">Pertanian</a></li>
+                                                    <li><a href="#">Pertambangan</a></li>
+                                                    <li><a href="#">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="#">Aneka Industri</a></li>
+                                                    <li><a href="#">Industri Barang Konsumsi</a></li>
+                                                    <li><a href="#">Properti, Real Estate, dan Konstruksi</a></li>
+                                                    <li><a href="#">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="#">Finansial</a></li>
+                                                    <li><a href="#">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
-                                            </li> --}}
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                            </li>
+                                            <li><a href="#">Jasa</a></li>
+                                            <li><a href="#">Kategori Jasa<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
+                                                    <li><a href="#">Pertanian</a></li>
+                                                    <li><a href="#">Pertambangan</a></li>
+                                                    <li><a href="#">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="#">Aneka Industri</a></li>
+                                                    <li><a href="#">Industri Barang Konsumsi</a></li>
+                                                    <li><a href="#">Properti, Real Estate, dan Konstruksi</a></li>
+                                                    <li><a href="#">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="#">Finansial</a></li>
+                                                    <li><a href="#">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="/dashboard">Dashboard</a></li>
