@@ -52,28 +52,20 @@
                             <p>{{ $job->description }}</p>
                         </div>
                         <div class="single_wrap">
-                            <h4>Responsibility</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
+                            <h4>Minimal Qualification</h4>
+                            <p>{{ $job->minimal_qualification}}</p>
                         </div>
                         <div class="single_wrap">
-                            <h4>Qualifications</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
-                            </ul>
+                            <h4>Required Skill</h4>
+                            <p>{{ $job->required_skill }}</p>
                         </div>
                         <div class="single_wrap">
-                            <h4>Benefits</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                            <h4>Extra Skill</h4>
+                            <p>{{ $job->extra_skill }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Compensation</h4>
+                            <p>{{ $job->kopensasi }}</p>
                         </div>
                     </div>
                     <div class="apply_job_form white-bg">
