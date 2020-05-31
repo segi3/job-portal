@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-    <img src="img/dashboard_logo.png" alt="ALogo ITS" class="brand-image img-circle elevation-3"
+    <img src="/img/dashboard_logo.png" alt="ALogo ITS" class="brand-image img-circle elevation-3"
         style="opacity: .8">
     <span class="brand-text font-weight-light">ITS JobX</span>
     </a>
@@ -23,7 +23,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
         <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link {{ Request::is('dashboard') ? "active" : "" }}">
+            <a href="#" class="nav-link
+            {{ Request::is('dashboard/st/create-service') ? "active" : "" }}
+            {{ Request::is('dashboard/st/service-approval') ? "active" : "" }}
+            {{ Request::is('dashboard/st/service-applicant-pending') ? "active" : "" }}
+            {{ Request::is('dashboard/st/service-applicant-accepted') ? "active" : "" }}
+            ">
             <i class="nav-icon fas fa-briefcase"></i>
             <p>
                 Manage Services
@@ -32,28 +37,34 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link {{ Request::is('dashboard') ? "active" : "" }}">
+                <a href="/dashboard/st/create-service" class="nav-link {{ Request::is('dashboard/st/create-service') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Post new joserviceb</p>
+                <p>Post new service</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+                <a href="/dashboard/st/service-approval" class="nav-link {{ Request::is('dashboard/st/service-approval') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>View services approval</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+                <a href="/dashboard/st/service-applicant-pending" class="nav-link {{ Request::is('dashboard/st/service-applicant-pending') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>View services applicants</p>
+                <p>Pending applicants</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/st/service-applicant-accepted" class="nav-link {{ Request::is('dashboard/st/service-applicant-accepted') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Accepted applicants</p>
                 </a>
             </li>
             </ul>
         </li>
 
         <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+            <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
                 Manage Jobs
@@ -62,7 +73,7 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link {{ Request::is('about') ? "active" : "" }}">
+                <a href="/dashboard/st/job-approval" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>View jobs approval</p>
                 </a>
@@ -70,15 +81,15 @@
             </ul>
         </li>
         
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="/dashboard" class="nav-link " target="_blank">
             <i class="nav-icon fas fa-address-card"></i>
             <p>
                 Your Profile
-                {{-- <span class="right badge badge-danger">New</span> --}}
+                <span class="right badge badge-danger">New</span>
             </p>
             </a>
-        </li>
+        </li> --}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

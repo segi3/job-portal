@@ -63,6 +63,17 @@ Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck')
 Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
+Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
+    Route::get('dashboard/st/create-service', 'DashboardStudentController@getCreateService');
+    Route::post('dashboard/st/create-service', 'DashboardStudentController@postCreateService')->name('dashboard.student.createService');
+
+    Route::get('dashboard/st/service-approval', 'DashboardStudentController@getServicesApproval');
+    Route::get('dashboard/st/service-applicant-pending', 'DashboardStudentController@getServicesApplicantPending');
+    Route::get('dashboard/st/service-applicant-accepted', 'DashboardStudentController@getServicesApplicantAccepted');
+
+    Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
+});
+
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/create-job', 'DashboardEmployerController@getCreateJob');
     Route::post('dashboard/er/create-job', 'DashboardEmployerController@postCreateJob')->name('dashboard.employer.createJob');

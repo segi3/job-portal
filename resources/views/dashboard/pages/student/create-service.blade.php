@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'Create Seminar')
+@section('title', 'Create Service')
 
 @section('stylesheets')
     {{--  --}}
@@ -12,13 +12,13 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Create new seminar</h1>
+        <h1 class="m-0 text-dark">Create new service</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item active">Manage-Seminars</li>
-            <li class="breadcrumb-item active">Create-Seminar</li>
+            <li class="breadcrumb-item active">Manage-Services</li>
+            <li class="breadcrumb-item active">Create-Service</li>
         </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -52,24 +52,20 @@
 
 			@endif
     <div class="container-fluid">
-        <form method="POST" role="form" id="quickForm" action="{{ route('dashboard.employer.createSeminar') }}">
+        <form method="POST" role="form" id="quickForm" action="{{ route('dashboard.student.createService') }}">
         @csrf
         <div class="row">
             <div class="col-lg-6">
                 <div class="card card-primary">
 
                     <div class="card-header">
-                        <h3 class="card-title">Deskripsi Umum Seminar</h3>
+                        <h3 class="card-title">Deskripsi Umum Jasa</h3>
                     </div>
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputName">Nama Seminar</label>
-                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Nama Seminar">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputLocation">Lokasi</label>
-                            <input type="text" name="location" class="form-control" id="inputLocation" placeholder="Lokasi">
+                            <label for="inputName">Nama Jasa</label>
+                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Nama Jasa">
                         </div>
 
                         <div class="form-group">
@@ -88,17 +84,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputDescription">Deskripsi Seminar</label>
-                            <textarea type="text" name="description" class="form-control" id="inputDescription" placeholder="Deskripsi Seminar"></textarea>
+                            <label for="inputDescription">Deskripsi Jasa</label>
+                            <textarea type="text" name="description" class="form-control" id="inputDescription" placeholder="Deskripsi Jasa"></textarea>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="submitbtn btn btn-primary">Submit</button>
                     </div>
 
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Kontak dan biaya</h3>
+                        <h3 class="card-title">RSVP</h3>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -122,7 +121,7 @@
                     <div class="card-footer">
                         <button type="submit" class="submitbtn btn btn-primary">Submit</button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         </form>
@@ -153,59 +152,25 @@
             required: true,
             maxlength: 255,
           },
-          location: {
-            required: true,
-            maxlength: 255,
-          },
           category: {
             required: true,
           },
           description: {
             required: true,
             maxlength: 255,
-          },
-          contact_person: {
-            required: true,
-            maxlength: 255,
-          },
-          contact_no: {
-            required: true,
-            maxlength: 14,
-          },
-          fee: {
-            required: true,
-            maxlength: 11,
-            digits: true,
           },
         },
         messages: {
           name: {
-            required: "Silahkan masukkan nama seminar",
-            maxlength: "Tidak dapat melebihi 255 karakter"
-          },
-          lcoation: {
-            required: "Silahkan pilih kategori seminar",
+            required: "Silahkan masukkan nama jasa",
             maxlength: "Tidak dapat melebihi 255 karakter"
           },
           category: {
-            required: "Silahkan pilih tipe pekerjaan"
+            required: "Silahkan pilih tipe jasa"
           },
           description: {
-            required: "Silahkan masukkan deskripsi seminar",
+            required: "Silahkan masukkan deskripsi jasa",
             maxlength: "Tidak dapat melebihi 255 karakter"
-          },
-          contact_person: {
-            required: "Silahkan masukkan nama kontak yang dapat dihubungi",
-            maxlength: "Tidak dapat melebihi 255 karakter"
-          },
-          contact_no: {
-            required: "Silahkan masukkan nomor kontak yang dapat dihubungi",
-            maxlength: "Tidak dapat melebihi 14 karakter"
-          },
-         fee: {
-            required: "Silahkan masukkan fee seminar",
-            maxlength: "Tidak dapat melebihi 11 karakter",
-            digits: "Hanya masukkan angka"
           },
         },
         errorElement: 'span',
