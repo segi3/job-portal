@@ -87,7 +87,7 @@ class EmployerController extends Controller
             'address' => 'required',
             'city' => 'required',
             'province' => 'required',
-            'website' => 'required',
+            'website' => 'nullable',
             'contact_person' => 'required',
             'contact_no' => 'required|max:13',
             'fax' => 'nullable',

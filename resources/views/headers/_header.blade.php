@@ -18,8 +18,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="/">home</a></li>
-                                            <li><a href="/jobs">Pekerjaan</a></li>
-                                            <li><a href="/jobs">Kategori Pekerjaan <i class="ti-angle-down"></i></a>
+                                            <li><a href="/jobs">Pekerjaan <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/jobs/category/pertanian">Pertanian</a></li>
                                                     <li><a href="/jobs/category/pertambangan">Pertambangan</a></li>
@@ -32,8 +31,7 @@
                                                     <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Jasa</a></li>
-                                            <li><a href="#">Kategori Jasa<i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Jasa<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="#">Pertanian</a></li>
                                                     <li><a href="#">Pertambangan</a></li>

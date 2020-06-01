@@ -56,10 +56,13 @@ class JobController extends Controller
         ['job_id', '=', $id],
         ['student_id', '=', $id_stud],
       ])->first();
+      
+      // dd($applicant);
+
       if($applicant)
       {
-          Session::flash('error', 'Sudah pernah apply!');
-          return redirect('/');
+          Session::flash('error', 'Pekerjaan tidak dapat di apply lebih dari satu kali');
+          return redirect()->back();
       }
       else
       {
@@ -69,7 +72,7 @@ class JobController extends Controller
         ]);
         $file = $request->file('cv');
         $cv = 'cv';
-        $file_cv = $cv.'-'.$id_stud.'-'.$id;
+        $file_cv = $cv.'-'.$id_stud.'-'.$id.'.pdf';
         $tujuan_upload = 'data_files/CV';
         $file->move($tujuan_upload,$file_cv);
         try 
@@ -89,10 +92,11 @@ class JobController extends Controller
         catch(\Illuminate\Database\QueryException $e)
         {
           $errorCode = $e->errorInfo[1];
+          $errorMsg = $e->errorInfo[2];
           if ($errorCode == 1062) {
               return redirect('/');
           }
-          Session::flash('error', $errorCode);
+          Session::flash('error', $errorMsg);
           return redirect()->back();
         }
       }

@@ -92,10 +92,12 @@
                             <p>{{ $job->kopensasi }}</p>
                         </div>
                     </div>
+
+                    @if( session('role') == 'student' )
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                    <form action="/applyjob/{{$job->id}}" method="POST" enctype="multipart/form-data">
-					{{ csrf_field() }}
+                        <form action="/applyjob/{{$job->id}}" method="POST" enctype="multipart/form-data">
+					    {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
@@ -122,6 +124,17 @@
                             </div>
                         </form>
                     </div>
+                    @else 
+                    <form method="GET" action="/login-st" class="mb-4">
+                        <div class="submit_btn mt-5">
+                            <button type="submit" class="boxed-btn3 w-100">
+                                {{ __('Login sebagai mahasiswa utuk Apply Job!') }}
+                            </button>
+                        </div>
+                    </form>
+                    @endif
+
+                    
                 </div>
                 <div class="col-lg-4">
                     <div class="job_sumary">

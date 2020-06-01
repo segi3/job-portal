@@ -82,7 +82,7 @@
 							<div class="mt-10">
 								<label for="website" class="">{{ __('Website') }}</label>
 								<input type="text" name="website" placeholder="Website" 
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Website'" required class="single-input">
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Website'" class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="contact_person" class="">{{ __('Contact Person') }}</label><span class="red-str">*</span>
@@ -97,7 +97,7 @@
 							<div class="mt-10 mb-5">
 								<label for="fax" class="">{{ __('Fax') }}</label>
 								<input type="text" name="fax" placeholder="Fax" 
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" required class="single-input">
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
 							</div>
 							
                             <div class="input-group-icon mt-10">
