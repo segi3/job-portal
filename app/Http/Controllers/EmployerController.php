@@ -12,15 +12,15 @@ class EmployerController extends Controller
     public function showLogin() {
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);   
+        error_reporting(E_ALL);
         return view('pages.employer.auth.login-employer');
-        
+
     }
 
-    // login 
+    // login
     public function Login(Request $request) {
 
-        
+
         $employer = Employer::where('email', '=', $request->input('email'))->first();
 
         // if($employer){
@@ -47,7 +47,7 @@ class EmployerController extends Controller
                         'email'     => $employer->email,
                         'role'      => 'employer',
                     ]);
-    
+
                     Session::flash('success', 'Anda berhasil Login');
                     return redirect('/');
                 }else{
@@ -60,7 +60,7 @@ class EmployerController extends Controller
             }else if($employer->status == 2){
                 return view('pages.employer.login-reject');
             }
-            
+
         }else {
             Session::flash('error', 'Akun tidak ditemukan');
             return redirect()->route('employer.showLogin');
@@ -72,11 +72,11 @@ class EmployerController extends Controller
         // ini_set('display_errors', 1);
         // ini_set('display_startup_errors', 1);
         // error_reporting(E_ALL);
-        
+
         return view('pages.employer.auth.register-employer');
     }
 
-    public function Register(Request $request) 
+    public function Register(Request $request)
     {
         // dd($request);
         $input = $request->all();
@@ -91,7 +91,8 @@ class EmployerController extends Controller
             'contact_person' => 'required',
             'contact_no' => 'required|max:13',
             'fax' => 'nullable',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|required_with:password_confirmation',
+            'password_confirmation' => 'required|min:8|same:password',
         ]);
 
         try {

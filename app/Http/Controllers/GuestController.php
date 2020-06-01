@@ -53,6 +53,7 @@ class GuestController extends Controller
         $this->validate($request, [
             'email'      => 'required|email|unique:guests',
             'password'   => 'required|min:8',
+            'password_confirmation' => 'required|min:8|same:password',
             'name'       => 'required',
             'status'     => 'required',
             'pekerjaan'  => 'required',

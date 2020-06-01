@@ -14,7 +14,7 @@
         background-blend-mode: lighten;
     }
     </style>
-    
+
 @endsection
 
 @section('content')
@@ -47,7 +47,7 @@
 
 			@endif
 
-        
+
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-lg-offset-3" style="height: 600px;">
                     <div class="apply_job_form white-bg mt-5">
@@ -59,23 +59,27 @@
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
-								<input type="password" name="password" placeholder="Password" 
+								<input type="password" name="password" placeholder="Password"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
+                            </div>
+                            <div class="mt-10 mb-5">
+								<input type="password" name="password2" placeholder="Konfirmasi Password"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konfirmasi Password'" required class="single-input">
 							</div>
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">
-                                        
+
                                         <button type="submit" class="btn btn-block btn-primary">
                                             {{ __('Login') }}
                                         </button>
-                                        
+
                                         {{-- @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                         @endif --}}
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +89,7 @@
                                 Belum punya akun? <a href="/register-er">Daftar disini!</a>
                             </div>
                         </div>
-                        
+
 					</div>
                 </div>
             </div>

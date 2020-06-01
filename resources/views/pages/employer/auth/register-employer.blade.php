@@ -46,7 +46,7 @@
 						<h3 style="text-align:center" class="mb-30">Register Akun Employer</h3>
 						<form method="POST" action="{{ route('employer.register') }}">
 						@csrf
-							
+
 							<div class="mt-10">
 								<label for="name" class="">{{ __('Nama') }}</label><span class="red-str">*</span>
 								<input type="text" name="name" placeholder="Nama dosen / perusahaan"
@@ -59,47 +59,52 @@
 							</div>
 							<div class="mt-10 mb-4">
 								<label for="password" class="">{{ __('Password') }}</label><span class="red-str">*</span>
-								<input type="password" name="password" placeholder="Password" 
+								<input type="password" name="password" placeholder="Password"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
+                            </div>
+                            <div class="mt-10 mb-4">
+								<label for="password_confirmation" class="">{{ __('Konfirmasi Password') }}</label><span class="red-str">*</span>
+								<input type="password" name="password_confirmation" placeholder="Password"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
 							</div>
 
 							<div class="mt-10">
 								<label for="address" class="">{{ __('Alamat') }}</label><span class="red-str">*</span>
-								<input type="text" name="address" placeholder="Alamat" 
+								<input type="text" name="address" placeholder="Alamat"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="city" class="">{{ __('Kota') }}</label><span class="red-str">*</span>
-								<input type="text" name="city" placeholder="Kota" 
+								<input type="text" name="city" placeholder="Kota"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kota'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-4">
 								<label for="province" class="">{{ __('Provinsi') }}</label><span class="red-str">*</span>
-								<input type="text" name="province" placeholder="Provinsi" 
+								<input type="text" name="province" placeholder="Provinsi"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Provinsi'" required class="single-input">
 							</div>
 
 							<div class="mt-10">
 								<label for="website" class="">{{ __('Website') }}</label>
-								<input type="text" name="website" placeholder="Website" 
+								<input type="text" name="website" placeholder="Website"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Website'" class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="contact_person" class="">{{ __('Contact Person') }}</label><span class="red-str">*</span>
-								<input type="text" name="contact_person" placeholder="Contact Person" 
+								<input type="text" name="contact_person" placeholder="Contact Person"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Person'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="contact_no" class="">{{ __('Contact Phone Number') }}</label><span class="red-str">*</span>
-								<input type="text" name="contact_no" placeholder="Nomor HP aktif" 
+								<input type="text" name="contact_no" placeholder="Nomor HP aktif"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nmor HP aktif'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="fax" class="">{{ __('Fax') }}</label>
-								<input type="text" name="fax" placeholder="Fax" 
+								<input type="text" name="fax" placeholder="Fax"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
 							</div>
-							
+
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">

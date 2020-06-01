@@ -60,7 +60,12 @@
                             </div>
                             <div class="mt-10 mb-5">
                                 <label for="password" class="">{{ __('Password') }}</label><span class="red-str"> *</span>
-                                <input type="password" name="password" placeholder="Password" 
+                                <input type="password" name="password" placeholder="Password"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
+                            </div>
+                            <div class="mt-10 mb-5">
+                                <label for="password_confirmation" class="">{{ __('Konfirmasi Password') }}</label><span class="red-str"> *</span>
+                                <input type="password" name="password_confirmation" placeholder="Password"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
                             </div>
 
@@ -100,28 +105,28 @@
 								<input type="text" name="mobile_no" placeholder="Nomor HP aktif"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nomor HP aktif'" required class="single-input">
                             </div>
-							
+
 
 							<div class="mt-10">
 								<label for="address" class="">{{ __('Alamat') }}</label><span class="red-str"> *</span>
-								<input type="text" name="address" placeholder="Alamat" 
+								<input type="text" name="address" placeholder="Alamat"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="city" class="">{{ __('Kota') }}</label><span class="red-str"> *</span>
-								<input type="text" name="city" placeholder="Kota" 
+								<input type="text" name="city" placeholder="Kota"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kota'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="province" class="">{{ __('Provinsi') }}</label><span class="red-str"> *</span>
-								<input type="text" name="province" placeholder="Provinsi" 
+								<input type="text" name="province" placeholder="Provinsi"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Provinsi'" required class="single-input">
 							</div>
 
 
 							<div class="mt-10">
 								<label for="hobby" class="">{{ __('hobby') }}</label><span class="red-str"> *</span>
-								<input type="text" name="hobby" placeholder="hobby" 
+								<input type="text" name="hobby" placeholder="hobby"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'hobby'" required class="single-input">
 							</div>
 							<div class="mt-10">
@@ -139,8 +144,8 @@
 								<textarea name="experience" class="single-textarea" placeholder="Experience" onfocus="this.placeholder = ''"
 									onblur="this.placeholder = 'Experience'" required></textarea>
 							</div>
-							
-							
+
+
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">

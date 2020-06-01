@@ -46,7 +46,7 @@
 						<h3 style="text-align:center" class="mb-30">Register Akun Guest</h3>
 						<form method="POST" action="{{ route('guest.register') }}">
 						@csrf
-							
+
 							<div class="mt-10">
 								<label for="email" class="">{{ __('Email') }}</label><span class="red-str">*</span>
 								<input type="email" name="email" placeholder="Alamat email"
@@ -54,10 +54,15 @@
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="password" class="">{{ __('Password') }}</label><span class="red-str">*</span>
-								<input type="password" name="password" placeholder="Password" 
+								<input type="password" name="password" placeholder="Password"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
                             </div>
-                            
+                            <div class="mt-10 mb-5">
+								<label for="password_confirmation" class="">{{ __('Konfirmasi Password') }}</label><span class="red-str">*</span>
+								<input type="password" name="password_confirmation" placeholder="Password"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
+                            </div>
+
                             <div class="mt-10">
 								<label for="name" class="">{{ __('Nama') }}</label><span class="red-str">*</span>
 								<input type="text" name="name" placeholder="Nama lengkap"
@@ -80,16 +85,16 @@
                             </div>
 							<div class="mt-10">
 								<label for="pekerjaan" class="">{{ __('Pekerjaan') }}</label><span class="red-str">*</span>
-								<input type="text" name="pekerjaan" placeholder="Pekerjaan" 
+								<input type="text" name="pekerjaan" placeholder="Pekerjaan"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pekerjaan'" required class="single-input">
                             </div>
                             <div class="mt-10 mb-5">
 								<label for="mobile_no" class="">{{ __('Nomor HP aktif') }}</label><span class="red-str">*</span>
-								<input type="text" name="mobile_no" placeholder="Nomor HP aktif" 
+								<input type="text" name="mobile_no" placeholder="Nomor HP aktif"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nomor HP aktif'" required class="single-input">
 							</div>
-							
-							
+
+
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">

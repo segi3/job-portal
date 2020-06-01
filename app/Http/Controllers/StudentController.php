@@ -57,6 +57,7 @@ class StudentController extends Controller
         $this->validate($request, [
             'email'         => 'required|email|unique:students',
             'password'      => 'required|min:8',
+            'password_confirmation'=>'required|min:8|same:password',
             'name'          => 'required',
             'nrp'           => 'required|min:14|max:14|unique:students',
             'gender'        => 'required',
