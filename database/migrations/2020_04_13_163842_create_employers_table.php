@@ -17,7 +17,7 @@ class CreateEmployersTable extends Migration
             $table->id();
             $table->integer('status')->default('2');
             $table->string('name');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->string('address');
             $table->string('city');
             $table->string('province');
