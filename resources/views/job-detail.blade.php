@@ -70,7 +70,8 @@
                     </div>
                     <div class="apply_job_form white-bg">
                         <h4>Apply for the job</h4>
-                        <form action="#">
+                    <form action="/applyjob/{{$job->id}}" method="POST" enctype="multipart/form-data">
+					{{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
@@ -79,14 +80,14 @@
                                           </button>
                                         </div>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-                                          <label class="custom-file-label" for="inputGroupFile03">Upload CV</label>
+                                          <input type="file" class="custom-file-input" name="cv" id="cv" aria-describedby="inputGroupFileAddon03">
+                                          <label class="custom-file-label" for="cv">Upload CV</label>
                                         </div>
                                       </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="#" id="" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="motlet" id="motlet" cols="30" rows="10" placeholder="Coverletter"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

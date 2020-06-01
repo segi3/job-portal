@@ -45,6 +45,42 @@ class JobController extends Controller
     {
       $job= Job::where('id',$id)->first();
 		  return view('job-detail',['job' => $job]);
+    }
 
+    public function apply(Request $request, $id)
+    {
+      $this->validate($request, [
+        'cv' => 'required|mimes:pdf|max:2048',
+        'motlet' => 'required',
+      ]);
+   
+      $file = $request->file('cv');
+      $id_stud = $request->session()->get('id');
+      $id_job = $id;
+      $file_cv = $id_stud.' '.$
+      $tujuan_upload = 'CV';
+      $file->move($tujuan_upload,$file->getClientOriginalName());
+
+      try {
+        $data = array(
+          array(
+          'student_id'=> $id_stud, 
+          'job_id'=> $id_job, 
+          'cv'=> $file_cv,  
+          'motivation_letter'=> $request->get('motlet')),
+       );
+        DB::table('job_student')->insert($data);
+        Session::flash('success', 'Berhasil apply job');
+        return view('/');
+    }
+    catch(\Illuminate\Database\QueryException $e)
+    {
+        $errorCode = $e->errorInfo[1];
+        if ($errorCode == 1062) {
+            return redirect('/');
+        }
+        Session::flash('error', $errorCode);
+        return redirect()->back();
+    }
     }
 }
