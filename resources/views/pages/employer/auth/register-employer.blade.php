@@ -44,7 +44,7 @@
                 <div class="col-lg-6">
                     <div class="apply_job_form white-bg">
 						<h3 style="text-align:center" class="mb-30">Register Akun Employer</h3>
-						<form method="POST" action="{{ route('employer.register') }}">
+						<form method="POST" action="{{ route('employer.register') }} " enctype="multipart/form-data">
 						@csrf
 
 							<div class="mt-10">
@@ -103,8 +103,20 @@
 								<label for="fax" class="">{{ __('Fax') }}</label>
 								<input type="text" name="fax" placeholder="Fax"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
-							</div>
-
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_no" class="">{{ __('Logo') }}</label><span class="red-str">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                      </button>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="logo" id="logo" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label" for="logo">Upload Image</label>
+                                    </div>
+                                  </div>
+                            </div>
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">
@@ -128,5 +140,6 @@
 @endsection
 
 @section('scripts')
+
     {{--  --}}
 @endsection

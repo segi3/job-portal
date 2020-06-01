@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Employer;
-
+use Image;
 class EmployerController extends Controller
 {
     public function showLogin() {
@@ -83,6 +83,7 @@ class EmployerController extends Controller
         // dd($input);
         $this->validate($request, [
             'name' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
             'city' => 'required',
@@ -96,8 +97,19 @@ class EmployerController extends Controller
         ]);
 
         try {
+            $filelogo = $request->file('logo');
+            $email= $request->input('email');
+            $extension= $filelogo->getClientOriginalExtension();
+            $namafile=md5($email);
+            $hashname= $namafile.'.'.$extension;
+            $tujuan_upload = 'data_files/employer_logo';
+            $filecrop= Image::make($filelogo->path());
+            $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
+            // $filelogo->move($tujuan_upload,$hashname);
+            // echo $hashname;
             Employer::create([
                 'name' => $request->input('name'),
+                'logo' => $hashname,
                 'email' => $request->input('email'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
@@ -109,6 +121,7 @@ class EmployerController extends Controller
                 'status' => 0,
                 'password' => Hash::make($request->input('password')),
             ]);
+
 
             Session::flash('success', 'Akun berhasil didaftarkan, silahkan menunggu akun untuk diverifikasi');
             return view('pages.employer.login-warning');
