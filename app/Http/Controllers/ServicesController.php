@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Services;
 use App\JobCategory;
 use App\Students;
@@ -72,12 +73,53 @@ class ServicesController extends Controller
                                 'students.gender as gender', //a
                                 'students.city as city',//a
                                 'students.province as prov',//a
-                                'students.id as id'
+                                'students.id as stud_id',
+                                'services.id as id'
                             )
                     ->where($where_pending)
                     ->get();
         return view('services-detail',compact('servData'));
 
+    }
+    public function approach(Request $request, $id)
+    {
+
+      $id_guest = $request->session()->get('id');
+      $applicant = DB::table('guest_services')->where([
+        ['service_id', '=', $id],
+        ['guest_id', '=', $id_guest]
+      ])->first();
+      if($applicant)
+      {
+          Session::flash('error', 'Sudah anda approach!');
+          return redirect('/');
+      }
+      else
+      {
+        try
+        {
+          $data = array(
+            array(
+            'guest_id'=> $id_guest,
+            'service_id'=> $id,
+            'status' => 0,
+            'status_pekerjaan'=>0,
+            ),
+         );
+          DB::table('guest_services')->insert($data);
+          Session::flash('success', 'Berhasil apply job');
+          return redirect('/');
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+          $errorCode = $e->errorInfo[1];
+          if ($errorCode == 1062) {
+              return redirect('/');
+          }
+          Session::flash('error', $errorCode);
+          return redirect()->back();
+        }
+      }
     }
 
 

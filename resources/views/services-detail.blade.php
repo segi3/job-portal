@@ -92,8 +92,8 @@
                 </div>
                 <div class="apply_job_form white-bg">
 
-                    <form action="#">
-
+                    <form action="/applyservices/{{$servDetail->id}}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                             <div class="col-md-12">
                                 <div class="submit_btn">
                                     <button class="boxed-btn3 w-100" type="submit">Pakai Jasa Sekarang</button>

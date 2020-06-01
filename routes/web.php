@@ -72,6 +72,7 @@ Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin
 Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
     Route::get('dashboard/gs/list-jasa', 'DashboardGuestController@getListJasa');
+    Route::post('/applyservices/{id}', 'ServicesController@approach');
 });
 
 
