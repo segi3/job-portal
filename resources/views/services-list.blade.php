@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a href="job_details.html" class="boxed-btn3">Approach Now</a>
+                                            <a href="{{ url('jasa/'.$serv->id) }}" class="boxed-btn3">Approach Now</a>
                                         </div>
                                     </div>
                                 </div>

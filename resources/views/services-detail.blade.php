@@ -24,6 +24,30 @@
 <!--/ bradcam_area  -->
 <div class="job_details_area">
     <div class="container">
+        @if (Session::has('success'))
+
+				<div class="alert alert-success" role="alert">
+					<strong>Success:</strong> {{ Session::get('success') }}
+				</div>
+
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
+			@if (count($errors) > 0)
+
+				<div class="alert alert-danger" role="alert">
+					<strong>Errors:</strong>
+					<ul>
+					@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
+					</ul>
+				</div>
+
+			@endif
         <div class="row">
             <div class="col-lg-8">
                 <div class="job_details_header">
@@ -89,6 +113,7 @@
                         <h4>Pencapaian</h4>
                         <p>{{$servDetail->achievment}}</p>
                     </div>
+
                 </div>
                 <div class="apply_job_form white-bg">
 
@@ -116,6 +141,7 @@
                             <li>Email: <span>{{ $servDetail->email }}</span></li>
                             <li>Jenis Kelamin: <span>{{ $servDetail->gender }}</span></li>
                             <li>Domisili: <span>{{ $servDetail->city }},{{ $servDetail->prov }}</span></li>
+                            <li>Pelayanan yang diselesaikan: <span>{{ $servicesCount}}</span></li>
                         </ul>
                     </div>
                 </div>

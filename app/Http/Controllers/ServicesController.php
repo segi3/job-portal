@@ -24,7 +24,7 @@ class ServicesController extends Controller
                     ->join('job_categories', 'services.job_category_id' ,'job_categories.id')
                     ->select('services.id as id','services.name as name', 'students.name as penyedia','job_categories.name as category','services.updated_at as lastupdate')
                     ->where('services.status','=',1)
-                    ->paginate(2);
+                    ->paginate(8);
         return view('services-list',compact('servicesCount','jobcategory','services'));
     }
     public function filterServicesCategory($slug)
@@ -56,29 +56,42 @@ class ServicesController extends Controller
             'services.id' => $slug,
             'services.status' => '1'
           ];
-        $servData= DB::table('services')
-                    ->join('students','services.student_id','students.id')
-                    ->join('job_categories', 'services.job_category_id' ,'job_categories.id')
-                    ->select(   'services.name as servname',//a
-                                'services.description as desc',//a
-                                'services.updated_at as lastupdate',
-                                'students.name as studentName', //a
-                                'students.nrp as nrp', //a
-                                'students.mobile_no as nohp', //a
-                                'students.email as email', //a
-                                'students.hobby as hobby',
-                                'students.skill as skill',
-                                'students.achievment as achievment',
-                                'students.experience as expe',
-                                'students.gender as gender', //a
-                                'students.city as city',//a
-                                'students.province as prov',//a
-                                'students.id as stud_id',
-                                'services.id as id'
-                            )
-                    ->where($where_pending)
-                    ->get();
-        return view('services-detail',compact('servData'));
+
+          $servData= DB::table('services')
+          ->join('students','services.student_id','students.id')
+          ->join('job_categories', 'services.job_category_id' ,'job_categories.id')
+          ->select(   'services.name as servname',//a
+                      'services.description as desc',//a
+                      'services.updated_at as lastupdate',
+                      'students.name as studentName', //a
+                      'students.nrp as nrp', //a
+                      'students.mobile_no as nohp', //a
+                      'students.email as email', //a
+                      'students.hobby as hobby',
+                      'students.skill as skill',
+                      'students.achievment as achievment',
+                      'students.experience as expe',
+                      'students.gender as gender', //a
+                      'students.city as city',//a
+                      'students.province as prov',//a
+                      'students.id as stud_id',
+                      'services.id as id'
+                  )
+          ->where($where_pending)
+          ->get();
+        $dataku=$servData->first();
+        $where_success = [
+            'services.status' => '1',
+            'guest_services.status_pekerjaan'=>'1',
+            'students.id'=>$dataku->stud_id,
+        ];
+        $servicesCount= DB::table('guest_services')
+          ->join('services','services.id','guest_services.id')
+          ->join('students', 'students.id' ,'services.student_id')
+          ->where($where_success)
+          ->count();
+
+        return view('services-detail',compact('servData','servicesCount'));
 
     }
     public function approach(Request $request, $id)
@@ -92,7 +105,7 @@ class ServicesController extends Controller
       if($applicant)
       {
           Session::flash('error', 'Sudah anda approach!');
-          return redirect('/');
+          return redirect()->back();
       }
       else
       {
