@@ -62,7 +62,7 @@ class StudentController extends Controller
             'nrp'           => 'required|min:14|max:14|unique:students',
             'gender'        => 'required',
             'birthday'      => 'required',
-            'mobile_no'     => 'required|min:12|max:14',
+            'mobile_no'     => 'required|min:10|max:14',
             'address'       => 'required|max:255',
             'city'          => 'required|max:255',
             'province'      => 'required|max:255',

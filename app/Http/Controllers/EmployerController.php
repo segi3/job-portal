@@ -89,7 +89,7 @@ class EmployerController extends Controller
             'province' => 'required',
             'website' => 'nullable',
             'contact_person' => 'required',
-            'contact_no' => 'required|max:13',
+            'contact_no' => 'required|max:14',
             'fax' => 'nullable',
             'password' => 'required|min:8|required_with:password_confirmation',
             'password_confirmation' => 'required|min:8|same:password',
