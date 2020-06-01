@@ -57,7 +57,7 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 Route::get('/jobs', 'JobController@index');
 Route::get('/jobs/category/{slug}', 'JobController@filterCategory');
 Route::get('/jobs/{id}', 'JobController@detail');
-Route::post('/applyjob/{id}', 'JobController@apply');
+
 
 //jasa
 Route::get('/jasa', 'ServicesController@index');
@@ -89,6 +89,7 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
 
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
+    Route::post('/applyjob/{id}', 'JobController@apply');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){

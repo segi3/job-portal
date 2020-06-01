@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Session;
 use App\Job;
 use App\JobCategory;
 use App\Employer;
@@ -76,7 +77,7 @@ class JobController extends Controller
           $data = array(
             array(
             'student_id'=> $id_stud, 
-            'job_id'=> $id_job, 
+            'job_id'=> $id, 
             'status' => 0,
             'cv'=> $file_cv,  
             'motivation_letter'=> $request->get('motlet')),
