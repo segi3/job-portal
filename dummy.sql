@@ -42,3 +42,6 @@ insert into guest_services values ('2', '1', '2', '1', '0', null, null);
 
 insert into guest_services values ('3', '2', '1', '1', '0', null, null);
 insert into guest_services values ('4', '2', '2', '0', '0', null, null);
+insert into job_student values ('3', '6', '5', '1', 'motlet', 'cv', null, null);
+insert into job_student values ('4', '7', '5', '1', 'motlet', 'cv', null, null);
+

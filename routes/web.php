@@ -58,6 +58,10 @@ Route::get('/jobs', 'JobController@index');
 Route::get('/jobs/category/{slug}', 'JobController@filterCategory');
 Route::get('/jobs/{id}', 'JobController@detail');
 
+//jasa
+Route::get('/jasa', 'ServicesController@index');
+Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
+Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
 
@@ -69,10 +73,6 @@ Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
     Route::get('dashboard/gs/list-jasa', 'DashboardGuestController@getListJasa');
 });
 
-// jasa
-Route::get('/jasa', 'ServicesController@index');
-Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
-Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 
 
 Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
