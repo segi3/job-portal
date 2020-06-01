@@ -49,38 +49,51 @@ class JobController extends Controller
 
     public function apply(Request $request, $id)
     {
-      $this->validate($request, [
-        'cv' => 'required|mimes:pdf|max:2048',
-        'motlet' => 'required',
-      ]);
-   
-      $file = $request->file('cv');
+      
       $id_stud = $request->session()->get('id');
-      $id_job = $id;
-      $file_cv = $id_stud.' '.$
-      $tujuan_upload = 'CV';
-      $file->move($tujuan_upload,$file->getClientOriginalName());
-
-      try {
-        $data = array(
-          array(
-          'student_id'=> $id_stud, 
-          'job_id'=> $id_job, 
-          'cv'=> $file_cv,  
-          'motivation_letter'=> $request->get('motlet')),
-       );
-        DB::table('job_student')->insert($data);
-        Session::flash('success', 'Berhasil apply job');
-        return view('/');
-    }
-    catch(\Illuminate\Database\QueryException $e)
-    {
-        $errorCode = $e->errorInfo[1];
-        if ($errorCode == 1062) {
-            return redirect('/');
+      $applicant = DB::table('job_student')->where([
+        ['job_id', '=', $id],
+        ['student_id', '=', $id_stud],
+      ])->first();
+      if($applicant)
+      {
+          Session::flash('error', 'Sudah pernah apply!');
+          return redirect('/');
+      }
+      else
+      {
+        $this->validate($request, [
+          'cv' => 'required|mimes:pdf|max:2048',
+          'motlet' => 'required',
+        ]);
+        $file = $request->file('cv');
+        $cv = 'cv';
+        $file_cv = $cv.'-'.$id_stud.'-'.$id;
+        $tujuan_upload = 'data_files/CV';
+        $file->move($tujuan_upload,$file_cv);
+        try 
+        {
+          $data = array(
+            array(
+            'student_id'=> $id_stud, 
+            'job_id'=> $id_job, 
+            'status' => 0,
+            'cv'=> $file_cv,  
+            'motivation_letter'=> $request->get('motlet')),
+         );
+          DB::table('job_student')->insert($data);
+          Session::flash('success', 'Berhasil apply job');
+          return redirect('/');
         }
-        Session::flash('error', $errorCode);
-        return redirect()->back();
-    }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+          $errorCode = $e->errorInfo[1];
+          if ($errorCode == 1062) {
+              return redirect('/');
+          }
+          Session::flash('error', $errorCode);
+          return redirect()->back();
+        }
+      }
     }
 }
