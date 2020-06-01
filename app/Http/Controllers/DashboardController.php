@@ -9,6 +9,7 @@ use App\Student;
 use App\Job;
 use App\Employer;
 use App\Seminar;
+use App\Service;
 
 
 class DashboardController extends Controller
@@ -28,15 +29,77 @@ class DashboardController extends Controller
     }
 
     // manage users admin
-    public function getUserList() {
+    public function getUserList()
+    {
 
         $students = Student::select('name', 'nrp', 'email')->paginate(20);
 
         return view ('dashboard.pages.admins.userlist')->with('students', $students);
     }
 
+    public function getNewServices()
+    {
+
+        $services = Service::where('services.status', '0')
+                    ->leftjoin('students', 'students.id', 'services.student_id')
+                    ->leftjoin('job_categories', 'job_categories.id', 'services.job_category_id')
+                    ->select('services.*', 'students.name as stdname', 'job_categories.name as category_name')
+                    ->paginate(20);
+
+
+        return view('dashboard.pages.admins.newservices')->with('services', $services);
+    }
+
+    public function getApprovedServices()
+    {
+        $services = Service::where('status', '1')
+                    ->leftjoin('students', 'students.id', 'services.student_id')
+                    ->leftjoin('job_categories', 'job_categories.id', 'services.job_category_id')
+                    ->select('services.*', 'students.name as stdname', 'job_categories.name as category_name')
+                    ->paginate(20);
+
+        return view('dashboard.pages.admins.approvedservices')->with('services', $services);
+    }
+
+    public function getUnapprovedServices()
+    {
+        $services = Service::where('status', '2')
+                    ->leftjoin('students', 'students.id', 'services.student_id')
+                    ->leftjoin('job_categories', 'job_categories.id', 'services.job_category_id')
+                    ->select('services.*', 'students.name as stdname', 'job_categories.name as category_name')
+                    ->paginate(20);
+
+        return view('dashboard.pages.admins.unapprovedservices')->with('services', $services);
+    }
+
+    public function approveNewServices(Request $request, $id)
+    {
+        $service = Service::find($id);
+
+        $service->status = 1;
+        $service->admin_id = $request->session()->get('id');
+
+        $service->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewServices(Request $request, $id)
+    {
+        $service = Service::find($id);
+
+        $service->status = 2;
+        $service->admin_id = $request->session()->get('id');
+
+        $service->save();
+
+        return redirect()->back();
+    }
+
+
     //manage employers admin
-    public function getNewEmployers() {
+    public function getNewEmployers()
+    {
 
         $employers = Employer::where('status', '0')->paginate(20);
 

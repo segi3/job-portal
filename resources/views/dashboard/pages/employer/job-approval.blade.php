@@ -43,6 +43,7 @@
                                 <th>Job type</th>
                                 <th>Job Location</th>
                                 <th>Details</th>
+                                <th>Last Updated</th>
                                 <th style="width: 154px">Status</th>
                             </tr>
                             </thead>
@@ -53,6 +54,7 @@
                                     <td>{{ $job->name }}</td>
                                     <td>{{ $job->job_type }}</td>
                                     <td>{{ $job->location }}</td>
+                                    <td>{{ $job->updated_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $job->id }}">
                                             Details

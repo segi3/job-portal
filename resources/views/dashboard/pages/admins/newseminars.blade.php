@@ -42,6 +42,7 @@
                             <th>Nama Seminar</th>
                             <th>Lokasi</th>
                             <th>Fee</th>
+                            <th>Listed at</th>
                             <th>Detail</th>
                             <th style="width: 150px;">Action</th>
                         </tr>
@@ -52,6 +53,7 @@
                                 <td>{{ $seminar->name }}</td>
                                 <td>{{ $seminar->location }}</td>
                                 <td>Rp {{ $seminar->fee }}</td>
+                                <td>{{ $seminar->created_at }}</td>
                                 <td>
                                     
                                     <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $seminar->id }}">
@@ -92,6 +94,10 @@
                                                     <tr>
                                                         <td>Contact Number</td>
                                                         <td>{{ $seminar->contact_no }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Listed at</td>
+                                                        <td>{{ $seminar->created_at }}</td>
                                                     </tr>
                                                 </tbody>
                                               </table>

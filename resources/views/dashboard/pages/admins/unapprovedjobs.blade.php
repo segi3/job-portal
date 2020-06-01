@@ -115,6 +115,10 @@
                                                         <td>Expected Salary</td>
                                                         <td>{{ $job->expected_salary }}</td>
                                                       </tr>
+                                                      <tr>
+                                                        <td>Last Updated</td>
+                                                        <td>{{ $job->updated_at }}</td>
+                                                      </tr>
                                                     </tbody>
                                                   </table>
                                                 </div>

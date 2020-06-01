@@ -43,7 +43,7 @@
                                 <th>Job Name</th>
                                 <th>Job Employer</th>
                                 <th>Job type</th>
-                                <th>Job Location</th>
+                                <th>Listed at</th>
                                 <th>Details</th>
                                 <th>Action</th>
                             </tr>
@@ -55,7 +55,7 @@
                                     <td>{{ $job->name }}</td>
                                     <td>{{ $job->employer_name }}</td>
                                     <td>{{ $job->job_type }}</td>
-                                    <td>{{ $job->location }}</td>
+                                    <td>{{ $job->created_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $job->id }}">
                                             Details
@@ -115,6 +115,10 @@
                                                       <tr>
                                                         <td>Expected Salary</td>
                                                         <td>{{ $job->expected_salary }}</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>Listed at</td>
+                                                        <td>{{ $job->created_at }}</td>
                                                       </tr>
                                                     </tbody>
                                                   </table>

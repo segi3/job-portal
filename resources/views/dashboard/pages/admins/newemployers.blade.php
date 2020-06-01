@@ -44,8 +44,8 @@
                             <th>Email</th>
                             <th>Contact person</th>
                             <th>Contact Number</th>
-                            <th>website</th>
-                            <th>Action</th>
+                            <th>Listed at</th>
+                            <th style="width: 200px;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                                 <td>{{ $employer->email }}</td>
                                 <td>{{ $employer->contact_person }}</td>
                                 <td>{{ $employer->contact_no }}</td>
-                                <td>{{ $employer->website }}</td>
+                                <td>{{ $employer->created_at }}</td>
                                 <td>
                                     <div class="row">
                                         <div class="col-lg-6">

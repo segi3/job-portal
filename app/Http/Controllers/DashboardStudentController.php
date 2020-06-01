@@ -78,7 +78,7 @@ class DashboardStudentController extends Controller
                         ->join('guests', 'guest_services.guest_id', 'guests.id')
                         ->join('services', 'guest_services.service_id', 'services.id')
                         ->join('students', 'services.student_id', 'students.id')
-                        ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status')
+                        ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status', 'guest_services.created_at', 'guest_services.updated_at')
                         ->where($where_pending)
                         ->paginate(20);
         
@@ -112,22 +112,60 @@ class DashboardStudentController extends Controller
 
     public function getServicesApplicantAccepted(Request $request)
     {
-        $where_acc = [
+        $where_done = [
             'student_id' => $request->session()->get('id'),
             'guest_services.status' => '1',
+            'guest_services.status_pekerjaan' => '1',
         ];
 
-        $applicants = DB::table('guest_services')
+        $applicants_done = DB::table('guest_services')
                         ->join('guests', 'guest_services.guest_id', 'guests.id')
                         ->join('services', 'guest_services.service_id', 'services.id')
                         ->join('students', 'services.student_id', 'students.id')
-                        ->select('guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status')
-                        ->where($where_acc)
+                        ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status', 'guest_services.status_pekerjaan', 'guest_services.created_at', 'guest_services.updated_at')
+                        ->where($where_done)
+                        ->paginate(20);
+
+        $where_notdone = [
+            'student_id' => $request->session()->get('id'),
+            'guest_services.status' => '1',
+            'guest_services.status_pekerjaan' => '0',
+        ];
+
+        $applicants_notdone = DB::table('guest_services')
+                        ->join('guests', 'guest_services.guest_id', 'guests.id')
+                        ->join('services', 'guest_services.service_id', 'services.id')
+                        ->join('students', 'services.student_id', 'students.id')
+                        ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status', 'guest_services.status_pekerjaan', 'guest_services.created_at', 'guest_services.updated_at')
+                        ->where($where_notdone)
                         ->paginate(20);
         
-        // dd($applicants);
+        // dd($applicants_notdone);
 
-        return view('dashboard.pages.student.service-applicant-accepted')->with('applicants', $applicants);
+        return view('dashboard.pages.student.service-applicant-accepted')->with('applicants_done', $applicants_done)->with('applicants_notdone', $applicants_notdone);
+    }
+
+    public function doneServices(Request $request, $id)
+    {
+
+        $acc = DB::table('guest_services')
+                    ->where('id', $id)
+                    ->update([
+                        'status_pekerjaan' => 1,
+                    ]);
+
+        return redirect()->back();
+    }
+
+    public function notdoneServices(Request $request, $id)
+    {
+        $acc = DB::table('guest_services')
+                    ->where('id', $id)
+                    ->update([
+                        'status_pekerjaan' => 0,
+                    ]);
+
+        return redirect()->back();
     }
 
     public function getJobsApproval(Request $request)
@@ -140,7 +178,7 @@ class DashboardStudentController extends Controller
                     ->join('students', 'job_student.student_id', 'students.id')
                     ->join('jobs', 'job_student.job_id', 'jobs.id')
                     ->join('employers', 'jobs.employer_id', 'employers.id')
-                    ->select('jobs.name as jobname', 'employers.name as empname', 'employers.contact_person', 'employers.contact_no', 'job_student.status')
+                    ->select('job_student.created_at', 'job_student.updated_at', 'jobs.name as jobname', 'employers.name as empname', 'employers.email', 'job_student.status')
                     ->where($where)
                     ->paginate(20);
 

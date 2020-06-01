@@ -40,11 +40,11 @@
                             <thead>                  
                             <tr>
                                 <th>Nama mahasiwa</th>
-                                <th>NRP</th>
                                 <th>Nama Pekerjaan</th>
                                 <th>Motivation letter</th>
                                 <th>CV</th>
                                 <th>Details</th>
+                                <th>Listed at</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -53,7 +53,6 @@
                             @foreach($applicants_pending as $applicant)
                                 <tr>
                                     <td>{{ $applicant->name }}</td>
-                                    <td>{{ $applicant->nrp }}</td>
                                     <td>{{ $applicant->jobname }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#motlet-{{ $applicant->id }}">
@@ -105,6 +104,10 @@
                                                         <td>{{ $applicant->name }}</td>
                                                       </tr>
                                                       <tr>
+                                                        <td>NRP mahasiswa</td>
+                                                        <td>{{ $applicant->nrp }}</td>
+                                                      </tr>
+                                                      <tr>
                                                         <td>Email mahasiswa</td>
                                                         <td>{{ $applicant->email }}</td>
                                                       </tr>
@@ -141,6 +144,7 @@
                                         </div>
                                         <!-- /.modal -->
                                     </td>
+                                    <td>{{ $applicant->created_at }}</td>
                                     <td>
                                         <form action="{{ route('job-applicant.accept', $applicant->jsid) }}" method="post">
                                           {{ csrf_field() }}

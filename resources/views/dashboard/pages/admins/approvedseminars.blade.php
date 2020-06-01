@@ -93,6 +93,10 @@
                                                         <td>Contact Number</td>
                                                         <td>{{ $seminar->contact_no }}</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td>Last Updated</td>
+                                                        <td>{{ $seminar->updated_at }}</td>
+                                                    </tr>
                                                 </tbody>
                                               </table>
                                             </div>

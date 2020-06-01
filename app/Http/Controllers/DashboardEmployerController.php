@@ -49,7 +49,7 @@ class DashboardEmployerController extends Controller
                                 ->join('students', 'job_student.student_id', 'students.id')
                                 ->join('jobs', 'job_student.job_id', 'jobs.id')
                                 ->join('employers', 'jobs.employer_id', 'employers.id')
-                                ->select('students.*', 'jobs.name as jobname', 'jobs.id as idjob', 'job_student.id as jsid', 'job_student.status as status', 'job_student.motivation_letter as motlet', 'job_student.cv as cv', 'employers.id as employerid')
+                                ->select('students.*', 'job_student.created_at', 'job_student.updated_at', 'jobs.name as jobname', 'jobs.id as idjob', 'job_student.id as jsid', 'job_student.status as status', 'job_student.motivation_letter as motlet', 'job_student.cv as cv', 'employers.id as employerid')
                                 ->where($where_pending)
                                 ->paginate(20);
 

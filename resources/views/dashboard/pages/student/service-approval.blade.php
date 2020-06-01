@@ -40,7 +40,8 @@
                             <thead>                  
                             <tr>
                                 <th>Service Name</th>
-                                <th>Description</th>
+                                {{-- <th>Description</th> --}}
+                                <th>Last Updated</th>
                                 <th style="width: 154px">Status</th>
                             </tr>
                             </thead>
@@ -49,7 +50,8 @@
                             @foreach($services as $service)
                                 <tr>
                                     <td>{{ $service->name }}</td>
-                                    <td>{{ $service->description }}</td>
+                                    {{-- <td>{{ $service->description }}</td> --}}
+                                    <td>{{ $service->updated_at }}</td>
                                     <td>
                                     @if ($service->status == 0)
                                         <span class="badge bg-warning">Pending</span>

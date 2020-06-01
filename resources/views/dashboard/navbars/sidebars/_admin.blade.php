@@ -40,7 +40,49 @@
                 </ul>
             </li>
 
-            <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-services') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-services') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-services') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-services') ? "active" : "" }}
+                {{ Request::is('admin/approved-services') ? "active" : "" }}
+                {{ Request::is('admin/unapproved-services') ? "active" : "" }}
+                ">
+                    <i class="nav-icon fas fa-briefcase"></i>
+                <p>
+                    Manage Services
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-services" class="nav-link {{ Request::is('admin/new-services') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New Services</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-services" class="nav-link {{ Request::is('admin/approved-services') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Services</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-services" class="nav-link {{ Request::is('admin/unapproved-services') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Services</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-employers') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-employers') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-employers') ? "menu-open" : "" }}
+            ">
                 <a href="#" class="nav-link
                 {{ Request::is('admin/new-employers') ? "active" : "" }}
                 {{ Request::is('admin/approved-employers') ? "active" : "" }}
@@ -74,7 +116,11 @@
                 </ul>
             </li>
 
-            <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-jobs') ? "active" : "" }}
+            {{ Request::is('admin/approved-jobs') ? "active" : "" }}
+            {{ Request::is('admin/unapproved-jobs') ? "active" : "" }}
+            ">
                 <a href="#" class="nav-link
                     {{ Request::is('admin/new-jobs') ? "active" : "" }}
                     {{ Request::is('admin/approved-jobs') ? "active" : "" }}

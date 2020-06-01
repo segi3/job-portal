@@ -43,6 +43,7 @@
                                 <th>Jasa</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
+                                <th>Listed at</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                     <td>{{ $applicant->servicename }}</td>
                                     <td>{{ $applicant->email }}</td>
                                     <td>{{ $applicant->mobile_no }}</td>
+                                    <td>{{ $applicant->created_at }}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-lg-6">

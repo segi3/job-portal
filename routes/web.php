@@ -78,6 +78,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/service-applicant-accepted', 'DashboardStudentController@getServicesApplicantAccepted');
     Route::put('dashboard/st/service-applicant/a/{guest}', 'DashboardStudentController@acceptNewApplicants')->name('service-applicant.accept');
     Route::put('dashboard/st/service-applicant/d/{guest}', 'DashboardStudentController@rejectNewApplicants')->name('service-applicant.reject');
+    Route::put('dashboard/st/service-applicant/done/{guest}', 'DashboardStudentController@doneServices')->name('service.done');
+    Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
 
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
 });
@@ -100,6 +102,11 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/user-list', 'DashboardController@getUserList');
+    Route::get('admin/new-services', 'DashboardController@getNewServices');
+    Route::get('admin/approved-services', 'DashboardController@getApprovedServices');
+    Route::get('admin/unapproved-services', 'DashboardController@getUnapprovedServices');
+    Route::put('admin/new-services/a/{service}', 'DashboardController@approveNewServices')->name('service.approve');
+    Route::put('admin/new-services/d/{service}', 'DashboardController@rejectNewServices')->name('service.reject');
 
     Route::get('admin/new-employers', 'DashboardController@getNewEmployers');
     Route::get('admin/approved-employers', 'DashboardController@getAprrovedEmployers');

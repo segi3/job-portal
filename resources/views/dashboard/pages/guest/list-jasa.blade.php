@@ -40,7 +40,9 @@
                             <tr>
                                 <th>Nama jasa</th>
                                 <th>Nama mahasiswa</th>
-                                <th style="width: 154px">Status</th>
+                                <th>Last Updated</th>
+                                <th style="width: 100px">Status</th>
+                                <th style="width: 150px;">Status Pekerjaan</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,6 +51,7 @@
                                 <tr>
                                     <td>{{ $service->stdname }}</td>
                                     <td>{{ $service->servname }}</td>
+                                    <td>{{ $service->updated_at }}</td>
                                     <td>
                                     @if ($service->status == 0)
                                         <span class="badge bg-warning">Pending</span>
@@ -57,6 +60,17 @@
                                     @elseif($service->status == 2)
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
+                                    </td>
+                                    <td>
+                                        @if ($service->status == 1)
+                                            @if ($service->status_pekerjaan == 0)
+                                                <span class="badge bg-warning">Belum Selesai</span>
+                                            @elseif ($service->status_pekerjaan == 1)
+                                                <span class="badge bg-success">Selesai</span>
+                                            @endif
+                                        @else 
+                                            <span class="badge bg-warning">-</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

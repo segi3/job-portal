@@ -46,7 +46,7 @@
                                     <th>Email</th>
                                     <th>Contact person</th>
                                     <th>Contact Number</th>
-                                    <th>website</th>
+                                    <th>Last Updated</th>
                                     <th style="width: 87px">Action</th>
                                 </tr>
                             </thead>
@@ -58,7 +58,7 @@
                                     <td>{{ $employer->email }}</td>
                                     <td>{{ $employer->contact_person }}</td>
                                     <td>{{ $employer->contact_no }}</td>
-                                    <td>{{ $employer->website }}</td>
+                                    <td>{{ $employer->updated_at }}</td>
                                     <td>
                                         <form action="{{ route('employer.approve', $employer->id) }}" method="post">
                                             {{ csrf_field() }}

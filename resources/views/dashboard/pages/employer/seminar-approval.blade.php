@@ -42,6 +42,7 @@
                                 <th>Seminar Name</th>
                                 <th>Seminar Location</th>
                                 <th>Seminar Fee</th>
+                                <th>Last Updated</th>
                                 <th>Details</th>
                                 <th style="width: 154px">Status</th>
                             </tr>
@@ -53,6 +54,7 @@
                                     <td>{{ $seminar->name }}</td>
                                     <td>{{ $seminar->location }}</td>
                                     <td>{{ $seminar->fee }}</td>
+                                    <td>{{ $seminar->updated_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $seminar->id }}">
                                             Details

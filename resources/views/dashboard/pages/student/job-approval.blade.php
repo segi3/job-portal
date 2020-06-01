@@ -41,19 +41,19 @@
                             <tr>
                                 <th>Job name</th>
                                 <th>Employer</th>
-                                <th>Kontak</th>
-                                <th>Nomor Kontak</th>
+                                <th>Email</th>
+                                <th>Last Updated</th>
                                 <th style="width: 154px">Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                                
+                            
                             @foreach($jobs as $job)
                                 <tr>
                                     <td>{{ $job->jobname }}</td>
                                     <td>{{ $job->empname }}</td>
-                                    <td>{{ $job->contact_person }}</td>
-                                    <td>{{ $job->contact_no }}</td>
+                                    <td>{{ $job->email }}</td>
+                                    <td>{{ $job->updated_at }}</td>
                                     <td>
                                     @if ($job->status == 0)
                                         <span class="badge bg-warning">Pending</span>
