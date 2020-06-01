@@ -35,15 +35,15 @@
                                             <li><a href="#">Jasa</a></li>
                                             <li><a href="#">Kategori Jasa<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="#">Pertanian</a></li>
-                                                    <li><a href="#">Pertambangan</a></li>
-                                                    <li><a href="#">Industri Dasar dan Kimia</a></li>
-                                                    <li><a href="#">Aneka Industri</a></li>
-                                                    <li><a href="#">Industri Barang Konsumsi</a></li>
-                                                    <li><a href="#">Properti, Real Estate, dan Konstruksi</a></li>
-                                                    <li><a href="#">Infrastruktur, Utilitas, dan Transportasi</a></li>
-                                                    <li><a href="#">Finansial</a></li>
-                                                    <li><a href="#">Perdagangan, Jasa dan Transportasi</a></li>
+                                                    <li><a href="/jasa/category/pertanian">Pertanian</a></li>
+                                                    <li><a href="/jasa/category/pertambangan">Pertambangan</a></li>
+                                                    <li><a href="/jasa/category/industri-dasar-dan-kimia">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="/jasa/category/aneka-industri">Aneka Industri</a></li>
+                                                    <li><a href="/jasa/category/industri-barang-konsumsi">Industri Barang Konsumsi</a></li>
+                                                    <li><a href="/jasa/category/properti-real-estate-dan-konstruksi">Properti, Real Estate, dan Konstruksi</a></li>
+                                                    <li><a href="/jasa/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="/jasa/category/finansial">Finansial</a></li>
+                                                    <li><a href="/jasa/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="/dashboard">Dashboard</a></li>
