@@ -63,7 +63,12 @@
                                         <form action="{{ route('employer.approve', $employer->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('put') }}
-                                            <button type="submit" class="btn btn-sm btn-block btn-success mr-4">approve</button>
+                                            <button type="submit" class="btn btn-sm btn-block btn-success">approve</button>
+                                        </form>
+                                        <form action="{{ route('employer.delete', $employer->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('delete') }}
+                                            <button type="submit" class="btn btn-sm btn-block btn-danger mt-2">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

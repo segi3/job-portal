@@ -135,6 +135,7 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-employers', 'DashboardController@getUnapprovedEmployers');
     Route::put('admin/new-employers/a/{post}', 'DashboardController@approveNewEmployers')->name('employer.approve');
     Route::put('admin/new-employers/d/{post}', 'DashboardController@rejectNewEmployers')->name('employer.reject');
+    Route::delete('admin/delete-em/{employer}', 'DashboardController@deleteEmployer')->name('employer.delete');
 
     Route::get('admin/new-jobs', 'DashboardController@getNewJobs');
     Route::get('admin/approved-jobs', 'DashboardController@getApprovedJobs');

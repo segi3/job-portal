@@ -130,6 +130,15 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
+    public function deleteEmployer($id)
+    {
+        $employer = Employer::find($id);
+
+        $employer->delete();
+
+        return redirect()->back();
+    }
+
     public function getAprrovedEmployers() {
 
         $employers = Employer::where('status', '1')->paginate(20);
@@ -179,6 +188,8 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
+
+    
 
     public function getApprovedJobs() {
 
