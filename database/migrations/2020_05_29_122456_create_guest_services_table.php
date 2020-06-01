@@ -23,6 +23,7 @@ class CreateGuestServicesTable extends Migration
             $table->foreign('guest_id')->references('id')->on('guests')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('status', 1);
+            $table->string('status_pekerjaan', 1);
             
             $table->timestamps();
         });

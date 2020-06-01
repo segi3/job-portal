@@ -26,8 +26,8 @@ insert into job_student values ('2', '2', '1', '1', 'motlet', 'cv', null, null);
 insert into job_student values ('3', '1', '2', '1', 'motlet', 'cv', null, null);
 insert into job_student values ('4', '2', '2', '0', 'motlet', 'cv', null, null);
 
-insert into guest_services values ('1', '2', '1', '0', null, null);
-insert into guest_services values ('2', '2', '2', '1', null, null);
+insert into guest_services values ('1', '1', '1', '0', '0', null, null);
+insert into guest_services values ('2', '1', '2', '1', '0', null, null);
 
-insert into guest_services values ('3', '3', '1', '1', null, null);
-insert into guest_services values ('4', '3', '2', '0', null, null);
+insert into guest_services values ('3', '2', '1', '1', '0', null, null);
+insert into guest_services values ('4', '2', '2', '0', '0', null, null);
