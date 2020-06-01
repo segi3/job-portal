@@ -11,6 +11,7 @@ use App\Job;
 use App\Employer;
 use App\Seminar;
 use App\Service;
+use Validator;
 
 
 class DashboardStudentController extends Controller
@@ -185,5 +186,108 @@ class DashboardStudentController extends Controller
         // dd($jobs);
 
         return view('dashboard.pages.student.job-approval')->with('jobs', $jobs);
+    }
+
+    public function getProfilePage(Request $request)
+    {
+        $where = [
+            'id' => $request->session()->get('id'),
+        ];
+
+        $student = Student::where($where)->first();
+
+        return view('dashboard.pages.student.profile')->with('student', $student);
+    }
+
+    public function editProfilePage(Request $request)
+    {
+        $where = [
+            'id' => $request->session()->get('id'),
+        ];
+
+        $student = Student::where($where)->first();
+
+        return view('dashboard.pages.student.profile-edit')->with('student', $student);
+    }
+
+    public function updateProfilePage(Request $request)
+    {
+        
+
+        $student = Student::find($request->session()->get('id'));
+
+        if ($request->email != $student->email){
+            $this->validate($request, [
+                'email' => 'required|email|unique:students',
+            ]);
+        };
+
+        if ($request->nrp != $student->nrp){
+            $this->validate($request, [
+                'nrp'   => 'required|min:14|max:14|unique:students',
+            ]);
+        };
+
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'email'         => 'required|email',
+            'name'          => 'required',
+            'nrp'           => 'required|min:14|max:14',
+            'gender'        => 'required',
+            'birthday'      => 'required',
+            'mobile_no'     => 'required|min:10|max:14',
+            'address'       => 'required|max:255',
+            'city'          => 'required|max:255',
+            'province'      => 'required|max:255',
+            'hobby'         => 'required|max:255',
+            'skill'         => 'required|max:255',
+            'achievment'    => 'required|max:255',
+            'experience'    => 'required|max:255',
+        ]);
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back();
+        }
+        $student = Student::find($request->session()->get('id'));
+
+        // dd($request->session()->get('id'));
+        $formatDate = \Carbon\Carbon::parse($request->input('birthday'))->format('Y-m-d');
+
+        try {
+            
+
+            $student->name = $request->input('name');
+            $student->nrp = $request->input('nrp');
+            $student->gender = $request->input('gender');
+            $student->birthdate = $formatDate;
+            $student->address = $request->input('address');
+            $student->city = $request->input('city');
+            $student->province = $request->input('province');
+            $student->hobby = $request->input('hobby');
+            $student->skill = $request->input('skill');
+            $student->achievment = $request->input('achievment');
+            $student->experience = $request->input('experience');
+            $student->email = $request->input('email');
+            $student->mobile_no = $request->input('mobile_no');
+
+            
+    
+            $student->save();
+            Session::flash('success', 'Profil berhasil di ubah');
+            return redirect('/dashboard/st/profile');
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorMsg);
+            return redirect()->back();
+        }
+        
+
+        
     }
 }

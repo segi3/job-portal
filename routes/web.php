@@ -50,24 +50,29 @@ Route::post('register-gs', 'GuestController@Register')->name('guest.register');
 // admin
 Route::get('adminsuperscretloginY', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
+Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
+Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
 
+
+// jobs
+
 Route::get('/jobs', 'JobController@index');
 Route::get('/jobs/category/{slug}', 'JobController@filterCategory');
 Route::get('/jobs/{id}', 'JobController@detail');
+Route::get('/download-cv/{cv}', 'JobController@downloadCV')->name('cv.download');
 
 
-//jasa
+// jasa
 Route::get('/jasa', 'ServicesController@index');
 Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
 Route::get('/jasa/{slug}', 'ServicesController@detailServices');
+
+
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
-
-Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
-Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
 Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
@@ -91,6 +96,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
 
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
     Route::post('/applyjob/{id}', 'JobController@apply');
+
+    Route::get('dashboard/st/profile', 'DashboardStudentController@getProfilePage');
+    Route::get('dashboard/st/profile/edit', 'DashboardStudentController@editProfilePage');
+    Route::put('dashboard/st/profile/update', 'DashboardStudentController@updateProfilePage')->name('student.profile.update');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
@@ -107,6 +116,10 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::post('dashboard/er/create-seminar', 'DashboardEmployerController@postCreateSeminar')->name('dashboard.employer.createSeminar');
 
     Route::get('dashboard/er/seminar-approval', 'DashboardEmployerController@getSeminarsApproval');
+
+    Route::get('dashboard/er/profile', 'DashboardEmployerController@getProfilePage');
+    Route::get('dashboard/er/profile/edit', 'DashboardEmployerController@editProfilePage');
+    Route::put('dashboard/er/profile/update', 'DashboardEmployerController@updateProfilePage')->name('employer.profile.update');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){

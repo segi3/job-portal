@@ -89,16 +89,13 @@
                 </li>
                 </ul>
             </li>
-            
-            {{-- <li class="nav-item">
-                <a href="/dashboard" class="nav-link " target="_blank">
+
+            <li class="nav-item">
+                <a href="/dashboard/er/profile" class="nav-link {{ Request::is('dashboard/er/profile') ? "active" : "" }}">
                 <i class="nav-icon fas fa-address-card"></i>
-                <p>
-                    Your Profile
-                    <span class="right badge badge-danger">New</span>
-                </p>
+                <p>My Profile</p>
                 </a>
-            </li> --}}
+            </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

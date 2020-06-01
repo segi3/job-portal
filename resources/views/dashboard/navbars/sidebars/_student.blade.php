@@ -80,16 +80,33 @@
             </li>
             </ul>
         </li>
-        
-        {{-- <li class="nav-item">
-            <a href="/dashboard" class="nav-link " target="_blank">
-            <i class="nav-icon fas fa-address-card"></i>
+
+        <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link
+            {{ Request::is('dashboard/st/profile') ? "active" : "" }}
+            {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}
+            ">
+                <i class="nav-icon fas fa-address-card"></i>
             <p>
-                Your Profile
-                <span class="right badge badge-danger">New</span>
+                My Profile
+                <i class="right fas fa-angle-left"></i>
             </p>
             </a>
-        </li> --}}
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/dashboard/st/profile" class="nav-link {{ Request::is('dashboard/st/profile') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View Profile</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/st/profile/edit" class="nav-link {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Edit Profile</p>
+                </a>
+            </li>
+            </ul>
+        </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -208,4 +208,16 @@ class DashboardEmployerController extends Controller
 
         // return view('dashboard.pages.employer.create-job');
     }
+
+    public function getProfilePage(Request $request)
+    {
+        $where = [
+            'id' => $request->session()->get('id'),
+        ];
+
+        $employer = Employer::where($where)->first();
+        // dd($employer);
+
+        return view('dashboard.pages.employer.profile')->with('employer', $employer);
+    }
 }
