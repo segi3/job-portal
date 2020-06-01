@@ -62,10 +62,6 @@
 								<input type="password" name="password" placeholder="Password"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
                             </div>
-                            <div class="mt-10 mb-5">
-								<input type="password" name="password2" placeholder="Konfirmasi Password"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Konfirmasi Password'" required class="single-input">
-							</div>
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
                                     <div class="text-center">
