@@ -82,7 +82,11 @@
                                         </div>
                                         <!-- /.modal -->
                                     </td>
-                                    <td>{{ $applicant->cv }}</td>
+                                    <td>
+                                      <form action="{{ route('cv.download', 'cv-'.$applicant->id.'-'.$applicant->idjob) }}" method="get">
+                                        <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                      </form>
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $applicant->id }}">
                                             Details

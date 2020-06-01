@@ -17,6 +17,7 @@ class ServicesController extends Controller
         $servicesCount= DB::table('services')
                         ->where('services.status','=',1)
                         ->count();
+                        
         $jobcategory = DB::table('job_categories')
                     ->select('name','slug')->get();
         $services = DB::table('services')

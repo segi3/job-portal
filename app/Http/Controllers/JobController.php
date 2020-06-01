@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+
 use App\Job;
 use App\JobCategory;
 use App\Employer;
@@ -15,6 +16,10 @@ class JobController extends Controller
 {
     public function index()
     {
+      $jobsCount= DB::table('jobs')
+                        ->where('jobs.status','=',1)
+                        ->count();
+
       $jobcategory = DB::table('job_categories')->select('name','slug')->get();
       $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
@@ -22,7 +27,7 @@ class JobController extends Controller
                             ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
                             ->where('jobs.status', '=', 1)
                             ->paginate(8);
-      return view('job-list',compact('jobcategory', 'job'));
+      return view('job-list',compact('jobcategory', 'job', 'jobsCount'));
     }
     
     public function filterCategory($slug)
@@ -87,7 +92,7 @@ class JobController extends Controller
          );
           DB::table('job_student')->insert($data);
           Session::flash('success', 'Berhasil apply job');
-          return redirect('/');
+          return redirect()->back();
         }
         catch(\Illuminate\Database\QueryException $e)
         {
@@ -100,5 +105,38 @@ class JobController extends Controller
           return redirect()->back();
         }
       }
+    }
+
+    
+    public function downloadCV($cv)
+    {
+      // dd($cv);
+
+      $file = public_path('data_files\\CV\\'.$cv.'.pdf');
+
+      $arr = explode('-', $cv);
+
+      // dd($arr);
+
+      $where = [
+        'job_student.student_id' => $arr[1],
+        'job_student.job_id'     => $arr[2],
+      ];
+
+      $cv_name = DB::table('job_student')
+                  ->join('students', 'job_student.student_id', 'students.id')
+                  ->join('jobs', 'job_student.job_id', 'jobs.id')
+                  ->select('students.name as stdname', 'jobs.name as jobname')
+                  ->where($where)
+                  ->first();
+      
+      // dd($cv_name);
+
+      // dd($file);
+      // $headers = [
+      //   'Content-Type: application/pdf',
+      // ];
+
+      return response()->download($file, $cv_name->jobname.'-'.$cv_name->stdname.'.pdf');
     }
 }

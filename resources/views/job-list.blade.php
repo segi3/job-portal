@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>4536+ Jobs Available</h3>
+                        <h3>{{$jobsCount}} Tersedia untuk anda</h3>
                     </div>
                 </div>
             </div>

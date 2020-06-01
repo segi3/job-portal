@@ -9,15 +9,15 @@
             </li>
         @if( session('role') == 'employer' )
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact Admin</a>
+                <a href="/" class="nav-link">Portal utama</a>
             </li>
         @elseif ( session('role') == 'student')
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact Admin</a>
+                <a href="/" class="nav-link">Portal utama</a>
             </li>
         @elseif ( session('role') == 'guest')
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact Admin</a>
+                <a href="/" class="nav-link">Portal utama</a>
             </li>
         @endif
         </ul>
