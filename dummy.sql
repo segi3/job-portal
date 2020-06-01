@@ -20,6 +20,17 @@ insert into seminar_categories values ('8', 'Finansial', 'finansial', null, null
 insert into seminar_categories values ('9', 'Perdagangan, Jasa dan Transportasi', 'perdagangan-jasa-dan-transportasi', null, null);
 
 
+
+
+INSERT INTO students VALUES ('1','Abdur','05111840000100','085730105094','wibu@gmail.com','passswordku','tidur hobi','tidur skill',---'tidur 24 jam','Juara tidur','P',CURDATE(),'apa','apa2','apa3',NULL,NULL);
+
+INSERT INTO admins VALUES ('1','Admin','081330105094','admin@emaill.com','passadminweb',NULL,NULL);
+INSERT INTO services VALUE ('1','JASA INSTAL ULANG','INSTAL ULANG ANY OS','1','1','1','1',NULL,NULL);
+INSERT INTO services VALUE ('2','JASA INSTAL ULANG2','INSTAL ULANG ANY OS2','1','1','1','1',NULL,NULL);
+
+INSERT INTO employers VALUES ('1','1','2','Rafi','kitasabi.com','addresku','kotaku','provinsiku',NULL,'Bagus','01234567891','employer@mail.co','hashaku',NULL,NULL);
+
+
 insert into job_student values ('1', '1', '1', '0', 'motlet', 'cv', null, null);
 insert into job_student values ('2', '2', '1', '1', 'motlet', 'cv', null, null);
 

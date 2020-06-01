@@ -69,6 +69,12 @@ Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
     Route::get('dashboard/gs/list-jasa', 'DashboardGuestController@getListJasa');
 });
 
+// jasa
+Route::get('/jasa', 'ServicesController@index');
+Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
+Route::get('/jasa/{slug}', 'ServicesController@detailServices');
+
+
 Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/create-service', 'DashboardStudentController@getCreateService');
     Route::post('dashboard/st/create-service', 'DashboardStudentController@postCreateService')->name('dashboard.student.createService');
@@ -119,7 +125,7 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-jobs', 'DashboardController@getUnapprovedJobs');
     Route::put('admin/new-jobs/a/{job}', 'DashboardController@approveNewJobs')->name('job.approve');
     Route::put('admin/new-jobs/d/{job}', 'DashboardController@rejectNewJobs')->name('job.reject');
-    
+
     Route::get('admin/new-seminars', 'DashboardController@getNewSeminars');
     Route::get('admin/approved-seminars', 'DashboardController@getApprovedSeminars');
     Route::get('admin/unapproved-seminars', 'DashboardController@getUnapprovedSeminars');
