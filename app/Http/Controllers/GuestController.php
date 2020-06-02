@@ -57,7 +57,7 @@ class GuestController extends Controller
             'name'       => 'required',
             'status'     => 'required',
             'pekerjaan'  => 'required',
-            'mobile_no'  => 'mobile_no|min:10|max:14',
+            'mobile_no'  => 'required|min:10|max:14',
         ]);
 
         try {

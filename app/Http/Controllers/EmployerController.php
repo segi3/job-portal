@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Employer;
 use Image;
+use Validator;
+
 class EmployerController extends Controller
 {
     public function showLogin() {
@@ -78,10 +80,10 @@ class EmployerController extends Controller
 
     public function Register(Request $request)
     {
-        // dd($request);
+        
         $input = $request->all();
-        // dd($input);
-        $this->validate($request, [
+
+        $validator = Validator::make($input, [
             'name' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|email|unique:employers',
@@ -95,6 +97,26 @@ class EmployerController extends Controller
             'password' => 'required|min:8|required_with:password_confirmation',
             'password_confirmation' => 'required|min:8|same:password',
         ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back()->withInput();
+        }
+        
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     'email' => 'required|email|unique:employers',
+        //     'address' => 'required',
+        //     'city' => 'required',
+        //     'province' => 'required',
+        //     'website' => 'nullable',
+        //     'contact_person' => 'required',
+        //     'contact_no' => 'required|max:14',
+        //     'fax' => 'nullable',
+        //     'password' => 'required|min:8|required_with:password_confirmation',
+        //     'password_confirmation' => 'required|min:8|same:password',
+        // ]);
 
         try {
             $filelogo = $request->file('logo');
@@ -131,9 +153,12 @@ class EmployerController extends Controller
         catch(\Illuminate\Database\QueryException $e)
         {
             $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
             if ($errorCode == 1062) {
-                return redirect('/register-er');
+                return redirect('/');
             }
+            Session::flash('error', $errorMsg);
+            return redirect()->back();
         }
     }
 }

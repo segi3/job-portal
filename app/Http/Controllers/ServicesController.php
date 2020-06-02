@@ -118,11 +118,13 @@ class ServicesController extends Controller
             'service_id'=> $id,
             'status' => 0,
             'status_pekerjaan'=>0,
+            'updated_at' => \Carbon\Carbon::now(),
+            'created_at' => \Carbon\Carbon::now(),
             ),
          );
           DB::table('guest_services')->insert($data);
           Session::flash('success', 'Berhasil apply job');
-          return redirect('/');
+          return redirect()->back();
         }
         catch(\Illuminate\Database\QueryException $e)
         {

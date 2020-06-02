@@ -95,6 +95,7 @@ class DashboardStudentController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status' => 1,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();
@@ -106,6 +107,7 @@ class DashboardStudentController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status' => 2,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();
@@ -153,6 +155,7 @@ class DashboardStudentController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status_pekerjaan' => 1,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();
@@ -164,6 +167,7 @@ class DashboardStudentController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status_pekerjaan' => 0,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();

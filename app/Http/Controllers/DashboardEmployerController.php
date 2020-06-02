@@ -65,6 +65,7 @@ class DashboardEmployerController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status' => 1,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();
@@ -76,6 +77,7 @@ class DashboardEmployerController extends Controller
                     ->where('id', $id)
                     ->update([
                         'status' => 2,
+                        'updated_at' => \Carbon\Carbon::now(),
                     ]);
 
         return redirect()->back();
@@ -164,7 +166,8 @@ class DashboardEmployerController extends Controller
             'minimal_qualification' => 'required|max:255',
             'required_skill'        => 'required|max:255',
             'extra_skill'           => 'max:255',
-            'expected_salary'       => 'required|max:11',
+            'expected_salary_high'  => 'required|max:11',
+            'expected_salary_low'   => 'required|max:11',
             'kompensasi'            => 'required|max:255',
         ]);
 
@@ -188,8 +191,9 @@ class DashboardEmployerController extends Controller
                 'minimal_qualification' => $request->input('minimal_qualification'),
                 'required_skill'        => $request->input('required_skill'),
                 'extra_skill'           => $extra_skill,
-                'expected_salary'       => $request->input('expected_salary'),
-                'kompesasi'            => $request->input('kompensasi'), //typo di tabel, males benerin
+                'expected_salary_high'  => $request->input('expected_salary_high'),
+                'expected_salary_low'   => $request->input('expected_salary_low'),
+                'kompesasi'             => $request->input('kompensasi'), //typo di tabel, males benerin
             ]);
 
             Session::flash('success', 'Job berhasil didaftarkan, silahkan tunggu konfirmasi job');

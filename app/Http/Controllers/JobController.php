@@ -24,7 +24,7 @@ class JobController extends Controller
       $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
-                            ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
+                            ->select('jobs.expected_salary_high', 'jobs.expected_salary_low', 'jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername', 'employers.logo')
                             ->where('jobs.status', '=', 1)
                             ->paginate(8);
       return view('job-list',compact('jobcategory', 'job', 'jobsCount'));
@@ -49,7 +49,11 @@ class JobController extends Controller
 
     public function detail($id)
     {
-      $job= Job::where('id',$id)->first();
+      $job= Job::where('jobs.id',$id)
+            ->join('employers', 'jobs.employer_id', 'employers.id')
+            ->select('jobs.*', 'employers.logo as logo', 'employers.name as empname', 'employers.address as empaddress', 'employers.city as empcity', 'employers.province as empprov', 'employers.website as empweb')
+            ->first();
+      // dd($job);
 		  return view('job-detail',['job' => $job]);
     }
 
@@ -88,7 +92,9 @@ class JobController extends Controller
             'job_id'=> $id, 
             'status' => 0,
             'cv'=> $file_cv,  
-            'motivation_letter'=> $request->get('motlet')),
+            'motivation_letter'=> $request->get('motlet'),
+            'updated_at' => \Carbon\Carbon::now(),
+            'created_at' => \Carbon\Carbon::now()),
          );
           DB::table('job_student')->insert($data);
           Session::flash('success', 'Berhasil apply job');
