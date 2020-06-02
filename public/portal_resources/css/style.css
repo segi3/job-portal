@@ -2834,7 +2834,9 @@ h3 {
   background: #F5F7FA;
   padding: 100px 0;
 }
-
+.popular_catagory_area h3{
+  text-align: center;
+}
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_popular_catagory.scss */
 .popular_catagory_area .single_catagory {
   background: #FFFFFF;
@@ -2979,6 +2981,7 @@ h3 {
   font-weight: 400;
   color: #FFFFFF;
 }
+
 
 @media (max-width: 767px) {
   /* line 51, ../../Arafath/CL/December/235. Job board/HTML/scss/_job.scss */

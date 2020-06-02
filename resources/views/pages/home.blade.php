@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="popular_search d-flex align-items-center">
-                        <span>Popular Search:</span>
+                        <span>Kategori Populer:</span>
                         <ul>
                             <li><a href="#">Design & Creative</a></li>
                             <li><a href="#">Marketing</a></li>
@@ -67,7 +67,7 @@
         </div>
     </div>
     <!--/ catagory_area -->
-
+    
     <!-- job_listing_area_start  -->
     <div class="job_listing_area">
         <div class="container">
@@ -134,6 +134,19 @@
         </div>
     </div>
     <!-- job_searcing_wrap end  -->
+    <!-- popular_catagory_area_start  -->
+    <div class="popular_catagory_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-40">
+                        <h3>Seminar dan Pelatihan</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popular_catagory_area_end  -->
 
 @endsection
 
