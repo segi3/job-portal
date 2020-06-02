@@ -78,7 +78,7 @@
                                         <div class="jobs_conetent">
                                             <a href=" {{ url('jobs/'.$j->id) }} "><h4>{{ $j->name }}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
-                                                <p style="margin-bottom: 0px;">{{ $j->employername }} </p>
+                                                <p style="margin-bottom: 2px;">{{ $j->employername }} </p>
                                             </div>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">

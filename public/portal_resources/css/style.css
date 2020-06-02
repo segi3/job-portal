@@ -2720,9 +2720,10 @@ h3 {
 }
 
 /* line 50, ../../Arafath/CL/December/235. Job board/HTML/scss/_category.scss */
-.catagory_area .cat_search .job_btn a {
+.catagory_area .cat_search .job_btn button {
   width: 100%;
   display: block !important;
+  color: #013880;
 }
 
 @media (max-width: 767px) {

@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Session;
+
+use App\Job;
+use App\JobCategory;
+use App\Employer;
 
 class PageController extends Controller
 {
     public function getHome() {
-
-        return view('pages.home');
+      $jobcategory = DB::table('job_categories')->select('name','slug')->get();
+      $job = DB::table('jobs')
+                            ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
+                            ->join('employers', 'jobs.employer_id', 'employers.id')
+                            ->select('jobs.expected_salary_high', 'jobs.expected_salary_low', 'jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername', 'employers.logo')
+                            ->where('jobs.status', '=', 1)->get();
+        return view('pages.home', compact('jobcategory', 'job'));
     }
 
     public function showWelcomeLogin() {
