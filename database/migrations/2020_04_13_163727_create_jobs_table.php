@@ -25,7 +25,8 @@ class CreateJobsTable extends Migration
             $table->string('required_skill');
             $table->string('minimal_qualification');
             $table->string('extra_skill')->nullable();
-            $table->integer('expected_salary');
+            $table->integer('expected_salary_high');
+            $table->integer('expected_salary_low');
             $table->timestamps();
         });
     }
