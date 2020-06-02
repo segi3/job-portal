@@ -11,6 +11,28 @@
         width: auto;
         height: auto;
     }
+
+    .bg-seminar {
+        background-image: url('{{ asset('img') }}/seminar.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        /* background-color: rgba(255,255,255,0.4);
+        background-blend-mode: lighten; */
+    }
+
+    .highlight-biru-kuning {
+        background: rgb(1, 56, 128);
+        color: #ffc415;
+        font-size: 30px;
+        font-weight: 600;
+        padding: 6px 17px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
 </style>
 
 @endsection
@@ -144,9 +166,29 @@
     </div>
     <!-- job_searcing_wrap end  -->
     <!-- popular_catagory_area_start  -->
+
     <div class="popular_catagory_area">
         <div class="container">
             <h3>Seminar dan Pelatihan</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum illum nulla nam error qui, necessitatibus ratione, eos sequi blanditiis repellat itaque corporis iusto distinctio esse cumque alias. Fugiat, sit nobis.</p>
+        </div>
+    </div>
+
+    <div class="popular_catagory_area bg-seminar">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 offset-8 text-right">
+                    <span class="highlight-biru-kuning">Seminar Pra Kerja</span>
+                </div>
+                <div class="col-4 offset-8 mt-2 text-right">
+                    <span class="highlight-biru-kuning">Bersama: PT ITS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popular_catagory_area">
+        <div class="container">
             <div class="jumbotron">
                 <p><span>Seminar Pra Kerja</span></p>
                 <p><span>Bersama: PT ITS</span></p>
