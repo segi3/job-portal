@@ -1386,7 +1386,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url(../img/banner/newbanner.jpg);
 }
 
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_slider.scss */
@@ -1530,6 +1530,18 @@ h3 {
   .slider_area .single_slider .slider_text .quality ul li {
     margin-bottom: 10px;
   }
+}
+
+.slider_area .single_slider .slider_text .slider_span p span {
+  background: #ffc415;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: 600;
+  padding: 6px 17px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 /* line 83, ../../Arafath/CL/December/235. Job board/HTML/scss/_slider.scss */
