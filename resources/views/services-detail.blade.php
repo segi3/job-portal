@@ -53,14 +53,14 @@
                 <div class="job_details_header">
                     <div class="single_jobs white-bg d-flex justify-content-between">
                         <div class="jobs_left d-flex align-items-center">
-                            <div class="thumb">
+                            {{-- <div class="thumb">
                                 <img src="img/svg_icon/1.svg" alt="">
-                            </div>
+                            </div> --}}
                             <div class="jobs_conetent">
                                 <a href="#"><h4>{{ $servDetail->servname }}</h4></a>
                                 <div class="links_locat d-flex align-items-center">
                                     <div class="location">
-                                        <p> <i class="fa fa-map-marker"></i> {{ $servDetail->city }},{{ $servDetail->prov }}</p>
+                                        <p> <i class="fa fa-map-marker"></i> {{ $servDetail->city }}, {{ $servDetail->prov }}</p>
                                     </div>
                                     {{-- <div class="location">
                                         <p> <i class="fa fa-clock-o"></i> Part-time</p>
@@ -75,13 +75,16 @@
                         </div> --}}
                     </div>
                 </div>
+
                 <div class="descript_wrap white-bg">
                     <div class="single_wrap">
-                        <h4>Deskripsi Pelayanan</h4>
+                        <h4>Deskripsi Jasa</h4>
                         <p>{{ $servDetail->desc }}</p>
 
                     </div>
-                    <h3>Lebih lanjut mengenai penyedia layanan</h3>
+                    @if( session('role') == 'guest' )
+                    <hr/>
+                    <p>Mengenai penyedia layanan:</p>
                     <div class="single_wrap">
 
                         <h4>Hobi</h4>
@@ -113,37 +116,54 @@
                         <h4>Pencapaian</h4>
                         <p>{{$servDetail->achievment}}</p>
                     </div>
+                    @endif
 
                 </div>
+                @if( session('role') == 'guest' )
                 <div class="apply_job_form white-bg">
 
                     <form action="/applyservices/{{$servDetail->id}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <div class="col-md-12">
                                 <div class="submit_btn">
-                                    <button class="boxed-btn3 w-100" type="submit">Pakai Jasa Sekarang</button>
+                                    <button class="boxed-btn3 w-100" type="submit">Apply Jasa</button>
                                 </div>
                             </div>
 
                     </form>
                 </div>
+                @else
+                <form method="GET" action="/login-gs" class="mb-4">
+                    <div class="submit_btn mt-5">
+                        <button type="submit" class="boxed-btn3 w-100">
+                            {{ __('Login sebagai guest utuk Apply Job!') }}
+                        </button>
+                    </div>
+                </form>
+                @endif
             </div>
             <div class="col-lg-4">
                 <div class="job_sumary">
+                    
                     <div class="summery_header">
                         <h3>Informasi Penyedia Layanan</h3>
                     </div>
+                    @if(session()->has('login'))
                     <div class="job_content">
                         <ul>
                             <li>Nama: <span>{{ $servDetail->studentName }}</span></li>
                             <li>NRP: <span>{{ $servDetail->nrp }}</span></li>
                             <li>Nomor Handphone: <span>{{ $servDetail->nohp }}</span></li>
                             <li>Email: <span>{{ $servDetail->email }}</span></li>
-                            <li>Jenis Kelamin: <span>{{ $servDetail->gender }}</span></li>
-                            <li>Domisili: <span>{{ $servDetail->city }},{{ $servDetail->prov }}</span></li>
+                            <li>Domisili: <span>{{ $servDetail->city }}, {{ $servDetail->prov }}</span></li>
                             <li>Pelayanan yang diselesaikan: <span>{{ $servicesCount}}</span></li>
                         </ul>
                     </div>
+                    @else
+                    <div class="job_content">
+                        <span>Login untuk melihat informasi</span>
+                    </div>
+                    @endif
                 </div>
 
             </div>

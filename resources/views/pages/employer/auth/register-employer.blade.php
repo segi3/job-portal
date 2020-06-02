@@ -49,17 +49,17 @@
 
 							<div class="mt-10">
 								<label for="name" class="">{{ __('Nama') }}</label><span class="red-str">*</span>
-								<input type="text" name="name" placeholder="Nama dosen / perusahaan"
+								<input type="text" name="name" placeholder="Nama dosen / perusahaan" value="{{  old('name')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama dosen / perusahaan'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="email" class="">{{ __('Email') }}</label><span class="red-str">*</span>
-								<input type="email" name="email" placeholder="Alamat email"
+								<input type="email" name="email" placeholder="Alamat email" value="{{  old('email')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat email'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-4">
 								<label for="password" class="">{{ __('Password') }}</label><span class="red-str">*</span>
-								<input type="password" name="password" placeholder="Password"
+								<input type="password" name="password" placeholder="Password" 
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
                             </div>
                             <div class="mt-10 mb-4">
@@ -70,42 +70,42 @@
 
 							<div class="mt-10">
 								<label for="address" class="">{{ __('Alamat') }}</label><span class="red-str">*</span>
-								<input type="text" name="address" placeholder="Alamat"
+								<input type="text" name="address" placeholder="Alamat" value="{{  old('address')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="city" class="">{{ __('Kota') }}</label><span class="red-str">*</span>
-								<input type="text" name="city" placeholder="Kota"
+								<input type="text" name="city" placeholder="Kota" value="{{  old('city')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kota'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-4">
 								<label for="province" class="">{{ __('Provinsi') }}</label><span class="red-str">*</span>
-								<input type="text" name="province" placeholder="Provinsi"
+								<input type="text" name="province" placeholder="Provinsi" value="{{  old('province')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Provinsi'" required class="single-input">
 							</div>
 
 							<div class="mt-10">
 								<label for="website" class="">{{ __('Website') }}</label>
-								<input type="text" name="website" placeholder="Website"
+								<input type="text" name="website" placeholder="Website" value="{{  old('website')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Website'" class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="contact_person" class="">{{ __('Contact Person') }}</label><span class="red-str">*</span>
-								<input type="text" name="contact_person" placeholder="Contact Person"
+								<input type="text" name="contact_person" placeholder="Contact Person" value="{{  old('contact_person')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Person'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="contact_no" class="">{{ __('Contact Phone Number') }}</label><span class="red-str">*</span>
-								<input type="text" name="contact_no" placeholder="Nomor HP aktif"
+								<input type="text" name="contact_no" placeholder="Nomor HP aktif" value="{{  old('contact_no')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nmor HP aktif'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="fax" class="">{{ __('Fax') }}</label>
-								<input type="text" name="fax" placeholder="Fax"
+								<input type="text" name="fax" placeholder="Fax" value="{{  old('fax')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
                             </div>
                             <div class="form-group">
-                                <label for="contact_no" class="">{{ __('Logo') }}</label><span class="red-str">*</span>
+                                <label for="contact_no" class="">{{ __('Logo Instansi/Perusahaan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
@@ -140,6 +140,10 @@
 @endsection
 
 @section('scripts')
-
-    {{--  --}}
+<script type="application/javascript">
+	$('#logo').change(function(e){
+		var fileName = e.target.files[0].name;
+		$('.custom-file-label').html(fileName);
+	});
+</script>
 @endsection

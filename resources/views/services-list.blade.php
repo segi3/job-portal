@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40">
-                        <h4>Services</h4>
+                        <h4>Jasa tersedia</h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -64,9 +64,9 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
-                                        <div class="thumb">
+                                        {{-- <div class="thumb">
                                             <img src="img/svg_icon/1.svg" alt="">
-                                        </div>
+                                        </div> --}}
                                         <div class="jobs_conetent">
                                             <a href="{{ url('jasa/'.$serv->id) }}"><h4>{{ $serv->name }}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a href="{{ url('jasa/'.$serv->id) }}" class="boxed-btn3">Approach Now</a>
+                                            <a href="{{ url('jasa/'.$serv->id) }}" class="boxed-btn3">Apply Now</a>
                                         </div>
                                     </div>
                                 </div>

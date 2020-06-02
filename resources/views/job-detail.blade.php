@@ -3,13 +3,24 @@
 @section('title', "Job Portal")
 
 @section('stylesheets')
-    {{--  --}}
+<style>
+    .img-logo {
+        display: block;
+        max-width: 52px;
+        max-height: 52px;
+        width: auto;
+        height: auto;
+    }
+    div.single_jobs {
+
+    }
+</style>
 @endsection
 
 @section('content')
 
  <!-- bradcam_area  -->
- <div class="bradcam_area bradcam_bg_1">
+    <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -54,7 +65,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="img/svg_icon/1.svg" alt="">
+                                    <img src="/data_files/employer_logo/{{  $job->logo  }}" alt="" class="img-logo">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a><h4>{{ $job->name }}</h4></a>
@@ -85,11 +96,15 @@
                         </div>
                         <div class="single_wrap">
                             <h4>Extra Skill</h4>
+                            @if( $job->extra_skill == null)
+                            <p>-</p>
+                            @else
                             <p>{{ $job->extra_skill }}</p>
+                            @endif
                         </div>
                         <div class="single_wrap">
                             <h4>Compensation</h4>
-                            <p>{{ $job->kopensasi }}</p>
+                            <p>{{ $job->kompesasi }}</p>
                         </div>
                     </div>
 
@@ -113,7 +128,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="motlet" id="motlet" cols="30" rows="10" placeholder="Coverletter"></textarea>
+                                        <textarea name="motlet" id="motlet" cols="30" rows="10" placeholder="Motivation Letter"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -137,19 +152,38 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <div class="job_sumary">
-                        <div class="summery_header">
-                            <h3>Job Summary</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="job_sumary">
+                                <div class="summery_header">
+                                    <h3>Job Summary</h3>
+                                </div>
+                                <div class="job_content">
+                                    <ul>
+                                        <li>Published on   : <span>{{ $job->created_at }}</span></li>
+                                        <li>Expected Salary: <span>Rp {{ number_format($job->expected_salary_high, 0, ',', '.') }} - Rp{{ number_format($job->expected_salary_low, 0, ',', '.') }}</span></li>
+                                        <li>Location       : <span>{{ $job->location }}</span></li>
+                                        <li>Job Type       : <span> {{ $job->job_type }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="job_content">
-                            <ul>
-                                <li>Published on   : <span>{{ $job->created_at }}</span></li>
-                                <li>Expected Salary: <span>Rp {{ $job->expected_salary }}</span></li>
-                                <li>Location       : <span>{{ $job->location }}</span></li>
-                                <li>Job Type       : <span> {{ $job->job_type }}</span></li>
-                            </ul>
+                        <div class="col-lg-12 mt-5">
+                            <div class="job_sumary">
+                                <div class="summery_header">
+                                    <h3>Employer Summary</h3>
+                                </div>
+                                <div class="job_content">
+                                    <ul>
+                                        <li>Listed by : <span>{{ $job->empname }}</span></li>
+                                        <li>Address   : <span>{{ $job->empaddress }}, {{ $job->empcity }}, {{ $job->empprov }}</span></li>
+                                        <li>Website   : <span><a href="{{ $job->empweb }}">{{ $job->empweb }}</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -159,5 +193,10 @@
 @endsection
 
 @section('scripts')
-    {{--  --}}
+<script type="application/javascript">
+	$('#cv').change(function(e){
+		var fileName = e.target.files[0].name;
+		$('.custom-file-label').html(fileName);
+	});
+</script>
 @endsection
