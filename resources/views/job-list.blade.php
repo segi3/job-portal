@@ -30,12 +30,12 @@
     </div>
     <!--/ bradcam_area  -->
     <!-- catagory_area -->
-    <div class="catagory_area">
+    <div class="catagory_area" style="padding-top: 50px;">
         <div class="container">
             <div class="row cat_search">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section_title mb-40">
+                    <div class="section_title mb-40" style="margin-bottom: 10px;">
                         <h4>Categories</h4>
                     </div>
                 </div>
@@ -72,8 +72,8 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="single_jobs white-bg d-flex justify-content-between">
                                     <div class="jobs_left d-flex align-items-center">
-                                        <div class="thumb">
-                                            <img src="/data_files/employer_logo/{{  $j->logo  }}" alt="" class="img-logo">
+                                        <div class="thumb my-auto">
+                                            <img src="/data_files/employer_logo/{{  $j->emplogo  }}" alt="" class="img-logo">
                                         </div>
                                         <div class="jobs_conetent">
                                             <a href=" {{ url('jobs/'.$j->id) }} "><h4>{{ $j->name }}</h4></a>

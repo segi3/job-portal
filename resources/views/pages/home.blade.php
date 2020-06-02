@@ -3,7 +3,16 @@
 @section('title', "Job Portal")
 
 @section('stylesheets')
-    {{--  --}}
+<style>
+    .img-logo {
+        display: block;
+        max-width: 52px;
+        max-height: 52px;
+        width: auto;
+        height: auto;
+    }
+</style>
+
 @endsection
 
 @section('content')

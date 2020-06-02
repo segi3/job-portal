@@ -21,13 +21,17 @@ class JobController extends Controller
                         ->count();
 
       $jobcategory = DB::table('job_categories')->select('name','slug')->get();
+
       $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
-                            ->select('jobs.expected_salary_high', 'jobs.expected_salary_low', 'jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername', 'employers.logo')
+                            ->select('jobs.expected_salary_high', 'jobs.expected_salary_low', 'jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername', 'employers.logo as emplogo')
                             ->where('jobs.status', '=', 1)
                             ->paginate(8);
-      return view('job-list',compact('jobcategory', 'job', 'jobsCount'));
+      
+                            // dd($job);
+
+      return view('job-list')->with('job', $job)->with('jobsCount', $jobsCount)->with('jobcategory', $jobcategory);
     }
     
     public function filterCategory($slug)
@@ -46,7 +50,7 @@ class JobController extends Controller
         $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
-                            ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
+                            ->select('jobs.expected_salary_high', 'jobs.expected_salary_low', 'employers.logo as emplogo', 'jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
                             ->where($where_pending)
                             ->paginate(8);
       return view('job-list',compact('jobcategory', 'job','jobsCount'));

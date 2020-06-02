@@ -3,7 +3,7 @@
 @section('title', "Job Portal")
 
 @section('stylesheets')
-    {{--  --}}
+
 @endsection
 
 @section('content')
