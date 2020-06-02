@@ -53,13 +53,9 @@
                     <div class="popular_search d-flex align-items-center">
                         <span>Kategori Populer:</span>
                         <ul>
-                            <li><a href="#">Design & Creative</a></li>
-                            <li><a href="#">Marketing</a></li>
-                            <li><a href="#">Administration</a></li>
-                            <li><a href="#">Teaching & Education</a></li>
-                            <li><a href="#">Engineering</a></li>
-                            <li><a href="#">Software & Web</a></li>
-                            <li><a href="#">Telemarketing</a></li>
+                            @foreach($jobcategorypop as $pop)
+                            <li><a href=" {{ url('jobs/category/'.$pop->slug) }} ">{{ $pop->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -139,6 +135,8 @@
         <div class="container">
             <h3>Seminar dan Pelatihan</h3>
             <div class="jumbotron">
+                <p><span>Seminar Pra Kerja</span></p>
+                <p><span>Bersama: PT ITS</span></p>
 		    </div>
         </div>
     </div>

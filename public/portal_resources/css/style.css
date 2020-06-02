@@ -6294,7 +6294,18 @@ h6 {
   background-position: center;
   -webkit-background-size: cover;
   background-size: cover;
-  
+}
+
+.popular_catagory_area .jumbotron p span{
+  background: rgb(1, 56, 128);
+  color: #ffc415;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 6px 17px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 /* line 476, ../../Arafath/CL/December/235. Job board/HTML/scss/_blog.scss */
 .categories_post .categories_details h5 {
