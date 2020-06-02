@@ -37,18 +37,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <thead>                  
+                            <thead>
                             <tr>
                                 <th>Nama</th>
                                 <th>Jasa</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
                                 <th>Status Pekerjaan</th>
-                                <th style="width: 100px;">Action</th>
+                                {{-- <th style="width: 100px;">Action</th> --}}
                             </tr>
                             </thead>
                             <tbody>
-                                
+
                             @foreach($applicants_notdone as $applicant)
                                 <tr>
                                     <td>{{ $applicant->guestname }}</td>
@@ -62,13 +62,13 @@
                                             <span class="badge bg-success">Selesai</span>
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <form action="{{ route('service.done', $applicant->gsid) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('put') }}
                                             <button type="submit" class="btn btn-sm btn-block btn-success mr-4">Selesai</button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                             </tbody>
@@ -97,18 +97,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <thead>                  
+                            <thead>
                             <tr>
                                 <th>Nama</th>
                                 <th>Jasa</th>
                                 <th>Email</th>
                                 <th>Nomor HP</th>
                                 <th>Status Pekerjaan</th>
-                                <th style="width: 150px;">Action</th>
+                                {{-- <th style="width: 150px;">Action</th> --}}
                             </tr>
                             </thead>
                             <tbody>
-                                
+
                             @foreach($applicants_done as $applicant)
                                 <tr>
                                     <td>{{ $applicant->guestname }}</td>
@@ -122,13 +122,13 @@
                                             <span class="badge bg-success">Selesai</span>
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <form action="{{ route('service.notdone', $applicant->gsid) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('put') }}
                                             <button type="submit" class="btn btn-sm btn-block btn-danger mr-4">Batal Selesai</button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                             </tbody>

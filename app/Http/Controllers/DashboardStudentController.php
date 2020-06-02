@@ -52,7 +52,7 @@ class DashboardStudentController extends Controller
             Session::flash('error', $errorMsg);
             return view('dashboard.pages.student.create-service');
         }
-        
+
     }
 
     public function getServicesApproval(Request $request)
@@ -82,7 +82,7 @@ class DashboardStudentController extends Controller
                         ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status', 'guest_services.created_at', 'guest_services.updated_at')
                         ->where($where_pending)
                         ->paginate(20);
-        
+
         // dd($applicants);
 
         return view('dashboard.pages.student.service-applicant-pending')->with('applicants', $applicants);
@@ -142,40 +142,40 @@ class DashboardStudentController extends Controller
                         ->select('guest_services.id as gsid', 'guests.name as guestname', 'services.name as servicename', 'guests.email', 'guests.mobile_no', 'guest_services.status', 'guest_services.status_pekerjaan', 'guest_services.created_at', 'guest_services.updated_at')
                         ->where($where_notdone)
                         ->paginate(20);
-        
+
         // dd($applicants_notdone);
 
         return view('dashboard.pages.student.service-applicant-accepted')->with('applicants_done', $applicants_done)->with('applicants_notdone', $applicants_notdone);
     }
 
-    public function doneServices(Request $request, $id)
-    {
+    // public function doneServices(Request $request, $id)
+    // {
 
-        $acc = DB::table('guest_services')
-                    ->where('id', $id)
-                    ->update([
-                        'status_pekerjaan' => 1,
-                        'updated_at' => \Carbon\Carbon::now(),
-                    ]);
+    //     $acc = DB::table('guest_services')
+    //                 ->where('id', $id)
+    //                 ->update([
+    //                     'status_pekerjaan' => 1,
+    //                     'updated_at' => \Carbon\Carbon::now(),
+    //                 ]);
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
-    public function notdoneServices(Request $request, $id)
-    {
-        $acc = DB::table('guest_services')
-                    ->where('id', $id)
-                    ->update([
-                        'status_pekerjaan' => 0,
-                        'updated_at' => \Carbon\Carbon::now(),
-                    ]);
+    // public function notdoneServices(Request $request, $id)
+    // {
+    //     $acc = DB::table('guest_services')
+    //                 ->where('id', $id)
+    //                 ->update([
+    //                     'status_pekerjaan' => 0,
+    //                     'updated_at' => \Carbon\Carbon::now(),
+    //                 ]);
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
     public function getJobsApproval(Request $request)
     {
-        $where = [ 
+        $where = [
             'job_student.student_id' => $request->session()->get('id'),
         ];
 
@@ -216,7 +216,7 @@ class DashboardStudentController extends Controller
 
     public function updateProfilePage(Request $request)
     {
-        
+
 
         $student = Student::find($request->session()->get('id'));
 
@@ -258,7 +258,7 @@ class DashboardStudentController extends Controller
         $formatDate = \Carbon\Carbon::parse($request->input('birthday'))->format('Y-m-d');
 
         try {
-            
+
 
             $student->name = $request->input('name');
             $student->nrp = $request->input('nrp');
@@ -274,8 +274,8 @@ class DashboardStudentController extends Controller
             $student->email = $request->input('email');
             $student->mobile_no = $request->input('mobile_no');
 
-            
-    
+
+
             $student->save();
             Session::flash('success', 'Profil berhasil di ubah');
             return redirect('/dashboard/st/profile');
@@ -290,8 +290,8 @@ class DashboardStudentController extends Controller
             Session::flash('error', $errorMsg);
             return redirect()->back();
         }
-        
 
-        
+
+
     }
 }

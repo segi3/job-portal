@@ -21,12 +21,39 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        
         <li class="nav-item">
             <a href="/dashboard/gs/list-jasa" class="nav-link {{ Request::is('dashboard/gs/list-jasa') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
             <p>
-                Services Approval
+                Services Waiting Approval
+                {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/dashboard/gs/list-jasa-rejected" class="nav-link {{ Request::is('dashboard/gs/list-jasa-rejected') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+            <p>
+                Services Rejected
+                {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/dashboard/gs/list-jasa-inprogress" class="nav-link {{ Request::is('dashboard/gs/list-jasa-inprogress') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+            <p>
+                Services In Proggres
+                {{-- <span class="right badge badge-danger">New</span> --}}
+            </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="/dashboard/gs/list-jasa-done" class="nav-link {{ Request::is('dashboard/gs/list-jasa-done') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+            <p>
+                Services Done
                 {{-- <span class="right badge badge-danger">New</span> --}}
             </p>
             </a>

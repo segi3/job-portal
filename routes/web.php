@@ -77,7 +77,12 @@ Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck')
 Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
     Route::get('dashboard/gs/list-jasa', 'DashboardGuestController@getListJasa');
+    Route::get('dashboard/gs/list-jasa-rejected', 'DashboardGuestController@getListJasaRejected');
+    Route::get('dashboard/gs/list-jasa-done', 'DashboardGuestController@getListJasaDone');
+    Route::get('dashboard/gs/list-jasa-inprogress', 'DashboardGuestController@getListJasaInprogress');
     Route::post('/applyservices/{id}', 'ServicesController@approach');
+    Route::put('dashboard/gs/service-applicant/done/{guest}', 'DashboardGuestController@doneServices')->name('service.done');
+    Route::put('dashboard/gs/service-applicant/notdone/{guest}', 'DashboardGuestController@notdoneServices')->name('service.notdone');
 });
 
 
@@ -91,8 +96,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/service-applicant-accepted', 'DashboardStudentController@getServicesApplicantAccepted');
     Route::put('dashboard/st/service-applicant/a/{guest}', 'DashboardStudentController@acceptNewApplicants')->name('service-applicant.accept');
     Route::put('dashboard/st/service-applicant/d/{guest}', 'DashboardStudentController@rejectNewApplicants')->name('service-applicant.reject');
-    Route::put('dashboard/st/service-applicant/done/{guest}', 'DashboardStudentController@doneServices')->name('service.done');
-    Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
+    // Route::put('dashboard/st/service-applicant/done/{guest}', 'DashboardStudentController@doneServices')->name('service.done');
+    // Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
 
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
     Route::post('/applyjob/{id}', 'JobController@apply');

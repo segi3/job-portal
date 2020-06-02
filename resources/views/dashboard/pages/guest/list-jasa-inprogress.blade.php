@@ -12,7 +12,7 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Service Waiting Approval</h1>
+        <h1 class="m-0 text-dark">Service Inprogress</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -42,8 +42,8 @@
                                 <th>Nama mahasiswa</th>
                                 <th>Last Updated</th>
                                 <th style="width: 100px">Status</th>
-                                {{-- <th style="width: 150px;">Status Pekerjaan</th> --}}
-                                {{-- <th style="width: 100px;">Action</th> --}}
+                                <th style="width: 150px;">Status Pekerjaan</th>
+                                <th style="width: 100px;">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,7 @@
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
                                     </td>
-                                    {{-- <td>
+                                    <td>
                                         @if ($service->status == 1)
                                             @if ($service->status_pekerjaan == 0)
                                                 <span class="badge bg-warning">Belum Selesai</span>
@@ -88,7 +88,7 @@
                                             </form>
                                         @endif
 
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
