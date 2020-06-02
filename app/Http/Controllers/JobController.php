@@ -32,18 +32,24 @@ class JobController extends Controller
     
     public function filterCategory($slug)
     {
+      
+
         $jobcategory = DB::table('job_categories')->select('name','slug')->get();
         $where_pending = [
           'job_categories.slug' => $slug,
           'jobs.status' => '1',
       ];
+      $jobsCount= DB::table('jobs')
+                        ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
+                        ->where($where_pending)
+                        ->count();
         $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')
                             ->select('jobs.id as id','jobs.name as name' , 'jobs.job_type as job_type','jobs.location as location', 'employers.name as employername')
                             ->where($where_pending)
                             ->paginate(8);
-      return view('job-list',compact('jobcategory', 'job'));
+      return view('job-list',compact('jobcategory', 'job','jobsCount'));
 
     }
 

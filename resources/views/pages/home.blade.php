@@ -30,14 +30,17 @@
     <!-- catagory_area -->
     <div class="catagory_area">
         <div class="container">
+            <form method="POST" action="{{ route('search') }}">
+			@csrf
             <div class="row cat_search">
                 <div class="col-lg-9 col-md-12">
                     <div class="single_input">
-                        <select class="wide">
+                        <select id="category" name="category">
+                        <option value="all">Semua Kategori</option>
                         @foreach ($jobcategory as $cat)
                             <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
                         @endforeach
-                          </select>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12">
@@ -48,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            </form>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="popular_search d-flex align-items-center">
