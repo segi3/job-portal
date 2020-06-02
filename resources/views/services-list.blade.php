@@ -22,12 +22,12 @@
     </div>
     <!--/ bradcam_area  -->
     <!-- catagory_area -->
-    <div class="catagory_area">
+    <div class="catagory_area" style="padding-top: 50px;">
         <div class="container">
             <div class="row cat_search">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section_title mb-40">
+                    <div class="section_title mb-40" style="margin-bottom: 10px;">
                         <h4>Jasa tersedia</h4>
                     </div>
                 </div>
