@@ -37,7 +37,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <thead>                  
+                            <thead>
                             <tr>
                                 <th>Job Name</th>
                                 <th>Job type</th>
@@ -48,7 +48,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                
+
                             @foreach($jobs as $job)
                                 <tr>
                                     <td>{{ $job->name }}</td>
@@ -109,7 +109,7 @@
                                                       </tr>
                                                       <tr>
                                                         <td>Expected Salary</td>
-                                                        <td>{{ number_format($j->expected_salary_high, 0, ',', '.') }} - {{ number_format($j->expected_salary_low, 0, ',', '.') }}</td>
+                                                        <td>{{ number_format($job->expected_salary_high, 0, ',', '.') }} - {{ number_format($job->expected_salary_low, 0, ',', '.') }}</td>
                                                       </tr>
                                                     </tbody>
                                                   </table>
