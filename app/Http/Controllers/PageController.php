@@ -15,13 +15,13 @@ class PageController extends Controller
     public function getHome() 
     {
         $jobcategory= DB::table('job_categories')->select('name','slug')->get();
-    //   $jobcategorypop = DB::table('jobs')
-    //     ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
-    //     ->select('job_categories.*', 'COUNT (jobs.job_category_id) as jumlah')
-    //     ->groupBy('jobs.job_categories.id')
-    //     ->orderBy('jumlah', 'DESC')
-    //     ->limit(5)
-    //     ->get();
+        // $jobcategorypop = DB::table('jobs')
+        // ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
+        // ->select('job_categories.*', 'COUNT (jobs.job_category_id) as jumlah')
+        // ->groupBy('jobs.job_categories.id')
+        // ->orderBy('jumlah', 'DESC')
+        // ->limit(5)
+        // ->get();
       $job = DB::table('jobs')
                             ->join('job_categories', 'jobs.job_category_id' ,'job_categories.id')
                             ->join('employers', 'jobs.employer_id', 'employers.id')

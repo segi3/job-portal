@@ -137,17 +137,15 @@
     <!-- popular_catagory_area_start  -->
     <div class="popular_catagory_area">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section_title mb-40">
-                        <h3>Seminar dan Pelatihan</h3>
-                    </div>
-                </div>
-            </div>
+            <h3>Seminar dan Pelatihan</h3>
+            <div class="jumbotron">
+		    </div>
         </div>
     </div>
     <!-- popular_catagory_area_end  -->
-
+    <div class="container">
+		
+	</div>
 @endsection
 
 @section('scripts')

@@ -2836,6 +2836,7 @@ h3 {
 }
 .popular_catagory_area h3{
   text-align: center;
+  font-size: 50px ;
 }
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_popular_catagory.scss */
 .popular_catagory_area .single_catagory {
@@ -6286,6 +6287,15 @@ h6 {
   justify-content: center;
 }
 
+.popular_catagory_area .jumbotron {
+  background-image: url("/img/seminar.jpg");
+  min-height: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  
+}
 /* line 476, ../../Arafath/CL/December/235. Job board/HTML/scss/_blog.scss */
 .categories_post .categories_details h5 {
   margin-bottom: 0px;
