@@ -114,7 +114,7 @@
                                                       </tr>
                                                       <tr>
                                                         <td>Expected Salary</td>
-                                                        <td>{{ $job->expected_salary }}</td>
+                                                        <td>{{ number_format($j->expected_salary_high, 0, ',', '.') }} - {{ number_format($j->expected_salary_low, 0, ',', '.') }}</td>
                                                       </tr>
                                                       <tr>
                                                         <td>Listed at</td>

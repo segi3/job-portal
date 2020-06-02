@@ -142,14 +142,23 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputSalary">Expected Salary</label>
+                            <label for="inputSalaryHigh">Range Salary Tinggi</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp</span>
                                 </div>
-                                <input type="text" name="expected_salary" class="form-control" id="inputSalary" placeholder="Masukkan hanya nominal">
+                                <input type="text" name="expected_salary_high" class="form-control" id="inputSalaryHigh" placeholder="Masukkan hanya nominal">
                             </div>
                         </div>
+                        <div class="form-group">
+                          <label for="inputSalaryLow">Range Salary Rendah</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text">Rp</span>
+                              </div>
+                              <input type="text" name="expected_salary_low" class="form-control" id="inputSalaryLow" placeholder="Masukkan hanya nominal">
+                          </div>
+                      </div>
                         <div class="form-group">
                             <label for="inputKompensasi">Kompensasi</label>
                             <input type="text" name="kompensasi" class="form-control" id="inputKompensasi" placeholder="Fasilitas yang ditawarkan">
@@ -217,7 +226,12 @@
           extra_skill: {
             maxlength: 255,
           },
-          expected_salary: {
+          expected_salary_high: {
+            required: true,
+            digits: true,
+            maxlength: 11,
+          },
+          expected_salary_low: {
             required: true,
             digits: true,
             maxlength: 11,
@@ -259,7 +273,12 @@
           extra_skill: {
             maxlength: "Tidak dapat melebihi 255 karakter"
           },
-          expected_salary: {
+          expected_salary_high: {
+            required: "Silahkan masukkan nominal",
+            digits: "Hanya masukkan angka",
+            maxlength: "Tidak dapat melebihi 11 karakter"
+          },
+          expected_salary_low: {
             required: "Silahkan masukkan nominal",
             digits: "Hanya masukkan angka",
             maxlength: "Tidak dapat melebihi 11 karakter"
