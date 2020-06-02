@@ -18,7 +18,7 @@
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">JOB EXPERIENCE</h3>
                             <div class="slider_span" data-wow-duration="1s" data-wow-delay=".5s">
                                 <p><span>Being The Expert Start From Now</span></p>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <!--/ catagory_area -->
-    
+
     <!-- job_listing_area_start  -->
     <div class="job_listing_area">
         <div class="container">
@@ -142,7 +142,7 @@
     </div>
     <!-- popular_catagory_area_end  -->
     <div class="container">
-		
+
 	</div>
 @endsection
 

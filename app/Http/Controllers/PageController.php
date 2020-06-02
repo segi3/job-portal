@@ -12,7 +12,7 @@ use App\Employer;
 
 class PageController extends Controller
 {
-    public function getHome() 
+    public function getHome()
     {
         $jobcategory= DB::table('job_categories')->select('name','slug')->get();
         $jobcategorypop = DB::table('jobs')

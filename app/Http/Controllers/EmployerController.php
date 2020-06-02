@@ -80,12 +80,12 @@ class EmployerController extends Controller
 
     public function Register(Request $request)
     {
-        
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
             'name' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
             'city' => 'required',
@@ -102,7 +102,7 @@ class EmployerController extends Controller
             Session::flash('error', $validator->errors());
             return redirect()->back()->withInput();
         }
-        
+
         // $this->validate($request, [
         //     'name' => 'required',
         //     'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -125,9 +125,10 @@ class EmployerController extends Controller
             $namafile=md5($email);
             $hashname= $namafile.'.'.$extension;
             $tujuan_upload = 'data_files/employer_logo';
-            $filecrop= Image::make($filelogo->path());
-            $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
-            // $filelogo->move($tujuan_upload,$hashname);
+            $filelogo->move($tujuan_upload,$hashname);
+            // $filecrop= Image::make($filelogo->path());
+            // $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
+            // // $filelogo->move($tujuan_upload,$hashname);
             // echo $hashname;
             Employer::create([
                 'name' => $request->input('name'),
