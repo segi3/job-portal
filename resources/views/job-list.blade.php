@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40" style="margin-bottom: 10px;">
-                        <h4>Categories</h4>
+                        <h4>Kategori</h4>
                     </div>
                 </div>
                 <div class="col-lg-12">

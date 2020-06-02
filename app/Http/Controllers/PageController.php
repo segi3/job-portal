@@ -37,7 +37,8 @@ class PageController extends Controller
     {
         $jobcategory = DB::table('job_categories')->select('name','slug')->get();
         $slug= $request->get('category');
-        if($slug)
+        $cek = DB::table('job_categories')->select('slug')->where('slug', '=', $slug)->get();
+        if($cek)
         {
             $where_pending = [
                 'job_categories.slug' => $slug,
@@ -57,7 +58,7 @@ class PageController extends Controller
         }
         else
         {
-            return redirect('/jobs');
+            return redirect()->route('jobs');
         }
         
     }

@@ -33,6 +33,15 @@
         margin-right: 10px;
     }
 
+    .popular_catagory_area h3{
+        color: rgb(1, 56, 128);
+    }
+
+    .popular_catagory_area p{
+        text-align: center;
+        font-size: 22px;
+    }
+
 </style>
 
 @endsection
@@ -143,6 +152,12 @@
     </div>
     <!-- job_listing_area_end  -->
 
+    <div class="popular_catagory_area">
+        <div class="container">
+            <h3>Let's Start</h3>
+            <p>This is some text in a paragraph.</p>
+        </div>
+    </div>
     <!-- job_searcing_wrap  -->
     <div class="job_searcing_wrap overlay">
         <div class="container">
@@ -170,11 +185,10 @@
     <div class="popular_catagory_area">
         <div class="container">
             <h3>Seminar dan Pelatihan</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum illum nulla nam error qui, necessitatibus ratione, eos sequi blanditiis repellat itaque corporis iusto distinctio esse cumque alias. Fugiat, sit nobis.</p>
         </div>
     </div>
 
-    <div class="popular_catagory_area bg-seminar">
+    <div class="popular_catagory_area bg-seminar mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-4 offset-8 text-right">
@@ -187,18 +201,6 @@
         </div>
     </div>
 
-    <div class="popular_catagory_area">
-        <div class="container">
-            <div class="jumbotron">
-                <p><span>Seminar Pra Kerja</span></p>
-                <p><span>Bersama: PT ITS</span></p>
-		    </div>
-        </div>
-    </div>
-    <!-- popular_catagory_area_end  -->
-    <div class="container">
-
-	</div>
 @endsection
 
 @section('scripts')

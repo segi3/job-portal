@@ -59,8 +59,8 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 
 // jobs
 
-Route::get('/jobs', 'JobController@index');
-Route::get('/jobs/category/{slug}', 'JobController@filterCategory');
+Route::get('/jobs', 'JobController@index')->name('jobs');
+Route::get('/jobs/category/{slug}', 'JobController@filterCategory')->name('job.filter');
 Route::get('/jobs/{id}', 'JobController@detail');
 Route::get('/download-cv/{cv}', 'JobController@downloadCV')->name('cv.download');
 Route::post('/search', 'PageController@search')->name('search');
