@@ -18,7 +18,7 @@ class CreateJobsTable extends Migration
             $table->integer('status')->default('0');
             $table->string('name');
             $table->string('position');
-            $table->string('kompesasi');
+            $table->string('kompesasi')->nullable();
             $table->text('description');
             $table->string('job_type');
             $table->string('location');

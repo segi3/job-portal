@@ -21,7 +21,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            
+
             <li class="nav-item has-treeview {{ Request::is('admin/user-list') ? "menu-open" : "" }}">
                 <a href="#" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
                 <i class="nav-icon fas fa-user-friends"></i>
@@ -111,6 +111,45 @@
                     <a href="/admin/unapproved-employers" class="nav-link {{ Request::is('admin/unapproved-employers') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Unapproved employers</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-guests') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-guests') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-guests') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-guests') ? "menu-open" : "" }}
+                {{ Request::is('admin/approved-guests') ? "menu-open" : "" }}
+                {{ Request::is('admin/unapproved-guests') ? "menu-open" : "" }}
+                    ">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                    Manage Guests
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-guests" class="nav-link {{ Request::is('admin/new-guests') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New Guests</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-guests" class="nav-link {{ Request::is('admin/approved-guests') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Guests</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-guests" class="nav-link {{ Request::is('admin/unapproved-guests') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Guests</p>
                     </a>
                 </li>
                 </ul>

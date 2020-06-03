@@ -132,7 +132,7 @@
                             <textarea type="text" name="extra_skill" class="form-control" id="inputExtraSKill" placeholder="Kemampuan tambahan yang dapat membantu pekerjaan"></textarea>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-lg-6">
@@ -189,7 +189,7 @@
             if($('#quickForm').valid()){
                 $('#quickForm')[0].submit();
             }
-                
+
         }
       });
       $('#quickForm').validate({
@@ -236,9 +236,9 @@
             digits: true,
             maxlength: 11,
           },
-          kompensasi: {
-            maxlength: 255,  
-          },
+        //   kompensasi: {
+        //     maxlength: 255,
+        //   },
         },
         messages: {
           name: {
@@ -283,9 +283,9 @@
             digits: "Hanya masukkan angka",
             maxlength: "Tidak dapat melebihi 11 karakter"
           },
-          kompensasi: {
-            maxlength: "Tidak dapat melebihi 255 karakter"
-          },
+        //   kompensasi: {
+        //     maxlength: "Tidak dapat melebihi 255 karakter"
+        //   },
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
@@ -301,6 +301,6 @@
       });
     });
     </script>
-    
+
 
 @endsection

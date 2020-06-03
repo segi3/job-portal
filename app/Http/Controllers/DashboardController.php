@@ -8,6 +8,7 @@ use Session;
 use App\Student;
 use App\Job;
 use App\Employer;
+use App\Guest;
 use App\Seminar;
 use App\Service;
 
@@ -96,6 +97,59 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
+    //manage employers guest
+    public function getNewGuests()
+    {
+
+        $guests = Guest::where('status_gs', '0')->paginate(20);
+
+        return view ('dashboard.pages.admins.newguests')->with('guests', $guests);
+    }
+    public function getApprovedGuests()
+    {
+
+        $guests = Guest::where('status_gs', '1')->paginate(20);
+
+        return view ('dashboard.pages.admins.approvedguests')->with('guests', $guests);
+    }
+    public function getUnapprovedGuests()
+    {
+
+        $guests = Guest::where('status_gs', '2')->paginate(20);
+
+        return view ('dashboard.pages.admins.unapprovedguests')->with('guests', $guests);
+    }
+    public function approveNewGuests(Request $request, $id)
+    {
+        $guest = Guest::find($id);
+
+        $guest->status_gs = 1;
+        // $guest->admin_id = $request->session()->get('id');
+
+        $guest->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewGuests(Request $request, $id)
+    {
+        $guest = Guest::find($id);
+
+        $guest->status_gs = 2;
+        // $guest->admin_id = $request->session()->get('id');
+
+        $guest->save();
+
+        return redirect()->back();
+    }
+    public function deleteGuests($id)
+    {
+        $guest = Guest::find($id);
+
+        $guest->delete();
+
+        return redirect()->back();
+    }
 
     //manage employers admin
     public function getNewEmployers()
@@ -189,7 +243,7 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    
+
 
     public function getApprovedJobs() {
 

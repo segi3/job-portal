@@ -7,12 +7,32 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Http\Request;
 use App\Guest;
+use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
     public function showLogin()
     {
         return view('pages.guest.auth.login-guest');
+    }
+    public function downloadBerkas($berkas)
+    {
+
+      $where = [
+          'guests.id' => $berkas,
+        //   'job_student.job_id'     => $arr[2],
+      ];
+
+      $berkas_db = DB::table('guests')
+      ->select('guests.name as name', 'guests.email as email', 'guests.berkas_verifikasi as berkas')
+      ->where($where)
+      ->first();
+
+    //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
+
+    //   $file = public_path('data_files\\bukti_guests\\'.$pdfname);
+        $file = public_path('data_files\\bukti_guests\\'.$berkas_db->berkas);
+      return response()->download($file, $berkas_db->berkas);
     }
 
     public function Login(Request $request)
@@ -58,9 +78,19 @@ class GuestController extends Controller
             'status'     => 'required',
             'pekerjaan'  => 'required',
             'mobile_no'  => 'required|min:10|max:14',
+            'berkas'     => 'required|mimes:pdf|max:2048'
         ]);
 
         try {
+            $berkas= $request->file('berkas');
+            $nama= str_replace(' ','_',$request->input('name'));
+            $email= md5($request->input('email'));
+            $extension= $berkas->getClientOriginalExtension();
+            $filename= $nama.'_'.$email.'.'.$extension;
+            $tujuan_upload = 'data_files/bukti_guests';
+            $berkas->move($tujuan_upload,$filename);
+
+
             Guest::create([
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
@@ -68,19 +98,23 @@ class GuestController extends Controller
                 'status' => $request->input('status'),
                 'pekerjaan' => $request->input('pekerjaan'),
                 'mobile_no' => $request->input('mobile_no'),
+                'status_gs' => 0,
+                'berkas_verifikasi' => $filename,
             ]);
 
-            Session::flash('success', 'Akun berhasil didaftarkan');
-            return view('pages.guest.auth.login-guest');
+            Session::flash('success', 'Akun berhasil didaftarkan, silahkan menunggu akun untuk diverifikasi');
+            // return view('pages.guest.auth.login-guest');
+            return view('pages.guest.login-warning');
         }
         catch(\Illuminate\Database\QueryException $e)
         {
             $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
             if ($errorCode == 1062) {
                 return redirect('/');
             }
-            Session::flash('error', $errorCode);
-            return view('pages.guest.auth.register-guest');
+            Session::flash('error', $errorMsg);
+            return redirect()->back();
         }
     }
 }

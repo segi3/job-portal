@@ -65,6 +65,9 @@ Route::get('/jobs/{id}', 'JobController@detail');
 Route::get('/download-cv/{cv}', 'JobController@downloadCV')->name('cv.download');
 Route::post('/search', 'PageController@search')->name('search');
 
+//guest
+Route::get('/download-berkas/{berkas}', 'GuestController@downloadBerkas')->name('berkas.download');
+
 // jasa
 Route::get('/jasa', 'ServicesController@index');
 Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
@@ -134,6 +137,13 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-services', 'DashboardController@getUnapprovedServices');
     Route::put('admin/new-services/a/{service}', 'DashboardController@approveNewServices')->name('service.approve');
     Route::put('admin/new-services/d/{service}', 'DashboardController@rejectNewServices')->name('service.reject');
+
+    Route::get('admin/new-guests', 'DashboardController@getNewGuests');
+    Route::get('admin/unapproved-guests', 'DashboardController@getUnapprovedGuests');
+    Route::get('admin/approved-guests', 'DashboardController@getApprovedGuests');
+    Route::put('admin/new-guests/a/{post}', 'DashboardController@approveNewGuests')->name('guest.approve');
+    Route::put('admin/new-guests/r/{post}', 'DashboardController@rejectNewGuests')->name('guest.reject');
+    Route::delete('admin/new-guests/d/{employer}', 'DashboardController@deleteGuests')->name('guest.delete');
 
     Route::get('admin/new-employers', 'DashboardController@getNewEmployers');
     Route::get('admin/approved-employers', 'DashboardController@getAprrovedEmployers');

@@ -17,10 +17,12 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('status');
+            $table->integer('status_gs')->default('2');
             $table->string('pekerjaan');
             $table->string('mobile_no');
             $table->string('email');
             $table->string('password');
+            $table->string('berkas_verifikasi');
             $table->timestamps();
         });
     }
