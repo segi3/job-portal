@@ -46,7 +46,7 @@
     .highlight-kuning-biru-kecil {
         background: #ffc415;
         color: rgb(0, 0, 0);
-        font-size: 12px;
+        font-size: 17px;
         font-weight: 600;
         padding: 6px 17px;
         -webkit-border-radius: 5px;
@@ -205,13 +205,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img1 text-center">
-                    <span class="highlight-kuning-biru">POST THE JOB</span>
+                    <span class="highlight-kuning-biru">POST THE JOB</span></br>
+                    <span class="highlight-kuning-biru-kecil">FOR COMPANY</span>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img2 text-center">
-                    <span class="highlight-kuning-biru">FIND JOBS</span>
+                    <span class="highlight-kuning-biru">FIND JOBS</span></br>
+                    <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img3 text-center">
-                    <span class="highlight-kuning-biru">OTHER</span>              
+                    <span class="highlight-kuning-biru">OTHER</span>  
+                    <span class="highlight-kuning-biru">SERVICES</span>            
                 </div>
             </div>
         </div>
