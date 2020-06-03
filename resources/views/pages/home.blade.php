@@ -42,7 +42,14 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
-        vertical-align: bottom;
+        position: absolute;
+        left: 50%;    
+        margin-left: -50%;
+        bottom: 60px;
+        /* right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto; */
     }
     .highlight-kuning-biru-kecil {
         background: #ffc415;
@@ -54,7 +61,14 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
-        vertical-align: bottom;
+        position: absolute;
+        left: 50%;    
+        margin-left: -50%;
+        bottom: 40px;
+        /* right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto; */
     }
 
     .popular_catagory_area h3{
@@ -71,6 +85,8 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: relative;
+        min-height: 300px;
     }
 
     .bg-img2{
@@ -78,12 +94,16 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: relative;
+        min-height: 300px;
     }
     .bg-img3{
         background-image: url('{{ asset('img') }}/workshop.jpg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: relative;
+        min-height: 300px;
     }
 
 </style>
@@ -207,16 +227,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img1 text-center">
-                    <span class="highlight-kuning-biru">POST THE JOB</span></br>
+                    <span class="highlight-kuning-biru">POST THE JOB</span>
                     <span class="highlight-kuning-biru-kecil">FOR COMPANY</span>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img2 text-center">
-                    <span class="highlight-kuning-biru">FIND JOBS</span></br>
+                    <span class="highlight-kuning-biru">FIND JOBS</span>
                     <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img3 text-center">
-                    <span class="highlight-kuning-biru">OTHER</span>  
-                    <span class="highlight-kuning-biru">SERVICES</span>            
+                    <span class="highlight-kuning-biru">OTHER</span>
+                    <span class="highlight-kuning-biru" style="bottom: 10px">SERVICES</span>            
                 </div>
             </div>
         </div>
