@@ -32,6 +32,28 @@
         border-radius: 5px;
         margin-right: 10px;
     }
+    .highlight-kuning-biru {
+        background: #ffc415;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        font-weight: 600;
+        padding: 6px 17px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    .highlight-kuning-biru-kecil {
+        background: #ffc415;
+        color: rgb(0, 0, 0);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 17px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
 
     .popular_catagory_area h3{
         color: rgb(1, 56, 128);
@@ -40,6 +62,26 @@
     .popular_catagory_area p{
         text-align: center;
         font-size: 22px;
+    }
+
+    .bg-img1{
+        background-image: url('{{ asset('img') }}/interview.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .bg-img2{
+        background-image: url('{{ asset('img') }}/jobseek.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .bg-img3{
+        background-image: url('{{ asset('img') }}/workshop.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
     }
 
 </style>
@@ -155,11 +197,27 @@
     <div class="popular_catagory_area">
         <div class="container">
             <h3>Let's Start</h3>
-            <p>This is some text in a paragraph.</p>
+            <p>“Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet error quibusdam, optio saepe maxime quisquam sit velit est voluptatibus praesentium explicabo sunt voluptatem placeat fugit suscipit fugiat nesciunt repellat deserunt?</p>
+        </div>
+    </div>
+
+    <div class="popular_catagory_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 offset-lg-1 col-md-6 bg-img1 text-center">
+                    <span class="highlight-kuning-biru">POST THE JOB</span>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 bg-img2 text-center">
+                    <span class="highlight-kuning-biru">FIND JOBS</span>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 bg-img3 text-center">
+                    <span class="highlight-kuning-biru">OTHER</span>              
+                </div>
+            </div>
         </div>
     </div>
     <!-- job_searcing_wrap  -->
-    <div class="job_searcing_wrap overlay">
+    <!-- <div class="job_searcing_wrap overlay">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 offset-lg-1 col-md-6">
@@ -178,7 +236,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- job_searcing_wrap end  -->
     <!-- popular_catagory_area_start  -->
 
