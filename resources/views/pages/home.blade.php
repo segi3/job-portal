@@ -71,7 +71,6 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        vertical-align: bottom;
     }
 
     .bg-img2{
@@ -79,14 +78,12 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        vertical-align: bottom;
     }
     .bg-img3{
         background-image: url('{{ asset('img') }}/workshop.jpg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        vertical-align: bottom;
     }
 
 </style>
