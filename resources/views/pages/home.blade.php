@@ -42,6 +42,7 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
+        vertical-align: bottom;
     }
     .highlight-kuning-biru-kecil {
         background: #ffc415;
@@ -53,6 +54,7 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
+        vertical-align: bottom;
     }
 
     .popular_catagory_area h3{
@@ -69,6 +71,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        vertical-align: bottom;
     }
 
     .bg-img2{
@@ -76,12 +79,14 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        vertical-align: bottom;
     }
     .bg-img3{
         background-image: url('{{ asset('img') }}/workshop.jpg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        vertical-align: bottom;
     }
 
 </style>
