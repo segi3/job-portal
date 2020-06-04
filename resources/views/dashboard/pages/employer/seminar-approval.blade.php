@@ -37,18 +37,19 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">
-                            <thead>                  
+                            <thead>
                             <tr>
                                 <th>Seminar Name</th>
                                 <th>Seminar Location</th>
                                 <th>Seminar Fee</th>
                                 <th>Last Updated</th>
                                 <th>Details</th>
+
                                 <th style="width: 154px">Status</th>
                             </tr>
                             </thead>
                             <tbody>
-                                
+
                             @foreach($seminars as $seminar)
                                 <tr>
                                     <td>{{ $seminar->name }}</td>

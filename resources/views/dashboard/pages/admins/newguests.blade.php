@@ -55,7 +55,6 @@
                                 <td>{{ $g->email }}</td>
                                 <td>{{ $g->mobile_no }}</td>
                                 <td>
-                                    {{-- <form action="{{ route('berkas.download', str_replace(' ','_',$g->name).md5($g->$email)) }}" method="get"> --}}
                                     <form action="{{ route('berkas.download', $g->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>

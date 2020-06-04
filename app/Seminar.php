@@ -8,7 +8,7 @@ class Seminar extends Model
 {
     protected $fillable = [
         'name', 'description', 'fee', 'location', 'contact_person', 'contact_no', 'seminar_category_id',
-        'employer_id', 'admin_id',
+        'employer_id', 'admin_id','berkas_verifikasi',
     ];
 
     // many to one employer

@@ -117,8 +117,16 @@ class DashboardEmployerController extends Controller
             'contact_person'=> 'required|max:255',
             'contact_no'    => 'required|max:14',
             'fee'           => 'required',
+            'berkas_sewa'   => 'required|mimes:pdf|max:2048'
         ]);
-
+        $berkas= $request->file('berkas_sewa');
+            $nama= str_replace(' ','_',$request->input('name'));
+            $location = str_replace(' ','_',$request->input('location'));
+            $desc= md5($request->input('description'));
+            $extension= $berkas->getClientOriginalExtension();
+            $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
+            $tujuan = 'data_files/bukti_sewa_tempat';
+            $berkas->move($tujuan,$filename);
         try{
             Seminar::create([
                 'name'                  => $request->input('name'),
@@ -129,6 +137,7 @@ class DashboardEmployerController extends Controller
                 'contact_no'            => $request->input('contact_no'),
                 'fee'                   => $request->input('fee'),
                 'employer_id'           => $request->session()->get('id'),
+                'berkas_verifikasi'     => $filename,
             ]);
 
             Session::flash('success', 'Seminar berhasil didaftarkan, silahkan tunggu konfirmasi seminar');
@@ -145,6 +154,25 @@ class DashboardEmployerController extends Controller
             return view('dashboard.pages.employer.create-seminar');
         }
 
+    }
+    public function downloadBerkasBuktiSewa($seminar)
+    {
+
+      $where = [
+          'seminars.id' => $seminar,
+        //   'job_student.job_id'     => $arr[2],
+      ];
+
+      $berkas_db = DB::table('seminars')
+      ->select('seminars.name as name', 'seminars.location as loc', 'seminars.description as desc','seminars.berkas_verifikasi as berkas')
+      ->where($where)
+      ->first();
+
+    //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
+
+    //   $file = public_path('data_files\\bukti_guests\\'.$pdfname);
+      $file = public_path('data_files\\bukti_sewa_tempat\\'.$berkas_db->berkas);
+      return response()->download($file, $berkas_db->berkas);
     }
 
     public function getCreateJob()

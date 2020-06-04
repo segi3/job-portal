@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="custom-file">
                                       <input type="file" class="custom-file-input" name="berkas" id="berkas" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label" for="logo">Upload Berkas</label>
+                                      <label class="custom-file-label" id='idberkas'for="logo">Upload Berkas</label>
                                     </div>
                                   </div>
                             </div>
@@ -132,4 +132,11 @@
 
 @section('scripts')
     {{--  --}}
+<script type="application/javascript">
+    $('#berkas').change(function(e2){
+		var fileName2 = e2.target.files[0].name;
+        // dd(fileName2);
+		$('#idberkas').html(fileName2);
+	});
+</script>
 @endsection

@@ -59,7 +59,7 @@
 							</div>
 							<div class="mt-10 mb-4">
 								<label for="password" class="">{{ __('Password') }}</label><span class="red-str">*</span>
-								<input type="password" name="password" placeholder="Password" 
+								<input type="password" name="password" placeholder="Password"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
                             </div>
                             <div class="mt-10 mb-4">
@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="custom-file">
                                       <input type="file" class="custom-file-input" name="berkas_verifikasi" id="berkas_verifikasi" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label" for="berkas_verifikasi">Upload Berkas</label>
+                                      <label class="custom-file-label" id="idberkas" for="berkas_verifikasi">Upload Berkas</label>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="custom-file">
                                       <input type="file" class="custom-file-input" name="logo" id="logo" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label" for="logo">Upload Image</label>
+                                      <label class="custom-file-label" id="idlogo" for="logo">Upload Image</label>
                                     </div>
                                 </div>
                             </div>
@@ -156,11 +156,14 @@
 <script type="application/javascript">
 	$('#logo').change(function(e){
 		var fileName = e.target.files[0].name;
-		$('.custom-file-label').html(fileName);
+        // dd(fileName);
+		$('#idlogo').html(fileName);
 	});
-	$('#berkas_verifikasi').change(function(e){
-		var fileName = e.target.files[0].name;
-		$('.custom-file-label').html(fileName);
+
+	$('#berkas_verifikasi').change(function(e2){
+		var fileName2 = e2.target.files[0].name;
+        // dd(fileName2);
+		$('#idberkas').html(fileName2);
 	});
 </script>
 @endsection

@@ -8,6 +8,7 @@ use Session;
 use App\Employer;
 use Image;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class EmployerController extends Controller
 {
@@ -143,7 +144,7 @@ class EmployerController extends Controller
             Employer::create([
                 'name' => $request->input('name'),
                 'logo' => $hashname,
-                'berkas_verifikasi' => $berkas,
+                'berkas_verifikasi' => $filename,
                 'email' => $request->input('email'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
@@ -176,15 +177,15 @@ class EmployerController extends Controller
     public function downloadberkas($berkas)
     {
         $where = [
-            'employer.id' => $berkas,
+            'employers.id' => $berkas,
         ];
-  
-        $berkas_db = DB::table('employer')
-        ->select('employer.name as name', 'employer.email as email', 'employer.berkas_verifikasi as berkas')
+
+        $berkas_db = DB::table('employers')
+        ->select('employers.name as name', 'employers.email as email', 'employers.berkas_verifikasi as berkas')
         ->where($where)
         ->first();
 
-          $file = public_path('data_files\\bukti_employer\\'.$berkas_db->berkas);
+        $file = public_path('data_files\\bukti_employer\\'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 }

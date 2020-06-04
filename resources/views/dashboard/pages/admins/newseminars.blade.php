@@ -37,13 +37,14 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                     <table class="table table-bordered">
-                        <thead>                  
+                        <thead>
                         <tr>
                             <th>Nama Seminar</th>
                             <th>Lokasi</th>
                             <th>Fee</th>
                             <th>Listed at</th>
                             <th>Detail</th>
+                            <th>Berkas Bukti Sewa tempat</th>
                             <th style="width: 150px;">Action</th>
                         </tr>
                         </thead>
@@ -55,7 +56,7 @@
                                 <td>Rp {{ $seminar->fee }}</td>
                                 <td>{{ $seminar->created_at }}</td>
                                 <td>
-                                    
+
                                     <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $seminar->id }}">
                                         Details
                                     </button>
@@ -113,6 +114,13 @@
                                       </div>
                                       <!-- /.modal -->
                                 </td>
+
+                                <td>
+                                    <form action="{{ route('berkas.seminar.download', $seminar->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                </td>
+
                                 <td>
                                     <div class="row">
                                       <div class="col-lg-6">
@@ -133,7 +141,7 @@
                                   </td>
                             </tr>
                         @endforeach
-                        
+
                         </tbody>
                     </table>
                     </div>

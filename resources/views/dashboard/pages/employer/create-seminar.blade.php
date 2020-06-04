@@ -52,7 +52,7 @@
 
 			@endif
     <div class="container-fluid">
-        <form method="POST" role="form" id="quickForm" action="{{ route('dashboard.employer.createSeminar') }}">
+        <form method="POST" role="form" id="quickForm" action="{{ route('dashboard.employer.createSeminar') }}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-6">
@@ -91,6 +91,21 @@
                             <label for="inputDescription">Deskripsi Seminar</label>
                             <textarea type="text" name="description" class="form-control" id="inputDescription" placeholder="Deskripsi Seminar"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="contact_no" class="">{{ __('Surat Bukti penyewaan Tempat') }}</label><span class="red-str">*</span>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                                <div class="custom-file">
+                                  <label class="custom-file-label" id="idberkas" for="berkas_sewa">Upload Berkas</label>
+                                  <input type="file" class="custom-file-input" name="berkas_sewa" id="berkas_sewa" aria-describedby="inputGroupFileAddon03">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -136,6 +151,12 @@
 <script src="{{ asset('dashboard_resources') }}/plugins/jquery-validation/additional-methods.min.js"></script>
 
 <script type="text/javascript">
+    $('#berkas_sewa').change(function(e2){
+		var fileName2 = e2.target.files[0].name;
+        // dd(fileName2);
+		$('#idberkas').html(fileName2);
+	});
+
     $(document).ready(function () {
       $.validator.setDefaults({
         submitHandler: function (form) {
@@ -144,7 +165,7 @@
             if($('#quickForm').valid()){
                 $('#quickForm')[0].submit();
             }
-                
+
         }
       });
       $('#quickForm').validate({
@@ -222,6 +243,6 @@
       });
     });
     </script>
-    
+
 
 @endsection

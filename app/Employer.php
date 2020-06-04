@@ -9,6 +9,7 @@ class Employer extends Model
     protected $fillable = [
         'name','logo', 'website', 'address', 'city', 'province', 'fax',
         'contact_person', 'contact_no', 'email', 'password', 'status', 'admin_id',
+        'berkas_verifikasi',
     ];
 
     // one to many jobs

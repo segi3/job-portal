@@ -74,6 +74,9 @@ Route::get('/jasa', 'ServicesController@index');
 Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
 Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 
+//Seminar
+Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
+
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');

@@ -37,13 +37,14 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                     <table class="table table-bordered">
-                        <thead>                  
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Address</th>
                             <th>Email</th>
                             <th>Contact person</th>
                             <th>Contact Number</th>
+                            <th>Berkas Verifikasi</th>
                             <th>Listed at</th>
                             <th style="width: 200px;">Action</th>
                         </tr>
@@ -56,6 +57,12 @@
                                 <td>{{ $employer->email }}</td>
                                 <td>{{ $employer->contact_person }}</td>
                                 <td>{{ $employer->contact_no }}</td>
+                                <td>
+                                    <form action="{{ route('berkas.employer.download', $employer->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                </td>
+
                                 <td>{{ $employer->created_at }}</td>
                                 <td>
                                     <div class="row">
@@ -100,6 +107,6 @@
 @endsection
 
 @section('scripts')
-    
-    
+
+
 @endsection
