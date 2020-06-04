@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="apply_job_form white-bg">
-                        <h4 style="text-align:center" class="mb-30">Selamat datang di portal JobX ITS!</h3>
+                        <h4 style="text-align:center" class="mb-30">Selamat datang di portal ITS JobX!</h3>
                         <p>
                             Anda mahasiswa ITS sedang mencari pekerjaan atau ingin menjual jasa?
                         </p>
