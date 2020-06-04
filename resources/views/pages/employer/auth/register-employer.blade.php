@@ -104,6 +104,19 @@
 								<input type="text" name="fax" placeholder="Fax" value="{{  old('fax')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
                             </div>
+							<div class="form-group">
+                                <label for="contact_no" class="">{{ __('Surat Rekomendasi Instansi/Perusahaan') }}</label><span class="red-str">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                      </button>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="berkas_verifikasi" id="berkas_verifikasi" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label" for="berkas_verifikasi">Upload Berkas</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="contact_no" class="">{{ __('Logo Instansi/Perusahaan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
@@ -115,7 +128,7 @@
                                       <input type="file" class="custom-file-input" name="logo" id="logo" aria-describedby="inputGroupFileAddon03">
                                       <label class="custom-file-label" for="logo">Upload Image</label>
                                     </div>
-                                  </div>
+                                </div>
                             </div>
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
@@ -142,6 +155,10 @@
 @section('scripts')
 <script type="application/javascript">
 	$('#logo').change(function(e){
+		var fileName = e.target.files[0].name;
+		$('.custom-file-label').html(fileName);
+	});
+	$('#berkas_verifikasi').change(function(e){
 		var fileName = e.target.files[0].name;
 		$('.custom-file-label').html(fileName);
 	});

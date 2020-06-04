@@ -94,7 +94,7 @@
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nomor HP aktif'" required class="single-input">
                             </div>
                             <div class="form-group">
-                                <label for="contact_no" class="">{{ __('Berkas Verivikasi') }}</label><span class="red-str">*</span>
+                                <label for="contact_no" class="">{{ __('Berkas Verifikasi') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>

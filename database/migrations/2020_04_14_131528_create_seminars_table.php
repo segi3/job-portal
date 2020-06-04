@@ -18,6 +18,7 @@ class CreateSeminarsTable extends Migration
             $table->integer('status')->default('0');
             $table->string('name');
             $table->string('description');
+            $table->string('berkas_verifikasi');
             $table->integer('fee');
             $table->string('location');
             $table->string('contact_person');

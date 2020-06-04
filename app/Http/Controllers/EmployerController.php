@@ -86,6 +86,7 @@ class EmployerController extends Controller
         $validator = Validator::make($input, [
             'name' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'berkas_verifikasi'  => 'required|mimes:pdf|max:2048',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
             'city' => 'required',
@@ -126,6 +127,15 @@ class EmployerController extends Controller
             $hashname= $namafile.'.'.$extension;
             $tujuan_upload = 'data_files/employer_logo';
             $filelogo->move($tujuan_upload,$hashname);
+
+            $berkas= $request->file('berkas_verifikasi');
+            $nama= str_replace(' ','_',$request->input('name'));
+            $email= md5($request->input('email'));
+            $extension= $berkas->getClientOriginalExtension();
+            $filename= $nama.'_'.$email.'.'.$extension;
+            $tujuan = 'data_files/bukti_employer';
+            $berkas->move($tujuan,$filename);
+
             // $filecrop= Image::make($filelogo->path());
             // $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
             // // $filelogo->move($tujuan_upload,$hashname);
@@ -133,6 +143,7 @@ class EmployerController extends Controller
             Employer::create([
                 'name' => $request->input('name'),
                 'logo' => $hashname,
+                'berkas_verifikasi' => $berkas,
                 'email' => $request->input('email'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
@@ -161,5 +172,19 @@ class EmployerController extends Controller
             Session::flash('error', $errorMsg);
             return redirect()->back();
         }
+    }
+    public function downloadberkas($berkas)
+    {
+        $where = [
+            'employer.id' => $berkas,
+        ];
+  
+        $berkas_db = DB::table('employer')
+        ->select('employer.name as name', 'employer.email as email', 'employer.berkas_verifikasi as berkas')
+        ->where($where)
+        ->first();
+
+          $file = public_path('data_files\\bukti_employer\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
     }
 }

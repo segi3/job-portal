@@ -46,6 +46,7 @@
                                     <th>Email</th>
                                     <th>Contact person</th>
                                     <th>Contact Number</th>
+                                    <th>Surat Rekomendasi</th>
                                     <th>Last Updated</th>
                                     <th style="width: 87px">Action</th>
                                 </tr>
@@ -58,6 +59,11 @@
                                     <td>{{ $employer->email }}</td>
                                     <td>{{ $employer->contact_person }}</td>
                                     <td>{{ $employer->contact_no }}</td>
+                                    <td>
+                                        <form action="{{ route('berkas.employer.download', $employer->id) }}" method="get">
+                                          <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                        </form>
+                                    </td>
                                     <td>{{ $employer->updated_at }}</td>
                                     <td>
                                         <form action="{{ route('employer.approve', $employer->id) }}" method="post">
