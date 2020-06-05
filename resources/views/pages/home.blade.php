@@ -225,14 +225,14 @@
     </div>
     <!-- job_listing_area_end  -->
 
-    <div class="popular_catagory_area">
+    <div class="popular_catagory_area" style="padding: 50px 0;">
         <div class="container">
             <h3>Let's Start</h3>
             <p class="quote">"Tugas kita bukanlah untuk berhasil. Tugas kita adalah untuk mencoba, karena didalam mencoba itulah kita menemukan dan belajar membangun kesempatan untuk berhasil." </br> -Buya Hamka</p>
         </div>
     </div>
 
-    <div class="popular_catagory_area">
+    <div class="popular_catagory_area" style="padding: 50px 0;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img1 text-center">
