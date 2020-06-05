@@ -90,7 +90,7 @@
         background-position: center;
         background-size: cover;
         position: relative;
-        min-height: 300px;
+        min-height: 350px;
     }
 
     .bg-img2{
@@ -99,7 +99,7 @@
         background-position: center;
         background-size: cover;
         position: relative;
-        min-height: 300px;
+        min-height: 350px;
     }
     .bg-img3{
         background-image: url('{{ asset('img') }}/workshop.jpg');
@@ -107,7 +107,7 @@
         background-position: center;
         background-size: cover;
         position: relative;
-        min-height: 300px;
+        min-height: 350px;
     }
 
 </style>
