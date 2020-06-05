@@ -32,7 +32,18 @@
         border-radius: 5px;
         margin-right: 10px;
     }
-    .highlight-kuning-biru {
+    .boxed-btn3-home {
+        position: absolute;
+        /* left: 50%;    
+        margin-left: -50%; */
+        bottom: 50px;
+        max-width: 100%;
+        display: block;
+        right: 0;
+        left: 0;
+        margin: auto; 
+    }
+    .highlight-kuning-biru{
         background: #ffc415;
         color: rgb(0, 0, 0);
         font-size: 30px;
@@ -42,10 +53,6 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
-        position: absolute;
-        left: 50%;    
-        margin-left: -50%;
-        bottom: 60px;
         /* right: 0;
         left: 0;
         bottom: 0;
@@ -61,10 +68,7 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
         margin-right: 10px;
-        position: absolute;
-        left: 50%;    
-        margin-left: -50%;
-        bottom: 40px;
+
         /* right: 0;
         left: 0;
         bottom: 0;
@@ -227,16 +231,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img1 text-center">
-                    <span class="highlight-kuning-biru">POST THE JOB</span>
+                <a class="boxed-btn3-home" href="/login-er">
+                    <span class="highlight-kuning-biru">POST THE JOB</span></br>
                     <span class="highlight-kuning-biru-kecil">FOR COMPANY</span>
+                </a>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img2 text-center">
-                    <span class="highlight-kuning-biru">FIND JOBS</span>
+                <a class="boxed-btn3-home" href="/login-st">
+                    <span class="highlight-kuning-biru">FIND THE JOB</span></br>
                     <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
+                </a>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img3 text-center">
-                    <span class="highlight-kuning-biru">OTHER</span>
-                    <span class="highlight-kuning-biru" style="bottom: 10px">SERVICES</span>            
+                <a class="boxed-btn3-home" style="bottom:30px;">
+                    <span class="highlight-kuning-biru">OTHER</span></br>
+                    <span class="highlight-kuning-biru">SERVICES</span>
+                </a>           
                 </div>
             </div>
         </div>
