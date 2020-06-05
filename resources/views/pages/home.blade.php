@@ -219,7 +219,7 @@
     <div class="popular_catagory_area">
         <div class="container">
             <h3>Let's Start</h3>
-            <p>“Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet error quibusdam, optio saepe maxime quisquam sit velit est voluptatibus praesentium explicabo sunt voluptatem placeat fugit suscipit fugiat nesciunt repellat deserunt?</p>
+            <p>"Tugas kita bukanlah untuk berhasil. Tugas kita adalah untuk mencoba, karena didalam mencoba itulah kita menemukan dan belajar membangun kesempatan untuk berhasil." </br> -Buya Hamka</p>
         </div>
     </div>
 

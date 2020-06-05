@@ -28,7 +28,7 @@
                     <div class="apply_job_form white-bg">
                         <h4 style="text-align:center" class="mb-30">Selamat datang di portal ITS JobX!</h3>
                         <p>
-                            Anda mahasiswa ITS sedang mencari pekerjaan atau ingin menjual jasa?
+                            Anda mahasiswa ITS sedang mencari pekerjaan atau ingin menawarkan jasa?
                         </p>
                         <div class="row">
                             <div class="col-8">
