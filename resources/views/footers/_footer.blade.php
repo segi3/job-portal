@@ -10,29 +10,29 @@
                                 </a>
                             </div>
                             <p>
-                                finloan@support.com <br>
-                                +10 873 672 6782 <br>
-                                600/D, Green road, NewYork
+                                humas@its.ac.id <br>
+                                (031) 5994251 <br>
+                                Kampus ITS, Sukolilo, Jl. Raya ITS, Keputih, Surabaya, Kota SBY, Jawa Timur 60117
                             </p>
                             <div class="socail_links">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://id-id.facebook.com/InstitutTeknologiSepuluhNopember/">
                                             <i class="ti-facebook"></i>
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="#">
                                             <i class="fa fa-google-plus"></i>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a href="#">
+                                        <a href="https://twitter.com/its_campus">
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://www.instagram.com/its_campus/">
                                             <i class="fa fa-instagram"></i>
                                         </a>
                                     </li>
@@ -44,15 +44,14 @@
                     <div class="col-xl-2 col-md-6 col-lg-2">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".4s">
                             <h3 class="footer_title">
-                                Company
+                                ITS
                             </h3>
                             <ul>
-                                <li><a href="#">About </a></li>
-                                <li><a href="#"> Pricing</a></li>
+                                <li><a href="https://www.its.ac.id/id/contact/">Kontak</a></li>
+                                {{-- <li><a href="#"> Pricing</a></li>
                                 <li><a href="#">Carrier Tips</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">FAQ</a></li> --}}
                             </ul>
-
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 col-lg-3">
@@ -68,7 +67,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
+                            <h3 class="footer_title">
+                                Category
+                            </h3>
+                            <ul>
+                                <li><a href="#">Design & Art</a></li>
+                                <li><a href="#">Engineering</a></li>
+                                <li><a href="#">Sales & Marketing</a></li>
+                                <li><a href="#">Finance</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- <div class="col-xl-4 col-md-6 col-lg-4">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
                             <h3 class="footer_title">
                                 Subscribe
@@ -80,7 +92,7 @@
                             <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
                                 luckily.</p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

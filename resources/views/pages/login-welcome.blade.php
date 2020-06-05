@@ -4,7 +4,7 @@
 
 @section('stylesheets')
 <style>
-.bg-its-1 {
+    .bg-its-1 {
         background-image: url('{{ asset('img') }}/its-bg-1.jpg');
         background-repeat: no-repeat;
         background-position: center;
@@ -12,13 +12,116 @@
         background-color: rgba(255,255,255,0.4);
         background-blend-mode: lighten;
     }
+    .bg-login-1 {
+        background:
+            linear-gradient(
+                rgb(93, 188, 210, 0.65),
+                rgb(93, 188, 210, 0.65)
+            ),
+            url('{{ asset('img') }}/bg-login-1.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .bg-login-2 {
+        background:
+            linear-gradient(
+                rgb(93, 188, 210, 0.65),
+                rgb(93, 188, 210, 0.65)
+            ),
+            url('{{ asset('img') }}/bg-login-2.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .bg-login-3 {
+        background:
+            linear-gradient(
+                rgb(93, 188, 210, 0.65),
+                rgb(93, 188, 210, 0.65)
+            ),
+            url('{{ asset('img') }}/bg-login-3.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    p.text-search {
+        font-weight: 400;
+        color: #ffffff;
+        font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 12px;
+    }
+    h3.text-search-title {
+        color: rgb(1, 56, 128);
+    }
+    .container-tr {
+        -moz-border-radius:10px;  /* for Firefox */
+        -webkit-border-radius:10px; /* for Webkit-Browsers */
+        border-radius:10px; /* regular */
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .btn-daftar {
+        background: #ffc415;
+        color: #fff;
+        display: block;
+        padding: 13px 29px 13px 29px;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        border: 0;
+        border: 1px solid transparent;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        text-align: center;
+        color: #fff !important;
+        text-transform: capitalize;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .btn-daftar:hover {
+        color:#ffffff !important;
+        border: 1px solid rgb(255, 196, 21);
+        background: rgb(255, 196, 21, 0.5);
+    }
+    .btn-login {
+        background: #0069d9;
+        color: #fff;
+        display: block;
+        padding: 13px 29px 13px 29px;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        border: 0;
+        border: 1px solid transparent;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        text-align: center;
+        color: #fff !important;
+        text-transform: capitalize;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .btn-login:hover {
+        color:#ffffff !important;
+        border: 1px solid rgb(0, 105, 217);
+        background: rgb(0, 105, 217, 0.5);
+    }
 </style>
     
 @endsection
 
 @section('content')
 
-    <div class="job_details_area bg-its-1">
+    {{-- <div class="job_details_area bg-its-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -86,13 +189,72 @@
                                 </form>
                             </div>
                         </div>
-                        
-                        
 					</div>
                 </div>
             </div>
         </div>
+    </div> --}}
+    <div class="job_details_area py-0">
+        <div class="row">
+            <div class="col-lg-4 py-5 bg-login-1">
+                
+                <div class="container pt-5">
+                    <div class="searching_text pt-5">
+                        <div class="container-tr">
+                        <h2 class="text-search-title ml-4 pt-4">Mencari pekerjaan?</h2>
+                        <p class="text-search pb-5 mx-4">Kami memberikan kemudahan bagi mahasiswa ITS untuk mencari pekerjaan dan memasang kredensial</p>
+                        </div>
+                        <div class="row pt-5">
+                            <div class="col-8">
+                                <a href="/register-st" class="btn-daftar">Daftar akun student</a>
+                            </div>
+                            <div class="col-4 pl-0">
+                                <a href="/register-st" class="btn-login">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-4 py-5 bg-login-2">
+                <div class="container pt-5">
+                    <div class="searching_text pt-5">
+                        <div class="container-tr">
+                        <h2 class="text-search-title ml-4 pt-4">Mencari seorang ahli?</h2>
+                        <p class="text-search pb-5 mx-4">Kami memberikan platform bagi employer untuk mencari tenaga ahli yang anda dibutuhkan</p>
+                        </div>
+                        <div class="row pt-5">
+                            <div class="col-8 pr-0">
+                                <a href="/register-er" class="btn-daftar">Daftar akun employer</a>
+                            </div>
+                            <div class="col-4">
+                                <a href="/login-er" class="btn-login">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 py-5 bg-login-3">
+                <div class="container pt-5">
+                    <div class="text-search pt-5">
+                        <div class="container-tr">
+                        <h2 class="text-search-title ml-4 pt-4">Mencari mahasiswa dengan kredensial?</h2>
+                        <p class="text-search pb-5 mx-4">Kami memberikan kemudahan bagi siapapun yang mencari seorang dengan kredensial yang anda cari</p>
+                        </div>
+                        <div class="row pt-5">
+                            <div class="col-8">
+                                <a href="/register-gs" class="btn-daftar">Daftar akun guest</a>
+                            </div>
+                            <div class="col-4 pl-0">
+                                <a href="/register-gs" class="btn-login">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 @endsection
 
 @section('scripts')
