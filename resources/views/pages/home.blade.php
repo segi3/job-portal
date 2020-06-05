@@ -32,6 +32,11 @@
         border-radius: 5px;
         margin-right: 10px;
     }
+    .quote{
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-weight: 500;
+    }
     .boxed-btn3-home {
         position: absolute;
         /* left: 50%;    
@@ -223,7 +228,7 @@
     <div class="popular_catagory_area">
         <div class="container">
             <h3>Let's Start</h3>
-            <p>"Tugas kita bukanlah untuk berhasil. Tugas kita adalah untuk mencoba, karena didalam mencoba itulah kita menemukan dan belajar membangun kesempatan untuk berhasil." </br> -Buya Hamka</p>
+            <p class="quote">"Tugas kita bukanlah untuk berhasil. Tugas kita adalah untuk mencoba, karena didalam mencoba itulah kita menemukan dan belajar membangun kesempatan untuk berhasil." </br> -Buya Hamka</p>
         </div>
     </div>
 
@@ -238,7 +243,7 @@
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 bg-img2 text-center">
                 <a class="boxed-btn3-home" href="/login-st">
-                    <span class="highlight-kuning-biru">FIND THE JOB</span></br>
+                    <span class="highlight-kuning-biru">FIND JOBS</span></br>
                     <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
                 </a>
                 </div>
