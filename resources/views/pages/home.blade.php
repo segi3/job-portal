@@ -141,7 +141,7 @@
     <!-- slider_area_end -->
 
     <!-- catagory_area -->
-    <div class="catagory_area">
+    <div class="catagory_area" style="padding-bottom: 20px;">
         <div class="container">
             <form method="POST" action="{{ route('search') }}">
 			@csrf
@@ -149,7 +149,7 @@
                 <div class="col-lg-9 col-md-12">
                     <div class="single_input">
                         <select id="category" name="category">
-                        <option value="all">Semua Kategori</option>
+                        <option value="">Semua Kategori</option>
                         @foreach ($jobcategory as $cat)
                             <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
                         @endforeach
@@ -182,7 +182,7 @@
     <!--/ catagory_area -->
 
     <!-- job_listing_area_start  -->
-    <div class="job_listing_area">
+    <div class="job_listing_area" style="padding-top: 30px;">
         <div class="container">
             <div class="job_lists">
                 <div class="row">

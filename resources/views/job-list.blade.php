@@ -53,7 +53,7 @@
     </div>
     <!--/ catagory_area -->
     <!-- job_listing_area_start  -->
-    <div class="job_listing_area plus_padding">
+    <div class="job_listing_area plus_padding" style="padding-top: 30px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
