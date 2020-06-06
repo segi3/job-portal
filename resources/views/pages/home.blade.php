@@ -149,7 +149,7 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="single_input">
                         <select id="category" name="category" required>
-                        <option value="" disabled selected hidden>Pilih Kategori Pekerjaan</option>
+                        <option value="" disabled selected hidden>Kategori Pekerjaan</option>
                         <option value="all" >Semua Kategori</option>
                         @foreach ($jobcategory as $cat)
                             <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
@@ -160,7 +160,7 @@
                  <div class="col-lg-4 col-md-12">
                     <div class="single_input">
                         <select id="job_type" name="job_type" required>
-                        <option value="" disabled selected hidden>Pilih Tipe Pekerjaan</option>
+                        <option value="" disabled selected hidden>Tipe Pekerjaan</option>
                         <option value="all">Semua Tipe Pekerjaan</option>
                         <option value="freelance">Freelance</option>
                         <option value="part-time">Part-time</option>
