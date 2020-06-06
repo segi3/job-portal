@@ -146,17 +146,29 @@
             <form method="POST" action="{{ route('search') }}">
 			@csrf
             <div class="row cat_search">
-                <div class="col-lg-9 col-md-12">
+                <div class="col-lg-4 col-md-12">
                     <div class="single_input">
-                        <select id="category" name="category">
-                        <option value="">Semua Kategori</option>
+                        <select id="category" name="category" required>
+                        <option value="" disabled selected hidden>Pilih Kategori Pekerjaan</option>
+                        <option value="all" >Semua Kategori</option>
                         @foreach ($jobcategory as $cat)
                             <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
                         @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-12">
+                 <div class="col-lg-4 col-md-12">
+                    <div class="single_input">
+                        <select id="job_type" name="job_type" required>
+                        <option value="" disabled selected hidden>Pilih Tipe Pekerjaan</option>
+                        <option value="all">Semua Tipe Pekerjaan</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="part-time">Part-time</option>
+                        <option value="full-time">Full-time</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
                     <div class="job_btn">
                         <button type="submit" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">
                                 {{ __('Cari Pekerjaan') }}
