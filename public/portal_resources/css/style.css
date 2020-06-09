@@ -25,6 +25,18 @@
 /* small mobile :320px. */
 /* Large Mobile :480px. */
 /* line 6, ../../Arafath/CL/December/235. Job board/HTML/scss/theme-default.scss */
+
+/* UNTUK HEADER LOGIN */
+.header-login {
+  display: none !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .header-login {
+    display: block !important;
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
@@ -1386,7 +1398,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/newbanner.jpg);
+  /* background-image: url(../img/banner/bg-jumbotron.jpg); */
 }
 
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_slider.scss */

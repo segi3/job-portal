@@ -44,7 +44,10 @@
                                                     <li><a href="/jasa/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
+                                            @if(session()->has('login'))
                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            @endif
+                                            <li class="header-login"><a href="/login-welcome">Login</a></li>
                                         </ul>
                                     </nav>
                                     {{-- end of navbar --}}

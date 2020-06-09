@@ -86,9 +86,10 @@
                         <div class="form-group">
                             <label for="inputJobType">Tipe pekerjaan</label>
                             <select name="job_type" class="form-control" id="inputJobType">
-                                <option value="freelance">Freelance</option>
+                                <option value="remote">Remote</option>
                                 <option value="part-time">Part-time</option>
-                                <option value="full-time">Full-time</option>
+                                <option value="freelance">Freelance</option>
+                                <option value="internship">Internship</option>
                             </select>
                         </div>
 

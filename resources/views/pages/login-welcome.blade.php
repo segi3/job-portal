@@ -246,7 +246,7 @@
                                 <a href="/register-gs" class="btn-daftar">Daftar akun guest</a>
                             </div>
                             <div class="col-4 pl-0">
-                                <a href="/register-gs" class="btn-login">Login</a>
+                                <a href="/login-gs" class="btn-login">Login</a>
                             </div>
                         </div>
                     </div>

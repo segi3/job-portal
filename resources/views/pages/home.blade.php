@@ -32,7 +32,7 @@
         border-radius: 5px;
         margin-right: 10px;
     }
-    .quote{
+    .quote {
         color: rgb(0, 0, 0);
         font-size: 20px;
         font-weight: 500;
@@ -48,7 +48,7 @@
         left: 0;
         margin: auto; 
     }
-    .highlight-kuning-biru{
+    .highlight-kuning-biru {
         background: #ffc415;
         color: rgb(0, 0, 0);
         font-size: 30px;
@@ -62,6 +62,15 @@
         left: 0;
         bottom: 0;
         margin: auto; */
+    }
+    div.slider_text div.slider_span p.highlight-kuning-biru {
+        background: #ffc415;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 400;
+        display: inline-block;
+        /* border: red solid 1px; */
+        
     }
     .highlight-kuning-biru-kecil {
         background: #ffc415;
@@ -80,16 +89,16 @@
         margin: auto; */
     }
 
-    .popular_catagory_area h3{
+    .popular_catagory_area h3 {
         color: rgb(1, 56, 128);
     }
 
-    .popular_catagory_area p{
+    .popular_catagory_area p {
         text-align: center;
         font-size: 22px;
     }
 
-    .bg-img1{
+    .bg-img1 {
         background-image: url('{{ asset('img') }}/interview.jpg');
         background-repeat: no-repeat;
         background-position: center;
@@ -98,7 +107,7 @@
         min-height: 350px;
     }
 
-    .bg-img2{
+    .bg-img2 {
         background-image: url('{{ asset('img') }}/jobseek.jpg');
         background-repeat: no-repeat;
         background-position: center;
@@ -114,6 +123,9 @@
         position: relative;
         min-height: 350px;
     }
+    .bg-jumbotron {
+        background-image: url('{{ asset('img') }}/banner/bg-jumbotron-1.jpg');
+    }
 
 </style>
 
@@ -123,14 +135,14 @@
 
     <!-- slider_area_start -->
     <div class="slider_area">
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
+        <div class="single_slider  d-flex align-items-center bg-jumbotron">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6">
                         <div class="slider_text">
                             <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">JOB EXPERIENCE</h3>
                             <div class="slider_span" data-wow-duration="1s" data-wow-delay=".5s">
-                                <p><span>Being The Expert Start From Now</span></p>
+                                <p class="highlight-kuning-biru">Be an expert, starts from now</p>
                             </div>
                         </div>
                     </div>
@@ -162,9 +174,10 @@
                         <select id="job_type" name="job_type" required>
                         <option value="" disabled selected hidden>Tipe Pekerjaan</option>
                         <option value="all">Semua Tipe Pekerjaan</option>
-                        <option value="freelance">Freelance</option>
+                        <option value="remote">Remote</option>
                         <option value="part-time">Part-time</option>
-                        <option value="full-time">Full-time</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="internship">Internship</option>
                         </select>
                     </div>
                 </div>
@@ -301,10 +314,10 @@
     <div class="popular_catagory_area bg-seminar mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-4 offset-8 text-right">
+                <div class="col-lg-4 offset-lg-8 col-sm-12 text-right">
                     <span class="highlight-biru-kuning">Seminar Pra Kerja</span>
                 </div>
-                <div class="col-4 offset-8 mt-2 text-right">
+                <div class="col-lg-4 offset-lg-8 mt-2 col-sm-12 text-right">
                     <span class="highlight-biru-kuning">Bersama: PT ITS</span>
                 </div>
             </div>

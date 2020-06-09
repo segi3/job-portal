@@ -148,11 +148,10 @@
                     <div class="summery_header">
                         <h3>Informasi Penyedia Layanan</h3>
                     </div>
-                    @if(session()->has('login'))
+                    @if( session('role') == 'guest' )
                     <div class="job_content">
                         <ul>
                             <li>Nama: <span>{{ $servDetail->studentName }}</span></li>
-                            <li>NRP: <span>{{ $servDetail->nrp }}</span></li>
                             <li>Nomor Handphone: <span>{{ $servDetail->nohp }}</span></li>
                             <li>Email: <span>{{ $servDetail->email }}</span></li>
                             <li>Domisili: <span>{{ $servDetail->city }}, {{ $servDetail->prov }}</span></li>
@@ -161,7 +160,7 @@
                     </div>
                     @else
                     <div class="job_content">
-                        <span>Login untuk melihat informasi</span>
+                        <span>Login sebagai untuk melihat informasi</span>
                     </div>
                     @endif
                 </div>
