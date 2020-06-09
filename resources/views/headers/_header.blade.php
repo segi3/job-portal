@@ -46,8 +46,9 @@
                                             </li>
                                             @if(session()->has('login'))
                                             <li><a href="/dashboard">Dashboard</a></li>
-                                            @endif
+                                            @else
                                             <li class="header-login"><a href="/login-welcome">Login</a></li>
+                                            @endif
                                         </ul>
                                     </nav>
                                     {{-- end of navbar --}}
