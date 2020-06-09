@@ -237,9 +237,9 @@
             digits: true,
             maxlength: 11,
           },
-        //   kompensasi: {
-        //     maxlength: 255,
-        //   },
+          kompensasi: {
+            maxlength: 255,
+          },
         },
         messages: {
           name: {
@@ -284,9 +284,9 @@
             digits: "Hanya masukkan angka",
             maxlength: "Tidak dapat melebihi 11 karakter"
           },
-        //   kompensasi: {
-        //     maxlength: "Tidak dapat melebihi 255 karakter"
-        //   },
+          kompensasi: {
+            maxlength: "Tidak dapat melebihi 255 karakter"
+          },
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {

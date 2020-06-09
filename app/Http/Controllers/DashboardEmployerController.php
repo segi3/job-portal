@@ -196,7 +196,7 @@ class DashboardEmployerController extends Controller
             'extra_skill'           => 'max:255',
             'expected_salary_high'  => 'required|max:11',
             'expected_salary_low'   => 'required|max:11',
-            'kompensasi'            => 'required|max:255',
+            'kompensasi'            => 'max:255',
         ]);
 
         if (is_null($request->input('extra_skill'))){
