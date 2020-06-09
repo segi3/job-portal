@@ -21,6 +21,17 @@
         background-blend-mode: lighten; */
     }
 
+    .bg-jasa {
+        background-image: url('{{ asset('img') }}/jasa.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 300px;
+        /* background-color: rgba(255,255,255,0.4);
+        background-blend-mode: lighten; */
+    }
+
+
     .highlight-biru-kuning {
         background: rgb(1, 56, 128);
         color: #ffc415;
@@ -63,14 +74,14 @@
         bottom: 0;
         margin: auto; */
     }
+
     div.slider_text div.slider_span p.highlight-kuning-biru {
         background: #ffc415;
         color: #ffffff;
-        font-size: 20px;
+        font-size: 30px;
         font-weight: 400;
         display: inline-block;
         /* border: red solid 1px; */
-        
     }
     .highlight-kuning-biru-kecil {
         background: #ffc415;
@@ -281,29 +292,6 @@
             </div>
         </div>
     </div>
-    <!-- job_searcing_wrap  -->
-    <!-- <div class="job_searcing_wrap overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 offset-lg-1 col-md-6">
-                    <div class="searching_text">
-                        <h3>Looking for a Job?</h3>
-                        <p>We provide online instant cash loans with quick approval </p>
-                        <a href="#" class="boxed-btn3">Browse Job</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1 col-md-6">
-                    <div class="searching_text">
-                        <h3>Looking for a Expert?</h3>
-                        <p>We provide online instant cash loans with quick approval </p>
-                        <a href="#" class="boxed-btn3">Post a Job</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- job_searcing_wrap end  -->
-    <!-- popular_catagory_area_start  -->
 
     <div class="popular_catagory_area">
         <div class="container">
@@ -323,6 +311,100 @@
             </div>
         </div>
     </div>
+
+<!-- job_listing_area_start  -->
+<div class="job_listing_area" style="padding-top: 30px;">
+        <div class="container">
+            <div class="job_lists">
+                <div class="row">
+                @foreach($seminar as $s)
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="/data_files/employer_logo/{{  $s->logo  }}" alt="" class="img-logo">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href=" {{ url('jobs/'.$j->id) }} "><h4>{{ $s->name }}
+                                    <div class="links_locat d-flex align-items-center">
+                                        <p style="margin-bottom: 2px;">{{ $s->employername }} </p>
+                                    </div>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> {{ $s->location }}</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-money"></i>Rp{{ number_format($s->fee, 0, ',', '.') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a href="#" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+
+    <div class="popular_catagory_area">
+        <div class="container">
+            <h3>Cari Jasa</h3>
+        </div>
+    </div>
+
+    <div class="popular_catagory_area bg-jasa mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-12">
+                    <span class="highlight-biru-kuning">Jasa oleh mahasiswa ITS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="job_listing_area" style="padding-top: 30px;">
+        <div class="container">
+            <div class="job_lists">
+                <div class="row">
+                @foreach($jasa as $js)
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="jobs_conetent">
+                                    <a href=" {{ url('jobs/'.$js->id) }} "><h4>{{ $js->name }}
+                                    <div class="links_locat d-flex align-items-center">
+                                        <p style="margin-bottom: 2px;">{{ $js->studname }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a href="#" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Use Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="popular_catagory_area" style="padding: 50px 0;">
+        <div class="container">
+            <h3>Ayo mulai dari sekarang</h3>
+            <p class="quote">"Anda mungkin bisa menunda, tapi waktu tidak akan menunggu"</br> -Benjamin Franklin</p>
+        </div>
+    </div>
+
 
 @endsection
 

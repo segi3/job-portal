@@ -30,7 +30,22 @@ class PageController extends Controller
                             ->orderByDesc('jobs.created_at')
                             ->limit(5)
                             ->get();
-        return view('pages.home', compact('jobcategory', 'jobcategorypop','job'));
+        $seminar = DB::table('seminars')
+                            ->join('seminar_categories', 'seminars.seminar_category_id' ,'seminar_categories.id')
+                            ->join('employers', 'seminars.employer_id', 'employers.id')
+                            ->select('seminars.fee', 'seminars.id as id','seminars.name as name', 'seminars.location as location', 'employers.name as employername', 'employers.logo')
+                            ->where('seminars.status', '=', 1)
+                            ->orderByDesc('seminars.created_at')
+                            ->limit(5)
+                            ->get();
+        $jasa = DB::table('services')
+                            ->join('students', 'services.student_id', 'students.id')
+                            ->select('services.id', 'services.name', 'students.name as studname')
+                            ->where('services.status', '=', 1)
+                            ->orderByDesc('services.created_at')
+                            ->limit(5)
+                            ->get();
+        return view('pages.home', compact('jobcategory', 'jobcategorypop','job', 'seminar', 'jasa'));
     }
 
     public function search(Request $request)

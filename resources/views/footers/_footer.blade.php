@@ -61,7 +61,7 @@
                             </h3>
                             <ul>
                                 <li><a href="#">Cari Pekerjaan</a></li>
-                                <li><a href="#">Masiswa dengan kredensial</a></li>
+                                <li><a href="#">Mahasiswa dengan kredensial</a></li>
                                 <li><a href="#">Seminar</a></li>
                                 <li><a href="#">Investasi</a></li>
                             </ul>
