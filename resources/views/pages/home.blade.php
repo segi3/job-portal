@@ -77,9 +77,9 @@
 
     div.slider_text div.slider_span p.highlight-kuning-biru {
         background: #ffc415;
-        color: #ffffff;
+        color: rgb(0, 0, 0);
         font-size: 30px;
-        font-weight: 400;
+        font-weight: 500;
         display: inline-block;
         /* border: red solid 1px; */
     }
