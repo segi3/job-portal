@@ -325,7 +325,7 @@
                                     <img src="/data_files/employer_logo/{{  $s->logo  }}" alt="" class="img-logo">
                                 </div>
                                 <div class="jobs_conetent">
-                                    <a href=" {{ url('jobs/'.$j->id) }} "><h4>{{ $s->name }}
+                                    <a><h4>{{ $s->name }}</a>
                                     <div class="links_locat d-flex align-items-center">
                                         <p style="margin-bottom: 2px;">{{ $s->employername }} </p>
                                     </div>

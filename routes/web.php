@@ -56,6 +56,8 @@ Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
 
+Route::get('/download-proposal/{proposal}', 'DashboardController@downloadproposal')->name('proposal.investasi.download');
+Route::get('/download-laporan/{laporan}', 'DashboardController@downloadlaporan')->name('laporan.investasi.download');
 
 // jobs
 
@@ -76,6 +78,7 @@ Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
+
 
 
 // dashboard

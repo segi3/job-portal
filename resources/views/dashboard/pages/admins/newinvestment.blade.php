@@ -39,10 +39,9 @@
                     <table class="table table-bordered table-responsive-sm">
                         <thead>
                         <tr>
-                            <th>Investasi Employer</th>
-                            <th>Deskripsi Bisnis</th>
+                            <th>Nama Investasi</th>
+                            <th>Nama Employer</th>
                             <th>Berkas Proposal Investasi</th>
-                            <th>Berkas Laporan Keuangan</th>
                             <th>Berkas Laporan Keuangan</th>
                             <th>Listed at</th>
                             <th>Detail</th>
@@ -52,15 +51,15 @@
                         <tbody>
                         @foreach($investasi as $invest)
                             <tr>
+                                <td>{{ $invest->nama_investasi }}</td>
                                 <td>{{ $invest->employername }}</td>
-                                <td>{{ $invest->deskripsi_bisnis }}</td>
                                 <td>
-                                    <form action="{{ route('berkas.investasi.download', $invest->id) }}" method="get">
+                                    <form action="{{ route('proposal.investasi.download', $invest->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="{{ route('berkas.investasi.download', $invest->id) }}" method="get">
+                                    <form action="{{ route('laporan.investasi.download', $invest->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
                                 </td>
@@ -82,6 +81,10 @@
                                               <table class="table table-borderless">
                                                 <tbody>
                                                     <tr>
+                                                        <td>Deskripsi Bisnis</td>
+                                                        <td>{{ $invest->deskripsi_bisnis}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>Harga Saham</td>
                                                         <td>Rp. {{ $invest->harga_saham}}</td>
                                                     </tr>
@@ -91,18 +94,18 @@
                                                     </tr>
                                                     <tr>
                                                         <td>ROI Top</td>
-                                                        <td>{{ $invest->roi_top}}</td>
+                                                        <td>{{ $invest->roi_top}}%</td>
                                                     </tr>
                                                     <tr>
                                                         <td>ROI Bottom</td>
-                                                        <td>{{ $invest->roi_bot}}</td>
+                                                        <td>{{ $invest->roi_bot}}%</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Lembar total</td>
                                                         <td>{{ $invest->lembar_total}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Lembar total</td>
+                                                        <td>Lembar terbeli</td>
                                                         <td>{{ $invest->lembar_terbeli}}</td>
                                                     </tr>
                                                     <tr>

@@ -241,7 +241,7 @@
                     {{ Request::is('admin/approved-investment') ? "active" : "" }}
                     {{ Request::is('admin/unapproved-investment') ? "active" : "" }}
                     ">
-                <!-- <i class="nav-icon fas fa-chalkboard-teacher"></i> -->
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
                     Manage Investment
                     <i class="right fas fa-angle-left"></i>

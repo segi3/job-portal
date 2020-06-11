@@ -281,7 +281,7 @@ class DashboardEmployerController extends Controller
             $berkaskeuangan= $request->file('laporankeuangan');
             $employerid= $request->session()->get('id');
             $employername = $request->session()->get('name');
-            $tujuaninv = 'data_files/propsal_investasi';
+            $tujuaninv = 'data_files/proposal_investasi';
             $tujuankeu = 'data_files/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-
+use Illuminate\Support\Facades\DB;
 use App\Student;
 use App\Job;
 use App\Employer;
@@ -359,5 +359,35 @@ class DashboardController extends Controller
         ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
         ->paginate(20);
         return view ('dashboard.pages.admins.unapprovedinvestment')->with('investasi', $investasi);
+    }
+
+    public function downloadproposal($proposal)
+    {
+        $where = [
+            'investasi.id' => $proposal,
+        ];
+  
+        $berkas_db = DB::table('investasi')
+        ->leftjoin('employers', 'employers.id', 'employer_id')
+        ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_proposal_investasi as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\proposal_investasi\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function downloadlaporan($laporan)
+    {
+        $where = [
+            'investasi.id' => $laporan,
+        ];
+  
+        $berkas_db = DB::table('investasi')
+        ->leftjoin('employers', 'employers.id', 'employer_id')
+        ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_laporan_keuangan as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\lap_keu\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
     }
 }
