@@ -9,6 +9,7 @@ use Session;
 use App\Student;
 use App\Job;
 use App\Employer;
+use App\Investasi;
 use App\Seminar;
 
 class DashboardEmployerController extends Controller
@@ -251,5 +252,87 @@ class DashboardEmployerController extends Controller
         // dd($employer);
 
         return view('dashboard.pages.employer.profile')->with('employer', $employer);
+    }
+
+
+    public function getCreateInvestation()
+    {
+        return view('dashboard.pages.employer.create-investation');
+    }
+
+    public function postCreateInvestation(Request $request){
+
+        $this->validate($request, [
+            'description'   => 'required',
+            'namabank'      => 'required',
+            'nomorrekening' => 'required|numeric',
+            'hargaperlembar' => 'required|numeric',
+            'totallembar' => 'required|numeric|min: 1',
+            'roi_d'         => 'required|numeric',
+            'roi_u'         => 'required|numeric|gt:roi_d',
+            'duedate'       => 'required|date',
+            'proposalinvestasi'   => 'required|mimes:pdf|max:2048',
+            'laporankeuangan'   => 'required|mimes:pdf|max:2048',
+            'termpolicy'        => 'required',
+        ]);
+
+            $berkasinvestasi= $request->file('proposalinvestasi');
+            $berkaskeuangan= $request->file('laporankeuangan');
+            $employerid= $request->session()->get('id');
+            $employername = $request->session()->get('name');
+            $tujuaninv = 'data_files/propsal_investasi';
+            $tujuankeu = 'data_files/lap_keu';
+            $extension= 'pdf';
+            // $desc= md5($request->input('description'));
+            $filenameinv= "Invesment_".$employerid.md5('_INV_'.$employername.'_'.$request->input('description')).'.'.$extension;
+            $filenamekeu= "Keuangan_".$employerid.md5('_KEU_'.$employername.'_'.$request->input('description')).'.'.$extension;
+            // $berkas->move($tujuan,$filename);
+            $berkasinvestasi->move($tujuaninv,$filenameinv);
+            $berkaskeuangan->move($tujuankeu,$filenamekeu);
+            $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
+        try{
+            Investasi::create([
+                'employer_id'           => $request->session()->get('id'),
+                'status'                => 0,
+                'status_tempo'          => 0,
+                'bank'                  => $request->input('namabank'),
+                'no_rekening'           => $request->input('nomorrekening'),
+                'deskripsi_bisnis'      => $request->input('description'),
+                'roi_top'               => $request->input('roi_u'),
+                'roi_bot'               => $request->input('roi_d'),
+                'lembar_total'          => $request->input('totallembar'),
+                'lembar_terbeli'        => 0,
+                'harga_saham'           => $request->input('hargaperlembar'),
+                'tgl_jatuh_tempo'       => $formatDate,
+                'berkas_proposal_investasi'  => $filenameinv,
+                'berkas_laporan_keuangan'  => $filenamekeu,
+            ]);
+
+            Session::flash('success', 'Investasi berhasil didaftarkan, silahkan tunggu konfirmasi dari pihak admin');
+            return view('dashboard.pages.employer.create-investation');
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorMsg);
+            return view('dashboard.pages.employer.create-investation');
+        }
+    }
+
+    public function getInvestationsApproval(Request $request)
+    {
+        $where = [
+            'employer_id' => $request->session()->get('id'),
+        ];
+
+        $investation = Investasi::where($where)->paginate(20);
+
+        // dd($seminars);
+
+        return view('dashboard.pages.employer.investation-approval')->with('investations', $investation);
     }
 }

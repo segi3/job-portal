@@ -90,6 +90,33 @@
                 </ul>
             </li>
 
+            <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link
+                {{ Request::is('dashboard/er/create-investation') ? "active" : "" }}
+                {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}
+                ">
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                <p>
+                    Manage Investation
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/dashboard/er/create-investation" class="nav-link {{ Request::is('dashboard/er/create-investation') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Post new investation</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard/er/investations-approval" class="nav-link {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Investations Approval</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
             <li class="nav-item">
                 <a href="/dashboard/er/profile" class="nav-link {{ Request::is('dashboard/er/profile') ? "active" : "" }}">
                 <i class="nav-icon fas fa-address-card"></i>
