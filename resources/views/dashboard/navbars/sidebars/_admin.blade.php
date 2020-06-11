@@ -230,6 +230,44 @@
                 </li>
                 </ul>
             </li>
+
+            <li class="nav-item has-treeview
+                {{ Request::is('admin/new-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/approved-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/unapproved-investment') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                    {{ Request::is('admin/new-investment') ? "active" : "" }}
+                    {{ Request::is('admin/approved-investment') ? "active" : "" }}
+                    {{ Request::is('admin/unapproved-investment') ? "active" : "" }}
+                    ">
+                <!-- <i class="nav-icon fas fa-chalkboard-teacher"></i> -->
+                <p>
+                    Manage Investment
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-investment" class="nav-link {{ Request::is('admin/new-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New Investment</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-investment" class="nav-link {{ Request::is('admin/approved-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Investment</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-investment" class="nav-link {{ Request::is('admin/unapproved-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Investment</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

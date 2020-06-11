@@ -11,6 +11,7 @@ use App\Employer;
 use App\Guest;
 use App\Seminar;
 use App\Service;
+use App\Investasi;
 
 
 class DashboardController extends Controller
@@ -312,4 +313,51 @@ class DashboardController extends Controller
         return view ('dashboard.pages.admins.unapprovedseminars')->with('seminars', $seminars);
     }
 
+    public function getNewInvestment() {
+
+        $investasi = Investasi::where('investasi.status', '0')
+                ->leftjoin('employers', 'employers.id', 'employer_id')
+                ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+                ->paginate(20);
+
+        return view('dashboard.pages.admins.newinvestment')->with('investasi', $investasi);
+    }
+
+    public function approveNewInvestment(Request $request, $id)
+    {
+        $investasi = Investasi::find($id);
+
+        $investasi->status = 1;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+    public function rejectNewInvestment(Request $request, $id)
+    {
+        $investasi = Investasi::find($id);
+        $investasi->status = 2;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+
+    public function getApprovedInvestment() 
+    {
+        $investasi = Investasi::where('investasi.status', '1')
+                ->leftjoin('employers', 'employers.id', 'employer_id')
+                ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+                ->paginate(20);
+
+        return view ('dashboard.pages.admins.approvedinvestment')->with('investasi', $investasi);
+    }
+    public function getUnapprovedInvestment() 
+    {
+        $investasi = Investasi::where('investasi.status', '2')
+        ->leftjoin('employers', 'employers.id', 'employer_id')
+        ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+        ->paginate(20);
+        return view ('dashboard.pages.admins.unapprovedinvestment')->with('investasi', $investasi);
+    }
 }

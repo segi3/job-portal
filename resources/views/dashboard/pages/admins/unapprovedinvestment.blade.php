@@ -123,7 +123,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-lg-6">
-                                          <form action="{{ route('investasi.approve', $invest->id) }}" method="post">
+                                          <form action="{{ route('investment.approve', $invest->id) }}" method="post">
                                               {{ csrf_field() }}
                                               {{ method_field('put') }}
                                               <button type="submit" class="btn btn-sm btn-success mr-4">Approve</button>
