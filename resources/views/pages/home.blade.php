@@ -50,14 +50,14 @@
     }
     .boxed-btn3-home {
         position: absolute;
-        /* left: 50%;    
+        /* left: 50%;
         margin-left: -50%; */
         bottom: 50px;
         max-width: 100%;
         display: block;
         right: 0;
         left: 0;
-        margin: auto; 
+        margin: auto;
     }
     .highlight-kuning-biru {
         background: #ffc415;
@@ -287,7 +287,7 @@
                 <a class="boxed-btn3-home" style="bottom:30px;">
                     <span class="highlight-kuning-biru">OTHER</span></br>
                     <span class="highlight-kuning-biru">SERVICES</span>
-                </a>           
+                </a>
                 </div>
             </div>
         </div>
@@ -368,7 +368,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="job_listing_area" style="padding-top: 30px;">
         <div class="container">
             <div class="job_lists">

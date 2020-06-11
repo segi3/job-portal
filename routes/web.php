@@ -136,6 +136,8 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/create-investation', 'DashboardEmployerController@getCreateInvestation');
     Route::post('dashboard/er/create-investation', 'DashboardEmployerController@postCreateInvestation')->name('dashboard.employer.createInvestation');
     Route::get('dashboard/er/investations-approval', 'DashboardEmployerController@getInvestationsApproval');
+    Route::get('dashboard/er/investor-confirmation', 'DashboardEmployerController@getPaidInvestor');
+    Route::put('dashboard/er/investor-confirmation/a/{id}', 'DashboardEmployerController@confirmPaidInvestor')->name('investor.paid.approve');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){

@@ -15,6 +15,7 @@ class CreateInvestasiTable extends Migration
     {
         Schema::create('investasi', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_investasi');
             $table->bigInteger('employer_id')->nullable()->unsigned();
             $table->string('status', 1)->default('0');
             $table->string('status_tempo', 1)->default('0');
@@ -29,8 +30,6 @@ class CreateInvestasiTable extends Migration
             $table->date('tgl_jatuh_tempo');
             $table->string('berkas_proposal_investasi');
             $table->string('berkas_laporan_keuangan');
-
-            
             $table->bigInteger('admin_id')->nullable()->unsigned();
 
             $table->foreign('employer_id')->references('id')->on('employers')->onDelete('cascade')->onUpdate('cascade');

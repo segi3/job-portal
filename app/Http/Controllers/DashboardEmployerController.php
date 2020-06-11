@@ -10,6 +10,7 @@ use App\Student;
 use App\Job;
 use App\Employer;
 use App\Investasi;
+use App\InvestasiStudent;
 use App\Seminar;
 
 class DashboardEmployerController extends Controller
@@ -273,7 +274,7 @@ class DashboardEmployerController extends Controller
             'duedate'       => 'required|date',
             'proposalinvestasi'   => 'required|mimes:pdf|max:2048',
             'laporankeuangan'   => 'required|mimes:pdf|max:2048',
-            'termpolicy'        => 'required',
+            // 'termpolicy'        => 'required',
         ]);
 
             $berkasinvestasi= $request->file('proposalinvestasi');
@@ -335,4 +336,82 @@ class DashboardEmployerController extends Controller
 
         return view('dashboard.pages.employer.investation-approval')->with('investations', $investation);
     }
+
+    public function getPaidInvestor(Request $request)
+    {
+        $where = [
+            'employer_id' => $request->session()->get('id'),
+            'status_bayar' =>1,
+        ];
+        $where2 = [
+            'employer_id' => $request->session()->get('id'),
+        ];
+        $investations = DB::table('investasi_student')
+                                ->join('investasi', 'investasi_student.investasi_id', 'investasi.id')
+                                ->join('employers', 'investasi.employer_id', 'employers.id')
+                                ->join('students', 'investasi_student.student_id', 'students.id')
+                                ->select(
+                                    'investasi_student.id as isid',
+                                    'investasi_student.student_id as isstudent_id',
+                                    'investasi_student.investasi_id as isinvestasi_id',
+                                    'investasi_student.status_bayar as isstatus_bayar',
+                                    'investasi_student.status_uang_balik as isstatus_uang_balik',
+                                    'investasi_student.lembar_beli as islembar_beli',
+                                    'investasi_student.berkas_ktp as isktp_investor',
+                                    'investasi_student.berkas_bukti_pembayaran as isbukti_bayar_investor',
+                                    'investasi_student.updated_at as updated',
+                                    'students.name as s_name',
+                                    'students.id as s_id',
+                                    'students.nrp as nrp',
+                                    'students.email as s_email',
+                                    'students.mobile_no as s_mobile_no',
+                                    'students.skill as s_skill',
+                                    'students.achievment as s_achievment',
+                                    'students.experience as s_experience',
+                                    'students.city as s_city',
+                                    'students.province as s_province',
+                                    'investasi.employer_id as employer_id',
+                                    'investasi.nama_investasi as in_nama_investasi')
+                                ->where($where)
+                                ->paginate(20);
+
+        $employerInvestation = DB::table('investasi')
+                                ->select('investasi.id','investasi.nama_investasi')
+                                ->where($where2)
+                                ->get();
+        // $investation = InvestasiStudent::where($where)->paginate(20);
+
+        // dd($investations->firstItem());
+
+        return view('dashboard.pages.employer.investation-paid-investor', compact('investations','employerInvestation'));
+    }
+    public function confirmPaidInvestor(Request $request, $id){
+        // dd($id);
+        $invid = DB::table('investasi_student')
+                    ->select('investasi_student.investasi_id as investasi_id',
+                              'investasi_student.lembar_beli as beli')
+                    ->where('id', $id)
+                    ->get();
+
+        $currentL = DB::table('investasi')
+                    ->select('investasi.lembar_terbeli as terbeli')
+                    ->where('id', $invid->first()->investasi_id)
+                    ->get();
+        $updateL=$currentL->first()->terbeli + $invid->first()->beli;
+        $acc = DB::table('investasi_student')
+                    ->where('id', $id)
+                    ->update([
+                        'status_bayar' => 2,
+                        'updated_at' => \Carbon\Carbon::now(),
+                    ]);
+        $acc2 = DB::table('investasi')
+                    ->where('id', $invid->first()->investasi_id)
+                    ->update([
+                        'lembar_terbeli' => $updateL,
+                        'updated_at' => \Carbon\Carbon::now(),
+                    ]);
+        return redirect()->back();
+
+    }
 }
+

@@ -94,6 +94,7 @@
                 <a href="#" class="nav-link
                 {{ Request::is('dashboard/er/create-investation') ? "active" : "" }}
                 {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}
+                {{ Request::is('dashboard/er/investations-investor-confirmation') ? "active" : "" }}
                 ">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
@@ -108,10 +109,17 @@
                     <p>Post new investation</p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="/dashboard/er/investations-approval" class="nav-link {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Investations Approval</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard/er/investor-confirmation" class="nav-link {{ Request::is('dashboard/er/investor-confirmation') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Investor Confirmation</p>
                     </a>
                 </li>
                 </ul>
