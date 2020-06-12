@@ -39,8 +39,8 @@
                     <table class="table table-bordered table-responsive-sm">
                         <thead>
                         <tr>
-                            <th>Investasi Employer</th>
-                            <th>Deskripsi Bisnis</th>
+                            <th>Nama Investasi</th>
+                            <th>Nama Employer</th>
                             <th>Detail</th>
                             <th style="width: 150px;">Action</th>
                         </tr>
@@ -48,8 +48,8 @@
                         <tbody>
                         @foreach($investasi as $invest)
                             <tr>
+                                <td>{{ $invest->nama_investasi }}</td>
                                 <td>{{ $invest->employername }}</td>
-                                <td>{{ $invest->deskripsi_bisnis }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $invest->id }}">
                                         Details
@@ -67,6 +67,10 @@
                                               <table class="table table-borderless">
                                                 <tbody>
                                                     <tr>
+                                                        <td>Deskripsi Bisnis</td>
+                                                        <td>{{ $invest->deskripsi_bisnis}}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>Harga Saham</td>
                                                         <td>{{ $invest->harga_saham}}</td>
                                                     </tr>
@@ -76,18 +80,18 @@
                                                     </tr>
                                                     <tr>
                                                         <td>ROI Top</td>
-                                                        <td>{{ $invest->roi_top}}</td>
+                                                        <td>{{ $invest->roi_top}}%</td>
                                                     </tr>
                                                     <tr>
                                                         <td>ROI Bottom</td>
-                                                        <td>{{ $invest->roi_bot}}</td>
+                                                        <td>{{ $invest->roi_bot}}%</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Lembar total</td>
                                                         <td>{{ $invest->lembar_total}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Lembar total</td>
+                                                        <td>Lembar terbeli</td>
                                                         <td>{{ $invest->lembar_terbeli}}</td>
                                                     </tr>
                                                     <tr>
