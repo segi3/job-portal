@@ -30,7 +30,7 @@
     </div>
     <!--/ bradcam_area  -->
     <!-- catagory_area -->
-    <div class="catagory_area" style="padding-top: 50px;">
+    <div class="catagory_area" style="padding-top: 50px; padding-bottom: 0px;">
         <div class="container">
             <div class="row cat_search">
             <div class="row">

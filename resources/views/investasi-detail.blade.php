@@ -110,7 +110,13 @@
                             <li>ROI           : <span>{{ $investasi->roi_bot }}% - {{ $investasi->roi_top }}%</span></li>
                             <li>Saham tersisa : <span>{{ $investasi->lembar_total - $investasi->lembar_terbeli }} lembar</span></li>
                         </ul>
-                            @if( session('role') == 'student' )
+                            @if($investasi->status_tempo == 2)
+
+                            <div class="alert alert-danger" role="alert">
+                                <span>Masa aktif saham sudah lewat</span>
+                             </div>
+
+                            @elseif( session('role') == 'student' && $investasi->status_tempo == 1)
                             <hr>
                             <h5>Beli saham</h5>
                             <form method="POST" action="/beli-saham/{{ $investasi->id }}" enctype="multipart/form-data">
@@ -149,7 +155,7 @@
                                     </div>
                                 </div>
                             </form>
-
+                            
                             @endif
                         
                     </div>

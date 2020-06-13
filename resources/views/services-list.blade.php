@@ -22,13 +22,13 @@
     </div>
     <!--/ bradcam_area  -->
     <!-- catagory_area -->
-    <div class="catagory_area" style="padding-top: 50px;">
+    <div class="catagory_area" style="padding-top: 50px; padding-bottom: 0px;">
         <div class="container">
             <div class="row cat_search">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40" style="margin-bottom: 10px;">
-                        <h4>Jasa tersedia</h4>
+                        <h4>Kategori Kredensial</h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -52,8 +52,8 @@
                     <div class="recent_joblist_wrap">
                         <div class="recent_joblist white-bg ">
                             <div class="row align-items-center">
-                                <div class="col-md-4">
-                                    <h3>Daftar Jasa Tersedia</h3>
+                                <div class="col-md-6">
+                                    <h3>Daftar Kredensial Tersedia</h3>
                                 </div>
                             </div>
                         </div>

@@ -31,7 +31,7 @@
                                                     <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="/jasa">Jasa<i class="ti-angle-down"></i></a>
+                                            <li><a href="/jasa">Kredensial<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/jasa/category/pertanian">Pertanian</a></li>
                                                     <li><a href="/jasa/category/pertambangan">Pertambangan</a></li>
@@ -44,6 +44,7 @@
                                                     <li><a href="/jasa/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="/investasi">investasi</a></li>
                                             @if(session()->has('login'))
                                             <li><a href="/dashboard">Dashboard</a></li>
                                             @else
