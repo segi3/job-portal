@@ -21,6 +21,7 @@ class CreateInvestasiTable extends Migration
             $table->string('status_tempo', 1)->default('0');
             $table->string('bank');
             $table->string('no_rekening');
+            $table->string('atas_nama');
             $table->text('deskripsi_bisnis');
             $table->integer('roi_top');
             $table->integer('roi_bot');

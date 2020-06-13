@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Validator;
+
 use App\Student;
 use App\Job;
 use App\Employer;
 use App\Investasi;
 use App\InvestasiStudent;
 use App\Seminar;
+
 
 class DashboardEmployerController extends Controller
 {
@@ -262,11 +265,15 @@ class DashboardEmployerController extends Controller
     }
 
     public function postCreateInvestation(Request $request){
+        
+        $input = $request->all();
 
-        $this->validate($request, [
+        $validator = Validator::make($input, [
+            'namainvestasi' => 'required|max:191',
             'description'   => 'required',
-            'namabank'      => 'required',
+            'namabank'      => 'required|max:191',
             'nomorrekening' => 'required|numeric',
+            'atasnama'      => 'required|max:191',
             'hargaperlembar' => 'required|numeric',
             'totallembar' => 'required|numeric|min: 1',
             'roi_d'         => 'required|numeric',
@@ -274,8 +281,26 @@ class DashboardEmployerController extends Controller
             'duedate'       => 'required|date',
             'proposalinvestasi'   => 'required|mimes:pdf|max:2048',
             'laporankeuangan'   => 'required|mimes:pdf|max:2048',
-            // 'termpolicy'        => 'required',
         ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->first());
+            return redirect()->back()->withInput();
+        }
+
+        // $this->validate($request, [
+        //     'description'   => 'required',
+        //     'namabank'      => 'required',
+        //     'nomorrekening' => 'required|numeric',
+        //     'hargaperlembar' => 'required|numeric',
+        //     'totallembar' => 'required|numeric|min: 1',
+        //     'roi_d'         => 'required|numeric',
+        //     'roi_u'         => 'required|numeric|gt:roi_d',
+        //     'duedate'       => 'required|date',
+        //     'proposalinvestasi'   => 'required|mimes:pdf|max:2048',
+        //     'laporankeuangan'   => 'required|mimes:pdf|max:2048',
+        //     'termpolicy'        => 'required',
+        // ]);
 
             $berkasinvestasi= $request->file('proposalinvestasi');
             $berkaskeuangan= $request->file('laporankeuangan');
@@ -293,11 +318,13 @@ class DashboardEmployerController extends Controller
             $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
         try{
             Investasi::create([
+                'nama_investasi'        => $request->input('namainvestasi'),
                 'employer_id'           => $request->session()->get('id'),
                 'status'                => 0,
                 'status_tempo'          => 0,
                 'bank'                  => $request->input('namabank'),
                 'no_rekening'           => $request->input('nomorrekening'),
+                'atas_nama'             => $request->input('atasnama'),
                 'deskripsi_bisnis'      => $request->input('description'),
                 'roi_top'               => $request->input('roi_u'),
                 'roi_bot'               => $request->input('roi_d'),

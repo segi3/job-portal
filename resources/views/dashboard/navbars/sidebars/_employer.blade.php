@@ -98,7 +98,7 @@
                 ">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
-                    Manage Investation
+                    Manage Investment
                     <i class="right fas fa-angle-left"></i>
                 </p>
                 </a>
@@ -106,14 +106,14 @@
                 <li class="nav-item">
                     <a href="/dashboard/er/create-investation" class="nav-link {{ Request::is('dashboard/er/create-investation') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Post new investation</p>
+                    <p>Post new investment</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="/dashboard/er/investations-approval" class="nav-link {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Investations Approval</p>
+                    <p>Investments Approval</p>
                     </a>
                 </li>
                 <li class="nav-item">
