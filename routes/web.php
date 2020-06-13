@@ -79,7 +79,10 @@ Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
 
-
+// investasi
+Route::get('/investasi', 'InvestasiController@index');
+Route::get('/investasi/{id}', 'InvestasiController@detail');
+Route::post('/beli-saham/{id}', 'InvestasiController@beliSaham')->name('saham-beli');
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
