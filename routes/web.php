@@ -26,20 +26,20 @@ Route::get('/', 'PageController@getHome');
 //login register akun
 Route::get('login-welcome', 'PageController@showWelcomeLogin');
 
-Route::get('login-er', 'EmployerController@showLogin')->name('employer.showLogin');
-Route::post('login-er', 'EmployerController@Login')->name('employer.login');
+Route::get('login-er', 'EmployerController@showLogin')->name('employer.showLogin')->middleware('LoginTrue');
+Route::post('login-er', 'EmployerController@Login')->name('employer.login')->middleware('LoginTrue');
 
 Route::get('register-er', 'EmployerController@showRegister')->name('employer.showRegister');
 Route::post('register-er', 'EmployerController@Register')->name('employer.register');
 
-Route::get('login-st', 'StudentController@showLogin')->name('student.showLogin');
-Route::post('login-st', 'StudentController@Login')->name('student.login');
+Route::get('login-st', 'StudentController@showLogin')->name('student.showLogin')->middleware('LoginTrue');;
+Route::post('login-st', 'StudentController@Login')->name('student.login')->middleware('LoginTrue');;
 
 Route::get('register-st', 'StudentController@showRegister')->name('student.showRegister');
 Route::post('register-st', 'StudentController@Register')->name('student.register');
 
-Route::get('login-gs', 'GuestController@showLogin')->name('guest.showLogin');
-Route::post('login-gs', 'GuestController@Login')->name('guest.login');
+Route::get('login-gs', 'GuestController@showLogin')->name('guest.showLogin')->middleware('LoginTrue');;
+Route::post('login-gs', 'GuestController@Login')->name('guest.login')->middleware('LoginTrue');;
 
 Route::get('register-gs', 'GuestController@showRegister')->name('guest.showRegister');
 Route::post('register-gs', 'GuestController@Register')->name('guest.register');

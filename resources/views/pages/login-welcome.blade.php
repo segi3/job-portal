@@ -121,6 +121,15 @@
 
 @section('content')
 
+            {{-- @if (Session::has('success'))
+
+				<div class="alert alert-success" role="alert">
+					<strong>Success:</strong> {{ Session::get('success') }}
+				</div> --}}
+
+            
+
+
     {{-- <div class="job_details_area bg-its-1">
         <div class="container">
             <div class="row">
@@ -195,6 +204,16 @@
         </div>
     </div> --}}
     <div class="job_details_area py-0">
+        <div class="container">
+            @if (Session::has('error'))
+                <div class="container" style="z-index: 99 !important; position: absolute; top: 100px;">
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('error') }}
+                    </div>
+                </div>
+            @endif
+        </div>
+       
         <div class="row">
             <div class="col-lg-4 py-5 bg-login-1">
                 
@@ -209,7 +228,7 @@
                                 <a href="/register-st" class="btn-daftar">Daftar akun student</a>
                             </div>
                             <div class="col-4 pl-0">
-                                <a href="/register-st" class="btn-login">Login</a>
+                                <a href="/login-st" class="btn-login">Login</a>
                             </div>
                         </div>
                     </div>
