@@ -22,6 +22,7 @@ class CreateInvestasiStudentTable extends Migration
             $table->integer('lembar_beli');
             $table->string('berkas_ktp');
             $table->string('berkas_bukti_pembayaran');
+            $table->date('expired_at');
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('investasi_id')->references('id')->on('investasi')->onDelete('cascade')->onUpdate('cascade');
