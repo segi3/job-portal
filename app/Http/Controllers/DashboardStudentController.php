@@ -290,8 +290,32 @@ class DashboardStudentController extends Controller
             Session::flash('error', $errorMsg);
             return redirect()->back();
         }
-
-
-
     }
+    public function InvestReturnApproval(Request $request)
+    {
+        $where = [
+            'investasi_student.student_id' => $request->session()->get('id'),
+
+        ];
+        $invests = DB::table('investasi')
+                    ->join('investasi_student', 'investasi_student.investasi_id', 'investasi.id')
+                    ->join('employers', 'investasi.employer_id', 'employers.id')
+                    ->select('investasi.nama_investasi','employers.name as employername', 'investasi.tgl_jatuh_tempo', 'investasi_student.id')
+                    ->where($where)
+                    ->whereDate('investasi.tgl_jatuh_tempo', '=', \Carbon\Carbon::now()->toDateString())
+                    ->paginate(20);
+        return view('dashboard.pages.student.invest-return-approval')->with('invests', $invests);
+    }
+    public function approveInvestReturn($id)
+    {
+        $where = [
+            'investasi_student.id' => $id,
+        ];
+        DB::table('investasi_student')
+        ->where($where)
+        ->update(['investasi_student.status_uang_balik' => 1]);
+
+        return redirect()->back();
+    }
+
 }

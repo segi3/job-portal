@@ -111,7 +111,9 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::put('dashboard/st/service-applicant/d/{guest}', 'DashboardStudentController@rejectNewApplicants')->name('service-applicant.reject');
     // Route::put('dashboard/st/service-applicant/done/{guest}', 'DashboardStudentController@doneServices')->name('service.done');
     // Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
-
+    Route::get('dashboard/st/invest-return-approval', 'DashboardStudentController@InvestReturnApproval');
+    Route::put('dashboard/st/invest-return/a/{id}', 'DashboardStudentController@approveInvestReturn')->name('invest-return.confirm');
+    
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
     Route::post('/applyjob/{id}', 'JobController@apply');
 
