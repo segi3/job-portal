@@ -295,7 +295,7 @@ class DashboardStudentController extends Controller
     {
         $where = [
             'investasi_student.student_id' => $request->session()->get('id'),
-
+            'investasi_student.status_uang_balik' => 0,
         ];
         $invests = DB::table('investasi')
                     ->join('investasi_student', 'investasi_student.investasi_id', 'investasi.id')
