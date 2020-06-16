@@ -1,9 +1,15 @@
 @extends('dashboard.layout')
 
-@section('title', 'Invesment Approval')
+@section('title', 'Due Date Investation')
 
 @section('stylesheets')
     {{--  --}}
+<style>
+.table-row{
+    cursor:pointer;
+}
+</style>
+
 @endsection
 
 @section('content')
@@ -12,13 +18,13 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Investment Approval</h1>
+        <h1 class="m-0 text-dark">Due Date Investation</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item active">Manage-Investment</li>
-            <li class="breadcrumb-item active">Investment-approval</li>
+            <li class="breadcrumb-item active">Manage-Investation</li>
+            <li class="breadcrumb-item active">Due-Date-Investation</li>
         </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -36,7 +42,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered table-responsive-sm">
+                        {{-- <table class="table table-bordered table-responsive-sm"> --}}
+                            <table class='table table-bordered table-condensed table-responsive-sm table-striped table-hover'>
                             <thead>
                             <tr>
                                 <th>Nama Proyek/Bisnis</th>
@@ -44,28 +51,18 @@
                                 <th>No Rekening</th>
                                 <th>ROI</th>
                                 <th>jatuh Tempo</th>
-                                <th>Updated at</th>
-                                <th style="width: 154px">Status</th>
+
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
 
                             @foreach($investations as $investation)
-                                <tr>
+                            <tr class="table-row" data-href="investation-due-payments/investasi/{{$investation->id}}">
                                     <td>{{ $investation->nama_investasi }}</td>
                                     <td>{{ $investation->deskripsi_bisnis }}</td>
                                     <td>{{ $investation->no_rekening }} - {{ $investation->bank }}</td>
                                     <td>{{ $investation->roi_bot }}% - {{ $investation->roi_top }}%</td>
                                     <td>{{ $investation->tgl_jatuh_tempo }}</td>
-                                    <td>{{ $investation->updated_at }}</td>
-                                    <td>
-                                    @if ($investation->status == 0)
-                                        <span class="badge bg-warning">Pending</span>
-                                    @elseif ($investation->status == 1)
-                                        <span class="badge bg-success">Approved</span>
-                                    @elseif($investation->status == 2)
-                                        <span class="badge bg-danger">Rejected</span>
-                                    @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -92,4 +89,14 @@
 
 @section('scripts')
     {{--  --}}
+<script>
+    $(document).ready(function($) {
+        $(".table-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+
+
+</script>
+
 @endsection

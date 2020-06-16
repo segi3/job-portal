@@ -113,7 +113,7 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     // Route::put('dashboard/st/service-applicant/notdone/{guest}', 'DashboardStudentController@notdoneServices')->name('service.notdone');
     Route::get('dashboard/st/invest-return-approval', 'DashboardStudentController@InvestReturnApproval');
     Route::put('dashboard/st/invest-return/a/{id}', 'DashboardStudentController@approveInvestReturn')->name('invest-return.confirm');
-    
+
     Route::get('dashboard/st/job-approval', 'DashboardStudentController@getJobsApproval');
     Route::post('/applyjob/{id}', 'JobController@apply');
 
@@ -146,6 +146,10 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/investations-approval', 'DashboardEmployerController@getInvestationsApproval');
     Route::get('dashboard/er/investor-confirmation', 'DashboardEmployerController@getPaidInvestor');
     Route::put('dashboard/er/investor-confirmation/a/{id}', 'DashboardEmployerController@confirmPaidInvestor')->name('investor.paid.approve');
+
+    Route::get('dashboard/er/investation-due-payments', 'DashboardEmployerController@getDueInvestation');
+    Route::get('dashboard/er/investation-due-payments/investasi/{id}', 'DashboardEmployerController@getDueInvestationInvestor');
+    Route::put('dashboard/er/investation-due-payments/investasi/save/{isid}', 'DashboardEmployerController@saveBuktiPembayaran')->name('investationDuePaymentsSave');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){

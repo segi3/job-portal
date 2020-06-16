@@ -328,6 +328,7 @@ class DashboardController extends Controller
         $investasi = Investasi::find($id);
 
         $investasi->status = 1;
+        $investasi->status_tempo = 1;
         $investasi->admin_id = $request->session()->get('id');
         $investasi->save();
         return redirect()->back();
@@ -343,7 +344,7 @@ class DashboardController extends Controller
     }
 
 
-    public function getApprovedInvestment() 
+    public function getApprovedInvestment()
     {
         $investasi = Investasi::where('investasi.status', '1')
                 ->leftjoin('employers', 'employers.id', 'employer_id')
@@ -352,7 +353,7 @@ class DashboardController extends Controller
 
         return view ('dashboard.pages.admins.approvedinvestment')->with('investasi', $investasi);
     }
-    public function getUnapprovedInvestment() 
+    public function getUnapprovedInvestment()
     {
         $investasi = Investasi::where('investasi.status', '2')
         ->leftjoin('employers', 'employers.id', 'employer_id')
@@ -366,7 +367,7 @@ class DashboardController extends Controller
         $where = [
             'investasi.id' => $proposal,
         ];
-  
+
         $berkas_db = DB::table('investasi')
         ->leftjoin('employers', 'employers.id', 'employer_id')
         ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_proposal_investasi as berkas')
@@ -381,7 +382,7 @@ class DashboardController extends Controller
         $where = [
             'investasi.id' => $laporan,
         ];
-  
+
         $berkas_db = DB::table('investasi')
         ->leftjoin('employers', 'employers.id', 'employer_id')
         ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_laporan_keuangan as berkas')

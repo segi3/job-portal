@@ -10,7 +10,7 @@ class InvestasiStudent extends Model
 
     protected $fillable = [
       'student_id', 'investasi_id', 'lembar_beli', 'berkas_ktp', 'berkas_bukti_pembayaran',
-      'status_bayar', 'status_uang_balik',
+      'status_bayar', 'status_uang_balik','status_payback','berkas_payback',
     ];
 
 }

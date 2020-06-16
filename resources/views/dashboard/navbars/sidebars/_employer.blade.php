@@ -95,6 +95,7 @@
                 {{ Request::is('dashboard/er/create-investation') ? "active" : "" }}
                 {{ Request::is('dashboard/er/investations-approval') ? "active" : "" }}
                 {{ Request::is('dashboard/er/investations-investor-confirmation') ? "active" : "" }}
+                {{ Request::is('dashboard/er/investation-due-payments') ? "active" : "" }}
                 ">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
@@ -120,6 +121,12 @@
                     <a href="/dashboard/er/investor-confirmation" class="nav-link {{ Request::is('dashboard/er/investor-confirmation') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Investor Confirmation</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard/er/investation-due-payments" class="nav-link {{ Request::is('dashboard/er/investation-due-payments') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Investation Due Payments</p>
                     </a>
                 </li>
                 </ul>

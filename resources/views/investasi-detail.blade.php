@@ -8,6 +8,7 @@
         color: red;
     }
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
 @endsection
 
@@ -95,11 +96,11 @@
                     @endif
 
                 </div>
-               
+
             </div>
             <div class="col-lg-4">
                 <div class="job_sumary">
-                    
+
                     <div class="summery_header">
                         <h3>Informasi investasi</h3>
                     </div>
@@ -155,11 +156,11 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                             @endif
-                        
+
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -177,7 +178,7 @@
             document.getElementById('hg').value = upd;
             console.log(upd)
         }
-        
+
     </script>
     <script type="application/javascript">
         $('#berkas').change(function(e2){
@@ -186,5 +187,5 @@
             $('#idberkas').html(fileName2);
         });
     </script>
-    
+
 @endsection

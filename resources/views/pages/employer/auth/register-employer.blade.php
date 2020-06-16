@@ -112,8 +112,8 @@
                                       </button>
                                     </div>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" name="berkas_verifikasi" id="berkas_verifikasi" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label" id="idberkas" for="berkas_verifikasi">Upload Berkas</label>
+                                      <input type="file" class="custom-file-input" name="berkas_verifikasi" accept="application/pdf" id="berkas_verifikasi" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label"  id="idberkas" for="berkas_verifikasi">Upload Berkas</label>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                       </button>
                                     </div>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" name="logo" id="logo" aria-describedby="inputGroupFileAddon03">
+                                      <input type="file" class="custom-file-input" name="logo" accept=".jpeg,.png,.jpg,.gif,.svg" id="logo" aria-describedby="inputGroupFileAddon03">
                                       <label class="custom-file-label" id="idlogo" for="logo">Upload Image</label>
                                     </div>
                                 </div>

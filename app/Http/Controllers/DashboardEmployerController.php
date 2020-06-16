@@ -265,7 +265,7 @@ class DashboardEmployerController extends Controller
     }
 
     public function postCreateInvestation(Request $request){
-        
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -439,6 +439,93 @@ class DashboardEmployerController extends Controller
                     ]);
         return redirect()->back();
 
+    }
+
+    public function getDueInvestation(Request $request){
+
+        $now= \Carbon\Carbon::now();
+        // dd($now);
+        // dd($now);
+        $investation = DB::table('investasi')
+                        ->where('employer_id', $request->session()->get('id'))
+                        ->Where('tgl_jatuh_tempo','<',$now)
+                        ->Where('status_tempo',2)
+                        ->paginate(20);
+        return view('dashboard.pages.employer.investation-due-payments')->with('investations', $investation);
+    }
+    public function getDueInvestationInvestor(Request $request,$id){
+
+        $investation = DB::table('investasi_student')
+                        ->join('students', 'investasi_student.student_id', 'students.id')
+                        ->join('investasi', 'investasi_student.investasi_id', 'investasi.id')
+                        ->select(
+                            'investasi_student.id as isid',
+                            'investasi_student.student_id as isstudent_id',
+                            'investasi_student.investasi_id as isinvestasi_id',
+                            'investasi_student.status_bayar as isstatus_bayar',
+                            'investasi_student.status_uang_balik as isstatus_uang_balik',
+                            'investasi_student.lembar_beli as islembar_beli',
+                            'investasi_student.berkas_ktp as isktp_investor',
+                            'investasi_student.berkas_bukti_pembayaran as isbukti_bayar_investor',
+                            'investasi_student.updated_at as updated',
+                            'investasi_student.status_payback as status_payback',
+                            'students.name as s_name',
+                            'students.id as s_id',
+                            'students.nrp as nrp',
+                            'students.email as s_email',
+                            'students.mobile_no as s_mobile_no',
+                            'students.skill as s_skill',
+                            'students.achievment as s_achievment',
+                            'students.experience as s_experience',
+                            'students.city as s_city',
+                            'students.province as s_province',
+                            'investasi.employer_id as employer_id',
+                            'investasi.nama_investasi as in_nama_investasi')
+                        ->where('investasi_id', $id)
+                        ->Where('status_bayar','=',2)
+                        ->paginate(20);
+        return view('dashboard.pages.employer.investation-due-payments-investor')->with('investations', $investation);
+    }
+
+    public function saveBuktiPembayaran(Request $request,$isid){
+        // dd($isid);
+        $input = $request->all();
+        // dd($input);
+        $validator = Validator::make($input, [
+            'payback'   => 'required|mimes:pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->first());
+            return redirect()->back()->withInput();
+        }
+        $berkaspayback= $request->file('payback');
+        $current_date_time = \Carbon\Carbon::now()->toDateTimeString();
+        $studentid= $request->session()->get('id');
+        $studentname= $request->session()->get('name');
+        $extension= '.pdf';
+        $tujuan= 'data_files/berkas_bukti/'.$isid;
+        $nama= "payback_".md5($studentid.$studentname.$isid.$current_date_time).$extension;
+        try {
+            $berkaspayback->move($tujuan,$nama);
+        } catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorMsg);
+            return redirect()->back();
+        }
+        // dd($isid);
+        $acc = DB::table('investasi_student')
+                    ->where('id', $isid)
+                    ->update([
+                        'berkas_payback' => $nama,
+                        'status_payback' => 1,
+                    ]);
+        return redirect()->back();
     }
 }
 

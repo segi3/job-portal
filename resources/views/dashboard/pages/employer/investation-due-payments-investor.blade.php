@@ -1,8 +1,9 @@
 @extends('dashboard.layout')
 
-@section('title', 'Investor Payment Confirmation<')
+@section('title', 'Investor Payback Confirmation')
 
 @section('stylesheets')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     {{--  --}}
 @endsection
 
@@ -12,13 +13,13 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Investor Payment Confirmation</h1>
+        <h1 class="m-0 text-dark">Investor Payback Confirmation Investasi {{$investations->first()->in_nama_investasi}}</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
             <li class="breadcrumb-item active">Manage-Investment</li>
-            <li class="breadcrumb-item active">Investor-Payment-Confirmation</li>
+            <li class="breadcrumb-item active">Investor-Payback-Confirmation</li>
         </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -32,38 +33,26 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Investor Queue</h3>
+
+                    <h3 class="card-title">Investor {{$investations->first()->in_nama_investasi}}</h3>
                     </div>
                     <!-- /.card-header -->
 
 
                     {{-- Uji--}}
                     <div class="card-body">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="investSelector">Investasi</button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    @foreach ($employerInvestation as $inves)
-                                    <a class="dropdown-item" href="javascript:void(0)" onclick="searchInvestasi(this.innerHTML)">{{$inves->nama_investasi}}</a>
-                                    @endforeach
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)" onclick="searchInvestasi('all')">Semua</a>
-                                </div>
-                            </div>
-                            <input class="form-control mb-4" id="tableSearch" type="text"placeholder="Pencarian">
-                        </div>
-
                         <table class="table table-bordered table-responsive-sm">
                             <thead>
                             <tr>
-                                <th>Nama mahasiwa</th>
+                                <th>Nama Mahasiwa</th>
                                 <th>NRP</th>
-                                <th>Nama Investasi/Bisnis</th>
+                                {{-- <th>Nama Investasi/Bisnis</th> --}}
                                 <th>Lembar Beli</th>
-                                <th>Berkas KTP</th>
-                                <th>Bukti Pembayaran</th>
+                                {{-- <th>Berkas KTP</th> --}}
+                                {{-- <th>Bukti Pembayaran</th> --}}
                                 <th>Details</th>
-                                <th>Action</th>
+                                <th>Bukti Pembayaran</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody id="myTable">
@@ -72,23 +61,18 @@
                                 <tr>
                                     <td>{{ $investasi_student->s_name }}</td>
                                     <td>{{ $investasi_student->nrp }}</td>
-                                    <td>{{ $investasi_student->in_nama_investasi }}</td>
+                                    {{-- <td>{{ $investasi_student->in_nama_investasi }}</td> --}}
                                     <td>{{ $investasi_student->islembar_beli }}</td>
-                                    <td>
-                                      {{-- <form action="{{ route('cv.download', 'cv-'.$investasi_student->id.'-'.$investasi_student->idjob) }}" method="get"> --}}
+                                    {{-- <td>
+                                      <form action="{{ route('cv.download', 'cv-'.$investasi_student->id.'-'.$investasi_student->idjob) }}" method="get">
                                         <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
-                                      {{-- </form> --}}
-                                    </td>
+                                      </form>
+                                    </td> --}}
                                     <td>
-                                        {{-- <form action="{{ route('cv.download', 'cv-'.$investasi_student->id.'-'.$investasi_student->idjob) }}" method="get"> --}}
-                                          <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
-                                        {{-- </form> --}}
-                                      </td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $investasi_student->s_id }}">
+                                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $investasi_student->isid }}">
                                             Details
                                         </button>
-                                        <div class="modal fade" id="modal-{{ $investasi_student->s_id }}">
+                                        <div class="modal fade" id="modal-{{ $investasi_student->isid }}">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
                                                 <div class="modal-header">
@@ -142,30 +126,57 @@
                                         <!-- /.modal -->
                                     </td>
                                     <td>
-                                        <div class="row">
-                                          <div class="col-lg-6">
-                                              <form action="{{ route('investor.paid.approve', $investasi_student->isid) }}" method="post">
-                                                  {{ csrf_field() }}
-                                                  {{ method_field('put') }}
-                                              <button type="submit" class="btn btn-sm btn-success mr-4" id="Konfirmasi{{$investasi_student->isid}}">Konfirmasi</button>
-                                              </form>
-                                          </div>
-                                      </div>
-                                      {{-- @if ($investasi_student->status_bayar == 2)
-                                        <script>
-                                            var idbut= "#Konfirmasi<?php echo $investasi_student->id?>"
-                                            console.log(idbut);
-                                            var button = $('idbut');
-                                            $(button).prop('disabled', true);
-                                        </script>
-                                      @else
-                                        <script>
-                                            var idbut= "#Konfirmasi<?php echo $investasi_student->id?>"
-                                            console.log(idbut);
-                                            var button = $('idbut');
-                                            $(button).prop('disabled', false);
-                                        </script>
-                                      @endif --}}
+                                        <button type="button" class="bukti btn btn-sm btn-default" data-toggle="modal" id="uploadbp{{ $investasi_student->isid }}" data-idstd="{{ $investasi_student->isid }}" data-target="#modal-pembayaran-{{ $investasi_student->isid }}">
+                                            Upload Bukti Pembayaran
+                                        </button>
+                                        <div class="modal fade" id="modal-pembayaran-{{ $investasi_student->isid }}">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h4 class="modal-title">Bukti Pembayaran {{$investasi_student->s_name}}</h4>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form id="contact_form" action="{{ route('investationDuePaymentsSave', $investasi_student->isid) }}" method="POST" enctype = "multipart/form-data">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('put') }}
+                                                    <div class="form-group">
+                                                        <label for="contact_no" class="">{{ __('Bukti Pengembalian Uang Saham') }}</label><span
+                                                            class="red-str">*</span>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
+                                                                        aria-hidden="true"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="custom-file">
+                                                            <label class="custom-file-label" id="idlabelpayback{{$investasi_student->isid}}">Upload Berkas Bukti Pembayaran</label>
+                                                                <input type="file" class="custom-file-input" name="payback"
+                                                                id="idpayback{{$investasi_student->isid}}" accept="application/pdf"
+                                                                    aria-describedby="inputGroupFileAddon03">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" id="submitForm" class="btn btn-default">Save</button>
+                                                </form>
+                                                </div>
+                                                <div class="modal-footer justify-content-left">
+                                                  <button type="button" class="btn btn-default" onclick="myFunction()" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                              <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if ($investasi_student->status_payback == 0)
+                                            <span class="badge bg-danger">Belum Dibayarkan</span>
+                                        @elseif ($investasi_student->status_payback == 1)
+                                            <span class="badge bg-success">Sudah Dibayarkan</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -194,6 +205,7 @@
     {{--  --}}
 
 <script>
+
     $(document).ready(
         function(){
         $("#tableSearch").on("keyup", function() {
@@ -233,15 +245,22 @@
     }
 </script>
 
-{{-- <script>
-    $(document).ready(function() {
-        var button = $('#Konfirmasi');
-        $(button).prop('disabled', true);
-
-        $('#Konfirmasi').click(function() {
-            if ($(button).prop('disabled')) $(button).prop('disabled', false);
-            else $(button).prop('disabled', true);
-        });
+<script>
+    $('.custom-file-input').change(function (e2) {
+          var fileName2 = e2.target.files[0].name
+          $('.custom-file-label').html(fileName2);
     });
-</script> --}}
+</script>
+
+<script>
+function myReset(){
+    var messege='Upload Berkas Bukti Pembayaran'
+    $('.custom-file-label').html(messege);
+
+}
+function myFunction() {
+  myVar = setTimeout(myReset, 50);
+}
+</script>
+
 @endsection

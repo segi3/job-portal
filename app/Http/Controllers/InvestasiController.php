@@ -42,7 +42,8 @@ class InvestasiController extends Controller
                         ->select('investasi.*', 'employers.name as employername')
                         ->where($where)
                         ->first();
-        
+        // dd($investasi);
+
         return view('investasi-detail')->with('investasi', $investasi);
     }
 
@@ -62,7 +63,7 @@ class InvestasiController extends Controller
             'lembar_beli' => 'required',
             'berkas' => 'required|mimes:pdf',
         ]);
-        
+
         if ($validator->fails()){
             Session::flash('error', $validator->errors()->first());
             return redirect()->back();
@@ -108,6 +109,6 @@ class InvestasiController extends Controller
         }
 
 
-        
+
     }
 }
