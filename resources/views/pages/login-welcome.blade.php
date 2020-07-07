@@ -4,6 +4,10 @@
 
 @section('stylesheets')
 <style>
+    .vh {
+        height: 100vh;
+    }
+
     .bg-its-1 {
         background-image: url('{{ asset('img') }}/its-bg-1.jpg');
         background-repeat: no-repeat;
@@ -115,6 +119,10 @@
         border: 1px solid rgb(0, 105, 217);
         background: rgb(0, 105, 217, 0.5);
     }
+    .no-margin
+    {
+        margin: 0px !important;
+    }
 </style>
     
 @endsection
@@ -203,19 +211,20 @@
             </div>
         </div>
     </div> --}}
-    <div class="job_details_area py-0">
-        <div class="container">
+    <div class="job_details_area py-0 vh">
+        
             @if (Session::has('error'))
+            <div class="container">
                 <div class="container" style="z-index: 99 !important; position: absolute; top: 100px;">
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('error') }}
                     </div>
                 </div>
+            </div>
             @endif
-        </div>
        
-        <div class="row">
-            <div class="col-lg-4 py-5 bg-login-1">
+        <div class="row no-margin">
+            <div class="col-lg-4 py-5 bg-login-1" style="height: 100vh;">
                 
                 <div class="container pt-5">
                     <div class="searching_text pt-5">
@@ -235,7 +244,7 @@
                 </div>
                 
             </div>
-            <div class="col-lg-4 py-5 bg-login-2">
+            <div class="col-lg-4 py-5 bg-login-2" style="height: 100vh;">
                 <div class="container pt-5">
                     <div class="searching_text pt-5">
                         <div class="container-tr">
@@ -253,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 py-5 bg-login-3">
+            <div class="col-lg-4 py-5 bg-login-3" style="height: 100vh;">
                 <div class="container pt-5">
                     <div class="text-search pt-5">
                         <div class="container-tr">

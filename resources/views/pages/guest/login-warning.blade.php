@@ -37,8 +37,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-lg-offset-3">
                     <div class="apply_job_form white-bg mt-5">
-                        <h3>Akun anda akan segera aktif</h3>
-                        <p>Demi keamanan dan untuk mencegah akun spam, maka akun employer akan di verifikasi secara manual.</p>
+                        <h3>Akun anda belum aktif</h3>
+                        <p>Demi keamanan dan untuk mencegah akun spam, akun anda akan melalui tahap verifikasi.</p>
                         <p>Terimakasih atas pengertian anda.</p>
 					</div>
                 </div>

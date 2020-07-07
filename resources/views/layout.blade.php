@@ -18,7 +18,12 @@
     @yield('content')
 
     {{-- footer --}}
-    @include('footers._footer')
+    @if(Route::current()->getName() == 'login-welcome')
+    
+    @else
+        @include('footers._footer')
+    @endif
+    
 
     {{-- portal's js's --}}
     @include('partials._javascripts')
