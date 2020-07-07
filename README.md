@@ -3,72 +3,72 @@
 ### investasi 06/07/2020
 
 revisi
->kredensial jadi jasa
->update home dashboard jadi navigasi
->create seminar diubah jadi post seminar ads
->redirect login ke home dashboard
->update list investasi
+- kredensial jadi jasa
+- update home dashboard jadi navigasi
+- create seminar diubah jadi post seminar ads
+- redirect login ke home dashboard
+- update list investasi
 
 akun investee
->halaman login
->halaman register
->dashboard investee
+- halaman login
+- halaman register
+- dashboard investee
 
 dashboard investee
->create iyt(ambil dari yg ada di employer)
->list iyt
+- create iyt(ambil dari yg ada di employer)
+- list iyt
 
->create project (ambil dari yg ada di employer)
->status project (accepted/denied/running)
->halaman detail project(link dari list project, khusus investee, bisa liat investor, submit progres)
+- create project (ambil dari yg ada di employer)
+- status project (accepted/denied/running)
+- halaman detail project(link dari list project, khusus investee, bisa liat investor, submit progres)
 
->create funding(ambil dari yg ada di employer)
->status funding (accepted/denied/running)
->halaman detail funding (liat investor)
+- create funding(ambil dari yg ada di employer)
+- status funding (accepted/denied/running)
+- halaman detail funding (liat investor)
 
 dashboard admin
->acc/deny new investee
->list investee
->acc/deny project
->list project
->acc/deny funding
->list funding
+- acc/deny new investee
+- list investee
+- acc/deny project
+- list project
+- acc/deny funding
+- list funding
 
 ---
 proses investasi
 
 iyt
->daftar akun investee
->buat investasi iyt
+- daftar akun investee
+- buat investasi iyt
 
 non iyt project
->daftar akun investee
+- daftar akun investee
 
->buat investasi project
->investor beli lembar, bayar lewat gateway
->dana diterima admin
+- buat investasi project
+- investor beli lembar, bayar lewat gateway
+- dana diterima admin
 dua kemungkinan:
->jatuh tempo, admin ngirim dana ke investee
->investasi tidak sesuai target admin ngirim danake investor
+- jatuh tempo, admin ngirim dana ke investee
+- investasi tidak sesuai target admin ngirim danake investor
 
->investee ngirim progres investasi
->investor bisa liat progres investasi
+- investee ngirim progres investasi
+- investor bisa liat progres investasi
 
 non iyt funding
->daftar akun investee
->buat investasi funding
->investor kirim dana leway gateway
->admin terima dana
->admin ngirim ke investee
+- daftar akun investee
+- buat investasi funding
+- investor kirim dana leway gateway
+- admin terima dana
+- admin ngirim ke investee
 
 ------
 tabel database
 
 table employer
->di lepas yg berhubungan sama investasi
+- di lepas yg berhubungan sama investasi
 
 table investee
->nyimpen data investee
+- nyimpen data investee
 
 table investasi_iyt
 
@@ -79,19 +79,19 @@ table investasi_funding
 table progres_project
 
 table order_student_project
->nyimpen transaksi untuk project dari student
+- nyimpen transaksi untuk project dari student
 
 table order_guest_project
->nyimpen transaksi untuk project dari guest
+- nyimpen transaksi untuk project dari guest
 
 table order_funding
->nyimpen transaksi untuk funding
+- nyimpen transaksi untuk funding
 
 table notif_project
->nyimpen hasil api notif dari midtrans
+- nyimpen hasil api notif dari midtrans
 
 table notif_funding
->nyimpen hasil api notif dari midtrans
+- nyimpen hasil api notif dari midtrans
 
  
 ---
