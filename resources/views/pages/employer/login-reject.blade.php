@@ -37,9 +37,9 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-lg-offset-3">
                     <div class="apply_job_form white-bg mt-5">
-                        <h3>Akun anda ditolak.</h3>
+                        <h3>Akun tidak lolos verifikasi.</h3>
                         <p>Akun anda dinyatakan sebagai akun spam atau tidak memiliki data yang valid.</p>
-                        <p>Anda dapat menghubungi service untuk menindak lanjuti pendaftaran akun.</p>
+                        
                         <p>Terimakasih atas pengertian anda.</p>
 					</div>
                 </div>

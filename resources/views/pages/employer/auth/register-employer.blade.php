@@ -105,7 +105,7 @@
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Fax'" class="single-input">
                             </div>
 							<div class="form-group">
-                                <label for="contact_no" class="">{{ __('Surat Rekomendasi Instansi/Perusahaan') }}</label><span class="red-str">*</span>
+                                <label for="" class="">{{ __('Surat Rekomendasi Instansi/Perusahaan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="contact_no" class="">{{ __('Logo Instansi/Perusahaan') }}</label><span class="red-str">*</span>
+                                <label for="" class="">{{ __('Logo Instansi/Perusahaan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>

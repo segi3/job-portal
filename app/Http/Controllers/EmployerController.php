@@ -81,7 +81,7 @@ class EmployerController extends Controller
 
     public function Register(Request $request)
     {
-
+        dd($request);
         $input = $request->all();
 
         $validator = Validator::make($input, [
