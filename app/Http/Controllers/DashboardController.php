@@ -30,6 +30,10 @@ class DashboardController extends Controller
         return view('/');
     }
 
+    public function getInvestee() {
+        return view('dashboard.pages.investee.home');
+    }
+
     // manage users admin
     public function getUserList()
     {

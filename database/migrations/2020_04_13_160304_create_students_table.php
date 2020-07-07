@@ -15,6 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('status', 1)->default('0');
             $table->string('name');
             $table->string('nrp', 14);
             $table->string('mobile_no');
@@ -29,6 +30,7 @@ class CreateStudentsTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('province');
+            $table->string('berkas_validasi');
 
             $table->timestamps();
         });

@@ -12,8 +12,6 @@
 
 <div class="wrapper">
 
-    
-
     {{-- navbar --}}
     @include('dashboard.navbars._navbar')
 
@@ -24,6 +22,8 @@
         @include('dashboard.navbars.sidebars._admin')
     @elseif( session('role') == 'guest')
         @include('dashboard.navbars.sidebars._guest')
+    @elseif (Request::segment(2) == 'investee'))
+        @include('dashboard.navbars.sidebars._investee')
     @elseif( session('role') == 'student')
         @include('dashboard.navbars.sidebars._student')
     @endif
@@ -38,7 +38,7 @@
     {{-- sidebar control --}}
 
     {{-- footer --}}
-    @include('dashboard.footers._footer')
+     @include('dashboard.footers._footer')
 
 </div>
 

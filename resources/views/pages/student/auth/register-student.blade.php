@@ -51,14 +51,14 @@
                 <div class="col-lg-6">
                     <div class="apply_job_form white-bg">
 						<h3 style="text-align:center" class="mb-30">Register Akun Student</h3>
-						<form method="POST" action="{{ route('student.register') }}">
+						<form method="POST" action="{{ route('student.register') }}" enctype="multipart/form-data">
 						@csrf
                             <div class="mt-10">
                                 <label for="email" class="">{{ __('Email') }}</label><span class="red-str"> *</span>
-                                <input type="email" name="email" placeholder="Alamat email"
+                                <input type="email" name="email" placeholder="Alamat email" value="{{  old('email')  }}"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat email'" required class="single-input">
                             </div>
-                            <div class="mt-10 mb-5">
+                            <div class="mt-10">
                                 <label for="password" class="">{{ __('Password') }}</label><span class="red-str"> *</span>
                                 <input type="password" name="password" placeholder="Password"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">
@@ -72,12 +72,12 @@
 
 							<div class="mt-10">
 								<label for="name" class="">{{ __('Nama') }}</label><span class="red-str"> *</span>
-								<input type="text" name="name" placeholder="Nama Panjang"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama panjang'" required class="single-input">
+								<input type="text" name="name" placeholder="Nama Lengkap" value="{{  old('name')  }}"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap'" required class="single-input">
                             </div>
                             <div class="mt-10">
 								<label for="nrp" class="">{{ __('NRP') }}</label><span class="red-str"> *</span>
-								<input type="text" name="nrp" placeholder="NRP"
+								<input type="text" name="nrp" placeholder="NRP" value="{{  old('nrp')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'NRP'" required class="single-input">
                             </div>
                             <div class="mt-10">
@@ -97,54 +97,66 @@
                             </div>
                             <div class="mt-10">
 								<label for="birthday" class="">{{ __('Tanggal lahir') }}</label><span class="red-str"> *</span>
-								<input type="text" name="birthday" placeholder="dd-mm-yyyy"
+								<input type="text" name="birthday" placeholder="dd-mm-yyyy" value="{{  old('birthday')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'dd-mm-yyyy'" required class="single-input form-control datepicker">
                             </div>
                             <div class="mt-10 mb-5">
 								<label for="mobile_no" class="">{{ __('Nomor HP') }}</label><span class="red-str"> *</span>
-								<input type="text" name="mobile_no" placeholder="Nomor HP aktif"
+								<input type="text" name="mobile_no" placeholder="Nomor HP aktif" value="{{  old('mobile_no')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nomor HP aktif'" required class="single-input">
                             </div>
 
 
 							<div class="mt-10">
 								<label for="address" class="">{{ __('Alamat') }}</label><span class="red-str"> *</span>
-								<input type="text" name="address" placeholder="Alamat"
+								<input type="text" name="address" placeholder="Alamat" value="{{  old('address')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'" required class="single-input">
 							</div>
 							<div class="mt-10">
 								<label for="city" class="">{{ __('Kota') }}</label><span class="red-str"> *</span>
-								<input type="text" name="city" placeholder="Kota"
+								<input type="text" name="city" placeholder="Kota" value="{{  old('city')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kota'" required class="single-input">
 							</div>
 							<div class="mt-10 mb-5">
 								<label for="province" class="">{{ __('Provinsi') }}</label><span class="red-str"> *</span>
-								<input type="text" name="province" placeholder="Provinsi"
+								<input type="text" name="province" placeholder="Provinsi" value="{{  old('province')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Provinsi'" required class="single-input">
 							</div>
 
 
 							<div class="mt-10">
 								<label for="hobby" class="">{{ __('hobby') }}</label><span class="red-str"> *</span>
-								<input type="text" name="hobby" placeholder="hobby"
+								<input type="text" name="hobby" placeholder="hobby" value="{{  old('hobby')  }}"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'hobby'" required class="single-input">
 							</div>
 							<div class="mt-10">
                                 <label for="skill" class="">{{ __('Skill') }}</label><span class="red-str"> *</span>
 								<textarea name="skill" class="single-textarea" placeholder="Skill" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Skill'" required></textarea>
+									onblur="this.placeholder = 'Skill'" required>{{  old('skill')  }}</textarea>
                             </div>
                             <div class="mt-10">
                                 <label for="achievment" class="">{{ __('Achievment') }}</label><span class="red-str"> *</span>
 								<textarea name="achievment" class="single-textarea" placeholder="Achievment" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Achievment'" required></textarea>
+									onblur="this.placeholder = 'Achievment'" required>{{  old('achievment')  }}</textarea>
                             </div>
                             <div class="mt-10 mb-5">
                                 <label for="experience" class="">{{ __('Experience') }}</label><span class="red-str"> *</span>
 								<textarea name="experience" class="single-textarea" placeholder="Experience" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Experience'" required></textarea>
+									onblur="this.placeholder = 'Experience'" required>{{  old('experience')  }}</textarea>
 							</div>
-
+                            <div class="form-group">
+                                <label for="contact_no" class="">{{ __('Scan KTM / File transkrip terbaru (PDF)') }}</label><span class="red-str">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                      </button>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="berkas_verifikasi" accept="application/pdf" id="berkas_verifikasi" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label"  id="idberkas" for="berkas_verifikasi">Upload Berkas</label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="input-group-icon mt-10">
                                 <div class="col-lg">
@@ -178,5 +190,11 @@
          todayHighlight: true,
      });
     });
+
+    $('#berkas_verifikasi').change(function(e2){
+		var fileName2 = e2.target.files[0].name;
+        // dd(fileName2);
+		$('#idberkas').html(fileName2);
+	});
    </script>
 @endsection

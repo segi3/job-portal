@@ -15,20 +15,21 @@ class CreateInvesteeTable extends Migration
     {
         Schema::create('investee', function (Blueprint $table) {
             $table->id();
+            $table->string('status', 1)->default('0');
             $table->bigInteger('admin_id')->nullable()->unsigned();
-            $table->string('name');
+            $table->bigInteger('student_id')->nullable()->unsigned()->unique();
+            $table->string('nama');
             $table->string('address');
             $table->string('city');
             $table->string('province');
             $table->string('fax', 15)->nullable();
             $table->string('contact_person');
             $table->string('contact_no');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('berkas_verifikasi');
+            $table->string('email');
             
             $table->timestamps();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

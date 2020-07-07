@@ -24,7 +24,7 @@ Route::get('/', 'PageController@getHome');
 
 
 //login register akun
-Route::get('login-welcome', 'PageController@showWelcomeLogin');
+Route::get('login-welcome', 'PageController@showWelcomeLogin')->name('login-welcome');
 
 Route::get('login-er', 'EmployerController@showLogin')->name('employer.showLogin')->middleware('LoginTrue');
 Route::post('login-er', 'EmployerController@Login')->name('employer.login')->middleware('LoginTrue');
@@ -120,6 +120,13 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/st/profile', 'DashboardStudentController@getProfilePage');
     Route::get('dashboard/st/profile/edit', 'DashboardStudentController@editProfilePage');
     Route::put('dashboard/st/profile/update', 'DashboardStudentController@updateProfilePage')->name('student.profile.update');
+
+    Route::get('dashboard/register-investee', 'DashboardInvesteeController@showRegister');
+    Route::post('dashboard/register-investee', 'DashboardInvesteeController@registerNew')->name('post-register-investee');
+    Route::get('dashboard/register-status', 'DashboardInvesteeController@getRegisterStatus');
+
+    Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
+    Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
