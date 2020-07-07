@@ -40,21 +40,28 @@ class GuestController extends Controller
         $guest = Guest::where('email', '=', $request->input('email'))->first();
 
         if ($guest) {
-            if (Hash::check($request->input('password'), $guest->password)) {
-                $request->session()->put([
-                    'login' => true,
-                    'id' => $guest->id,
-                    'name' => $guest->name,
-                    'email' => $guest->email,
-                    'role' => 'guest',
-                ]);
-
-                Session::flash('success', 'Anda berhasil login');
-                return redirect('/');
-            }else{
-                Session::flash('error', 'Password tidak cocok');
-                return redirect()->route('guest.showLogin');
+            if($guest->status_gs == 1){
+                if (Hash::check($request->input('password'), $guest->password)) {
+                    $request->session()->put([
+                        'login' => true,
+                        'id' => $guest->id,
+                        'name' => $guest->name,
+                        'email' => $guest->email,
+                        'role' => 'guest',
+                    ]);
+    
+                    Session::flash('success', 'Anda berhasil login');
+                    return redirect('/');
+                }else{
+                    Session::flash('error', 'Password tidak cocok');
+                    return redirect()->route('guest.showLogin');
+                }
+            }else if ($guest->status_gs == 0){
+                return view('pages.employer.login-warning');
+            }else if ($guest->status_gs == 2) {
+                return view('pages.employer.login-reject');
             }
+            
         }else{
             Session::flash('error', 'Akun tidak ditemukan');
             return redirect()->route('guest.showLogin');
