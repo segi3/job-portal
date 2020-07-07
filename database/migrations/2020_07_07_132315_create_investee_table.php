@@ -15,7 +15,7 @@ class CreateInvesteeTable extends Migration
     {
         Schema::create('investee', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('admin_id')->after('id')->nullable()->unsigned();
+            $table->bigInteger('admin_id')->nullable()->unsigned();
             $table->string('name');
             $table->string('address');
             $table->string('city');
