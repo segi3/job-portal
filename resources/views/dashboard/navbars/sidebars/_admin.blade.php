@@ -22,8 +22,16 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item has-treeview {{ Request::is('admin/user-list') ? "menu-open" : "" }}">
-                <a href="#" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-students') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-students') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-students') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-students') ? "active" : "" }}
+                {{ Request::is('admin/approved-students') ? "active" : "" }}
+                {{ Request::is('admin/unapproved-students') ? "active" : "" }}
+                ">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
                     Manage Students
@@ -32,9 +40,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/admin/user-list" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
+                    <a href="admin/new-students" class="nav-link {{ Request::is('admin/new-students') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Student list</p>
+                    <p>New Students</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-students" class="nav-link {{ Request::is('admin/approved-students') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Students</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-students" class="nav-link {{ Request::is('admin/unapproved-students') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Students</p>
                     </a>
                 </li>
                 </ul>

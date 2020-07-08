@@ -35,14 +35,67 @@ class DashboardController extends Controller
     }
 
     // manage users admin
-    public function getUserList()
+    public function getNewStudents()
     {
 
-        $students = Student::select('name', 'nrp', 'email')->paginate(20);
+        $students = Student::where('students.status', '0')
+            ->select('students.*')
+            ->paginate(20);
 
-        return view ('dashboard.pages.admins.userlist')->with('students', $students);
+        return view ('dashboard.pages.admins.newstudents')->with('students', $students);
+    }
+    public function getApprovedStudents()
+    {
+
+        $students = Student::where('students.status', '1')
+            ->select('students.*')
+            ->paginate(20);
+
+        return view ('dashboard.pages.admins.approvedstudents')->with('students', $students);
+    }
+    public function getUnapprovedStudents()
+    {
+
+        $students = Student::where('students.status', '2')
+            ->select('students.*')
+            ->paginate(20);
+        return view ('dashboard.pages.admins.unapprovedstudents')->with('students', $students);
     }
 
+    public function approveNewStudents(Request $request, $id)
+    {
+        $student = Student::find($id);
+        $student->status = 1;
+        // $student->admin_id = $request->session()->get('id');
+
+        $student->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewStudents(Request $request, $id)
+    {
+        $student = Student::find($id);
+
+        $student->status = 2;
+        // $student->admin_id = $request->session()->get('id');
+        $student->save();
+
+        return redirect()->back();
+    }
+    public function downloadBerkasStudent($berkas)
+    {
+        $where = [
+            'students.id' => $berkas,
+        ];
+
+        $berkas_db = DB::table('students')
+        ->select('students.berkas_validasi as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\berkas_student\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
     public function getNewServices()
     {
 

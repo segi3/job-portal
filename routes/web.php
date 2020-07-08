@@ -59,6 +59,8 @@ Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login
 Route::get('/download-proposal/{proposal}', 'DashboardController@downloadproposal')->name('proposal.investasi.download');
 Route::get('/download-laporan/{laporan}', 'DashboardController@downloadlaporan')->name('laporan.investasi.download');
 
+//student
+Route::get('/download-berkas-student/{berkas}', 'DashboardController@downloadBerkasStudent')->name('berkas.student.download');
 // jobs
 
 Route::get('/jobs', 'JobController@index')->name('jobs');
@@ -160,7 +162,11 @@ Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
 });
 
 Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
-    Route::get('admin/user-list', 'DashboardController@getUserList');
+    Route::get('admin/new-students', 'DashboardController@getNewStudents');
+    Route::get('admin/approved-students', 'DashboardController@getApprovedStudents');
+    Route::get('admin/unapproved-students', 'DashboardController@getUnapprovedStudents');
+    Route::put('admin/new-students/a/{student}', 'DashboardController@approveNewStudents')->name('student.approve');
+    Route::put('admin/new-students/d/{student}', 'DashboardController@rejectNewStudents')->name('student.reject');
     Route::get('admin/new-services', 'DashboardController@getNewServices');
     Route::get('admin/approved-services', 'DashboardController@getApprovedServices');
     Route::get('admin/unapproved-services', 'DashboardController@getUnapprovedServices');
