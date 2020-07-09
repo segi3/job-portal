@@ -116,7 +116,6 @@
                                               {{ method_field('put') }}
                                               <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                                           </form>
-                                  </div>
                                   </td>
                             </tr>
                         @endforeach

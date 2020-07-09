@@ -470,7 +470,7 @@ class DashboardController extends Controller
         ->paginate(20);
 
 
-        return view('dashboard.pages.admins.newinvestees')->with('investees', $investees);
+        return view('dashboard.pages.admins.approvedinvestees')->with('investees', $investees);
     }
 
     public function getUnapprovedInvestees()
@@ -481,7 +481,7 @@ class DashboardController extends Controller
         ->paginate(20);
 
 
-        return view('dashboard.pages.admins.newinvestees')->with('investees', $investees);
+        return view('dashboard.pages.admins.unapprovedinvestees')->with('investees', $investees);
     }
 
     public function approveNewInvestees(Request $request, $id)
