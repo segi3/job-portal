@@ -12,6 +12,7 @@ use App\Guest;
 use App\Seminar;
 use App\Service;
 use App\Investasi;
+use App\Investee;
 
 
 class DashboardController extends Controller
@@ -447,5 +448,61 @@ class DashboardController extends Controller
         ->first();
         $file = public_path('data_files\\lap_keu\\'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function getNewInvestees()
+    {
+
+        $investees = Investee::where('investee.status', '0')
+                    ->leftjoin('students', 'students.id', 'investee.student_id')
+                    ->select('investee.*', 'students.name as nama_mhs')
+                    ->paginate(20);
+
+
+        return view('dashboard.pages.admins.newinvestees')->with('investees', $investees);
+    }
+
+    public function getApprovedInvestees()
+    {
+        $investees = Investee::where('investee.status', '1')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('investee.*', 'students.name as nama_mhs')
+        ->paginate(20);
+
+
+        return view('dashboard.pages.admins.newinvestees')->with('investees', $investees);
+    }
+
+    public function getUnapprovedInvestees()
+    {
+        $investees = Investee::where('investee.status', '2')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('investee.*', 'students.name as nama_mhs')
+        ->paginate(20);
+
+
+        return view('dashboard.pages.admins.newinvestees')->with('investees', $investees);
+    }
+
+    public function approveNewInvestees(Request $request, $id)
+    {
+        $investee = Investee::find($id);
+
+        $investee->status = 1;
+        $investee->admin_id = $request->session()->get('id');
+        $investee->save();
+
+        return redirect()->back();
+    }
+
+    public function rejectNewInvestees(Request $request, $id)
+    {
+        $investee = Investee::find($id);
+
+        $investee->status = 1;
+        $investee->admin_id = $request->session()->get('id');
+        $investee->save();
+
+        return redirect()->back();
     }
 }

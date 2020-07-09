@@ -137,6 +137,7 @@
             </li>
 
 
+
             <li class="nav-item has-treeview
             {{ Request::is('admin/new-guests') ? "menu-open" : "" }}
             {{ Request::is('admin/approved-guests') ? "menu-open" : "" }}
@@ -170,6 +171,44 @@
                     <a href="/admin/unapproved-guests" class="nav-link {{ Request::is('admin/unapproved-guests') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Unapproved Guests</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-investees') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-investees') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-investees') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-investees') ? "active" : "" }}
+                {{ Request::is('admin/approved-investees') ? "active" : "" }}
+                {{ Request::is('admin/unapproved-investees') ? "active" : "" }}
+                    ">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                    Manage Investees
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-investees" class="nav-link {{ Request::is('admin/new-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New investees</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-investees" class="nav-link {{ Request::is('admin/approved-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved investees</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-investees" class="nav-link {{ Request::is('admin/unapproved-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved investees</p>
                     </a>
                 </li>
                 </ul>

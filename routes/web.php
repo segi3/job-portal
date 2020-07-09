@@ -167,6 +167,13 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-students', 'DashboardController@getUnapprovedStudents');
     Route::put('admin/new-students/a/{student}', 'DashboardController@approveNewStudents')->name('student.approve');
     Route::put('admin/new-students/d/{student}', 'DashboardController@rejectNewStudents')->name('student.reject');
+    
+    Route::get('admin/new-investees', 'DashboardController@getNewInvestees');
+    Route::get('admin/approved-investees', 'DashboardController@getApprovedInvestees');
+    Route::get('admin/unapproved-investees', 'DashboardController@getUnapprovedInvestees');
+    Route::put('admin/new-investees/a/{investee}', 'DashboardController@approveNewInvestees')->name('investee.approve');
+    Route::put('admin/new-investees/d/{investee}', 'DashboardController@rejectNewInvestees')->name('investee.reject');
+
     Route::get('admin/new-services', 'DashboardController@getNewServices');
     Route::get('admin/approved-services', 'DashboardController@getApprovedServices');
     Route::get('admin/unapproved-services', 'DashboardController@getUnapprovedServices');
