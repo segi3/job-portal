@@ -5,12 +5,15 @@
     {{-- page title --}}
     <title>@yield('title')</title>
 
-    <!-- Font Awesome Icons -->
+    {{-- Font Awesome Icons --}}
     <link rel="stylesheet" href="{{ asset('dashboard_resources') }}/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
+    {{-- Theme style --}}
     <link rel="stylesheet" href="{{ asset('dashboard_resources') }}/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
+    {{-- <!-- Google Font: Source Sans Pro --> --}}
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
+
+    {{-- css buat sendiri --}}
+    <link rel="stylesheet" href="{{ asset('dashboard_resources') }}/css/dashboard.css">
+
     {{-- own's page scripts/stylesheets --}}
     @yield('stylesheets')

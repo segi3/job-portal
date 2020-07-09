@@ -92,7 +92,7 @@
             <a href="#" class="nav-link {{ Request::is('dashboard/st/invest-return-approval') ? "active" : "" }}">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-                Manage Invests
+                Manage Investments
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>

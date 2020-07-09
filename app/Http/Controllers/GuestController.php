@@ -51,7 +51,7 @@ class GuestController extends Controller
                     ]);
     
                     Session::flash('success', 'Anda berhasil login');
-                    return redirect('/');
+                    return redirect('/dashboard');
                 }else{
                     Session::flash('error', 'Password tidak cocok');
                     return redirect()->route('guest.showLogin');

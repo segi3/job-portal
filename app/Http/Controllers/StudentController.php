@@ -51,7 +51,7 @@ class StudentController extends Controller
                         'investee' => $isInvestee,
                     ]);
                     Session::flash('success', 'Anda berhasil Login');
-                    return redirect('/');
+                    return redirect('/dashboard');
                 }else{
                     Session::flash('error', 'Password tidak cocok');
                     return redirect()->route('student.showLogin');
