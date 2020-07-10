@@ -347,7 +347,7 @@
                   },
                   proposalinvestasi: {
                       required: "Dibutuhkan",
-                      extension: "File ormat tidak sesuai"
+                      extension: "File format tidak sesuai"
                   },
                   laporankeuangan: {
                       required: "Dibutuhkan",

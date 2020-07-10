@@ -128,6 +128,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/register-status', 'DashboardInvesteeController@getRegisterStatus');
 
     Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
+    Route::get('dashboard/investee/create-project-investment', 'InvestmentController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');
+    Route::post('dashboard/investee/post-project-investment', 'InvestmentController@postCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createProjectInvestment');
+    Route::get('dashboard/investee/create-funding-investment', 'InvestmentController@getCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateFundingInvestment');
+    Route::post('dashboard/investee/post-funding-investment', 'InvestmentController@postCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createFundingInvestment');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
 });
 

@@ -22,6 +22,7 @@ class CreateInvestasiFundingTable extends Migration
             $table->string('no_rekening');
             $table->string('atas_nama');
             $table->text('deskripsi_bisnis');
+            $table->integer('target');
             $table->date('tgl_jatuh_tempo');
             $table->string('berkas_proposal_investasi');
             $table->string('berkas_laporan_keuangan');
