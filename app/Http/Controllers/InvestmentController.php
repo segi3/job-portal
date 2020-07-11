@@ -12,7 +12,8 @@ use App\Employer;
 use App\Guest;
 use App\Seminar;
 use App\Service;
-use App\Investasi;
+use App\Investasi_project;
+use App\Investasi_funding;
 use App\Investee;
 
 
@@ -63,22 +64,27 @@ class InvestmentController extends Controller
 
             $berkasinvestasi= $request->file('proposalinvestasi');
             $berkaskeuangan= $request->file('laporankeuangan');
-            $employerid= $request->session()->get('id');
-            $employername = $request->session()->get('name');
+            $studentid= $request->session()->get('id');
+            $investeeid = DB::table('investee')
+                        ->select('investee.id')        
+                        ->where('student_id', '=', $studentid)
+                        ->Where('status', '=', '1')
+                        ->first();
+            $studentname = $request->session()->get('name');
             $tujuaninv = 'data_files/investee/Non-IYT/Project/proposal_investasi';
             $tujuankeu = 'data_files/investee/Non-IYT/Project/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$employerid.md5('_INV_'.$employername.'_'.$request->input('description')).'.'.$extension;
-            $filenamekeu= "Keuangan_".$employerid.md5('_KEU_'.$employername.'_'.$request->input('description')).'.'.$extension;
+            $filenameinv= "Investment_".$studentid."_".$investeeid.md5('_INV_'.$studentname.'_'.$request->input('description')).'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid."_".$investeeid.md5('_KEU_'.$studentname.'_'.$request->input('description')).'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
             $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
         try{
-            Investasi::create([
+            Investasi_project::create([
                 'nama_investasi'        => $request->input('namainvestasi'),
-                'employer_id'           => $request->session()->get('id'),
+                'investee_id'           => $investeeid,
                 'status'                => 0,
                 'status_tempo'          => 0,
                 'bank'                  => $request->input('namabank'),
@@ -151,22 +157,27 @@ class InvestmentController extends Controller
 
             $berkasinvestasi= $request->file('proposalinvestasi');
             $berkaskeuangan= $request->file('laporankeuangan');
-            $employerid= $request->session()->get('id');
-            $employername = $request->session()->get('name');
+            $studentid= $request->session()->get('id');
+            $investeeid = DB::table('investee')
+                        ->select('investee.id')        
+                        ->where('student_id', '=', $studentid)
+                        ->Where('status', '=', '1')
+                        ->first();
+            $studentname = $request->session()->get('name');
             $tujuaninv = 'data_files/investee/Non-IYT/Funding/proposal_investasi';
             $tujuankeu = 'data_files/investee/Non-IYT/Funding/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$employerid.md5('_INV_'.$employername.'_'.$request->input('description')).'.'.$extension;
-            $filenamekeu= "Keuangan_".$employerid.md5('_KEU_'.$employername.'_'.$request->input('description')).'.'.$extension;
+            $filenameinv= "Investment_".$studentid."_".$investeeid.md5('_INV_'.$studentname.'_'.$request->input('description')).'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid."_".$investeeid.md5('_KEU_'.$studentname.'_'.$request->input('description')).'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
             $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
         try{
-            Investasi::create([
+            Investasi_funding::create([
                 'nama_investasi'        => $request->input('namainvestasi'),
-                'employer_id'           => $request->session()->get('id'),
+                'investee_id'           => $investeeid,
                 'status'                => 0,
                 'status_tempo'          => 0,
                 'bank'                  => $request->input('namabank'),

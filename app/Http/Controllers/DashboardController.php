@@ -11,7 +11,8 @@ use App\Employer;
 use App\Guest;
 use App\Seminar;
 use App\Service;
-use App\Investasi;
+use App\Investasi_project;
+use App\Investasi_funding;
 use App\Investee;
 
 
@@ -371,19 +372,19 @@ class DashboardController extends Controller
         return view ('dashboard.pages.admins.unapprovedseminars')->with('seminars', $seminars);
     }
 
-    public function getNewInvestment() {
+    public function getNewProjInvestment() {
 
-        $investasi = Investasi::where('investasi.status', '0')
-                ->leftjoin('employers', 'employers.id', 'employer_id')
-                ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+        $investasi = Investasi_project::where('investasi_project.status', '0')
+                ->leftjoin('investee', 'investee.id', 'investee_id')
+                ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
-        return view('dashboard.pages.admins.newinvestment')->with('investasi', $investasi);
+        return view('dashboard.pages.admins.newprojinvestment')->with('investasi', $investasi);
     }
 
-    public function approveNewInvestment(Request $request, $id)
+    public function approveNewProjInvestment(Request $request, $id)
     {
-        $investasi = Investasi::find($id);
+        $investasi = Investasi_project::find($id);
 
         $investasi->status = 1;
         $investasi->status_tempo = 1;
@@ -392,9 +393,9 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    public function rejectNewInvestment(Request $request, $id)
+    public function rejectNewProjInvestment(Request $request, $id)
     {
-        $investasi = Investasi::find($id);
+        $investasi = Investasi_project::find($id);
         $investasi->status = 2;
         $investasi->admin_id = $request->session()->get('id');
         $investasi->save();
@@ -402,51 +403,53 @@ class DashboardController extends Controller
     }
 
 
-    public function getApprovedInvestment()
+    public function getApprovedProjInvestment()
     {
-        $investasi = Investasi::where('investasi.status', '1')
-                ->leftjoin('employers', 'employers.id', 'employer_id')
-                ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+        $investasi = Investasi_project::where('investasi_project.status', '1')
+                ->leftjoin('investee', 'investee.id', 'investee_id')
+                ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
-        return view ('dashboard.pages.admins.approvedinvestment')->with('investasi', $investasi);
+        return view ('dashboard.pages.admins.approvedprojinvestment')->with('investasi', $investasi);
     }
-    public function getUnapprovedInvestment()
+    public function getUnapprovedProjInvestment()
     {
-        $investasi = Investasi::where('investasi.status', '2')
-        ->leftjoin('employers', 'employers.id', 'employer_id')
-        ->select('investasi.*', 'employers.name as employername', 'employers.contact_person as cp')
+        $investasi = Investasi_project::where('investasi_project.status', '2')
+        ->leftjoin('investee', 'investee.id', 'investee_id')
+        ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
         ->paginate(20);
-        return view ('dashboard.pages.admins.unapprovedinvestment')->with('investasi', $investasi);
+        return view ('dashboard.pages.admins.unapprovedprojinvestment')->with('investasi', $investasi);
     }
 
-    public function downloadproposal($proposal)
+    public function downloadproposalproj($proposal)
     {
         $where = [
-            'investasi.id' => $proposal,
+            'investasi_project.id' => $proposal,
         ];
 
-        $berkas_db = DB::table('investasi')
-        ->leftjoin('employers', 'employers.id', 'employer_id')
-        ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_proposal_investasi as berkas')
+        $berkas_db = DB::table('investasi_project')
+        ->leftjoin('investee', 'investee.id', 'investee_id')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('students.id as studentid', 'investee.id as investeeid', 'students.name as studentname','investasi.deskripsi_bisnis as description','investasi.berkas_proposal_investasi as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files\\proposal_investasi\\'.$berkas_db->berkas);
+        $file = public_path('data_files\\investee\\Non-IYT\\Project\\proposal_investasi\\'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
-    public function downloadlaporan($laporan)
+    public function downloadlaporanproj($laporan)
     {
         $where = [
-            'investasi.id' => $laporan,
+            'investasi_project.id' => $laporan,
         ];
 
-        $berkas_db = DB::table('investasi')
-        ->leftjoin('employers', 'employers.id', 'employer_id')
-        ->select('employers.name as employername', 'employers.id as employerid', 'investasi.deskripsi_bisnis as description','investasi.berkas_laporan_keuangan as berkas')
+        $berkas_db = DB::table('investasi_project')
+        ->leftjoin('investee', 'investee.id', 'investee_id')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('students.id as studentid', 'investee.id as investeeid', 'students.name as studentname', 'investasi.deskripsi_bisnis as description','investasi.berkas_laporan_keuangan as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files\\lap_keu\\'.$berkas_db->berkas);
+        $file = public_path('data_files\\investee\\Non-IYT\\Project\\lap_keu\\'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
