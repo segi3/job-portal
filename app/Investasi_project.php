@@ -11,4 +11,5 @@ class Investasi_project extends Model
         'deskripsi_bisnis', 'roi_top', 'roi_bot', 'lembar_total', 'lembar_terbeli', 'tgl_jatuh_tempo',
         'harga_saham', 'berkas_porposal_investasi', 'berkas_laporan_keuangan', 'admin_id',
     ];
+    protected $table = 'investasi_project';
 }

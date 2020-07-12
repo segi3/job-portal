@@ -56,8 +56,11 @@ Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
 
-Route::get('/download-proposal/{proposal}', 'DashboardController@downloadproposal')->name('proposal.investasi.download');
-Route::get('/download-laporan/{laporan}', 'DashboardController@downloadlaporan')->name('laporan.investasi.download');
+Route::get('/download-proposal-project/{proposal}', 'DashboardController@downloadproposalproj')->name('proposal.project.investasi.download');
+Route::get('/download-laporan-project/{laporan}', 'DashboardController@downloadlaporanproj')->name('laporan.project.investasi.download');
+
+Route::get('/download-proposal-funding/{proposal}', 'DashboardController@downloadproposalfund')->name('proposal.funding.investasi.download');
+Route::get('/download-laporan-funding/{laporan}', 'DashboardController@downloadlaporanfund')->name('laporan.funding.investasi.download');
 
 //student
 Route::get('/download-berkas-student/{berkas}', 'DashboardController@downloadBerkasStudent')->name('berkas.student.download');
@@ -128,10 +131,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/register-status', 'DashboardInvesteeController@getRegisterStatus');
 
     Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
-    Route::get('dashboard/investee/create-project-investment', 'InvestmentController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');
-    Route::post('dashboard/investee/post-project-investment', 'InvestmentController@postCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createProjectInvestment');
-    Route::get('dashboard/investee/create-funding-investment', 'InvestmentController@getCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateFundingInvestment');
-    Route::post('dashboard/investee/post-funding-investment', 'InvestmentController@postCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createFundingInvestment');
+    Route::get('dashboard/investee/create-project-investment', 'DashboardInvesteeController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');
+    Route::post('dashboard/investee/post-project-investment', 'DashboardInvesteeController@postCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createProjectInvestment');
+    Route::get('dashboard/investee/create-funding-investment', 'DashboardInvesteeController@getCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateFundingInvestment');
+    Route::post('dashboard/investee/post-funding-investment', 'DashboardInvesteeController@postCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createFundingInvestment');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
 });
 
@@ -210,11 +213,17 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::put('admin/new-seminars/a/{seminar}', 'DashboardController@approveNewSeminars')->name('seminar.approve');
     Route::put('admin/new-seminars/d/{seminar}', 'DashboardController@rejectNewSeminars')->name('seminar.reject');
 
-    Route::get('admin/new-investment', 'DashboardController@getNewInvestment');
-    Route::get('admin/approved-investment', 'DashboardController@getApprovedInvestment');
-    Route::get('admin/unapproved-investment', 'DashboardController@getUnapprovedInvestment');
-    Route::put('admin/new-investment/a/{investment}', 'DashboardController@approveNewInvestment')->name('investment.approve');
-    Route::put('admin/new-investment/d/{investment}', 'DashboardController@rejectNewInvestment')->name('investment.reject');
+    Route::get('admin/new-project-investment', 'DashboardController@getNewProjInvestment');
+    Route::get('admin/approved-project-investment', 'DashboardController@getApprovedProjInvestment');
+    Route::get('admin/unapproved-project-investment', 'DashboardController@getUnapprovedProjInvestment');
+    Route::put('admin/new-project-investment/a/{projinvestment}', 'DashboardController@approveNewProjInvestment')->name('project.investment.approve');
+    Route::put('admin/new-project-investment/d/{projinvestment}', 'DashboardController@rejectNewProjInvestment')->name('project.investment.reject');
+
+    Route::get('admin/new-funding-investment', 'DashboardController@getNewFundInvestment');
+    Route::get('admin/approved-funding-investment', 'DashboardController@getApprovedFundInvestment');
+    Route::get('admin/unapproved-funding-investment', 'DashboardController@getUnapprovedFundInvestment');
+    Route::put('admin/new-funding-investment/a/{fundinvestment}', 'DashboardController@approveNewFundInvestment')->name('funding.investment.approve');
+    Route::put('admin/new-funding-investment/d/{fundinvestment}', 'DashboardController@rejectNewFundInvestment')->name('funding.investment.reject');
 });
 
 

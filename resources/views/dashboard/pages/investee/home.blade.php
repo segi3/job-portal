@@ -29,21 +29,28 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-4">
                 <div class="card menu-card">
                     <div class="card-body">
-                        <h5 class="card-title">Shortcut#1</h5><br><br>
+                        <h5 class="card-title">Daftar Bisnis ke ITS Youth Technopreneur!</h5><br><br>
 
-                        <a href="#" class="float-right card-link stretched-link btn btn-sm btn-yl">btn</a>
+                        <a href="#" class="float-right card-link stretched-link btn btn-sm btn-yl">Daftar IYT</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-4">
                 <div class="card menu-card">
                     <div class="card-body">
-                        <h5 class="card-title">shortcut#2</h5><br><br>
-
-                        <a href="#" class="float-right card-link stretched-link btn btn-sm btn-yl">btn</a>
+                        <h5 class="card-title">Cari investor untuk project bisnis</h5><br><br>
+                        <a href="/dashboard/investee/create-project-investment" class="float-right card-link stretched-link btn btn-sm btn-yl">Daftar project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card menu-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cari pendanaan untuk project bisnis</h5><br><br>
+                        <a href="/dashboard/investee/create-funding-investment" class="float-right card-link stretched-link btn btn-sm btn-yl">Daftar funding</a>
                     </div>
                 </div>
             </div>

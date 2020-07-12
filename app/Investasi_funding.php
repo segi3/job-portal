@@ -11,4 +11,5 @@ class Investasi_funding extends Model
         'deskripsi_bisnis', 'tgl_jatuh_tempo', 'berkas_proposal_investasi', 'berkas_laporan_keuangan',
         'admin_id',
     ];
+    protected $table = 'investasi_funding';
 }

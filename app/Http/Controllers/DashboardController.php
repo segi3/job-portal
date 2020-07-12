@@ -376,7 +376,8 @@ class DashboardController extends Controller
 
         $investasi = Investasi_project::where('investasi_project.status', '0')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
-                ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->leftjoin('students', 'students.id', 'investee.student_id')
+                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view('dashboard.pages.admins.newprojinvestment')->with('investasi', $investasi);
@@ -407,7 +408,8 @@ class DashboardController extends Controller
     {
         $investasi = Investasi_project::where('investasi_project.status', '1')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
-                ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->leftjoin('students', 'students.id', 'investee.student_id')
+                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view ('dashboard.pages.admins.approvedprojinvestment')->with('investasi', $investasi);
@@ -416,7 +418,8 @@ class DashboardController extends Controller
     {
         $investasi = Investasi_project::where('investasi_project.status', '2')
         ->leftjoin('investee', 'investee.id', 'investee_id')
-        ->select('investasi_project.*', 'investee.name as id', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
         ->paginate(20);
         return view ('dashboard.pages.admins.unapprovedprojinvestment')->with('investasi', $investasi);
     }
@@ -428,9 +431,7 @@ class DashboardController extends Controller
         ];
 
         $berkas_db = DB::table('investasi_project')
-        ->leftjoin('investee', 'investee.id', 'investee_id')
-        ->leftjoin('students', 'students.id', 'investee.student_id')
-        ->select('students.id as studentid', 'investee.id as investeeid', 'students.name as studentname','investasi.deskripsi_bisnis as description','investasi.berkas_proposal_investasi as berkas')
+        ->select('investasi_project.berkas_proposal_investasi as berkas')
         ->where($where)
         ->first();
         $file = public_path('data_files\\investee\\Non-IYT\\Project\\proposal_investasi\\'.$berkas_db->berkas);
@@ -444,14 +445,93 @@ class DashboardController extends Controller
         ];
 
         $berkas_db = DB::table('investasi_project')
-        ->leftjoin('investee', 'investee.id', 'investee_id')
-        ->leftjoin('students', 'students.id', 'investee.student_id')
-        ->select('students.id as studentid', 'investee.id as investeeid', 'students.name as studentname', 'investasi.deskripsi_bisnis as description','investasi.berkas_laporan_keuangan as berkas')
+        ->select('investasi_project.berkas_laporan_keuangan as berkas')
         ->where($where)
         ->first();
         $file = public_path('data_files\\investee\\Non-IYT\\Project\\lap_keu\\'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
+
+    public function getNewFundInvestment() {
+
+        $investasi = Investasi_funding::where('investasi_funding.status', '0')
+                ->leftjoin('investee', 'investee.id', 'investee_id')
+                ->leftjoin('students', 'students.id', 'investee.student_id')
+                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.name as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->paginate(20);
+
+        return view('dashboard.pages.admins.newfundinvestment')->with('investasi', $investasi);
+    }
+
+    public function approveNewFundInvestment(Request $request, $id)
+    {
+        $investasi = Investasi_funding::find($id);
+
+        $investasi->status = 1;
+        $investasi->status_tempo = 1;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+    public function rejectNewFundInvestment(Request $request, $id)
+    {
+        $investasi = Investasi_funding::find($id);
+        $investasi->status = 2;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+
+    public function getApprovedFundInvestment()
+    {
+        $investasi = Investasi_funding::where('investasi_funding.status', '1')
+                ->leftjoin('investee', 'investee.id', 'investee_id')
+                ->leftjoin('students', 'students.id', 'investee.student_id')
+                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.name as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->paginate(20);
+
+        return view ('dashboard.pages.admins.approvedfundinvestment')->with('investasi', $investasi);
+    }
+    public function getUnapprovedFundInvestment()
+    {
+        $investasi = Investasi_funding::where('investasi_funding.status', '2')
+        ->leftjoin('investee', 'investee.id', 'investee_id')
+        ->leftjoin('students', 'students.id', 'investee.student_id')
+        ->select('investasi_funding.*',  'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+        ->paginate(20);
+        return view ('dashboard.pages.admins.unapprovedfundinvestment')->with('investasi', $investasi);
+    }
+
+    public function downloadproposalfund($proposal)
+    {
+        $where = [
+            'investasi_funding.id' => $proposal,
+        ];
+
+        $berkas_db = DB::table('investasi_funding')
+        ->select('investasi_funding.berkas_proposal_investasi as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\investee\\Non-IYT\\Funding\\proposal_investasi\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function downloadlaporanfund($laporan)
+    {
+        $where = [
+            'investasi_funding.id' => $laporan,
+        ];
+
+        $berkas_db = DB::table('investasi_funding')
+        ->select('investasi_funding.berkas_laporan_keuangan as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\investee\\Non-IYT\\Funding\\lap_keu\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
+
 
     public function getNewInvestees()
     {
