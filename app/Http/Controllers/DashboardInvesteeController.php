@@ -141,6 +141,7 @@ class DashboardInvesteeController extends Controller
         //     'termpolicy'        => 'required',
         // ]);
 
+        try{
             $berkasinvestasi= $request->file('proposalinvestasi');
             $berkaskeuangan= $request->file('laporankeuangan');
             $studentid= $request->session()->get('id');
@@ -156,16 +157,16 @@ class DashboardInvesteeController extends Controller
             $tujuankeu = 'data_files/investee/Non-IYT/Project/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
-            $filenamekeu= "Keuangan_".$studentid.$investeeid->id.$keuhash.'.'.$extension;
+            $filenameinv= "Investment_".$studentid.'_'.$investeeid->id.'_'.$invhash.'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid.'_'.$investeeid->id.'_'.$keuhash.'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
             $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
-        try{
+
             Investasi_project::create([
                 'nama_investasi'        => $request->input('namainvestasi'),
-                'investee_id'           => $investeeid,
+                'investee_id'           => $investeeid->id,
                 'status'                => 0,
                 'status_tempo'          => 0,
                 'bank'                  => $request->input('namabank'),
