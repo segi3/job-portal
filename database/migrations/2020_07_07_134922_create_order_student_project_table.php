@@ -20,7 +20,6 @@ class CreateOrderStudentProjectTable extends Migration
             $table->string('status')->default('pending');
             $table->integer('lembar_beli');
             $table->decimal('total_harga', 20, 2)->default(0);
-            $table->string('berkas_ktp');
             $table->timestamp('order_date', 0)->nullable();
             $table->timestamp('payment_due', 0)->nullable();
             $table->string('snap_token')->nullable();
