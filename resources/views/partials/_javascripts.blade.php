@@ -1,5 +1,5 @@
-    <!-- link that opens popup -->
-    <!-- JS here -->
+    {{-- <!-- link that opens popup --> --}}
+    {{-- <!-- JS here --> --}}
     <script src="{{ asset('portal_resources') }}/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="{{ asset('portal_resources') }}/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="{{ asset('portal_resources') }}/js/popper.min.js"></script>
@@ -21,7 +21,7 @@
 
 
 
-    <!--contact js-->
+    {{-- <!--contact js--> --}}
     <script src="{{ asset('portal_resources') }}/js/contact.js"></script>
     <script src="{{ asset('portal_resources') }}/js/jquery.ajaxchimp.min.js"></script>
     <script src="{{ asset('portal_resources') }}/js/jquery.form.js"></script>
