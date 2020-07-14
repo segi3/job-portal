@@ -150,12 +150,14 @@ class DashboardInvesteeController extends Controller
                         ->Where('investee.status', '=','1')
                         ->first();
             $studentname = $request->session()->get('name');
+            $invhash = md5('_INV_'.$studentname.'_'.$request->input('description'));
+            $keuhash = md5('_KEU_'.$studentname.'_'.$request->input('description'));
             $tujuaninv = 'data_files/investee/Non-IYT/Project/proposal_investasi';
             $tujuankeu = 'data_files/investee/Non-IYT/Project/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$studentid.$investeeid.md5('_INV_'.$studentname.'_'.$request->input('description')).'.'.$extension;
-            $filenamekeu= "Keuangan_".$studentid.$investeeid.md5('_KEU_'.$studentname.'_'.$request->input('description')).'.'.$extension;
+            $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid.$investeeid->id.$keuhash.'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
@@ -243,12 +245,14 @@ class DashboardInvesteeController extends Controller
                         ->Where('status', '=', '1')
                         ->first();
             $studentname = $request->session()->get('name');
+            $invhash = md5('_INV_'.$studentname.'_'.$request->input('description'));
+            $keuhash = md5('_KEU_'.$studentname.'_'.$request->input('description'));
             $tujuaninv = 'data_files/investee/Non-IYT/Funding/proposal_investasi';
             $tujuankeu = 'data_files/investee/Non-IYT/Funding/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$studentid.$investeeid.md5('_INV_'.$studentname.'_'.$request->input('description')).'.'.$extension;
-            $filenamekeu= "Keuangan_".$studentid.$investeeid.md5('_KEU_'.$studentname.'_'.$request->input('description')).'.'.$extension;
+            $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid.$investeeid->id.$keuhash.'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
