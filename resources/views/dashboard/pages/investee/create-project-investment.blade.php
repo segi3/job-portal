@@ -82,8 +82,7 @@
                                         <span class="input-group-text">Rp</span>
                                     </div>
                                     <input type="text" name="hargaperlembar" value="{{ old('hargaperlembar') }}"
-                                        class="form-control" id="idhargaperlembar"
-                                        placeholder="Masukkan hanya nominal">
+                                        class="form-control" id="idhargaperlembar" placeholder="Masukkan hanya nominal">
                                 </div>
                             </div>
 
@@ -124,9 +123,8 @@
 
                             <div class="form-group">
                                 <label for="duedate" class="">{{ __('Jatuh Tempo') }}</label><span class=""></span>
-                                <input type="text" name="duedate" placeholder="dd-mm-yyyy"
-                                    value="{{ old('duedate') }}" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'dd-mm-yyyy'" required
+                                <input type="text" name="duedate" placeholder="dd-mm-yyyy" value="{{ old('duedate') }}"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'dd-mm-yyyy'" required
                                     class="single-input form-control datepicker">
                             </div>
 
@@ -135,38 +133,38 @@
                 </div>
                 {{-- Dekskripsi Bisnis --}}
                 <div class="col-lg-6 mt-4">
-                  <div class="card h-100">
-                      <div class="card-header">
-                          <h3 class="card-title">Deskripsi Bisnis</h3>
-                      </div>
-                      <div class="card-body">
-                          <div class="form-group">
-                              <label for="inputDescription">Deskripsi Bisnis</label>
-                              <textarea type="text" name="description" value="{{ old('description') }}"
-                                  class="form-control" id="inputDescription"
-                                  placeholder="Deskripsi Bisnis"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <label for="inputNamaBank">Nama Bank</label>
-                              <input type="text" name="namabank" value="{{ old('namabank') }}" class="form-control"
-                                  id="inputBank" placeholder="Nama Bank">
-                              {{-- <input type="text"> --}}
-                          </div>
-                          <div class="form-group">
-                              <label for="inputNoRek">Nomor Rekening Bank</label>
-                              <input type="text" name="nomorrekening" value="{{ old('nomorrekening') }}"
-                                  class="form-control" id="inputNoRek" placeholder="Masukan hanya angka">
-                              {{-- <input type="text"> --}}
-                          </div>
-                          <div class="form-group">
-                              <label for="inputAN">Atas nama</label>
-                              <input type="text" name="atasnama" value="{{ old('atasnama') }}" class="form-control"
-                                  id="inputAN" placeholder="Pemilik rekening">
-                              {{-- <input type="text"> --}}
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title">Deskripsi Bisnis</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputDescription">Deskripsi Bisnis</label>
+                                <textarea type="text" name="description" value="{{ old('description') }}"
+                                    class="form-control" id="inputDescription"
+                                    placeholder="Deskripsi Bisnis"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNamaBank">Nama Bank</label>
+                                <input type="text" name="namabank" value="{{ old('namabank') }}" class="form-control"
+                                    id="inputBank" placeholder="Nama Bank">
+                                {{-- <input type="text"> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNoRek">Nomor Rekening Bank</label>
+                                <input type="text" name="nomorrekening" value="{{ old('nomorrekening') }}"
+                                    class="form-control" id="inputNoRek" placeholder="Masukan hanya angka">
+                                {{-- <input type="text"> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAN">Atas nama</label>
+                                <input type="text" name="atasnama" value="{{ old('atasnama') }}" class="form-control"
+                                    id="inputAN" placeholder="Pemilik rekening">
+                                {{-- <input type="text"> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {{-- Berkas Validasi --}}
                 <div class="col-lg-6 mt-4">
@@ -203,8 +201,8 @@
                                         </button>
                                     </div>
                                     <div class="custom-file">
-                                        <label class="custom-file-label" id="idlabellapkeu"
-                                            for="laporankeuangan">Upload Berkas</label>
+                                        <label class="custom-file-label" id="idlabellapkeu" for="laporankeuangan">Upload
+                                            Berkas</label>
                                         <input type="file" class="custom-file-input" name="laporankeuangan"
                                             id="laporankeuangan" accept="application/pdf"
                                             aria-describedby="inputGroupFileAddon03">

@@ -11,46 +11,48 @@ use Validator;
 
 use App\Student;
 use App\Investasi;
+use App\Investasi_project;
 
 
 class InvestasiController extends Controller
 {
-    public function index()
+    public function showProjectIndex()
     {
-        $investasiCount = DB::table('investasi')
+        $investasiCount = DB::table('investasi_project')
                         ->where('status', '=', 1)
                         ->count();
 
-        $investasi = DB::table('investasi')
-                        ->join('employers', 'investasi.employer_id', 'employers.id')
-                        ->select('investasi.*', 'employers.name as employername')
-                        ->where('investasi.status', '=', 1)
+        $investasi = DB::table('investasi_project')
+                        ->join('investee', 'investee.id', 'investasi_project.investee_id')
+                        ->select('investasi_project.*', 'investee.nama as nama_investee')
+                        ->where('investasi_project.status', '=', 1)
                         ->paginate(8);
 
-        return view('investasi-list')->with('investasis', $investasi)->with('investasiCount', $investasiCount);
+        return view('investasi-project-list')->with('investasis', $investasi)->with('investasiCount', $investasiCount);
     }
 
-    public function detail($id)
+    public function detailProject($id)
     {
         $where = [
-            'investasi.id' => $id,
-            'investasi.status' => '1'
+            'investasi_project.id' => $id,
+            'investasi_project.status' => '1'
         ];
 
-        $investasi = DB::table('investasi')
-                        ->join('employers', 'investasi.employer_id', 'employers.id')
-                        ->select('investasi.*', 'employers.name as employername')
+        $investasi = DB::table('investasi_project')
+                        ->join('investee', 'investee.id', 'investasi_project.investee_id')
+                        ->select('investasi_project.*', 'investee.nama as nama_investee')
                         ->where($where)
                         ->first();
         // dd($investasi);
 
-        return view('investasi-detail')->with('investasi', $investasi);
+        return view('investasi-project-detail')->with('investasi', $investasi);
     }
 
     public function beliSaham(Request $request, $id_inv)
     {
+
         // cek jumlah lembar yang tersedia
-        $investasi = Investasi::find($id_inv);
+        $investasi = Investasi_project::find($id_inv);
         $lembar_sisa = $investasi->lembar_total - $investasi->lembar_terbeli;
         if ($request->input('lembar_beli') > $lembar_sisa){
             Session::flash('error', 'Tidak dapat membeli sebanyak '.$request->input('lembar_beli').', hanya tersisa '.$lembar_sisa.' lembar');
@@ -61,7 +63,7 @@ class InvestasiController extends Controller
 
         $validator = Validator::make($request->all(),[
             'lembar_beli' => 'required',
-            'berkas' => 'required|mimes:pdf',
+            'termspolicy' => 'required',
         ]);
 
         if ($validator->fails()){
@@ -69,13 +71,13 @@ class InvestasiController extends Controller
             return redirect()->back();
         }
 
-        // berkas ktp
-        $student = Student::find($id_student);
+        if ($request->session()->get('role') == 'student'){
+            //order student
+        }else if ($request->session()->get('role') == 'guest'){
+            //order guest
+        }
 
-        $file = $request->file('berkas');
-        $file_ktp = 'ktp-'.$id_student.'-'.$id_inv.'-'.$student->name.'.pdf';
-        $tujuan_upload = 'data_files/KTP';
-        $file->move($tujuan_upload, $file_ktp);
+        dd($request); // dilanjut pake api midtrans
 
         //tanggal deadline
         $duedate = new \DateTime('+2 day');
@@ -88,7 +90,6 @@ class InvestasiController extends Controller
                 'status_bayar' => '0',
                 'status_uang_balik' => '2',
                 'lembar_beli' => $request->input('lembar_beli'),
-                'berkas_ktp' => $file_ktp,
                 'berkas_bukti_pembayaran' => 'belum upload',
                 'expired_at' => $duedate->format('Y-m-d'),
                 'updated_at' => \Carbon\Carbon::now(),

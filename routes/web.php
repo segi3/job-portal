@@ -85,9 +85,9 @@ Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
 
 // investasi
-Route::get('/investasi', 'InvestasiController@index');
-Route::get('/investasi/{id}', 'InvestasiController@detail');
-Route::post('/beli-saham/{id}', 'InvestasiController@beliSaham')->name('saham-beli');
+Route::get('/investasi-project', 'InvestasiController@showProjectIndex');
+Route::get('/investasi-project/{id}', 'InvestasiController@detailProject');
+Route::post('/beli-saham/{id}', 'InvestasiController@beliSaham')->name('saham-beli')->middleware('GuestStudentCheck');
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');

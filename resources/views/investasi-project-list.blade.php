@@ -78,9 +78,9 @@
                                             <img src="/data_files/employer_logo/{{  $j->emplogo  }}" alt="" class="img-logo">
                                         </div> --}}
                                         <div class="jobs_conetent">
-                                            <a href=" {{ url('investasi/'.$investasi->id) }} "><h4>{{ $investasi->nama_investasi }}</h4></a>
+                                            <a href=" {{ url('investasi-project/'.$investasi->id) }} "><h4>{{ $investasi->nama_investasi }}</h4></a>
                                             <div class="links_locat d-flex align-items-center">
-                                                <p style="margin-bottom: 2px;">{{ $investasi->employername }} </p>
+                                                <p style="margin-bottom: 2px;">{{ $investasi->nama_investee }} </p>
                                             </div>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a href=" {{ url('investasi/'.$investasi->id) }} " class="boxed-btn3">Beli Saham</a>
+                                            <a href=" {{ url('investasi-project/'.$investasi->id) }} " class="boxed-btn3">Beli Saham</a>
                                         </div>
                                     </div>
                                 </div>

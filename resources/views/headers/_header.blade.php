@@ -58,7 +58,7 @@
                                             </li>
                                             <li><a href="/investasi">Investasi <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                    <li><a href="/investasi">Project</a></li>
+                                                    <li><a href="/investasi-project">Project</a></li>
                                                     <li><a href="/investasi">Funding</a></li>
                                                 </ul>
                                             </li>
