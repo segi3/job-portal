@@ -22,7 +22,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/dashboard/investee">Home</a></li>
                     <li class="breadcrumb-item active">Manage-Investment</li>
                     <li class="breadcrumb-item active">Create-Funding-Investment</li>
                 </ol>

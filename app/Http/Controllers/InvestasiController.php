@@ -35,7 +35,7 @@ class InvestasiController extends Controller
     {
         $where = [
             'investasi_project.id' => $id,
-            'investasi_project.status' => '1'
+            'investasi_project.status' => 1,
         ];
 
         $investasi = DB::table('investasi_project')

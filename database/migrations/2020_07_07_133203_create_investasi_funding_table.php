@@ -18,6 +18,7 @@ class CreateInvestasiFundingTable extends Migration
             $table->string('nama_investasi');
             $table->bigInteger('investee_id')->nullable()->unsigned();
             $table->string('status', 1)->default('0');
+            $table->string('status_tempo', 1)->default('0');
             $table->integer('donasi_target');
             $table->integer('donasi_masuk');
             $table->string('bank');
