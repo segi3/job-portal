@@ -75,6 +75,9 @@ Route::get('/download-berkas-employer/{berkas}', 'EmployerController@downloadBer
 Route::get('/download-cv/{cv}', 'JobController@downloadCV')->name('cv.download');
 Route::post('/search', 'PageController@search')->name('search');
 
+Route::get('/seminar', 'SeminarController@index')->name('seminar');
+Route::get('/seminar/category/{slug}', 'SeminarController@filterCategory')->name('seminar.filter');
+Route::get('/seminar/{id}', 'SeminarController@detail');
 //guest
 Route::get('/download-berkas/{berkas}', 'GuestController@downloadBerkas')->name('berkas.download');
 

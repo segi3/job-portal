@@ -261,14 +261,15 @@ class DashboardInvesteeController extends Controller
         try{
             Investasi_funding::create([
                 'nama_investasi'        => $request->input('namainvestasi'),
-                'investee_id'           => $investeeid,
+                'investee_id'           => $investeeid->id,
                 'status'                => 0,
                 'status_tempo'          => 0,
                 'bank'                  => $request->input('namabank'),
                 'no_rekening'           => $request->input('nomorrekening'),
                 'atas_nama'             => $request->input('atasnama'),
                 'deskripsi_bisnis'      => $request->input('description'),
-                'target'           => $request->input('targetdana'),
+                'donasi_target'           => $request->input('targetdana'),
+                'donasi_masuk'          => 0,
                 'tgl_jatuh_tempo'       => $formatDate,
                 'berkas_proposal_investasi'  => $filenameinv,
                 'berkas_laporan_keuangan'  => $filenamekeu,

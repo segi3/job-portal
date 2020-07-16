@@ -377,7 +377,7 @@ class DashboardController extends Controller
         $investasi = Investasi_project::where('investasi_project.status', '0')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
                 ->leftjoin('students', 'students.id', 'investee.student_id')
-                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.nama as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view('dashboard.pages.admins.newprojinvestment')->with('investasi', $investasi);
@@ -409,7 +409,7 @@ class DashboardController extends Controller
         $investasi = Investasi_project::where('investasi_project.status', '1')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
                 ->leftjoin('students', 'students.id', 'investee.student_id')
-                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.nama as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view ('dashboard.pages.admins.approvedprojinvestment')->with('investasi', $investasi);
@@ -419,7 +419,7 @@ class DashboardController extends Controller
         $investasi = Investasi_project::where('investasi_project.status', '2')
         ->leftjoin('investee', 'investee.id', 'investee_id')
         ->leftjoin('students', 'students.id', 'investee.student_id')
-        ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+        ->select('investasi_project.*', 'students.name as mahasiswa', 'investee.nama as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
         ->paginate(20);
         return view ('dashboard.pages.admins.unapprovedprojinvestment')->with('investasi', $investasi);
     }
@@ -457,7 +457,7 @@ class DashboardController extends Controller
         $investasi = Investasi_funding::where('investasi_funding.status', '0')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
                 ->leftjoin('students', 'students.id', 'investee.student_id')
-                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.name as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.nama as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view('dashboard.pages.admins.newfundinvestment')->with('investasi', $investasi);
@@ -489,7 +489,7 @@ class DashboardController extends Controller
         $investasi = Investasi_funding::where('investasi_funding.status', '1')
                 ->leftjoin('investee', 'investee.id', 'investee_id')
                 ->leftjoin('students', 'students.id', 'investee.student_id')
-                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.name as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
+                ->select('investasi_funding.*', 'students.name as mahasiswa', 'investee.nama as investee',  'investee.contact_person as cp', 'investee.contact_no as kontak')
                 ->paginate(20);
 
         return view ('dashboard.pages.admins.approvedfundinvestment')->with('investasi', $investasi);
@@ -499,7 +499,7 @@ class DashboardController extends Controller
         $investasi = Investasi_funding::where('investasi_funding.status', '2')
         ->leftjoin('investee', 'investee.id', 'investee_id')
         ->leftjoin('students', 'students.id', 'investee.student_id')
-        ->select('investasi_funding.*',  'students.name as mahasiswa', 'investee.name as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
+        ->select('investasi_funding.*',  'students.name as mahasiswa', 'investee.nama as investee', 'investee.contact_person as cp', 'investee.contact_no as kontak')
         ->paginate(20);
         return view ('dashboard.pages.admins.unapprovedfundinvestment')->with('investasi', $investasi);
     }
