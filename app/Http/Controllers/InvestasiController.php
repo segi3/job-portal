@@ -79,7 +79,7 @@ class InvestasiController extends Controller
 
         dd($request); // dilanjut pake api midtrans
 
-        //tanggal deadline
+        //tanggal deadline => kayaknya ini nanti dari api midtrans bisa di set
         $duedate = new \DateTime('+2 day');
         $duedate->format('Y-m-d');
 
@@ -109,7 +109,30 @@ class InvestasiController extends Controller
           return redirect()->back();
         }
 
+    }
 
+    public function showFundIndex()
+    {
+        $investasiCount = DB::table('investasi_funding')
+            ->where('status', '=', 1)
+            ->count();
+
+        $investasi = DB::table('investasi_funding')
+                ->join('investee', 'investee.id', 'investasi_funding.investee_id')
+                ->select('investasi_funding.*', 'investee.nama as nama_investee')
+                ->where('investasi_funding.status', '=', 1)
+                ->paginate(8);
+
+        return view('investasi-funding-list')->with('investasis', $investasi)->with('investasiCount', $investasiCount);
+    }
+
+    public function detailFund()
+    {
+
+    }
+
+    public function donasi()
+    {
 
     }
 }

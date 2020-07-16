@@ -121,7 +121,7 @@
                     <div class="alert alert-danger" role="alert">
                         <span>Masa aktif saham sudah lewat</span>
                     </div>
-
+    
                     @elseif( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
                     <hr>
                     <h5>Beli saham</h5>
@@ -142,7 +142,7 @@
                         </div>
 
                         <input type="checkbox" name="termspolicy" id="termpolicy">
-                        <label>Saya Menyetujui Syarat dan Ketentuan</label>
+                        <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan Ketentuan</a></label>
 
                         <div class="input-group-icon mt-10">
                             <div class="col-lg">

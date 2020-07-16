@@ -44,6 +44,8 @@ Route::post('login-gs', 'GuestController@Login')->name('guest.login')->middlewar
 Route::get('register-gs', 'GuestController@showRegister')->name('guest.showRegister');
 Route::post('register-gs', 'GuestController@Register')->name('guest.register');
 
+Route::get('syarat-ketentuan', 'PageController@showSK');
+
 // Route::get('login-warning-test', 'PageController@showLoginWarning');
 
 
@@ -88,6 +90,10 @@ Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController
 Route::get('/investasi-project', 'InvestasiController@showProjectIndex');
 Route::get('/investasi-project/{id}', 'InvestasiController@detailProject');
 Route::post('/beli-saham/{id}', 'InvestasiController@beliSaham')->name('saham-beli')->middleware('GuestStudentCheck');
+
+Route::get('/investasi-fund', 'InvestasiController@showFundIndex');
+Route::get('/investasi-fund/{id}', 'InvestasiController@detailFund');
+Route::post('/donasi/{id}', 'InvestasiController@donasi');
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');

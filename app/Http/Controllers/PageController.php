@@ -124,4 +124,9 @@ class PageController extends Controller
 
         return view('pages.employer.login-warning');
     }
+
+    public function showSK()
+    {
+        return view('syarat-ketentuan');
+    }
 }
