@@ -129,4 +129,22 @@ class PageController extends Controller
     {
         return view('syarat-ketentuan');
     }
+
+    //midtrans
+    public function paymentFinish(Request $request)
+    {
+        dd($request);
+
+        return redirect()->back();
+    }
+
+    public function paymentUnfinish(Request $request)
+    {
+        dd($request);
+    }
+
+    public function paymentError(Request $request)
+    {
+        dd($request);
+    }
 }

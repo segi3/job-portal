@@ -94,6 +94,12 @@ Route::get('/investasi-project', 'InvestasiController@showProjectIndex');
 Route::get('/investasi-project/{id}', 'InvestasiController@detailProject');
 Route::post('/beli-saham/{id}', 'InvestasiController@beliSaham')->name('saham-beli')->middleware('GuestStudentCheck');
 
+//route midtrans
+Route::get('payment/finish', 'PageController@paymentFinish');
+Route::get('payment/unfinish', 'PageController@paymentUnfinish');
+Route::get('payment/error', 'PageController@paymentError');
+Route::post('notification/midtrans', 'InvestasiController@notificationHandler');
+
 Route::get('/investasi-fund', 'InvestasiController@showFundIndex');
 Route::get('/investasi-fund/{id}', 'InvestasiController@detailFund');
 Route::post('/donasi/{id}', 'InvestasiController@donasi');

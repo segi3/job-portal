@@ -10,7 +10,6 @@
 
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
 @endsection
 
 @section('content')
@@ -90,6 +89,7 @@
                     <h4>Deskripsi Bisnis</h4>
                     <p>{{ $investasi->deskripsi_bisnis }}</p>
                 </div>
+                @if(session()->has('role'))
                 @if( session('role') == 'student' )
                 <div class="single_wrap">
                     <h4>Proposal Investasi</h4>
@@ -97,6 +97,7 @@
                         <button type="submit" class="btn btn-sm btn-primary mr-4">Download Proposal Investasi</button>
                     </form>
                 </div>
+                @endif
                 @endif
 
             </div>
@@ -121,11 +122,12 @@
                     <div class="alert alert-danger" role="alert">
                         <span>Masa aktif saham sudah lewat</span>
                     </div>
-    
-                    @elseif( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
+                    @elseif(session()->has('role'))
+                    @if( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
                     <hr>
                     <h5>Beli saham</h5>
                     <form method="POST" action="/beli-saham/{{ $investasi->id }}" enctype="multipart/form-data">
+                    {{-- <form method="POST" onsubmit="return submitForm();"> --}}
                         @csrf
                         <div class="mt-10">
                             <label for="lembar_beli" class="">{{ __('Jumlah lembar') }}</label><span class="red-str">
@@ -136,13 +138,17 @@
                         </div>
                         <div class="mt-10 mb-3">
                             <label for="total_harga" class="">{{ __('Total harga') }}</label>
-                            <input type="total_harga" name="total_harga" placeholder="" id="hg"
+                            <input type="total_harga" name="total_harga" placeholder="" id="dsp"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="single-input"
-                                >
+                                disabled>
                         </div>
 
                         <input type="checkbox" name="termspolicy" id="termpolicy">
                         <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan Ketentuan</a></label>
+
+                        <input type="hidden" id="p_id" name="project_id" value="{{ $investasi->id }}" />
+                        <input type="hidden" id="p_name" name="project_name" value="{{ $investasi->nama_investasi }}" />
+                        <input type="hidden" id="hg" name="total_harga"/>
 
                         <div class="input-group-icon mt-10">
                             <div class="col-lg">
@@ -154,7 +160,7 @@
                             </div>
                         </div>
                     </form>
-
+                    @endif
                     @endif
 
                 </div>
@@ -174,10 +180,51 @@
     function updateHarga(val) {
         var upd = val * {{ $investasi->harga_saham }};
         
-        document.getElementById('hg').value = (upd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        document.getElementById('dsp').value = (upd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        document.getElementById('hg').value = upd;
         console.log(upd);
     }
 
 </script>
+
+<script 
+      type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-OIG__kD5EwOHlm0Z"
+    ></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    {{-- snap pop up --}}
+{{-- <script>
+    function submitForm() {
+        console.log('btn presses');
+        $.post("/beli-saham/{{ $investasi->id }}",
+        {  
+            _method: 'POST',
+            _token: '{{ csrf_token() }}',
+            lembar_beli: $('input#lembar').val(),
+            project_id: $('input#project_id').val(),
+            project_name: $('input#project_name').val(),
+            total_harga: $('input#hg').val(),
+        },
+        function (data, status) {
+           snap.pay(data.snap_token, {
+               onSuccess: function (result) {
+                   location.reload();
+               },
+               onPending: function(result) {
+                   location.reload();
+               },
+               onError: function (result) {
+                   location.reload();
+               }
+           });
+        });
+        return false;
+    }
+</script> --}}
 
 @endsection
