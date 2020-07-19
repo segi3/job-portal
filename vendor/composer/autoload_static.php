@@ -523,6 +523,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Job' => __DIR__ . '/../..' . '/app/Job.php',
         'App\\JobCategory' => __DIR__ . '/../..' . '/app/JobCategory.php',
         'App\\Job_Categoy' => __DIR__ . '/../..' . '/app/Job_Categoy.php',
+        'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\Order_project_guest' => __DIR__ . '/../..' . '/app/Order_project_guest.php',
         'App\\Order_project_student' => __DIR__ . '/../..' . '/app/Order_project_student.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

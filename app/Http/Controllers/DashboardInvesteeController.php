@@ -147,8 +147,8 @@ class DashboardInvesteeController extends Controller
             $studentid= $request->session()->get('id');
             $investeeid = DB::table('investee')
                         ->select('investee.id')        
-                        ->where('investee.student_id','=', $studentid)
-                        ->Where('investee.status', '=','1')
+                        ->where('student_id', '=', $studentid)
+                        ->Where('status', '=', '1')
                         ->first();
             $studentname = $request->session()->get('name');
             $invhash = md5('_INV_'.$studentname.'_'.$request->input('description'));
@@ -157,8 +157,8 @@ class DashboardInvesteeController extends Controller
             $tujuankeu = 'data_files/investee/Non-IYT/Project/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "Investment_".$studentid.'_'.$investeeid->id.'_'.$invhash.'.'.$extension;
-            $filenamekeu= "Keuangan_".$studentid.'_'.$investeeid->id.'_'.$keuhash.'.'.$extension;
+            $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
+            $filenamekeu= "Keuangan_".$studentid.$investeeid->id.$keuhash.'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
@@ -179,7 +179,7 @@ class DashboardInvesteeController extends Controller
                 'lembar_terbeli'        => 0,
                 'harga_saham'           => $request->input('hargaperlembar'),
                 'tgl_jatuh_tempo'       => $formatDate,
-                'berkas_proposal_investasi'  => $filenameinv,
+                'berkas_proposal_investasi'=> $filenameinv,
                 'berkas_laporan_keuangan'  => $filenamekeu,
             ]);
 
@@ -236,7 +236,7 @@ class DashboardInvesteeController extends Controller
         //     'laporankeuangan'   => 'required|mimes:pdf|max:2048',
         //     'termpolicy'        => 'required',
         // ]);
-
+        try{
             $berkasinvestasi= $request->file('proposalinvestasi');
             $berkaskeuangan= $request->file('laporankeuangan');
             $studentid= $request->session()->get('id');
@@ -258,7 +258,7 @@ class DashboardInvesteeController extends Controller
             $berkasinvestasi->move($tujuaninv,$filenameinv);
             $berkaskeuangan->move($tujuankeu,$filenamekeu);
             $formatDate = \Carbon\Carbon::parse($request->input('duedate'))->format('Y-m-d');
-        try{
+        
             Investasi_funding::create([
                 'nama_investasi'        => $request->input('namainvestasi'),
                 'investee_id'           => $investeeid->id,
@@ -289,5 +289,12 @@ class DashboardInvesteeController extends Controller
             return view('dashboard.pages.investee.create-funding-investment');
         }
     }
-    
+    public function showProjectInvestor()
+    {
+        $investor = DB::table('order')
+                        ->select('nama_investor', 'email_investor', 'role')
+                        ->paginate(8);
+
+        return view('pages.investee.investor-project-list')->with('investor', $investor);
+    }
 }
