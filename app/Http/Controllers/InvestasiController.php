@@ -14,6 +14,7 @@ use App\Investasi;
 use App\Investasi_project;
 use App\Investasi_funding;
 use App\Order;
+use App\Payment;
 
 
 class InvestasiController extends Controller
@@ -84,6 +85,20 @@ class InvestasiController extends Controller
         \Midtrans\Config::$is3ds = true;
     }
 
+    protected function _nextStudentProjectInvoiceNumber()
+    {
+        $where = [
+            'tipe_investasi' => 'project',
+            'role' => 'student',
+        ];
+
+        $lastOrder = Order::where($where)->orderBy('created_at', 'desc')->first();
+
+        $lastInvoice = explode("/", $lastOrder->invoice);
+
+        return $lastInvoice[1] + 1;
+    }
+
 
 
     public function beliSaham(Request $request, $id_inv)
@@ -119,16 +134,17 @@ class InvestasiController extends Controller
             $student = Student::where('id', '=', $id_student)->first();
 
             $this->_initPaymentGateway();
-
-            $redirectSnap = '';
             
+            $redirectSnap = '';
 
             \DB::transaction(function() use ($request, $student, $investasi, &$redirectSnap){
 
-                // dd($request);
+                 // INV/#/STD/YYYYMMDD
+                $nextInvNum = $this->_nextStudentProjectInvoiceNumber();
+                $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd");
 
                 $order = Order::create([
-                    'order_id' => 'STD/17072020/1',
+                    'invoice' => $newInvoice,
                     'nama_investor' => $student->name,
                     'email_investor' => $student->email,
                     'id_investor' => $student->id,
@@ -148,7 +164,7 @@ class InvestasiController extends Controller
 
                 $params = [
                     'transaction_details' => [
-                        'order_id' => $order->id,
+                        'order_id' => $order->invoice,
                         'gross_amount' => $order->total_harga,
                     ],
                     'customer_details' => [
@@ -215,19 +231,31 @@ class InvestasiController extends Controller
 
     public function notificationHandler(Request $request)
     {
+        // veryvy signature key
+        $payload = $request->getContent();
+        $notification = json_decode($payload);
+
+        $validKey = hash("sha512", $notification->order_id . $notification->status_code . $notification->gross_amount . 'SB-Mid-server--5w-DiJiV2WQ_vcgFYlGZZ8Y');
+
+        if ($notification->signature_key != $validKey) {
+            return response(['message' => 'Invalid signature'], 403);
+        }
+
         $this->_initPaymentGateway();
         
         $paymentNotification = new \Midtrans\Notification();
-        $order = Order::where('id', '=', $paymentNotification->order_id)->firstOrFail();
+        $order = Order::where('invoice', '=', $paymentNotification->order_id)->firstOrFail();
+
+        if ($order->status == 'Paid'){
+            return response(['message' => 'Order has been paid'], 403);
+        }
 
         $transaction = $paymentNotification->transaction_status;
-        $type = $paymentNotification->oayment_type;
+        $type = $paymentNotification->payment_type;
         $orderId = $paymentNotification->order_id;
         $fraud = $paymentNotification->fraud_status;
 
-        $vaNumber = null;
-        $vendorName = null;
-        $paymentStatus = NULL;
+        $paymentStatus = null;
 
         if ($transaction == 'capture') {
             // For credit card transaction, we need to check whether transaction is challenge by FDS or not
@@ -243,7 +271,7 @@ class InvestasiController extends Controller
             }
         } else if ($transaction == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
-            $paymentStatus = 'Settlement';
+            $paymentStatus = 'Paid';
         } else if ($transaction == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
             $paymentStatus = 'Pending';
@@ -257,11 +285,53 @@ class InvestasiController extends Controller
             // TODO set payment status in merchant's database to 'Denied'
             $paymentStatus = 'Cancel';
         }
+        
 
-        \DB::transaction(function() use ($order, $paymentStatus){
+        //create notification record => gak jadi pake notification order, payload langsung disimpen di order
+        // try{
+        //     DB::table('payment_notifications')->insert([
+        //         'invoice' => $order->invoice,
+        //         'amount' => $paymentNotification->gross_amount,
+        //         'method' => 'midtrans',
+        //         'status' => $paymentStatus,
+        //         'token' => $paymentNotification->transaction_id,
+        //         'payload' => $payload,
+        //         'payment_type' => $paymentNotification->payment_type,
+        //         'va_number' => $vaNumber,
+        //         'vendor_name' => $vendorName,
+        //         'biller_code' => $paymentNotification->biller_code,
+        //         'bill_key' => $paymentNotification->bill_key
+        //     ]);
+        //     Payment::create([
+        //         'invoice' => $order->invoice,
+        //         'amount' => $paymentNotification->gross_amount,
+        //         'method' => 'midtrans',
+        //         'status' => $paymentStatus,
+        //         'token' => $paymentNotification->transaction_id,
+        //         'payload' => $payload,
+        //         'payment_type' => $paymentNotification->payment_type,
+        //         'va_number' => $vaNumber,
+        //         'vendor_name' => $vendorName,
+        //         'biller_code' => $paymentNotification->biller_code,
+        //         'bill_key' => $paymentNotification->bill_key,
+        //     ]);
+        // }
+        // catch(\Illuminate\Database\QueryException $e)
+        // {
+        //     $errorCode = $e->errorInfo[1];
+        //     $errorMsg = $e->errorInfo[2];
+        //     return response(['message' => $errorMsg], $errorCode);
+        // }
+
+        
+
+        \DB::transaction(function() use ($order, $paymentStatus, $payload){
             $order->status = $paymentStatus;
+            $order->payload = $payload;
             $order->save();
         });
+        
+        
 
         $message = 'Payment Status : '. $paymentStatus;
         $response = [
