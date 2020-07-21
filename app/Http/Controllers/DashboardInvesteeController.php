@@ -291,10 +291,18 @@ class DashboardInvesteeController extends Controller
     }
     public function showProjectInvestor()
     {
+        $studentid= $request->session()->get('id');
+        $investeeid = DB::table('investee')
+                    ->select('investee.id')        
+                    ->where('student_id', '=', $studentid)
+                    ->Where('status', '=', '1')
+                    ->first();
         $investor = DB::table('order')
-                        ->select('nama_investor', 'email_investor', 'role')
+                        ->select('id_investor','nama_investor', 'email_investor', 'role')
+                        ->where('id_investee', '=', $investeeid)
+                        ->where('tipe_investasi', '=', 'project')
                         ->paginate(8);
 
-        return view('pages.investee.investor-project-list')->with('investor', $investor);
+        return view('dashboard.pages.investee.investor-project-list')->with('investor', $investor);
     }
 }

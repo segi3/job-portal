@@ -39,6 +39,7 @@
                     <table class="table table-bordered table-responsive-sm">
                         <thead>                  
                             <tr>
+                                <th>ID Investor</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -48,6 +49,7 @@
                         <tbody>
                         @foreach($investor as $inv)
                             <tr>
+                                <td>{{ $inv->id_investor }}</td>
                                 <td>{{ $inv->nama_investor }}</td>
                                 <td>{{ $inv->email_investor }}</td>
                                 <td>{{ $inv->role }}</td>
