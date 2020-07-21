@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $fillable = [
         'invoice',
-        'nama_investor', 'email_investor', 'id_investor', 'role',
+        'nama_investor', 'email_investor', 'id_investor', 'role', 'investasi_id',
         'tipe_investasi', 'nama_investasi', 'nama_investee', 'id_investee', 'lembar_beli',
         'status', 'total_harga', 'order_date', 'payment_due',
         'snap_token', 'payload',

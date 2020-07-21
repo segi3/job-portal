@@ -21,6 +21,7 @@ class CreateOrderTable extends Migration
             $table->string('id_investor');
             $table->string('role');
             $table->string('tipe_investasi');
+            $table->string('investasi_id');
             $table->string('nama_investasi');
             $table->string('nama_investee');
             $table->string('id_investee');

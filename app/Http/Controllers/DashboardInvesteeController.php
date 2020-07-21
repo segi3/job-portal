@@ -289,7 +289,29 @@ class DashboardInvesteeController extends Controller
             return view('dashboard.pages.investee.create-funding-investment');
         }
     }
-    public function showProjectInvestor()
+    public function showProjectInvestorStudent()
+    {
+        $studentid= $request->session()->get('id');
+        $investment = DB::table('order')
+                        ->select('order.*')
+                        ->where('order.id_investor', '=', $studentid)
+                        ->where('role', '=', 'student')
+                        ->where('tipe_investasi', '=', 'project')
+                        ->paginate(8);
+        // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
+    }
+    public function showProjectInvestorGuest()
+    {
+        $guestid= $request->session()->get('id');
+        $investment = DB::table('order')
+                        ->select('order.*')
+                        ->where('order.id_investor', '=', $guestid)
+                        ->where('role', '=', 'guest')
+                        ->where('tipe_investasi', '=', 'project')
+                        ->paginate(8);
+        // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
+    }
+    public function showProjectInvestee()
     {
         $studentid= $request->session()->get('id');
         $investeeid = DB::table('investee')
@@ -297,12 +319,12 @@ class DashboardInvesteeController extends Controller
                     ->where('student_id', '=', $studentid)
                     ->Where('status', '=', '1')
                     ->first();
-        $investor = DB::table('order')
-                        ->select('id_investor','nama_investor', 'email_investor', 'role')
-                        ->where('id_investee', '=', $investeeid)
-                        ->where('tipe_investasi', '=', 'project')
+        $investment = DB::table('investasi_project')
+                        ->select('investasi_project.*')
+                        ->where('investasi_project.investee_id', '=', $investeeid)
+                        ->where('investasi_project.status', '=', '1')
                         ->paginate(8);
 
-        return view('dashboard.pages.investee.investor-project-list')->with('investor', $investor);
+        return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
     }
 }

@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'Investor Project List')
+@section('title', 'Investment Project List')
 
 @section('stylesheets')
     {{--  --}}
@@ -12,13 +12,13 @@
     <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Investor Project List</h1>
+        <h1 class="m-0 text-dark">Investment Project List</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
             <li class="breadcrumb-item active">Manage-Investment</li>
-            <li class="breadcrumb-item active">Investor Project List</li>
+            <li class="breadcrumb-item active">Investment Project List</li>
         </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -32,27 +32,29 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Investor Project List Table</h3>
+                    <h3 class="card-title">Investment Project List Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                     <table class="table table-bordered table-responsive-sm">
                         <thead>                  
                             <tr>
-                                <th>ID Investor</th>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>ID Investasi Project</th>
+                                <th>Nama Investasi</th>
+                                <th>Tanggal Jatuh Tempo</th>
+                                <th>Lembar Terbeli</th>
+                                <th>Lembar Total</th>
                                 <th style="width: 87px">Detail</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($investor as $inv)
+                        @foreach($investment as $inv)
                             <tr>
-                                <td>{{ $inv->id_investor }}</td>
-                                <td>{{ $inv->nama_investor }}</td>
-                                <td>{{ $inv->email_investor }}</td>
-                                <td>{{ $inv->role }}</td>
+                                <td>{{ $inv->id }}</td>
+                                <td>{{ $inv->nama_investasi }}</td>
+                                <td>{{ $inv->tgl_jatuh_tempo }}</td>
+                                <td>{{ $inv->lembar_terbeli }}</td>
+                                <td>{{ $inv->lembar_total }}</td>
                                 <td>
                                     <form action="{{ route('employer.reject', $employer->id) }}" method="post">
                                         {{ csrf_field() }}
@@ -68,7 +70,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $investor->links() }}
+                        {{ $investment->links() }}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
