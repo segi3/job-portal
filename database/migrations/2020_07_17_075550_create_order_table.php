@@ -15,7 +15,7 @@ class CreateOrderTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->string('order_id');
+            $table->string('invoice');
             $table->string('nama_investor');
             $table->string('email_investor');
             $table->string('id_investor');
@@ -25,7 +25,7 @@ class CreateOrderTable extends Migration
             $table->string('nama_investee');
             $table->string('id_investee');
             $table->integer('lembar_beli')->nullable();
-            $table->string('status')->default('init');
+            $table->string('status')->default('unpaid');
             $table->decimal('total_harga', 20, 2)->default(0);
             $table->timestamp('order_date', 0)->nullable();
             $table->timestamp('payment_due', 0)->nullable();

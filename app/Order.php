@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'order_id',
+        'invoice',
         'nama_investor', 'email_investor', 'id_investor', 'role',
         'tipe_investasi', 'nama_investasi', 'nama_investee', 'id_investee', 'lembar_beli',
         'status', 'total_harga', 'order_date', 'payment_due',
-        'snap_token',
+        'snap_token', 'payload',
     ];
     
     protected $table = 'order';

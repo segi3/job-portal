@@ -526,6 +526,8 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\Order_project_guest' => __DIR__ . '/../..' . '/app/Order_project_guest.php',
         'App\\Order_project_student' => __DIR__ . '/../..' . '/app/Order_project_student.php',
+        'App\\Payment' => __DIR__ . '/../..' . '/app/Payment.php',
+        'App\\Progres_project' => __DIR__ . '/../..' . '/app/Progres_project.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

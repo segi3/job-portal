@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotifPaymentProjectTable extends Migration
+class AddPayloadToOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateNotifPaymentProjectTable extends Migration
      */
     public function up()
     {
-        Schema::create('notif_payment_project', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('order', function (Blueprint $table) {
+            $table->string('payload', 1023)->nullable();
         });
     }
 
@@ -26,6 +25,8 @@ class CreateNotifPaymentProjectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notif_payment_project');
+        Schema::table('order', function (Blueprint $table) {
+            $table->dropColumn('payload');
+        });
     }
 }

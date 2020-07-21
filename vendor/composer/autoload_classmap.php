@@ -67,6 +67,8 @@ return array(
     'App\\Order' => $baseDir . '/app/Order.php',
     'App\\Order_project_guest' => $baseDir . '/app/Order_project_guest.php',
     'App\\Order_project_student' => $baseDir . '/app/Order_project_student.php',
+    'App\\Payment' => $baseDir . '/app/Payment.php',
+    'App\\Progres_project' => $baseDir . '/app/Progres_project.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

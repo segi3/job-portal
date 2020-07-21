@@ -9,6 +9,7 @@ use Session;
 use App\Job;
 use App\JobCategory;
 use App\Employer;
+use App\Order;
 
 class PageController extends Controller
 {
@@ -133,18 +134,39 @@ class PageController extends Controller
     //midtrans
     public function paymentFinish(Request $request)
     {
-        dd($request);
+       
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
 
-        return redirect()->back();
+        Session::flash('success', 'Payment anda telah selesai');
+
+        return redirect('orders/received/'. $order->id);
     }
 
     public function paymentUnfinish(Request $request)
     {
-        dd($request);
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
+
+        Session::flash('error', 'Payment anda tidak dapat kami proses');
+
+        return redirect('orders/received/'. $order->id);
     }
 
     public function paymentError(Request $request)
     {
-        dd($request);
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
+
+        Session::flash('error', 'Payment anda tidak dapat kami proses');
+
+        return redirect('orders/received/'. $order->id);
+    }
+
+    public function receivedOrder($order_id)
+    {
+        $order = Order::where('id', '=', $order_id)->first();;
+
+        return view('midtrans/order')->with('order', $order);
     }
 }
