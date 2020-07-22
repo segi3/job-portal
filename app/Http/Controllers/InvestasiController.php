@@ -103,7 +103,6 @@ class InvestasiController extends Controller
 
     public function beliSaham(Request $request, $id_inv)
     {
-        
         // cek jumlah lembar yang tersedia
         $investasi = Investasi_project::where('investasi_project.id', '=', $id_inv)
                     ->join('investee', 'investee.id', 'investee_id')
@@ -114,6 +113,9 @@ class InvestasiController extends Controller
         if ($request->input('lembar_beli') > $lembar_sisa){
             Session::flash('error', 'Tidak dapat membeli sebanyak '.$request->input('lembar_beli').', hanya tersisa '.$lembar_sisa.' lembar');
             return redirect()->back();
+        }else{
+            $investasi->lembar_terbeli = $investasi->lembar_terbeli + $request->input('lembar_beli');
+            $investasi->save();
         }
 
         $id_student = $request->session()->get('id');
@@ -151,6 +153,7 @@ class InvestasiController extends Controller
                     'role' => 'student',
 
                     'tipe_investasi' => 'project',
+                    'investasi_id' => $request->input('project_id'),
                     'nama_investasi' => $investasi->nama_investasi,
                     'nama_investee' => $investasi->nama_investee,
                     'id_investee' => $investasi->investee_id,
@@ -229,6 +232,15 @@ class InvestasiController extends Controller
 
     }
 
+    protected function _updateHapusLembarBeli($investasi_id, $lembar)
+    {
+        $investasi = Investasi_project::where('id', '=', $investasi_id)->first();
+
+        $investasi->lembar_terbeli = $investasi->lembar_terbeli - $lembar;
+        $investasi->save();
+
+    }
+
     public function notificationHandler(Request $request)
     {
         // veryvy signature key
@@ -278,12 +290,25 @@ class InvestasiController extends Controller
         } else if ($transaction == 'deny') {
             // TODO set payment status in merchant's database to 'Denied'
             $paymentStatus = 'Deny';
+
+            if ($order->tipe_investasi == 'project'){
+                $this->_updateHapusLembarBeli($order->investasi_id, $order->lembar_beli);
+            }
         } else if ($transaction == 'expire') {
             // TODO set payment status in merchant's database to 'expire'
             $paymentStatus = 'Expire';
+
+            if ($order->tipe_investasi == 'project'){
+                $this->_updateHapusLembarBeli($order->investasi_id, $order->lembar_beli);
+            }
         } else if ($transaction == 'cancel') {
             // TODO set payment status in merchant's database to 'Denied'
             $paymentStatus = 'Cancel';
+
+            if ($order->tipe_investasi == 'project'){
+                $this->_updateHapusLembarBeli($order->investasi_id, $order->lembar_beli);
+            }
+            
         }
         
 
