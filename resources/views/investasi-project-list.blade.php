@@ -16,7 +16,6 @@
 
 @section('content')
 
-    <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_1">
         <div class="container">
             <div class="row">
@@ -29,8 +28,6 @@
         </div>
     </div>
 
-    <!--/ bradcam_area  -->
-    <!-- catagory_area -->
     {{-- <div class="catagory_area" style="padding-top: 50px;">
         <div class="container">
             <div class="row cat_search">
@@ -53,8 +50,6 @@
         </div>
     </div> --}}
 
-    <!--/ catagory_area -->
-    <!-- job_listing_area_start  -->
     <div class="job_listing_area plus_padding" style="padding-top: 30px;">
         <div class="container">
             <div class="row">

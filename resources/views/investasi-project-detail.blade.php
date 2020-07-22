@@ -13,8 +13,6 @@
 @endsection
 
 @section('content')
-<!-- bradcam_area  -->
-
 <div class="bradcam_area bradcam_bg_1">
     <div class="container">
         <div class="row">
@@ -26,7 +24,7 @@
         </div>
     </div>
 </div>
-<!--/ bradcam_area  -->
+
 <div class="job_details_area">
     <div class="container">
         @if (Session::has('success'))
