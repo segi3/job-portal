@@ -67,9 +67,20 @@ class InvestasiController extends Controller
         return view('investasi-funding-list')->with('investasis', $investasi)->with('investasiCount', $investasiCount);
     }
 
-    public function detailFund()
+    public function detailFund($id)
     {
+        $where = [
+            'investasi_funding.id' => $id,
+            'investasi_funding.status' => 1,
+        ];
 
+        $investasi = DB::table('investasi_funding')
+                        ->join('investee', 'investee.id', 'investasi_funding.investee_id')
+                        ->select('investasi_funding.*', 'investee.nama as nama_investee')
+                        ->where($where)
+                        ->first();
+
+        return view('investasi-funding-detail')->with('investasi', $investasi);
     }
 
     // midtrans initializer
@@ -227,9 +238,9 @@ class InvestasiController extends Controller
 
     }
 
-    public function donasi()
+    public function donasi(Request $request, $id_inv)
     {
-
+        dd($request, $id_inv);
     }
 
     protected function _updateHapusLembarBeli($investasi_id, $lembar)
@@ -308,7 +319,7 @@ class InvestasiController extends Controller
             if ($order->tipe_investasi == 'project'){
                 $this->_updateHapusLembarBeli($order->investasi_id, $order->lembar_beli);
             }
-            
+
         }
         
 

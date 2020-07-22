@@ -54,10 +54,10 @@
                                             </div>
                                             <div class="links_locat d-flex align-items-center">
                                                 <div class="location">
-                                                    <p> Rp {{ number_format($investasi->harga_saham, 0, ',', '.') }}</p>
+                                                    <p>Target Fund: Rp {{ number_format($investasi->donasi_target, 0, ',', '.') }}</p>
                                                 </div>
                                                 <div class="location">
-                                                    <p> ROI {{ $investasi->roi_bot }}% - {{ $investasi->roi_top }}%</p>
+                                                    <p>Terkumpul: Rp {{ number_format($investasi->donasi_masuk, 0, ',', '.') }}</p>
                                                 </div>
                                             </div>
 
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="jobs_right">
                                         <div class="apply_now">
-                                            <a href=" {{ url('investasi-fund/'.$investasi->id) }} " class="boxed-btn3">Beli Saham</a>
+                                            <a href=" {{ url('investasi-fund/'.$investasi->id) }} " class="boxed-btn3">Donasi</a>
                                         </div>
                                     </div>
                                 </div>

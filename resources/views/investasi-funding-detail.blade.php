@@ -110,10 +110,8 @@
                 <div class="job_content">
                     <ul>
                         <li>Penyedia saham: <span>{{ $investasi->nama_investee }}</span></li>
-                        <li>Harga saham : <span>Rp {{ number_format($investasi->harga_saham, 0, ',', '.') }}</span></li>
-                        <li>ROI : <span>{{ $investasi->roi_bot }}% - {{ $investasi->roi_top }}%</span></li>
-                        <li>Saham tersisa : <span>{{ $investasi->lembar_total - $investasi->lembar_terbeli }}
-                                lembar</span></li>
+                        <li>Target Donasi : <span>Rp {{ number_format($investasi->donasi_target, 0, ',', '.') }}</span></li>
+                        <li>Donasi Masuk : <span>Rp {{ number_format($investasi->donasi_masuk, 0, ',', '.') }}</span></li>
                     </ul>
                     @if($investasi->status_tempo == 2)
 
@@ -123,30 +121,23 @@
                     @elseif(session()->has('role'))
                     @if( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
                     <hr>
-                    <h5>Beli saham</h5>
-                    <form method="POST" action="/beli-saham/{{ $investasi->id }}" enctype="multipart/form-data">
-                    {{-- <form method="POST" onsubmit="return submitForm();"> --}}
+                    <h5>Donasi</h5>
+                    <form method="POST" action="/donasi/{{ $investasi->id }}" enctype="multipart/form-data">
+                        {{-- <form method="POST" onsubmit="return submitForm();"> --}}
                         @csrf
-                        <div class="mt-10">
-                            <label for="lembar_beli" class="">{{ __('Jumlah lembar') }}</label><span class="red-str">
-                                *</span>
-                            <input type="lembar_beli" name="lembar_beli" placeholder="Jumlah lembar" id="lembar"
-                                onchange="updateHarga(this.value)" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Jumlah lembar'" required class="single-input">
-                        </div>
                         <div class="mt-10 mb-3">
-                            <label for="total_harga" class="">{{ __('Total harga') }}</label>
+                            <label for="total_harga" class="">{{ __('Jumlah Donasi') }}</label>
                             <input type="total_harga" name="total_harga" placeholder="" id="dsp"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="single-input"
-                                disabled>
+                                >
                         </div>
 
                         <input type="checkbox" name="termspolicy" id="termpolicy">
-                        <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan Ketentuan</a></label>
+                        <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan
+                                Ketentuan</a></label>
 
                         <input type="hidden" id="p_id" name="project_id" value="{{ $investasi->id }}" />
                         <input type="hidden" id="p_name" name="project_name" value="{{ $investasi->nama_investasi }}" />
-                        <input type="hidden" id="hg" name="total_harga"/>
 
                         <div class="input-group-icon mt-10">
                             <div class="col-lg">
@@ -173,56 +164,39 @@
 @endsection
 
 @section('scripts')
-{{--  --}}
-<script type="application/javascript">
-    function updateHarga(val) {
-        var upd = val * {{ $investasi->harga_saham }};
-        
-        document.getElementById('dsp').value = (upd).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        document.getElementById('hg').value = upd;
-        console.log(upd);
-    }
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-OIG__kD5EwOHlm0Z"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-</script>
-
-<script 
-      type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-OIG__kD5EwOHlm0Z"
-    ></script>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-
-    {{-- snap pop up --}}
+{{-- snap pop up --}}
 {{-- <script>
     function submitForm() {
         console.log('btn presses');
         $.post("/beli-saham/{{ $investasi->id }}",
-        {  
-            _method: 'POST',
-            _token: '{{ csrf_token() }}',
-            lembar_beli: $('input#lembar').val(),
-            project_id: $('input#project_id').val(),
-            project_name: $('input#project_name').val(),
-            total_harga: $('input#hg').val(),
-        },
-        function (data, status) {
-           snap.pay(data.snap_token, {
-               onSuccess: function (result) {
-                   location.reload();
-               },
-               onPending: function(result) {
-                   location.reload();
-               },
-               onError: function (result) {
-                   location.reload();
-               }
-           });
-        });
-        return false;
-    }
+{
+_method: 'POST',
+_token: '{{ csrf_token() }}',
+lembar_beli: $('input#lembar').val(),
+project_id: $('input#project_id').val(),
+project_name: $('input#project_name').val(),
+total_harga: $('input#hg').val(),
+},
+function (data, status) {
+snap.pay(data.snap_token, {
+onSuccess: function (result) {
+location.reload();
+},
+onPending: function(result) {
+location.reload();
+},
+onError: function (result) {
+location.reload();
+}
+});
+});
+return false;
+}
 </script> --}}
 
 @endsection
