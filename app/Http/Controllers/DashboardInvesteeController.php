@@ -311,7 +311,7 @@ class DashboardInvesteeController extends Controller
                         ->paginate(8);
         // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
     }
-    public function showProjectInvestee()
+    public function showProjectInvestee(Request $request)
     {
         $studentid= $request->session()->get('id');
         $investeeid = DB::table('investee')
@@ -321,7 +321,7 @@ class DashboardInvesteeController extends Controller
                     ->first();
         $investment = DB::table('investasi_project')
                         ->select('investasi_project.*')
-                        ->where('investasi_project.investee_id', '=', $investeeid)
+                        ->where('investasi_project.investee_id', '=', $investeeid->id)
                         ->where('investasi_project.status', '=', '1')
                         ->paginate(8);
 

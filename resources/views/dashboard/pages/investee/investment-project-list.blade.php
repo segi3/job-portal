@@ -29,7 +29,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
                     <h3 class="card-title">Investment Project List Table</h3>
@@ -39,7 +39,6 @@
                     <table class="table table-bordered table-responsive-sm">
                         <thead>                  
                             <tr>
-                                <th>ID Investasi Project</th>
                                 <th>Nama Investasi</th>
                                 <th>Tanggal Jatuh Tempo</th>
                                 <th>Lembar Terbeli</th>
@@ -50,16 +49,13 @@
                         <tbody>
                         @foreach($investment as $inv)
                             <tr>
-                                <td>{{ $inv->id }}</td>
                                 <td>{{ $inv->nama_investasi }}</td>
                                 <td>{{ $inv->tgl_jatuh_tempo }}</td>
                                 <td>{{ $inv->lembar_terbeli }}</td>
                                 <td>{{ $inv->lembar_total }}</td>
                                 <td>
-                                    <form action="{{ route('employer.reject', $employer->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('put') }}
-                                        <button type="submit" class="btn btn-sm btn-block btn-danger">Reject</button>
+                                    <form action="{{ url('/dashboard/investee/detail-investment/'.$inv->id) }}">
+                                        <button type="submit" class="btn btn-sm btn-block btn-danger">Detail</button>
                                     </form>
                                 </td>
                             </tr>
