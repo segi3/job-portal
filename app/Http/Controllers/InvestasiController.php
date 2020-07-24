@@ -10,6 +10,7 @@ use Session;
 use Validator;
 
 use App\Student;
+use App\Guest;
 use App\Investasi;
 use App\Investasi_project;
 use App\Investasi_funding;
@@ -47,7 +48,6 @@ class InvestasiController extends Controller
                         ->select('investasi_project.*', 'investee.nama as nama_investee')
                         ->where($where)
                         ->first();
-        // dd($investasi);
 
         return view('investasi-project-detail')->with('investasi', $investasi);
     }
@@ -105,6 +105,38 @@ class InvestasiController extends Controller
 
         $lastOrder = Order::where($where)->orderBy('created_at', 'desc')->first();
 
+        if($lastOrder){
+
+            $lastInvoice = explode("/", $lastOrder->invoice);
+
+            return $lastInvoice[1] + 1;
+        }else{
+            
+            return 1;
+        }
+    }
+
+    protected function _nextGuestProjectInvoiceNumber()
+    {
+        $where = [
+            'tipe_investasi' => 'project',
+            'role' => 'guest',
+        ];
+
+        $lastOrder = Order::where($where)->orderBy('created_at', 'desc')->first();
+
+        if($lastOrder){
+
+            $lastInvoice = explode("/", $lastOrder->invoice);
+
+            return $lastInvoice[1] + 1;
+        }else{
+
+            return 1;
+        }
+        
+        
+
         $lastInvoice = explode("/", $lastOrder->invoice);
 
         return $lastInvoice[1] + 1;
@@ -129,7 +161,7 @@ class InvestasiController extends Controller
             $investasi->save();
         }
 
-        $id_student = $request->session()->get('id');
+        $id_pembeli = $request->session()->get('id');
 
         $validator = Validator::make($request->all(),[
             'lembar_beli' => 'required',
@@ -144,7 +176,7 @@ class InvestasiController extends Controller
         if ($request->session()->get('role') == 'student'){
 
             //ambil data student
-            $student = Student::where('id', '=', $id_student)->first();
+            $student = Student::where('id', '=', $id_pembeli)->first();
 
             $this->_initPaymentGateway();
             
@@ -203,7 +235,64 @@ class InvestasiController extends Controller
             return redirect($redirectSnap);
 
         }else if ($request->session()->get('role') == 'guest'){
-            //order guest
+            
+            $guest = Guest::where('id', '=', $id_pembeli)->first();
+
+            $this->_initPaymentGateway();
+            
+            $redirectSnap = '';
+
+            \DB::transaction(function() use ($request, $guest, $investasi, &$redirectSnap){
+
+                // INV/#/STD/YYYYMMDD
+               $nextInvNum = $this->_nextGuestProjectInvoiceNumber();
+               $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd");
+
+               $order = Order::create([
+                   'invoice' => $newInvoice,
+                   'nama_investor' => $guest->name,
+                   'email_investor' => $guest->email,
+                   'id_investor' => $guest->id,
+                   'role' => 'guest',
+
+                   'tipe_investasi' => 'project',
+                   'investasi_id' => $request->input('project_id'),
+                   'nama_investasi' => $investasi->nama_investasi,
+                   'nama_investee' => $investasi->nama_investee,
+                   'id_investee' => $investasi->investee_id,
+
+                   'lembar_beli' => $request->input('lembar_beli'),
+                   'total_harga' => $request->input('total_harga'),
+                   
+                   'order_date' => NULL,
+                   'payment_due' => NULL,
+               ]);
+
+               $params = [
+                   'transaction_details' => [
+                       'order_id' => $order->invoice,
+                       'gross_amount' => $order->total_harga,
+                   ],
+                   'customer_details' => [
+                       'first_name' => $order->nama_investor,
+                       'last_name' => '',
+                       'email' => $order->email_investor,
+                       'phone' => $guest->mobile_no,
+                   ],
+               ];
+               
+               $responseAPI = \Midtrans\Snap::createTransaction($params);
+               // $responseAPI = json_decode($snapToken);
+              
+               // dd($snapToken);
+               $redirectSnap = $responseAPI->redirect_url;
+
+               $order->snap_token = $responseAPI->token;
+               $order->save();
+           });
+           
+           return redirect($redirectSnap);
+
         }
 
         //tanggal deadline => kayaknya ini nanti dari api midtrans bisa di set

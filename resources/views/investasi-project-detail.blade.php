@@ -88,7 +88,7 @@
                     <p>{{ $investasi->deskripsi_bisnis }}</p>
                 </div>
                 @if(session()->has('role'))
-                    @if( session('role') == 'student' )
+                    @if( session('role') == 'student' || session('role') == 'guest')
                     <div class="single_wrap">
                         <h4>Proposal Investasi</h4>
                         <form action="{{ route('proposal.project.investasi.download', $investasi->id) }}" method="get">
@@ -115,50 +115,58 @@
                         <li>Saham tersisa : <span>{{ $investasi->lembar_total - $investasi->lembar_terbeli }}
                                 lembar</span></li>
                     </ul>
+
                     @if($investasi->status_tempo == 2)
 
-                    <div class="alert alert-danger" role="alert">
-                        <span>Masa aktif saham sudah lewat</span>
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            <span>Masa aktif saham sudah lewat</span>
+                        </div>
+
                     @elseif(session()->has('role'))
-                    @if( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
-                    <hr>
-                    <h5>Beli saham</h5>
-                    <form method="POST" action="/beli-saham/{{ $investasi->id }}" enctype="multipart/form-data">
-                    {{-- <form method="POST" onsubmit="return submitForm();"> --}}
-                        @csrf
-                        <div class="mt-10">
-                            <label for="lembar_beli" class="">{{ __('Jumlah lembar') }}</label><span class="red-str">
-                                *</span>
-                            <input type="lembar_beli" name="lembar_beli" placeholder="Jumlah lembar" id="lembar"
-                                onchange="updateHarga(this.value)" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'Jumlah lembar'" required class="single-input">
-                        </div>
-                        <div class="mt-10 mb-3">
-                            <label for="total_harga" class="">{{ __('Total harga') }}</label>
-                            <input type="total_harga" name="total_harga" placeholder="" id="dsp"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="single-input"
-                                disabled>
-                        </div>
+                        @if( (session('role') == 'student' || session('role') == 'guest') && $investasi->status_tempo == 1)
 
-                        <input type="checkbox" name="termspolicy" id="termpolicy">
-                        <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan Ketentuan</a></label>
+                        <hr>
+                        <h5>Beli saham</h5>
 
-                        <input type="hidden" id="p_id" name="project_id" value="{{ $investasi->id }}" />
-                        <input type="hidden" id="p_name" name="project_name" value="{{ $investasi->nama_investasi }}" />
-                        <input type="hidden" id="hg" name="total_harga"/>
+                        <form method="POST" action="/beli-saham/{{ $investasi->id }}" enctype="multipart/form-data">
+                    
+                            @csrf
 
-                        <div class="input-group-icon mt-10">
-                            <div class="col-lg">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-block btn-primary">
-                                        {{ __('Beli') }}
-                                    </button>
+                            <div class="mt-10">
+                                <label for="lembar_beli" class="">{{ __('Jumlah lembar') }}</label><span class="red-str">
+                                    *</span>
+                                <input type="lembar_beli" name="lembar_beli" placeholder="Jumlah lembar" id="lembar"
+                                    onchange="updateHarga(this.value)" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Jumlah lembar'" required class="single-input">
+                            </div>
+
+                            <div class="mt-10 mb-3">
+                                <label for="total_harga" class="">{{ __('Total harga') }}</label>
+                                <input type="total_harga" name="total_harga" placeholder="" id="dsp"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="single-input"
+                                    disabled>
+                            </div>
+
+                            <input type="checkbox" name="termspolicy" id="termpolicy">
+                            <label>Saya Menyetujui <a href="/syarat-ketentuan" target="_blank">Syarat dan Ketentuan</a></label>
+
+                            <input type="hidden" id="p_id" name="project_id" value="{{ $investasi->id }}" />
+                            <input type="hidden" id="p_name" name="project_name" value="{{ $investasi->nama_investasi }}" />
+                            <input type="hidden" id="hg" name="total_harga"/>
+
+                            <div class="input-group-icon mt-10">
+                                <div class="col-lg">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-block btn-primary">
+                                            {{ __('Beli') }}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                    @endif
+
+                        </form>
+
+                        @endif
                     @endif
 
                 </div>
@@ -185,7 +193,7 @@
 
 </script>
 
-<script 
+{{-- <script 
       type="text/javascript"
       src="https://app.sandbox.midtrans.com/snap/snap.js"
       data-client-key="SB-Mid-client-OIG__kD5EwOHlm0Z"
@@ -193,7 +201,7 @@
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> --}}
 
     {{-- snap pop up --}}
 {{-- <script>
