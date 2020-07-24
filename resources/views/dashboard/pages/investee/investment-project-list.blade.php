@@ -16,7 +16,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/dashboard/investee">Home</a></li>
             <li class="breadcrumb-item active">Manage-Investment</li>
             <li class="breadcrumb-item active">Investment Project List</li>
         </ol>
@@ -29,7 +29,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                     <h3 class="card-title">Investment Project List Table</h3>
@@ -54,9 +54,7 @@
                                 <td>{{ $inv->lembar_terbeli }}</td>
                                 <td>{{ $inv->lembar_total }}</td>
                                 <td>
-                                    <form action="{{ url('/dashboard/investee/detail-investment/'.$inv->id) }}">
-                                        <button type="submit" class="btn btn-sm btn-block btn-danger">Detail</button>
-                                    </form>
+                                    <a class="tn btn-sm btn-block btn-info" href="{{ url('/dashboard/investee/detail-investment/'.$inv->id) }}" role="button">Detail</a>
                                 </td>
                             </tr>
                         @endforeach

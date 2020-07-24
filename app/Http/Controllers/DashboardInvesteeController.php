@@ -325,6 +325,42 @@ class DashboardInvesteeController extends Controller
                         ->where('investasi_project.status', '=', '1')
                         ->paginate(8);
 
-        return view('dashboard.pages.investee.investment-project-list')->with('investment', $investment);
+        return view('dashboard.pages.investee.detail-investment')->with('investment', $investment);
+    }
+    public function showDetailInvestment(Request $request, $id)
+    {
+        $studentid= $request->session()->get('id');
+        $investeeid = DB::table('investee')
+                    ->select('investee.id')        
+                    ->where('student_id', '=', $studentid)
+                    ->Where('status', '=', '1')
+                    ->first();
+        $investor = DB::table('order')
+                        ->select('order.*')
+                        ->where('id_investee', '=', $investeeid->id)
+                        ->where('investasi_id', '=', $id)
+                        // ->where('status', '=', '1')
+                        ->where('tipe_investasi', '=', 'project')
+                        ->paginate(8);
+        if($investor->role == 'student')
+        {
+            $detinvestor = DB::table('students')
+            ->select('students.*')
+            ->where('id', '=', $investor->id_investor)
+            ->first();
+        }
+        else
+        {
+            $detinvestor = DB::table('guests')
+            ->select('guests.*')
+            ->where('id', '=', $investor->id_investor)
+            ->first();
+        }
+        $listprogres = DB::table('progres_project')
+                        -> select('progres_project.*')
+                        -> where('progres_project.project_id','=', $id)
+                        -> orderByRaw('updated_at - created_at DESC')
+                        ->paginate(8);
+        return view('dashboard.pages.investee.detail-investment',compact('investor','detinvestor','listprogres'));
     }
 }
