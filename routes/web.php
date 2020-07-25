@@ -156,7 +156,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/investee/post-project-investment', 'DashboardInvesteeController@postCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createProjectInvestment');
     Route::get('dashboard/investee/create-funding-investment', 'DashboardInvesteeController@getCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateFundingInvestment');
     Route::post('dashboard/investee/post-funding-investment', 'DashboardInvesteeController@postCreateFundInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createFundingInvestment');
-    Route::get('dashboard/investee/investment-project-list', 'DashboardInvesteeController@showProjectInvestee')->middleware('InvesteeCheck')->name('dashboard.investee.getProjectInvestor');
+    Route::get('dashboard/investee/investment-project-list', 'DashboardInvesteeController@showProjectInvestee')->middleware('InvesteeCheck')->name('dashboard.investee.getProjectInvestee');
+    Route::get('dashboard/investee/detail-investment/{id}', 'DashboardInvesteeController@showDetailInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getDetailInvestment');
+    Route::post('dashboard/investee/upload-progress/{id}', 'DashboardInvesteeController@submitprogress')->middleware('InvesteeCheck')->name('dashboard.investee.upload-progress');
+    Route::get('dashboard/investee/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->middleware('InvesteeCheck')->name('dashboard.investee.download-progress');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
 });
 

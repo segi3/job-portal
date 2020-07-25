@@ -325,7 +325,7 @@ class DashboardInvesteeController extends Controller
                         ->where('investasi_project.status', '=', '1')
                         ->paginate(8);
 
-        return view('dashboard.pages.investee.detail-investment')->with('investment', $investment);
+        return view('dashboard.pages.investee.investment-project-list')->with('investment', $investment);
     }
     public function showDetailInvestment(Request $request, $id)
     {
@@ -335,6 +335,10 @@ class DashboardInvesteeController extends Controller
                     ->where('student_id', '=', $studentid)
                     ->Where('status', '=', '1')
                     ->first();
+        $investment = DB::table('investasi_project')
+                    ->select('investasi_project.*') 
+                    ->where('investasi_project.id', '=', $id)
+                    ->first();
         $investor = DB::table('order')
                         ->select('order.*')
                         ->where('id_investee', '=', $investeeid->id)
@@ -342,25 +346,84 @@ class DashboardInvesteeController extends Controller
                         // ->where('status', '=', '1')
                         ->where('tipe_investasi', '=', 'project')
                         ->paginate(8);
-        if($investor->role == 'student')
-        {
-            $detinvestor = DB::table('students')
-            ->select('students.*')
-            ->where('id', '=', $investor->id_investor)
-            ->first();
-        }
-        else
-        {
-            $detinvestor = DB::table('guests')
-            ->select('guests.*')
-            ->where('id', '=', $investor->id_investor)
-            ->first();
-        }
+        // if($investor->role == 'student')
+        // {
+        //     $detinvestor = DB::table('students')
+        //     ->select('students.*')
+        //     ->where('id', '=', $investor->id_investor)
+        //     ->first();
+        // }
+        // else
+        // {
+        //     $detinvestor = DB::table('guests')
+        //     ->select('guests.*')
+        //     ->where('id', '=', $investor->id_investor)
+        //     ->first();
+        // }
         $listprogres = DB::table('progres_project')
                         -> select('progres_project.*')
                         -> where('progres_project.project_id','=', $id)
-                        -> orderByRaw('updated_at - created_at DESC')
+                        -> orderByRaw('tgl DESC')
                         ->paginate(8);
-        return view('dashboard.pages.investee.detail-investment',compact('investor','detinvestor','listprogres'));
+        return view('dashboard.pages.investee.detail-investment',compact('investor','listprogres','investment'));
+    }
+
+    public function submitprogress(Request $request, $id)
+    {
+        $investeeid = $request->session()->get('id');
+      
+      // dd($applicant);
+        $this->validate($request, [
+          'berkas_laporan' => 'required|mimes:pdf|max:2048',
+        ]);
+        $file = $request->file('berkas_laporan');
+        $tgl = $request->get('tgl');
+        $deskrip = $request->get('deskripsi_laporan');
+        $berkas = 'Progress';
+        $file_berkas = $berkas.'-'.$tgl.'-'.$deskrip.'.pdf';
+        $tujuan_upload = 'data_files/investee/Non-IYT/Project/Progress';
+        $file->move($tujuan_upload,$file_berkas);
+        try 
+        {
+          $data = array(
+            array(
+            'investee_id'=> $investeeid, 
+            'project_id'=> $id, 
+            'berkas_laporan'=> $file_berkas,
+            'tgl' => $request->get('tgl'), 
+            'deskripsi_laporan'=> $request->get('deskripsi_laporan'),
+            'keterangan_tambahan'=> $request->get('keterangan_tambahan'),
+            'updated_at' => \Carbon\Carbon::now(),
+            'created_at' => \Carbon\Carbon::now()),
+         );
+          DB::table('progres_project')->insert($data);
+          Session::flash('success', 'Berhasil submit progres investasi project!');
+          return redirect()->back();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+          $errorCode = $e->errorInfo[1];
+          $errorMsg = $e->errorInfo[2];
+          if ($errorCode == 1062) {
+              return redirect('/');
+          }
+          Session::flash('error', $errorMsg);
+          return redirect()->back();
+        }
+      
+    }
+
+    public function downloadberkasprogres($berkas)
+    {
+        $where = [
+            'progres_project.id' => $berkas,
+        ];
+
+        $berkas_db = DB::table('progres_project')
+        ->select('progres_project.berkas_laporan as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files\\investee\\Non-IYT\\Project\\Progress\\'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
     }
 }

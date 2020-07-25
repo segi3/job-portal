@@ -3,7 +3,13 @@
 @section('title', 'Detail Project Investment')
 
 @section('stylesheets')
-    {{--  --}}
+{{--  --}}
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
 @endsection
 
 @section('content')
@@ -28,12 +34,123 @@
 {{-- main content --}}
 <section class="content">
     <div class="container-fluid">
+    @if (Session::has('success'))
+    <div class="alert alert-success" role="alert">
+        <strong>Success:</strong> {{ Session::get('success') }}
+    </div>
+    @elseif (Session::has('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ Session::get('error') }}
+    </div>
+    @endif
+
+    @if (count($errors) > 0)
+    <div class="alert alert-danger" role="alert">
+        <strong>Errors:</strong>
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    </div>
+    @endif
         <div class="row">
-        <form method="POST" role="form" id="quickForm" enctype="multipart/form-data"
-            action="{{ route('dashboard.student.createService') }}">
-            @csrf
-            <div class="row">
-            <div class="col-lg-6">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Investment Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless table-responsive-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Nama Investasi</td>
+                                    <td>: {{ $investment->nama_investasi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Deskripsi Bisnis</td>
+                                    <td>: {{ $investment->deskripsi_bisnis }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Harga saham</td>
+                                    <td>: {{ $investment->harga_saham }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Jatuh Tempo</td>
+                                    <td>: {{ $investment->tgl_jatuh_tempo }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lembar terbeli</td>
+                                    <td>: {{ $investment->lembar_terbeli }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lembar total</td>
+                                    <td>: {{ $investment->lembar_total }}</td>
+                                </tr>
+                                <tr>
+                                    <td>ROI</td>
+                                    <td>: {{ $investment->roi_bot }}% - {{ $investment->roi_top }}% </td>
+                                </tr>
+                                <tr>
+                                    <td>No Rekening</td>
+                                    <td>: {{ $investment->bank }} {{ $investment->no_rekening }} ({{ $investment->atas_nama }})</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                    <h3 class="card-title">Investor List Table</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                    <table class="table table-bordered table-responsive-sm">
+                        <thead>                  
+                            <tr>
+                                <th>Nama Investor</th>
+                                <th>Email Investor</th>
+                                <!-- <th>No Handphone</th> -->
+                                <th>Lembar beli</th>
+                                <th>Total harga</th>
+                                <th>Tanggal investasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($investor as $invest)
+                            <tr>
+                                <td>{{ $invest->nama_investor }}</td>
+                                <td>{{ $invest->email_investor }}</td>
+                                <!-- <td>{{ $detinvestor->mobile_no }}</td> -->
+                                <td>{{ $invest->lembar_beli }}</td>
+                                <td>{{ $invest->total_harga }}</td>
+                                <td>{{ $invest->order_date}}</td>
+                                <td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        {{ $investor->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <form method="POST" role="form" id="quickForm" enctype="multipart/form-data"
+                action="{{ route('dashboard.investee.upload-progress', $investment->id) }}">
+                @csrf
                     <div class="card card-primary h-100">
                         <div class="card-header">
                             <h3 class="card-title">Tambah Laporan Progres Project</h3>
@@ -47,7 +164,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="keterangan_tambahan">Keterangan tambahan</label>
-                                <input type="hidden" id="project_id" name="project_id" value="3487">
                                 <input type="text" name="keterangan_tambahan" value="{{ old('keterangan_tambahan') }}"
                                     class="form-control" id="keterangan_tambahan" placeholder="Keterangan tambahan">
                             </div>
@@ -76,94 +192,70 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="col text-center">
                             <button type="submit" class="submitbtn btn btn-primary">Submit</button>
                         </div>
                         </div>
-                    </div>
-                </div>
-            </form>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                    <h3 class="card-title">Investment Project List Table</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                    <table class="table table-bordered table-responsive-sm">
-                        <thead>                  
-                            <tr>
-                                <th>Nama Investasi</th>
-                                <th>Tanggal Jatuh Tempo</th>
-                                <th>Lembar Terbeli</th>
-                                <th>Lembar Total</th>
-                                <th style="width: 87px">Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($investment as $inv)
-                            <tr>
-                                <td>{{ $inv->nama_investasi }}</td>
-                                <td>{{ $inv->tgl_jatuh_tempo }}</td>
-                                <td>{{ $inv->lembar_terbeli }}</td>
-                                <td>{{ $inv->lembar_total }}</td>
-                                <td>
-                                    <a class="tn btn-sm btn-block btn-info" href="{{ url('/dashboard/investee/detail-investment/'.$inv->id) }}" role="button">Detail</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $investment->links() }}
-                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
-                    </ul>
-                    </div>
-                </div>
+                </form>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">Investment Project List Table</h3>
+                    <h3 class="card-title">Progress Project List Table</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                    <table class="table table-bordered table-responsive-sm">
-                        <thead>                  
-                            <tr>
-                                <th>Nama Investasi</th>
-                                <th>Tanggal Jatuh Tempo</th>
-                                <th>Lembar Terbeli</th>
-                                <th>Lembar Total</th>
-                                <th style="width: 87px">Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($investment as $inv)
-                            <tr>
-                                <td>{{ $inv->nama_investasi }}</td>
-                                <td>{{ $inv->tgl_jatuh_tempo }}</td>
-                                <td>{{ $inv->lembar_terbeli }}</td>
-                                <td>{{ $inv->lembar_total }}</td>
-                                <td>
-                                    <a class="tn btn-sm btn-block btn-info" href="{{ url('/dashboard/investee/detail-investment/'.$inv->id) }}" role="button">Detail</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @foreach($listprogres as $list)
+                    <ul class="list-group">
+                        <li class="list-group-item" data-toggle="modal" data-target="#modal-{{ $list->id }}">{{ $list->deskripsi_laporan }} ({{ $list->tgl }})</li>
+                            <div class="modal fade" id="modal-{{ $list->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Progress Details</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Tanggal</td>
+                                                        <td>{{ $list->tgl }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Deskripsi Laporan</td>
+                                                        <td>{{ $list->deskripsi_laporan }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Keterangan tambahan</td>
+                                                        <td>{{ $list->keterangan_tambahan }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Berkas Laporan</td>
+                                                        <td>
+                                                            <form action="{{ route('dashboard.investee.download-progress', $list->id) }}" method="get">
+                                                                <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                          <!-- /.modal-content -->
+                                </div>
+                                        <!-- /.modal-dialog -->
+                            </div>
+                              <!-- /.modal -->
+                    </ul>
+                    @endforeach
                     </div>
-                    <!-- /.card-body -->
+                    <!-- card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $investment->links() }}
+                        {{ $listprogres->links() }}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -200,9 +292,6 @@
                 deskripsi_laporan: {
                     required: true,
                 },
-                project_id: {
-                    required: true,
-                },
                 keterangan_tambahan: {
                     required: true,
                 },
@@ -228,7 +317,7 @@
                     // maxlength: 255,
                 },
                 berkas_laporan: {
-                    required: "Dibutuhkan",
+                    required: "Berkas Dibutuhkan",
                     extension: "File format tidak sesuai"
                 },
             },
