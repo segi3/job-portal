@@ -318,4 +318,17 @@ class DashboardStudentController extends Controller
         return redirect()->back();
     }
 
+    public function showProjectInvestorStudent()
+    {
+        $studentid= $request->session()->get('id');
+        $investment = DB::table('order')
+                        ->select('order.*')
+                        ->where('order.id_investor', '=', $studentid)
+                        ->where('role', '=', 'student')
+                        ->where('status', '=', 'paid')
+                        ->where('tipe_investasi', '=', 'project')
+                        ->paginate(8);
+        // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
+    }
+
 }
