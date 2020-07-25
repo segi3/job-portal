@@ -73,7 +73,7 @@
                                 </tr>
                                 <tr>
                                     <td>Harga saham</td>
-                                    <td>: {{ $investment->harga_saham }}</td>
+                                    <td>: Rp {{ number_format($investment->harga_saham, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal Jatuh Tempo</td>
@@ -125,7 +125,7 @@
                                 <td>{{ $invest->email_investor }}</td>
                                 {{-- <!-- <td>{{ $detinvestor->mobile_no }}</td> --> --}}
                                 <td>{{ $invest->lembar_beli }}</td>
-                                <td>{{ $invest->total_harga }}</td>
+                                <td>Rp {{ number_format($invest->total_harga, 0, ',', '.') }}</td>
                                 <td>{{ $invest->order_date}}</td>
                                 <td>
                             </tr>
