@@ -115,7 +115,7 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="/dashboard/gs/orders" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                <a href="/dashboard/st/orders" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Orders</p>
                 </a>

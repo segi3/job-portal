@@ -54,7 +54,7 @@
                                 <td>{{ $inv->lembar_beli }}</td>
                                 <td>{{ $inv->total_harga }}</td>
                                 <td>
-                                    <a class="tn btn-sm btn-block btn-info" href="{{ url('/dashboard/st/detail-investment/'.$inv->investasi_id) }}" role="button">Detail</a>
+                                    <a class="tn btn-sm btn-block btn-info" href="{{ url('/dashboard/gs/detail-investment/'.$inv->investasi_id) }}" role="button">Detail</a>
                                 </td>
                             </tr>
                         @endforeach
