@@ -383,6 +383,7 @@ class DashboardInvesteeController extends Controller
         $file_berkas = $berkas.'-'.$tgl.'-'.$deskrip.'.pdf';
         $tujuan_upload = 'data_files/investee/Non-IYT/Project/Progress';
         $file->move($tujuan_upload,$file_berkas);
+        $formatDate = \Carbon\Carbon::parse($request->input('tgl'))->format('Y-m-d');
         try 
         {
           $data = array(
@@ -390,7 +391,7 @@ class DashboardInvesteeController extends Controller
             'investee_id'=> $investeeid, 
             'project_id'=> $id, 
             'berkas_laporan'=> $file_berkas,
-            'tgl' => $request->get('tgl'), 
+            'tgl' => $formatDate, 
             'deskripsi_laporan'=> $request->get('deskripsi_laporan'),
             'keterangan_tambahan'=> $request->get('keterangan_tambahan'),
             'updated_at' => \Carbon\Carbon::now(),
