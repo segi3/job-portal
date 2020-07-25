@@ -289,17 +289,6 @@ class DashboardInvesteeController extends Controller
             return view('dashboard.pages.investee.create-funding-investment');
         }
     }
-    public function showProjectInvestorStudent()
-    {
-        $studentid= $request->session()->get('id');
-        $investment = DB::table('order')
-                        ->select('order.*')
-                        ->where('order.id_investor', '=', $studentid)
-                        ->where('role', '=', 'student')
-                        ->where('tipe_investasi', '=', 'project')
-                        ->paginate(8);
-        // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
-    }
     public function showProjectInvestorGuest()
     {
         $guestid= $request->session()->get('id');
@@ -343,7 +332,7 @@ class DashboardInvesteeController extends Controller
                         ->select('order.*')
                         ->where('id_investee', '=', $investeeid->id)
                         ->where('investasi_id', '=', $id)
-                        // ->where('status', '=', '1')
+                        ->where('status', '=', 'paid')
                         ->where('tipe_investasi', '=', 'project')
                         ->paginate(8);
         // if($investor->role == 'student')
@@ -384,6 +373,14 @@ class DashboardInvesteeController extends Controller
         $tujuan_upload = 'data_files/investee/Non-IYT/Project/Progress';
         $file->move($tujuan_upload,$file_berkas);
         $formatDate = \Carbon\Carbon::parse($request->input('tgl'))->format('Y-m-d');
+        if($request->get('keterangan_tambahan') == NULL)
+        {
+            $keterangan_tambahan = '-';
+        }
+        else
+        {
+            $keterangan_tambahan = $request->get('keterangan_tambahan');
+        }
         try 
         {
           $data = array(
@@ -393,7 +390,7 @@ class DashboardInvesteeController extends Controller
             'berkas_laporan'=> $file_berkas,
             'tgl' => $formatDate, 
             'deskripsi_laporan'=> $request->get('deskripsi_laporan'),
-            'keterangan_tambahan'=> $request->get('keterangan_tambahan'),
+            'keterangan_tambahan'=> $keterangan_tambahan,
             'updated_at' => \Carbon\Carbon::now(),
             'created_at' => \Carbon\Carbon::now()),
          );

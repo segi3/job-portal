@@ -73,7 +73,7 @@
                                 </tr>
                                 <tr>
                                     <td>Harga saham</td>
-                                    <td>: {{ $investment->harga_saham }}</td>
+                                    <td>: Rp {{ number_format($investment->harga_saham, 0, ',', '.') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal Jatuh Tempo</td>
@@ -112,7 +112,7 @@
                             <tr>
                                 <th>Nama Investor</th>
                                 <th>Email Investor</th>
-                                <!-- <th>No Handphone</th> -->
+                                {{--<!-- <th>No Handphone</th> -->--}}
                                 <th>Lembar beli</th>
                                 <th>Total harga</th>
                                 <th>Tanggal investasi</th>
@@ -125,7 +125,7 @@
                                 <td>{{ $invest->email_investor }}</td>
                                 {{-- <!-- <td>{{ $detinvestor->mobile_no }}</td> --> --}}
                                 <td>{{ $invest->lembar_beli }}</td>
-                                <td>{{ $invest->total_harga }}</td>
+                                <td>Rp {{ number_format($invest->total_harga, 0, ',', '.') }}</td>
                                 <td>{{ $invest->order_date}}</td>
                                 <td>
                             </tr>
@@ -164,8 +164,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="keterangan_tambahan">Keterangan tambahan</label>
-                                <input type="text" name="keterangan_tambahan" value="{{ old('keterangan_tambahan') }}"
-                                    class="form-control" id="keterangan_tambahan" placeholder="Keterangan tambahan">
+                                    <div class="input_field">
+                                        <textarea style="width: 100%; max-width: 100%;" name="keterangan_tambahan" id="keterangan_tambahan" rows="10" placeholder="Keterangan Tambahan"></textarea>
+                                    </div>
                             </div>
                             <div class="form-group">
                                 <label for="tgl" class="">{{ __('Tanggal') }}</label><span class=""></span>
@@ -222,15 +223,15 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Tanggal</td>
-                                                        <td>{{ $list->tgl }}</td>
+                                                        <td>: {{ $list->tgl }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Deskripsi Laporan</td>
-                                                        <td>{{ $list->deskripsi_laporan }}</td>
+                                                        <td>: {{ $list->deskripsi_laporan }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Keterangan tambahan</td>
-                                                        <td>{{ $list->keterangan_tambahan }}</td>
+                                                        <td>: {{ $list->keterangan_tambahan }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Berkas Laporan</td>
@@ -292,9 +293,6 @@
                 deskripsi_laporan: {
                     required: true,
                 },
-                keterangan_tambahan: {
-                    required: true,
-                },
                 tgl: {
                     required: true,
                     // maxlength: 255,
@@ -308,9 +306,6 @@
             messages: {
                 deskripsi_laporan: {
                     required: "Deskripsi Laporan Progres diperlukan",
-                },
-                keterangan_tambahan: {
-                    required: "Keterangan Tambahan Laporan Progres diperlukan",
                 },
                 tgl: {
                     required: "Dibutuhkan",
