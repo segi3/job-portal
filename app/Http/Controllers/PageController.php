@@ -163,10 +163,24 @@ class PageController extends Controller
         return redirect('orders/received/'. $order->id);
     }
 
-    public function receivedOrder($order_id)
+    public function receivedOrder(Request $request, $order_id)
     {
-        $order = Order::where('id', '=', $order_id)->first();;
+        // sekalian cek validasi pemilik order
 
-        return view('midtrans/order')->with('order', $order);
+        $where = [
+            'id' => $order_id,
+            'role' => $request->session()->get('role'),
+            'id_investor' => $request->session()->get('id'),
+        ];
+
+        $order = Order::where($where)->first();
+        if($order){
+            return view('midtrans/order')->with('order', $order);
+        }else{
+            Session::flash('error', 'Order tidak dapat ditemukan');
+            return redirect()->back();
+        }
+
+        
     }
 }

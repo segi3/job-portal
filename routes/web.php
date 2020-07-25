@@ -104,7 +104,7 @@ Route::get('payment/unfinish', 'PageController@paymentUnfinish');
 Route::get('payment/error', 'PageController@paymentError');
 Route::post('notification/midtrans', 'InvestasiController@notificationHandler');
 
-Route::get('orders/received/{order_id}', 'PageController@receivedOrder');
+Route::get('orders/received/{order_id}', 'PageController@receivedOrder')->middleware('LoginCheck');
 
 Route::get('/investasi-fund', 'InvestasiController@showFundIndex');
 Route::get('/investasi-fund/{id}', 'InvestasiController@detailFund');

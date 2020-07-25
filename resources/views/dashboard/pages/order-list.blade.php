@@ -52,7 +52,9 @@
                         
                         @foreach($orders as $order)
                             <tr>
-                                <td>{{ $order->invoice }}</td>
+                                <td>
+                                    <a href="/orders/received/{{ $order->id }}">{{ $order->invoice }}</a>
+                                </td>
                                 <td>{{ $order->nama_investasi }}</td>
                                 <td>{{ $order->nama_investee }}</td>
                                 <td>{{ $order->lembar_beli }}</td>
