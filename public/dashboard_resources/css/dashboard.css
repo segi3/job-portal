@@ -1,0 +1,27 @@
+
+/* home student dashboard, employer dashboard, guest dashboard */
+.menu-card {
+    -webkit-transition: background-color 0.2s ease-out, color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-out, color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-out, color 0.2s ease-in;
+    -ms-transition: background-color 0.2s ease-out, color 0.2s ease-in;
+    transition: background-color 0.2s ease-out, color 0.2s ease-in;
+}
+
+.menu-card:hover{
+    border: red 1px solid;
+
+    color: #ffc415;
+
+    background-color: rgb(1, 56, 128);
+
+    -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -ms-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.btn-yl {
+    background-color: #ffc415;
+}

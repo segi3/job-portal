@@ -57,7 +57,7 @@
                     <div class="col-xl-3 col-md-6 col-lg-3">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
                             <h3 class="footer_title">
-                                
+                                Fasilitas
                             </h3>
                             <ul>
                                 <li><a href="#">Cari Pekerjaan</a></li>

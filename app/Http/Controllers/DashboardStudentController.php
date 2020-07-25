@@ -318,4 +318,16 @@ class DashboardStudentController extends Controller
         return redirect()->back();
     }
 
+    public function getOrderList(Request $request)
+    {
+        $where = [
+            'id_investor' => $request->session()->get('id'),
+            'role' => $request->session()->get('role'),
+        ];
+
+        $orders = Order::where($where)->orderBy('updated_at', 'desc')->paginate(25);
+
+        return view('dashboard.pages.order-list')->with('orders', $orders);
+    }
+
 }

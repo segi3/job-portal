@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Builder::defaultStringLength(191); // Update defaultStringLength
+        Builder::defaultStringLength(255); // Update defaultStringLength
         // if(config('app.env') === 'production') {
         //     \URL::forceScheme('https');
         // }else{

@@ -9,6 +9,7 @@ use Session;
 use App\Job;
 use App\JobCategory;
 use App\Employer;
+use App\Order;
 
 class PageController extends Controller
 {
@@ -123,5 +124,63 @@ class PageController extends Controller
     public function showLoginWarning() {
 
         return view('pages.employer.login-warning');
+    }
+
+    public function showSK()
+    {
+        return view('syarat-ketentuan');
+    }
+
+    //midtrans
+    public function paymentFinish(Request $request)
+    {
+       
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
+
+        Session::flash('success', 'Payment anda telah selesai');
+
+        return redirect('orders/received/'. $order->id);
+    }
+
+    public function paymentUnfinish(Request $request)
+    {
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
+
+        Session::flash('error', 'Payment anda tidak dapat kami proses');
+
+        return redirect('orders/received/'. $order->id);
+    }
+
+    public function paymentError(Request $request)
+    {
+        $order_id = $request->input('order_id');
+        $order = Order::where('invoice', '=', $order_id)->first();
+
+        Session::flash('error', 'Payment anda tidak dapat kami proses');
+
+        return redirect('orders/received/'. $order->id);
+    }
+
+    public function receivedOrder(Request $request, $order_id)
+    {
+        // sekalian cek validasi pemilik order
+
+        $where = [
+            'id' => $order_id,
+            'role' => $request->session()->get('role'),
+            'id_investor' => $request->session()->get('id'),
+        ];
+
+        $order = Order::where($where)->first();
+        if($order){
+            return view('midtrans/order')->with('order', $order);
+        }else{
+            Session::flash('error', 'Order tidak dapat ditemukan');
+            return redirect()->back();
+        }
+
+        
     }
 }

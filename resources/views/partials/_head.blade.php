@@ -6,13 +6,13 @@
     {{-- page title --}}
     <title>@yield('title')</title>
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    {{-- <!-- <link rel="manifest" href="site.webmanifest"> --> --}}
 
     {{-- <link rel="shortcut icon" href="{{ asset('portal_resources') }}/img/favicon.png"> --}}
     <link rel="icon" href="favicon.png">
-    <!-- Place favicon.ico in the root directory -->
+    {{-- <!-- Place favicon.ico in the root directory --> --}}
 
-    <!-- CSS here -->
+    {{-- <!-- CSS here --> --}}
     <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/magnific-popup.css">
@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/slicknav.css">
 
     <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    {{-- <!-- <link rel="stylesheet" href="css/responsive.css"> --> --}}
+
+    {{-- css portal --}}
+    <link rel="stylesheet" href="{{ asset('portal_resources') }}/css/portal.css">
 
     {{-- own's page scripts/stylesheets --}}
     @yield('stylesheets')

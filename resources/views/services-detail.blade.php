@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<!-- bradcam_area  -->
+
 @foreach ($servData as $servDetail)
 
 <div class="bradcam_area bradcam_bg_1">
@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-<!--/ bradcam_area  -->
+
 <div class="job_details_area">
     <div class="container">
         @if (Session::has('success'))

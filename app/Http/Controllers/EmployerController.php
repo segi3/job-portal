@@ -52,7 +52,7 @@ class EmployerController extends Controller
                     ]);
 
                     Session::flash('success', 'Anda berhasil Login');
-                    return redirect('/');
+                    return redirect('/dashboard');
                 }else{
                     // password salah
                     Session::flash('error', 'Password tidak cocok');
@@ -81,7 +81,7 @@ class EmployerController extends Controller
 
     public function Register(Request $request)
     {
-
+        // dd($request);
         $input = $request->all();
 
         $validator = Validator::make($input, [

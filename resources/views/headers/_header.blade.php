@@ -22,33 +22,56 @@
                                                 <ul class="submenu">
                                                     <li><a href="/jobs/category/pertanian">Pertanian</a></li>
                                                     <li><a href="/jobs/category/pertambangan">Pertambangan</a></li>
-                                                    <li><a href="/jobs/category/industri-dasar-dan-kimia">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="/jobs/category/industri-dasar-dan-kimia">Industri Dasar
+                                                            dan Kimia</a></li>
                                                     <li><a href="/jobs/category/aneka-industri">Aneka Industri</a></li>
-                                                    <li><a href="/jobs/category/industri-barang-konsumsi">Industri Barang Konsumsi</a></li>
-                                                    <li><a href="/jobs/category/properti-real-estate-dan-konstruksi">Properti, Real Estate, dan Konstruksi</a></li>
-                                                    <li><a href="/jobs/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="/jobs/category/industri-barang-konsumsi">Industri
+                                                            Barang Konsumsi</a></li>
+                                                    <li><a href="/jobs/category/properti-real-estate-dan-konstruksi">Properti,
+                                                            Real Estate, dan Konstruksi</a></li>
+                                                    <li><a
+                                                            href="/jobs/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur,
+                                                            Utilitas, dan Transportasi</a></li>
                                                     <li><a href="/jobs/category/finansial">Finansial</a></li>
-                                                    <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
+                                                    <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan,
+                                                            Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="/jasa">Kredensial<i class="ti-angle-down"></i></a>
+                                            <li><a href="/jasa">Jasa <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/jasa/category/pertanian">Pertanian</a></li>
                                                     <li><a href="/jasa/category/pertambangan">Pertambangan</a></li>
-                                                    <li><a href="/jasa/category/industri-dasar-dan-kimia">Industri Dasar dan Kimia</a></li>
+                                                    <li><a href="/jasa/category/industri-dasar-dan-kimia">Industri Dasar
+                                                            dan Kimia</a></li>
                                                     <li><a href="/jasa/category/aneka-industri">Aneka Industri</a></li>
-                                                    <li><a href="/jasa/category/industri-barang-konsumsi">Industri Barang Konsumsi</a></li>
-                                                    <li><a href="/jasa/category/properti-real-estate-dan-konstruksi">Properti, Real Estate, dan Konstruksi</a></li>
-                                                    <li><a href="/jasa/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur, Utilitas, dan Transportasi</a></li>
+                                                    <li><a href="/jasa/category/industri-barang-konsumsi">Industri
+                                                            Barang Konsumsi</a></li>
+                                                    <li><a href="/jasa/category/properti-real-estate-dan-konstruksi">Properti,
+                                                            Real Estate, dan Konstruksi</a></li>
+                                                    <li><a
+                                                            href="/jasa/category/infrastruktur-utilitas-dan-transportasi">Infrastruktur,
+                                                            Utilitas, dan Transportasi</a></li>
                                                     <li><a href="/jasa/category/finansial">Finansial</a></li>
-                                                    <li><a href="/jasa/category/perdagangan-jasa-dan-transportasi">Perdagangan, Jasa dan Transportasi</a></li>
+                                                    <li><a href="/jasa/category/perdagangan-jasa-dan-transportasi">Perdagangan,
+                                                            Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="/investasi">investasi</a></li>
+                                            <li><a href="/investasi">Investasi <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="/investasi-project">Project</a></li>
+                                                    <li><a href="/investasi-fund">Funding</a></li>
+                                                </ul>
+                                            </li>
                                             @if(session()->has('login'))
-                                            <li><a href="/dashboard">Dashboard</a></li>
+                                            <li class="med-q-992"><a href="/dashboard">Dashboard</a></li>
+                                            <li class="med-q-992">
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                    <a class="s-log-m" href="javascript:{}" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                                                </form>
+                                            </li>
                                             @else
-                                            <li class="header-login"><a href="/login-welcome">Login</a></li>
+                                            <li class="header-login med-q-992"><a href="/login-welcome">Login</a></li>
                                             @endif
                                         </ul>
                                     </nav>
@@ -62,14 +85,24 @@
                                         <a href="#">Log in</a>
                                     </div> --}}
                                     @if(session()->has('login'))
-                                    <div class="d-none d-lg-block">
+                                    <div class="dropdown-usr">
+                                        <button class="dropbtn">{{session('name') }} <i class="ti-angle-down"></i></button>
+                                        <div class="dropdown-usr-content">
+                                            <a href="/dashboard">Dashboard</a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <a class="s-log-m" href="javascript:{}" onclick="document.getElementById('logout-form').submit();">Logout</a>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="d-none d-lg-block">
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn btn-primary">
                                                 {{ __('Logout') }}
                                             </button>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                     @else
                                     <div class="d-none d-lg-block">
                                         <a class="boxed-btn3" href="/login-welcome">Login</a>

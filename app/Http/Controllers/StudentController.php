@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Session;
+use Validator;
 use App\Student;
+use Illuminate\Support\Facades\DB;
 
 
 class StudentController extends Controller
@@ -26,19 +28,38 @@ class StudentController extends Controller
         $student = Student::where('email' ,'=', $request->input('email'))->first();
 
         if ($student) {
-            if (Hash::check($request->input('password'), $student->password)) {
-                $request->session()->put([
-                    'login' => true,
-                    'id' => $student->id,
-                    'name' => $student->name,
-                    'email' => $student->email,
-                    'role' => 'student',
-                ]);
-                Session::flash('success', 'Anda berhasil Login');
-                return redirect('/');
-            }else{
-                Session::flash('error', 'Password tidak cocok');
-                return redirect()->route('student.showLogin');
+            if($student->status == 1){
+                if (Hash::check($request->input('password'), $student->password)) {
+
+                    $isInvestee = DB::table('investee')->where('student_id', '=', $student->id)
+                                                    ->Where('status', '=', '1')
+                                                    ->first();
+
+                    if ($isInvestee)
+                        $isInvestee = true;
+                    else
+                        $isInvestee = false;
+                    
+                    // dd($isInvestee);
+                    
+                    $request->session()->put([
+                        'login' => true,
+                        'id' => $student->id,
+                        'name' => $student->name,
+                        'email' => $student->email,
+                        'role' => 'student',
+                        'investee' => $isInvestee,
+                    ]);
+                    Session::flash('success', 'Anda berhasil Login');
+                    return redirect('/dashboard');
+                }else{
+                    Session::flash('error', 'Password tidak cocok');
+                    return redirect()->route('student.showLogin');
+                }
+            }else if($student->status == 0){
+                return view('pages.employer.login-warning');
+            }else if($student->status == 2){
+                return view('pages.employer.login-reject');
             }
         }else{
             Session::flash('error', 'Akun tidak ditemukan');
@@ -50,11 +71,12 @@ class StudentController extends Controller
     public function Register(Request $request)
     {
         // dd($request);
+
         $formatDate = \Carbon\Carbon::parse($request->input('birthday'))->format('Y-m-d');
         // var_dump($request->input('birthday'));
         // dd($formatDate);
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'email'         => 'required|email|unique:students',
             'password'      => 'required|min:8',
             'password_confirmation'=>'required|min:8|same:password',
@@ -70,11 +92,25 @@ class StudentController extends Controller
             'skill'         => 'required|max:255',
             'achievment'    => 'required|max:255',
             'experience'    => 'required|max:255',
+            'berkas_verifikasi' => 'required|mimes:pdf|max:2048',
         ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back()->withInput();
+        }
 
         // dd($request);
 
         try {
+            $berkas = $request->file('berkas_verifikasi');
+            $nama = str_replace(' ','_',$request->input('name'));
+            $email = md5($request->input('email'));
+            $ext = $berkas->getClientOriginalExtension();
+            $filename = $nama.'_'.$email.'.'.$ext;
+            $tujuan = 'data_files/berkas_student';
+            
+
             Student::create([
                 'email'         => $request->input('email'),
                 'password'      => Hash::make($request->input('password')),
@@ -90,7 +126,10 @@ class StudentController extends Controller
                 'skill'         => $request->input('skill'),
                 'achievment'    => $request->input('achievment'),
                 'experience'    => $request->input('experience'),
+                'berkas_validasi' => $filename,
             ]);
+
+            $berkas->move($tujuan, $filename);
 
             Session::flash('success', 'Akun berhasil didaftarkan');
             return view('pages.student.auth.login-student');

@@ -8,7 +8,8 @@ class Student extends Model
 {
     protected $fillable = [
         'name', 'nrp', 'email', 'password', 'gender', 'mobile_no',
-        'birthdate', 'address', 'city', 'province', 'hobby', 'skill', 'achievment', 'experience'
+        'birthdate', 'address', 'city', 'province', 'hobby', 'skill', 'achievment', 'experience',
+        'berkas_validasi',
     ];
 
     // many to many jobs

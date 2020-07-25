@@ -1,0 +1,347 @@
+/* * general container */
+
+/* * homepage */
+
+/* Dropdown Button */
+
+li.med-q-992 {
+    display: none !important;
+}
+
+@media (max-width: 992px) {
+    li.med-q-992 {
+        display: block !important;
+    }
+}
+
+.dropbtn {
+    font-weight: 500;
+    background-color: #ffc415;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropbtn i {
+    font-size: 9px;
+}
+
+.dropdown-usr {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-usr-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-usr-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-usr-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown-usr:hover .dropdown-usr-content {
+    display: block;
+}
+
+.img-logo {
+    display: block;
+    max-width: 52px;
+    max-height: 52px;
+    width: auto;
+    height: auto;
+}
+
+.bg-seminar {
+    background-image: url("../../img/seminar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-jasa {
+    background-image: url("../../img/jasa.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 300px;
+    /* background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten; */
+}
+
+.highlight-biru-kuning {
+    background: rgb(1, 56, 128);
+    color: #ffc415;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 6px 17px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.quote {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.boxed-btn3-home {
+    position: absolute;
+    /* left: 50%;
+    margin-left: -50%; */
+    bottom: 50px;
+    max-width: 100%;
+    display: block;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+.boxed-btn3-home:hover span {
+    color: #ffc415;
+    background-color: rgb(1, 56, 128);
+
+    -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -ms-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+
+.highlight-kuning-biru {
+    background: #ffc415;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: 600;
+    padding: 6px 17px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    /* right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto; */
+}
+
+div.slider_text div.slider_span p.highlight-kuning-biru {
+    background: #ffc415;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: 500;
+    display: inline-block;
+    /* border: red solid 1px; */
+}
+
+.highlight-kuning-biru-kecil {
+    background: #ffc415;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    font-weight: 600;
+    padding: 6px 17px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+
+    /* right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto; */
+}
+
+.popular_catagory_area h3 {
+    color: rgb(1, 56, 128);
+}
+
+.popular_catagory_area p {
+    text-align: center;
+    font-size: 22px;
+}
+
+@media (max-width: 992px) {
+
+    .bg-img2,
+    .bg-img3 {
+        margin-top: 20px;
+    }
+}
+
+.start-text {
+    margin-top: 200px;
+}
+
+.bg-img1 {
+    background-image: url("../../img/interview.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    min-height: 350px;
+}
+
+.bg-img2 {
+    background-image: url("../../img/jobseek.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    min-height: 350px;
+}
+
+.bg-img3 {
+    background-image: url("../../img/workshop.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    min-height: 350px;
+}
+
+.bg-jumbotron {
+    background-image: url("../../img/banner/bg-jumbotron-1.jpg");
+}
+
+/* * login-welcome */
+
+.vh {
+    height: 100vh;
+}
+
+.bg-its-1 {
+    background-image: url("../../img/its-bg-1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: lighten;
+}
+
+.bg-login-1 {
+    background:
+        linear-gradient(rgb(93, 188, 210, 0.65),
+            rgb(93, 188, 210, 0.65)),
+        url("../../img/bg-login-1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-login-2 {
+    background:
+        linear-gradient(rgb(93, 188, 210, 0.65),
+            rgb(93, 188, 210, 0.65)),
+        url("../../img/bg-login-2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-login-3 {
+    background:
+        linear-gradient(rgb(93, 188, 210, 0.65),
+            rgb(93, 188, 210, 0.65)),
+        url("../../img/bg-login-3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+p.text-search {
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: 12px;
+}
+
+h3.text-search-title {
+    color: rgb(1, 56, 128);
+}
+
+.container-tr {
+    -moz-border-radius: 10px;
+    /* for Firefox */
+    -webkit-border-radius: 10px;
+    /* for Webkit-Browsers */
+    border-radius: 10px;
+    /* regular */
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-daftar {
+    background: #ffc415;
+    color: #fff;
+    display: block;
+    padding: 13px 29px 13px 29px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border: 1px solid transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff !important;
+    text-transform: capitalize;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-daftar:hover {
+    color: #ffffff !important;
+    border: 1px solid rgb(255, 196, 21);
+    background: rgb(255, 196, 21, 0.5);
+}
+
+.btn-login {
+    background: #0069d9;
+    color: #fff;
+    display: block;
+    padding: 13px 29px 13px 29px;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border: 1px solid transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff !important;
+    text-transform: capitalize;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    color: #ffffff !important;
+    border: 1px solid rgb(0, 105, 217);
+    background: rgb(0, 105, 217, 0.5);
+}
+
+.no-margin {
+    margin: 0px !important;
+}

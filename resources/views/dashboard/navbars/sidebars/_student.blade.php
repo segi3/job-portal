@@ -21,7 +21,32 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+        <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link
+            {{ Request::is('dashboard/st/profile') ? "active" : "" }}
+            {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}
+            ">
+                <i class="nav-icon fas fa-address-card"></i>
+            <p>
+                My Profile
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/dashboard/st/profile" class="nav-link {{ Request::is('dashboard/st/profile') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>View Profile</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/st/profile/edit" class="nav-link {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Edit Profile</p>
+                </a>
+            </li>
+            </ul>
+        </li>
         <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link
             {{ Request::is('dashboard/st/create-service') ? "active" : "" }}
@@ -67,7 +92,7 @@
             <a href="#" class="nav-link {{ Request::is('dashboard/st/invest-return-approval') ? "active" : "" }}">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-                Manage Invests
+                Manage Investments
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>
@@ -101,31 +126,26 @@
         </li>
 
         <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link
-            {{ Request::is('dashboard/st/profile') ? "active" : "" }}
-            {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}
-            ">
-                <i class="nav-icon fas fa-address-card"></i>
+            <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+            <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-                My Profile
+              Investasi
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="/dashboard/st/profile" class="nav-link {{ Request::is('dashboard/st/profile') ? "active" : "" }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>View Profile</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/dashboard/st/profile/edit" class="nav-link {{ Request::is('dashboard/st/profile/edit') ? "active" : "" }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Edit Profile</p>
+                <a href="/dashboard/gs/orders" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Orders</p>
                 </a>
             </li>
             </ul>
         </li>
+        
+        <hr>
+        <a class="btn btn-primary" href="/dashboard/investee">Investasi</a>
+            
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

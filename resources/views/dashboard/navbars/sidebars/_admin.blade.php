@@ -22,8 +22,16 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item has-treeview {{ Request::is('admin/user-list') ? "menu-open" : "" }}">
-                <a href="#" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-students') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-students') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-students') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-students') ? "active" : "" }}
+                {{ Request::is('admin/approved-students') ? "active" : "" }}
+                {{ Request::is('admin/unapproved-students') ? "active" : "" }}
+                ">
                 <i class="nav-icon fas fa-user-friends"></i>
                 <p>
                     Manage Students
@@ -32,9 +40,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/admin/user-list" class="nav-link {{ Request::is('admin/user-list') ? "active" : "" }}">
+                    <a href="admin/new-students" class="nav-link {{ Request::is('admin/new-students') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Student list</p>
+                    <p>New Students</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-students" class="nav-link {{ Request::is('admin/approved-students') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Students</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-students" class="nav-link {{ Request::is('admin/unapproved-students') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Students</p>
                     </a>
                 </li>
                 </ul>
@@ -117,6 +137,7 @@
             </li>
 
 
+
             <li class="nav-item has-treeview
             {{ Request::is('admin/new-guests') ? "menu-open" : "" }}
             {{ Request::is('admin/approved-guests') ? "menu-open" : "" }}
@@ -150,6 +171,44 @@
                     <a href="/admin/unapproved-guests" class="nav-link {{ Request::is('admin/unapproved-guests') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Unapproved Guests</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+            <li class="nav-item has-treeview
+            {{ Request::is('admin/new-investees') ? "menu-open" : "" }}
+            {{ Request::is('admin/approved-investees') ? "menu-open" : "" }}
+            {{ Request::is('admin/unapproved-investees') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                {{ Request::is('admin/new-investees') ? "active" : "" }}
+                {{ Request::is('admin/approved-investees') ? "active" : "" }}
+                {{ Request::is('admin/unapproved-investees') ? "active" : "" }}
+                    ">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                    Manage Investees
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-investees" class="nav-link {{ Request::is('admin/new-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New investees</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-investees" class="nav-link {{ Request::is('admin/approved-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved investees</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-investees" class="nav-link {{ Request::is('admin/unapproved-investees') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved investees</p>
                     </a>
                 </li>
                 </ul>
@@ -232,38 +291,76 @@
             </li>
 
             <li class="nav-item has-treeview
-                {{ Request::is('admin/new-investment') ? "menu-open" : "" }}
-                {{ Request::is('admin/approved-investment') ? "menu-open" : "" }}
-                {{ Request::is('admin/unapproved-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/new-project-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/approved-project-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/unapproved-project-investment') ? "menu-open" : "" }}
             ">
                 <a href="#" class="nav-link
-                    {{ Request::is('admin/new-investment') ? "active" : "" }}
-                    {{ Request::is('admin/approved-investment') ? "active" : "" }}
-                    {{ Request::is('admin/unapproved-investment') ? "active" : "" }}
+                    {{ Request::is('admin/new-project-investment') ? "active" : "" }}
+                    {{ Request::is('admin/approved-project-investment') ? "active" : "" }}
+                    {{ Request::is('admin/unapproved-project-investment') ? "active" : "" }}
                     ">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
-                    Manage Investment
+                    Manage Project Inv.
                     <i class="right fas fa-angle-left"></i>
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/admin/new-investment" class="nav-link {{ Request::is('admin/new-investment') ? "active" : "" }}">
+                    <a href="/admin/new-project-investment" class="nav-link {{ Request::is('admin/new-project-investment') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>New Investment</p>
+                    <p>New Project Inv.</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/approved-investment" class="nav-link {{ Request::is('admin/approved-investment') ? "active" : "" }}">
+                    <a href="/admin/approved-project-investment" class="nav-link {{ Request::is('admin/approved-project-investment') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Approved Investment</p>
+                    <p>Approved Project Inv.</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/unapproved-investment" class="nav-link {{ Request::is('admin/unapproved-investment') ? "active" : "" }}">
+                    <a href="/admin/unapproved-project-investment" class="nav-link {{ Request::is('admin/unapproved-project-investment') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Unapproved Investment</p>
+                    <p>Unapproved Project Inv.</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+            <li class="nav-item has-treeview
+                {{ Request::is('admin/new-funding-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/approved-funding-investment') ? "menu-open" : "" }}
+                {{ Request::is('admin/unapproved-funding-investment') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                    {{ Request::is('admin/new-funding-investment') ? "active" : "" }}
+                    {{ Request::is('admin/approved-funding-investment') ? "active" : "" }}
+                    {{ Request::is('admin/unapproved-funding-investment') ? "active" : "" }}
+                    ">
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                <p>
+                    Manage Funding Inv.
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/new-funding-investment" class="nav-link {{ Request::is('admin/new-funding-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>New Funding Inv.</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/approved-funding-investment" class="nav-link {{ Request::is('admin/approved-funding-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Approved Funding Inv.</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/unapproved-funding-investment" class="nav-link {{ Request::is('admin/unapproved-funding-investment') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Unapproved Funding Inv.</p>
                     </a>
                 </li>
                 </ul>
