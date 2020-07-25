@@ -26,19 +26,62 @@
             <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
             <p>
-              Home
+              IYT
                 <i class="right fas fa-angle-left"></i>
             </p>
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a href="/dashboard/investee/dummy" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Submenu#1</p>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Submenu#1</p>
                 </a>
             </li>
             </ul>
         </li>
+
+        <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+            <p>
+              Investasi Project
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/dashboard/investee/create-project-investment" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Buat Project</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/investee/investment-project-list" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>on-going project</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+
+        <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+            <i class="nav-icon fas fa-chalkboard-teacher"></i>
+            <p>
+              Investasi Fund
+                <i class="right fas fa-angle-left"></i>
+            </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/dashboard/investee/create-funding-investment" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Buat Funding</p>
+                </a>
+            </li>
+            </ul>
+        </li>
+
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

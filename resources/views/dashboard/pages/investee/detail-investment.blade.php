@@ -123,7 +123,7 @@
                             <tr>
                                 <td>{{ $invest->nama_investor }}</td>
                                 <td>{{ $invest->email_investor }}</td>
-                                <!-- <td>{{ $detinvestor->mobile_no }}</td> -->
+                                {{-- <!-- <td>{{ $detinvestor->mobile_no }}</td> --> --}}
                                 <td>{{ $invest->lembar_beli }}</td>
                                 <td>{{ $invest->total_harga }}</td>
                                 <td>{{ $invest->order_date}}</td>
