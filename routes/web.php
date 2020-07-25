@@ -122,6 +122,9 @@ Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
     Route::post('/applyservices/{id}', 'ServicesController@approach');
     Route::put('dashboard/gs/service-applicant/done/{guest}', 'DashboardGuestController@doneServices')->name('service.done');
     Route::put('dashboard/gs/service-applicant/notdone/{guest}', 'DashboardGuestController@notdoneServices')->name('service.notdone');
+
+    // order list
+    Route::get('dashboard/gs/orders', 'DashboardGuestController@getOrderList');
 });
 
 
@@ -151,6 +154,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/register-investee', 'DashboardInvesteeController@registerNew')->name('post-register-investee');
     Route::get('dashboard/register-status', 'DashboardInvesteeController@getRegisterStatus');
 
+    // order list
+    Route::get('dashboard/st/orders', 'DashboardGuestController@getOrderList');
+
+    // investee
     Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
     Route::get('dashboard/investee/create-project-investment', 'DashboardInvesteeController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');
     Route::post('dashboard/investee/post-project-investment', 'DashboardInvesteeController@postCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.createProjectInvestment');
