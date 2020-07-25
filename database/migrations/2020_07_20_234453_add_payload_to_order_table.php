@@ -14,7 +14,7 @@ class AddPayloadToOrderTable extends Migration
     public function up()
     {
         Schema::table('order', function (Blueprint $table) {
-            $table->string('payload', 1023)->nullable();
+            $table->json('payload')->nullable();
         });
     }
 

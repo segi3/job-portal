@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
-use App\Student;
-use App\Job;
-use App\Employer;
-use App\Seminar;
+use App\Order;
 
 class DashboardGuestController extends Controller
 {
@@ -110,5 +107,17 @@ class DashboardGuestController extends Controller
                     ]);
 
         return redirect()->back();
+    }
+
+    public function getOrderList(Request $request)
+    {
+        $where = [
+            'id_investor' => $request->session()->get('id'),
+            'role' => $request->session()->get('role'),
+        ];
+
+        $orders = Order::where($where)->orderBy('updated_at', 'desc')->paginate(25);
+
+        return view('dashboard.pages.order-list')->with('orders', $orders);
     }
 }

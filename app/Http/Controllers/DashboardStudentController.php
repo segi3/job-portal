@@ -318,17 +318,16 @@ class DashboardStudentController extends Controller
         return redirect()->back();
     }
 
-    public function showProjectInvestorStudent()
+    public function getOrderList(Request $request)
     {
-        $studentid= $request->session()->get('id');
-        $investment = DB::table('order')
-                        ->select('order.*')
-                        ->where('order.id_investor', '=', $studentid)
-                        ->where('role', '=', 'student')
-                        ->where('status', '=', 'paid')
-                        ->where('tipe_investasi', '=', 'project')
-                        ->paginate(8);
-        // return view('dashboard.pages.investee.investor-project-list')->with('investment', $investment);
+        $where = [
+            'id_investor' => $request->session()->get('id'),
+            'role' => $request->session()->get('role'),
+        ];
+
+        $orders = Order::where($where)->orderBy('updated_at', 'desc')->paginate(25);
+
+        return view('dashboard.pages.order-list')->with('orders', $orders);
     }
 
 }

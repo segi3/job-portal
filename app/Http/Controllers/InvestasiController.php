@@ -246,7 +246,7 @@ class InvestasiController extends Controller
 
                 // INV/#/STD/YYYYMMDD
                $nextInvNum = $this->_nextGuestProjectInvoiceNumber();
-               $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd");
+               $newInvoice = 'INV/'. $nextInvNum . '/GS/' . date("Ymd");
 
                $order = Order::create([
                    'invoice' => $newInvoice,
