@@ -125,6 +125,10 @@ Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
     // order list
     Route::get('dashboard/gs/orders', 'DashboardGuestController@getOrderList');
+
+    Route::get('dashboard/gs/on-going-project-list', 'DashboardGuestController@showProjectListStudent');
+    Route::get('dashboard/gs/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->name('dashboard.guest.download-progress');
+    Route::get('dashboard/gs/detail-investment/{id}', 'DashboardGuestController@showDetailInvestment')->name('dashboard.guest.getDetailInvestment');
 });
 
 
@@ -157,6 +161,9 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     // order list
     Route::get('dashboard/st/orders', 'DashboardGuestController@getOrderList');
 
+    Route::get('dashboard/st/on-going-project-list', 'DashboardStudentController@showProjectListStudent');
+    Route::get('dashboard/st/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->name('dashboard.student.download-progress');
+    Route::get('dashboard/st/detail-investment/{id}', 'DashboardStudentController@showDetailInvestment')->name('dashboard.getDetailInvestment');
     // investee
     Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
     Route::get('dashboard/investee/create-project-investment', 'DashboardInvesteeController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');

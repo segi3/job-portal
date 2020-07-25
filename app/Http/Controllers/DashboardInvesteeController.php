@@ -312,7 +312,7 @@ class DashboardInvesteeController extends Controller
                         ->select('investasi_project.*')
                         ->where('investasi_project.investee_id', '=', $investeeid->id)
                         ->where('investasi_project.status', '=', '1')
-                        ->paginate(8);
+                        ->paginate(25);
 
         return view('dashboard.pages.investee.investment-project-list')->with('investment', $investment);
     }
