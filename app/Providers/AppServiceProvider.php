@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Builder; // Import Builder where defaultStringLength method is defined
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Builder::defaultStringLength(255); // Update defaultStringLength
+        // Builder::defaultStringLength(255); // Update defaultStringLength
+        Schema::defaultStringLength(191);
         // if(config('app.env') === 'production') {
         //     \URL::forceScheme('https');
         // }else{
