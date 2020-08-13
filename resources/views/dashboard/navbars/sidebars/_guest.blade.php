@@ -74,6 +74,12 @@
                     <p>Orders</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/dashboard/gs/on-going-project-list" class="nav-link {{ Request::is('dashboard/gs/on-going-project-list') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>On-Going Project</p>
+                </a>
+            </li>
             </ul>
         </li>
 

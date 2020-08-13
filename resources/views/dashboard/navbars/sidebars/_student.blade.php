@@ -87,26 +87,6 @@
             </li>
             </ul>
         </li>
-
-        <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link {{ Request::is('dashboard/st/invest-return-approval') ? "active" : "" }}">
-            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>
-                Manage Investments
-                <i class="right fas fa-angle-left"></i>
-            </p>
-            </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="/dashboard/st/invest-return-approval" class="nav-link {{ Request::is('dashboard/st/invest-return-approval') ? "active" : "" }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Invest-Return Approval</p>
-                </a>
-            </li>
-            </ul>
-        </li>
-
-
         <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -138,6 +118,12 @@
                 <a href="/dashboard/st/orders" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Orders</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/st/on-going-project-list" class="nav-link {{ Request::is('dashboard/st/on-going-project-list') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>On-Going Project</p>
                 </a>
             </li>
             </ul>

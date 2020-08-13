@@ -1,6 +1,10 @@
 @extends('dashboard.layout')
 
+<<<<<<< HEAD
 @section('title', 'Riwayat Order')
+=======
+@section('title', 'Order List')
+>>>>>>> c0e92550a53328eaedaa98f98991d8ea659f01cb
 
 @section('stylesheets')
     {{--  --}}
