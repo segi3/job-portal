@@ -116,6 +116,25 @@ class InvestasiController extends Controller
         }
     }
 
+    protected function _nextStudentFundingInvoiceNumber()
+    {
+        $where = [
+            'tipe_investasi' => 'funding',
+            'role' => 'student',
+        ];
+
+        $lastOrder = Order::where($where)->orderBy('created_at', 'desc')->first();
+
+        if($lastOrder) {
+
+            $lastInvoice = explode("/", $lastOrder->invoice);
+
+            return $lastInvoice[1] + 1;
+        }else {
+            return 1;
+        }
+    }
+
     protected function _nextGuestProjectInvoiceNumber()
     {
         $where = [
@@ -134,19 +153,38 @@ class InvestasiController extends Controller
 
             return 1;
         }
-        
-        
 
         $lastInvoice = explode("/", $lastOrder->invoice);
 
         return $lastInvoice[1] + 1;
     }
 
+    protected function _nextGuestFundingInvoiceNumber()
+    {
+        $where = [
+            'tipe_investasi' => 'funding',
+            'role' => 'guest',
+        ];
+
+        $lastOrder = Order::where($where)->orderBy('created_at', 'desc')->first();
+
+        if($lastOrder) {
+
+            $lastInvoice = explode("/", $lastOrder->invoice);
+
+            return $lastInvoice[1] + 1;
+        }else {
+
+            return 1;
+        }
+
+    }
+
 
 
     public function beliSaham(Request $request, $id_inv)
     {
-        // cek jumlah lembar yang tersedia
+        // * cek jumlah lembar yang tersedia
         $investasi = Investasi_project::where('investasi_project.id', '=', $id_inv)
                     ->join('investee', 'investee.id', 'investee_id')
                     ->select('investasi_project.*', 'investee.nama as nama_investee', 'investee.id as investee_id')
@@ -161,8 +199,10 @@ class InvestasiController extends Controller
             $investasi->save();
         }
 
+        // * id pembeli dari session
         $id_pembeli = $request->session()->get('id');
 
+        // * validasi request
         $validator = Validator::make($request->all(),[
             'lembar_beli' => 'required',
             'termspolicy' => 'required',
@@ -173,9 +213,10 @@ class InvestasiController extends Controller
             return redirect()->back();
         }
 
+        // * transaksi role student
         if ($request->session()->get('role') == 'student'){
 
-            //ambil data student
+            // * ambil data student
             $student = Student::where('id', '=', $id_pembeli)->first();
 
             $this->_initPaymentGateway();
@@ -184,9 +225,9 @@ class InvestasiController extends Controller
 
             \DB::transaction(function() use ($request, $student, $investasi, &$redirectSnap){
 
-                 // INV/#/STD/YYYYMMDD
+                // * INV/#/ST/YYYYMMDD/PJ => format
                 $nextInvNum = $this->_nextStudentProjectInvoiceNumber();
-                $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd");
+                $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd") . '/PJ';
 
                 $order = Order::create([
                     'invoice' => $newInvoice,
@@ -223,7 +264,7 @@ class InvestasiController extends Controller
                 
                 $responseAPI = \Midtrans\Snap::createTransaction($params);
                 // $responseAPI = json_decode($snapToken);
-               
+            
                 // dd($snapToken);
                 $redirectSnap = $responseAPI->redirect_url;
 
@@ -244,54 +285,54 @@ class InvestasiController extends Controller
 
             \DB::transaction(function() use ($request, $guest, $investasi, &$redirectSnap){
 
-                // INV/#/STD/YYYYMMDD
-               $nextInvNum = $this->_nextGuestProjectInvoiceNumber();
-               $newInvoice = 'INV/'. $nextInvNum . '/GS/' . date("Ymd");
+                // INV/#/GS/YYYYMMDD/PJ
+                $nextInvNum = $this->_nextGuestProjectInvoiceNumber();
+                $newInvoice = 'INV/'. $nextInvNum . '/GS/' . date("Ymd") . '/PJ';
 
-               $order = Order::create([
-                   'invoice' => $newInvoice,
-                   'nama_investor' => $guest->name,
-                   'email_investor' => $guest->email,
-                   'id_investor' => $guest->id,
-                   'role' => 'guest',
+                $order = Order::create([
+                    'invoice' => $newInvoice,
+                    'nama_investor' => $guest->name,
+                    'email_investor' => $guest->email,
+                    'id_investor' => $guest->id,
+                    'role' => 'guest',
 
-                   'tipe_investasi' => 'project',
-                   'investasi_id' => $request->input('project_id'),
-                   'nama_investasi' => $investasi->nama_investasi,
-                   'nama_investee' => $investasi->nama_investee,
-                   'id_investee' => $investasi->investee_id,
+                    'tipe_investasi' => 'project',
+                    'investasi_id' => $request->input('project_id'),
+                    'nama_investasi' => $investasi->nama_investasi,
+                    'nama_investee' => $investasi->nama_investee,
+                    'id_investee' => $investasi->investee_id,
 
-                   'lembar_beli' => $request->input('lembar_beli'),
-                   'total_harga' => $request->input('total_harga'),
-                   
-                   'order_date' => NULL,
-                   'payment_due' => NULL,
-               ]);
+                    'lembar_beli' => $request->input('lembar_beli'),
+                    'total_harga' => $request->input('total_harga'),
+                    
+                    'order_date' => NULL,
+                    'payment_due' => NULL,
+                ]);
 
-               $params = [
-                   'transaction_details' => [
-                       'order_id' => $order->invoice,
-                       'gross_amount' => $order->total_harga,
-                   ],
-                   'customer_details' => [
-                       'first_name' => $order->nama_investor,
-                       'last_name' => '',
-                       'email' => $order->email_investor,
-                       'phone' => $guest->mobile_no,
-                   ],
-               ];
-               
-               $responseAPI = \Midtrans\Snap::createTransaction($params);
-               // $responseAPI = json_decode($snapToken);
-              
-               // dd($snapToken);
-               $redirectSnap = $responseAPI->redirect_url;
+                $params = [
+                    'transaction_details' => [
+                        'order_id' => $order->invoice,
+                        'gross_amount' => $order->total_harga,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $order->nama_investor,
+                        'last_name' => '',
+                        'email' => $order->email_investor,
+                        'phone' => $guest->mobile_no,
+                    ],
+                ];
+            
+                $responseAPI = \Midtrans\Snap::createTransaction($params);
+                // $responseAPI = json_decode($snapToken);
+                
+                // dd($snapToken);
+                $redirectSnap = $responseAPI->redirect_url;
 
-               $order->snap_token = $responseAPI->token;
-               $order->save();
-           });
-           
-           return redirect($redirectSnap);
+                $order->snap_token = $responseAPI->token;
+                $order->save();
+            });
+        
+            return redirect($redirectSnap);
 
         }
 
@@ -329,7 +370,140 @@ class InvestasiController extends Controller
 
     public function donasi(Request $request, $id_inv)
     {
-        dd($request, $id_inv);
+        $investasi = Investasi_funding::where('investasi_funding.id', '=', $id_inv)
+                ->join('investee', 'investee.id', 'investee_id')
+                ->select('investasi_funding.*', 'investee.nama as nama_investee', 'investee.id as investee_id')
+                ->first();
+        
+
+        $id_pembeli = $request->session()->get('id');
+
+        $validator = Validator::make($request->all(), [
+            'total_harga' => 'required',
+            'termspolicy' => 'required',
+        ]);
+
+        if ($validator->fails()){
+            Session::flash('error', $validator->errors()->first());
+            return redirect()->back();
+        }
+
+        if ($request->session()->get('role') == 'student') {
+
+            // * ambil data student
+            $student = Student::where('id', '=', $id_pembeli)->first();
+
+            $this->_initPaymentGateway();
+
+            $redirectSnap = '';
+
+            \DB::transaction(function() use ($request, $student, $investasi, &$redirectSnap){
+
+                // * INV/#/STD/YYYYMMDD/FD => format
+                $nextInvNum = $this->_nextStudentFundingInvoiceNumber();
+                $newInvoice = 'INV/'. $nextInvNum . '/ST/' . date("Ymd") . '/FD';
+
+                $order = Order::create([
+                    'invoice' => $newInvoice,
+                    'nama_investor' => $student->name,
+                    'email_investor' => $student->email,
+                    'id_investor' => $student->id,
+                    'role' => 'student',
+
+                    'tipe_investasi' => 'funding',
+                    'investasi_id' => $request->input('project_id'),
+                    'nama_investasi' => $investasi->nama_investasi,
+                    'nama_investee' => $investasi->nama_investee,
+                    'id_investee' => $investasi->investee_id,
+
+                    'lembar_beli' => 0,
+                    'total_harga' => $request->input('total_harga'),
+
+                    'order_date' => NULL,
+                    'payment_due' => NULL,
+                ]);
+
+                $params = [
+                    'transaction_details' => [
+                        'order_id' => $order->invoice,
+                        'gross_amount' => $order->total_harga,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $order->nama_investor,
+                        'last_name' => '',
+                        'email' => $order->email_investor,
+                        'phone' => $student->mobile_no,
+                    ],
+                ];
+
+                $responseAPI = \Midtrans\Snap::createTransaction($params);
+
+                $redirectSnap = $responseAPI->redirect_url;
+
+                $order->snap_token = $responseAPI->token;
+                $order->save();
+            });
+
+            return redirect($redirectSnap);
+
+        }else if ($request->session()->get('role') == 'guest') {
+
+            $guest = Guest::where('id', '=', $id_pembeli)->first();
+
+            $this->_initPaymentGateway();
+
+            $redirectSnap = '';
+
+            \DB::transaction(function() use ($request, $guest, $investasi, &$redirectSnap) {
+
+                // INV/#/GS/YYYYMMDD/FD
+                $nextInvNum = $this->_nextGuestFundingInvoiceNumber();
+                $newInvoice = 'INV/'. $nextInvNum . '/GS/' . date("Ymd") . '/FD';
+
+                $order = Order::create([
+                    'invoice' => $newInvoice,
+                    'nama_investor' => $guest->name,
+                    'email_investor' => $guest->email,
+                    'id_investor' => $guest->id,
+                    'role' => 'guest',
+
+                    'tipe_investasi' => 'funding',
+                    'investasi_id' => $request->input('project_id'),
+                    'nama_investasi' => $investasi->nama_investasi,
+                    'nama_investee' => $investasi->nama_investee,
+                    'id_investee' => $investasi->investee_id,
+
+                    'lembar_beli' => 0,
+                    'total_harga' => $request->input('total_harga'),
+
+                    'order_date' => NULL,
+                    'payment_due' => NULL,
+                ]);
+                
+                $params = [
+                    'transaction_details' => [
+                        'order_id' => $order->invoice,
+                        'gross_amount' => $order->total_harga,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $order->nama_investor,
+                        'last_name' => '',
+                        'email' => $order->email_investor,
+                        'phone' => $guest->mobile_no,
+                    ],
+                ];
+
+                $responseAPI = \Midtrans\Snap::createTransaction($params);
+
+                $redirectSnap = $responseAPI->redirect_url;
+
+                $order->snap_token = $responseAPI->token;
+                $order->save();
+            });
+
+            return redirect($redirectSnap);
+        }
+        
     }
 
     protected function _updateHapusLembarBeli($investasi_id, $lembar)
@@ -339,6 +513,15 @@ class InvestasiController extends Controller
         $investasi->lembar_terbeli = $investasi->lembar_terbeli - $lembar;
         $investasi->save();
 
+    }
+
+    protected function _updateTambahDonasiMasuk($investasi_id, $donasi)
+    {
+        $investasi = Investasi_funding::where('id', '=', $investasi_id)->first();
+
+        $investasi->donasi_masuk = $investasi->donasi_masuk + $donasi;
+
+        $investasi->save();
     }
 
     public function notificationHandler(Request $request)
@@ -379,11 +562,20 @@ class InvestasiController extends Controller
                 } else {
                     // TODO set payment status in merchant's database to 'Success'
                     $paymentStatus = 'Success';
+
+                    if ($order->tipe_investasi == 'funding') {
+                        $this->_updateTambahDonasiMasuk($order->investasi_id, $order->total_harga);
+                    }
                 }
             }
         } else if ($transaction == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
             $paymentStatus = 'Paid';
+
+            if ($order->tipe_investasi == 'funding') {
+                $this->_updateTambahDonasiMasuk($order->investasi_id, $order->total_harga);
+            }
+
         } else if ($transaction == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
             $paymentStatus = 'Pending';
@@ -412,7 +604,7 @@ class InvestasiController extends Controller
         }
         
 
-        //create notification record => gak jadi pake notification order, payload langsung disimpen di order
+        // ! create notification record => gak jadi pake notification order, payload langsung disimpen di order
         // try{
         //     DB::table('payment_notifications')->insert([
         //         'invoice' => $order->invoice,
