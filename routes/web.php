@@ -175,6 +175,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/investee/upload-progress/{id}', 'DashboardInvesteeController@submitprogress')->middleware('InvesteeCheck')->name('dashboard.investee.upload-progress');
     Route::get('dashboard/investee/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->middleware('InvesteeCheck')->name('dashboard.investee.download-progress');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
+    Route::get('dashboard/investee/register-IYT', 'DashboardInvesteeController@getCreateIYT')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateIYT');
+    Route::post('dashboard/investee/post-register-IYT', 'DashboardInvesteeController@postCreateIYT')->middleware('InvesteeCheck')->name('dashboard.investee.createIYT');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){

@@ -32,9 +32,9 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="/dashboard/investee/dummy" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                <a href="/dashboard/investee/register-IYT" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Submenu#1</p>
+                    <p>Daftar IYT</p>
                 </a>
             </li>
             </ul>
