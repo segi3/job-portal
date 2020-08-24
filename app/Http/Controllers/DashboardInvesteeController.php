@@ -422,7 +422,7 @@ class DashboardInvesteeController extends Controller
         ->select('progres_project.berkas_laporan as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files\\investee\\Non-IYT\\Project\\Progress\\'.$berkas_db->berkas);
+        $file = public_path('data_files/investee/Non-IYT/Project/Progress/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
@@ -492,7 +492,7 @@ class DashboardInvesteeController extends Controller
                 'berkas_pitch_desk'  => $filenamekeu,
             ]);
 
-            Session::flash('success', 'Kelompok berhasil didaftarkan, silahkan tunggu konfirmasi dari pihak admin');
+            Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');
             return view('dashboard.pages.investee.create-iyt');
         }
         catch(\Illuminate\Database\QueryException $e)

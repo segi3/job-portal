@@ -86,6 +86,10 @@ Route::get('/jasa', 'ServicesController@index');
 Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
 Route::get('/jasa/{slug}', 'ServicesController@detailServices');
 
+//employer
+Route::get('/download-order-form','PageController@downloadFormOrder')->name('download.form-order');
+Route::get('/download-order-form-employer/{form}','DashboardController@downloadFormEmployer')->name('form-order.employer.download');
+
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
 

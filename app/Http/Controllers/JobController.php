@@ -128,7 +128,7 @@ class JobController extends Controller
     {
       // dd($cv);
 
-      $file = public_path('data_files\\CV\\'.$cv.'.pdf');
+      $file = public_path('data_files/CV/'.$cv.'.pdf');
 
       $arr = explode('-', $cv);
 

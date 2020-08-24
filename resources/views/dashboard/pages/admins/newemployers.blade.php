@@ -45,6 +45,7 @@
                             <th>Contact person</th>
                             <th>Contact Number</th>
                             <th>Berkas Verifikasi</th>
+                            <th>Form Order Rekrutmen</th>
                             <th>Listed at</th>
                             <th style="width: 200px;">Action</th>
                         </tr>
@@ -59,6 +60,11 @@
                                 <td>{{ $employer->contact_no }}</td>
                                 <td>
                                     <form action="{{ route('berkas.employer.download', $employer->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('form-order.employer.download', $employer->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
                                 </td>

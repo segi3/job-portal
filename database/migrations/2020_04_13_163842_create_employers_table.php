@@ -28,6 +28,7 @@ class CreateEmployersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('berkas_verifikasi');
+            $table->string('order_rekrutmen');
             $table->timestamps();
         });
     }
