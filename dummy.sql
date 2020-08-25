@@ -8,6 +8,7 @@ insert into job_categories values ('6', 'Properti, Real Estate, dan Konstruksi',
 insert into job_categories values ('7', 'Infrastruktur, Utilitas, dan Transportasi', 'infrastruktur-utilitas-dan-transportasi', null, null);
 insert into job_categories values ('8', 'Finansial', 'finansial', null, null);
 insert into job_categories values ('9', 'Perdagangan, Jasa dan Transportasi', 'perdagangan-jasa-dan-transportasi', null, null);
+insert into job_categories values ('10', 'Start Up', 'startup', null, null);
 
 insert into seminar_categories values ('1', 'Pertanian', 'pertanian', null, null);
 insert into seminar_categories values ('2', 'Pertambangan', 'pertambangan', null, null);
@@ -18,6 +19,7 @@ insert into seminar_categories values ('6', 'Properti, Real Estate, dan Konstruk
 insert into seminar_categories values ('7', 'Infrastruktur, Utilitas, dan Transportasi', 'infrastruktur-utilitas-dan-transportasi', null, null);
 insert into seminar_categories values ('8', 'Finansial', 'finansial', null, null);
 insert into seminar_categories values ('9', 'Perdagangan, Jasa dan Transportasi', 'perdagangan-jasa-dan-transportasi', null, null);
+
 
 
 

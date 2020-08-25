@@ -35,6 +35,7 @@
                                                     <li><a href="/jobs/category/finansial">Finansial</a></li>
                                                     <li><a href="/jobs/category/perdagangan-jasa-dan-transportasi">Perdagangan,
                                                             Jasa dan Transportasi</a></li>
+                                                    <li><a href="/jobs/category/startup">Startup</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="/jasa">Jasa <i class="ti-angle-down"></i></a>
