@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'Approved Employers')
+@section('title', 'Order List')
 
 @section('stylesheets')
     {{--  --}}

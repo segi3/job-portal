@@ -88,7 +88,7 @@
                     <p>{{ $investasi->deskripsi_bisnis }}</p>
                 </div>
                 @if(session()->has('role'))
-                    @if( session('role') == 'student' )
+                    @if( session('role') == 'student' || session('role') == 'guest')
                     <div class="single_wrap">
                         <h4>Proposal Investasi</h4>
                         <form action="{{ route('proposal.project.investasi.download', $investasi->id) }}" method="get">
@@ -119,7 +119,7 @@
                         <span>Masa aktif saham sudah lewat</span>
                     </div>
                     @elseif(session()->has('role'))
-                    @if( (session('role') == 'student' || session('role' == 'guest')) && $investasi->status_tempo == 1)
+                    @if( (session('role') == 'student' || session('role') == 'guest') && $investasi->status_tempo == 1)
                     <hr>
                     <h5>Donasi</h5>
                     <form method="POST" action="/donasi/{{ $investasi->id }}" enctype="multipart/form-data">

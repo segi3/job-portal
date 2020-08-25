@@ -1,5 +1,5 @@
     <footer class="footer">
-        <div class="footer_top">
+        <div class="footer_top" style="padding: 60px 0px 30px;">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-md-6 col-lg-3">
@@ -61,7 +61,7 @@
                             </h3>
                             <ul>
                                 <li><a href="#">Cari Pekerjaan</a></li>
-                                <li><a href="#">Kredensial Mahasiswa</a></li>
+                                <li><a href="#">Jasa Mahasiswa</a></li>
                                 <li><a href="#">Seminar</a></li>
                                 <li><a href="#">Investasi</a></li>
                             </ul>

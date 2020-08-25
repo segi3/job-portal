@@ -50,9 +50,9 @@ Route::get('syarat-ketentuan', 'PageController@showSK');
 
 
 // admin
-Route::get('adminsuperscretloginY', 'AdminController@showLogin')->name('admin.showlogin');
+Route::get('admin/login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
-Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
+Route::get('admin/register', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
@@ -85,6 +85,10 @@ Route::get('/download-berkas/{berkas}', 'GuestController@downloadBerkas')->name(
 Route::get('/jasa', 'ServicesController@index');
 Route::get('/jasa/category/{slug}', 'ServicesController@filterServicesCategory');
 Route::get('/jasa/{slug}', 'ServicesController@detailServices');
+
+//employer
+Route::get('/download-order-form','PageController@downloadFormOrder')->name('download.form-order');
+Route::get('/download-order-form-employer/{form}','DashboardController@downloadFormEmployer')->name('form-order.employer.download');
 
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
@@ -125,6 +129,10 @@ Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
     // order list
     Route::get('dashboard/gs/orders', 'DashboardGuestController@getOrderList');
+
+    Route::get('dashboard/gs/on-going-project-list', 'DashboardGuestController@showProjectListStudent');
+    Route::get('dashboard/gs/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->name('dashboard.guest.download-progress');
+    Route::get('dashboard/gs/detail-investment/{id}', 'DashboardGuestController@showDetailInvestment')->name('dashboard.guest.getDetailInvestment');
 });
 
 
@@ -157,6 +165,9 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     // order list
     Route::get('dashboard/st/orders', 'DashboardGuestController@getOrderList');
 
+    Route::get('dashboard/st/on-going-project-list', 'DashboardStudentController@showProjectListStudent');
+    Route::get('dashboard/st/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->name('dashboard.student.download-progress');
+    Route::get('dashboard/st/detail-investment/{id}', 'DashboardStudentController@showDetailInvestment')->name('dashboard.getDetailInvestment');
     // investee
     Route::get('dashboard/investee', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
     Route::get('dashboard/investee/create-project-investment', 'DashboardInvesteeController@getCreateProjInvestment')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateProjectInvestment');
@@ -168,6 +179,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/investee/upload-progress/{id}', 'DashboardInvesteeController@submitprogress')->middleware('InvesteeCheck')->name('dashboard.investee.upload-progress');
     Route::get('dashboard/investee/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->middleware('InvesteeCheck')->name('dashboard.investee.download-progress');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
+    Route::get('dashboard/investee/register-IYT', 'DashboardInvesteeController@getCreateIYT')->middleware('InvesteeCheck')->name('dashboard.investee.getCreateIYT');
+    Route::post('dashboard/investee/post-register-IYT', 'DashboardInvesteeController@postCreateIYT')->middleware('InvesteeCheck')->name('dashboard.investee.createIYT');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){

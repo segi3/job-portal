@@ -103,8 +103,8 @@
                                             </div>
                                             <div class="location">
                                                 <p> <i
-                                                        class="fa fa-money"></i>Rp{{ number_format($j->expected_salary_high, 0, ',', '.') }}
-                                                    - {{ number_format($j->expected_salary_low, 0, ',', '.') }}</p>
+                                                        class="fa fa-money"></i>Rp{{ number_format($j->expected_salary_low, 0, ',', '.') }}
+                                                    - {{ number_format($j->expected_salary_high, 0, ',', '.') }}</p>
                                             </div>
                                         </div>
                             </div>

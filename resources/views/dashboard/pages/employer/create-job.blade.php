@@ -80,6 +80,7 @@
                                 <option value="7">Infrastruktur, Utilitas dan Transportasi</option>
                                 <option value="8">Finansial</option>
                                 <option value="9">Perdagangan, Jasa dan Transportasi</option>
+                                <option value="10">Start Up</option>
                             </select>
                         </div>
 

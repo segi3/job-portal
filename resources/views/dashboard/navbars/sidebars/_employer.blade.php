@@ -29,13 +29,18 @@
                             <p>My Profile</p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+                    <li class="nav-item has-treeview
+                    {{ Request::is('dashboard/er/create-job') ? "menu-open" : "" }}
+                    {{ Request::is('dashboard/er/job-approval') ? "menu-open" : "" }}
+                    {{ Request::is('dashboard/er/job-applicant-pending') ? "menu-open" : "" }}
+                    {{ Request::is('dashboard/er/job-applicant-accepted') ? "menu-open" : "" }}
+                    ">
                         <a href="#" class="nav-link
-                {{ Request::is('dashboard/er/create-job') ? "active" : "" }}
-                {{ Request::is('dashboard/er/job-approval') ? "active" : "" }}
-                {{ Request::is('dashboard/er/job-applicant-pending') ? "active" : "" }}
-                {{ Request::is('dashboard/er/job-applicant-accepted') ? "active" : "" }}
-                ">
+                        {{ Request::is('dashboard/er/create-job') ? "active" : "" }}
+                        {{ Request::is('dashboard/er/job-approval') ? "active" : "" }}
+                        {{ Request::is('dashboard/er/job-applicant-pending') ? "active" : "" }}
+                        {{ Request::is('dashboard/er/job-applicant-accepted') ? "active" : "" }}
+                        ">
                             <i class="nav-icon fas fa-briefcase"></i>
                             <p>
                                 Manage Jobs
@@ -74,11 +79,14 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview menu-open">
+                    <li class="nav-item has-treeview
+                    {{ Request::is('dashboard/er/create-seminar') ? "menu-open" : "" }}
+                    {{ Request::is('dashboard/er/seminar-approval') ? "menu-open" : "" }}
+                    ">
                         <a href="#" class="nav-link
-                {{ Request::is('dashboard/er/create-seminar') ? "active" : "" }}
-                {{ Request::is('dashboard/er/seminar-approval') ? "active" : "" }}
-                ">
+                        {{ Request::is('dashboard/er/create-seminar') ? "active" : "" }}
+                        {{ Request::is('dashboard/er/seminar-approval') ? "active" : "" }}
+                        ">
                             <i class="nav-icon fas fa-chalkboard-teacher"></i>
                             <p>
                                 Manage Seminars

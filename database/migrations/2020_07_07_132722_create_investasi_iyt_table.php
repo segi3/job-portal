@@ -15,18 +15,12 @@ class CreateInvestasiIytTable extends Migration
     {
         Schema::create('investasi_iyt', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_investasi');
+            $table->string('nama_ketua');
             $table->bigInteger('investee_id')->nullable()->unsigned();
             $table->string('status', 1)->default('0');
-            $table->string('bank');
-            $table->string('no_rekening');
-            $table->string('atas_nama');
-            $table->text('deskripsi_bisnis');
-            $table->integer('roi_top');
-            $table->integer('roi_bot');
-            $table->date('tgl_jatuh_tempo');
-            $table->string('berkas_proposal_investasi');
-            $table->string('berkas_laporan_keuangan');
+            $table->string('nama_kelompok');
+            $table->string('berkas_pitch_desk');
+            $table->string('berkas_proposal_bisnis');
             $table->bigInteger('admin_id')->nullable()->unsigned();
 
             $table->foreign('investee_id')->references('id')->on('investee')->onDelete('cascade')->onUpdate('cascade');

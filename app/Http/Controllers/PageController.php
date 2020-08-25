@@ -183,4 +183,10 @@ class PageController extends Controller
 
         
     }
+
+    public function downloadFormOrder()
+    {
+      $file = public_path('data_files/ORDER FORM REKRUTMEN.docx');
+      return response()->download($file);
+    }
 }

@@ -69,7 +69,7 @@ class AdminController extends Controller
 
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return redirect('/adminsuperscretregisterY');
+                return redirect('/admin/login');
             }
         }
     }

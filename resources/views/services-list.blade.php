@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title mb-40" style="margin-bottom: 10px;">
-                        <h4>Kategori Kredensial</h4>
+                        <h4>Kategori Jasa</h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -51,7 +51,7 @@
                         <div class="recent_joblist white-bg ">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <h3>Daftar Kredensial Tersedia</h3>
+                                    <h3>Daftar Jasa Tersedia</h3>
                                 </div>
                             </div>
                         </div>

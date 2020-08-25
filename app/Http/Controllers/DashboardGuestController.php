@@ -120,4 +120,42 @@ class DashboardGuestController extends Controller
 
         return view('dashboard.pages.order-list')->with('orders', $orders);
     }
+    public function showProjectListStudent(Request $request)
+    {
+        $guestid= $request->session()->get('id');
+        $investment = DB::table('order')
+                        ->select('order.*')
+                        ->where('order.id_investor', '=', $guestid)
+                        ->where('role', '=', 'guest')
+                        ->where('status', '=', 'paid')
+                        ->where('tipe_investasi', '=', 'project')
+                        ->paginate(25);
+        return view('dashboard.pages.guest.on-going-project-list')->with('investment', $investment);
+    }
+    public function showDetailInvestment(Request $request, $id)
+    {
+        $guestid= $request->session()->get('id');
+        $order = DB::table('order')
+                    ->select('order.id_investee')        
+                    ->where('id_investor', '=', $guestid)
+                    ->where('status', '=', 'paid')
+                    ->where('role', '=', 'guest')
+                    ->where('id_investasi', '=', $id)
+                    ->where('tipe_investasi', '=', 'project')
+                    ->first();
+        $investee = DB::table('investee')
+                    ->select('investee.*')
+                    ->where('id', '=', $order->id_investee)
+                    ->first();    
+        $investment = DB::table('investasi_project')
+                    ->select('investasi_project.*') 
+                    ->where('investasi_project.id', '=', $id)
+                    ->first();
+        $listprogres = DB::table('progres_project')
+                        -> select('progres_project.*')
+                        -> where('progres_project.project_id','=', $id)
+                        -> orderByRaw('tgl DESC')
+                        ->paginate(8);
+        return view('dashboard.pages.guest.detail-investment',compact('investee','listprogres','investment'));
+    }
 }

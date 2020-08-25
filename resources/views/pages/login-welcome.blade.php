@@ -109,7 +109,7 @@
                     <div class="searching_text pt-5">
                         <div class="container-tr">
                         <h2 class="text-search-title ml-4 pt-4">Mencari pekerjaan?</h2>
-                        <p class="text-search pb-5 mx-4">Kami memberikan kemudahan bagi mahasiswa ITS untuk mencari pekerjaan dan memasang kredensial</p>
+                        <p class="text-search pb-5 mx-4" style="color: black;">Kami memberikan kemudahan bagi mahasiswa ITS untuk mencari pekerjaan dan menawarkan jasa</p>
                         </div>
                         <div class="row pt-5">
                             <div class="col-8">
@@ -128,7 +128,7 @@
                     <div class="searching_text pt-5">
                         <div class="container-tr">
                         <h2 class="text-search-title ml-4 pt-4">Mencari seorang ahli?</h2>
-                        <p class="text-search pb-5 mx-4">Kami memberikan platform bagi employer untuk mencari tenaga ahli yang anda dibutuhkan</p>
+                        <p class="text-search pb-5 mx-4" style="color: black;">Kami memberikan platform bagi employer untuk mencari tenaga ahli yang anda dibutuhkan</p>
                         </div>
                         <div class="row pt-5">
                             <div class="col-8 pr-0">
@@ -145,8 +145,8 @@
                 <div class="container pt-5">
                     <div class="text-search pt-5">
                         <div class="container-tr">
-                        <h2 class="text-search-title ml-4 pt-4">Mencari mahasiswa dengan kredensial?</h2>
-                        <p class="text-search pb-5 mx-4">Kami memberikan kemudahan bagi siapapun yang mencari seorang dengan kredensial yang anda cari</p>
+                        <h2 class="text-search-title ml-4 pt-4">Mencari mahasiswa yang memiliki keahlian?</h2>
+                        <p class="text-search pb-5 mx-4" style="color: black;">Kami memberikan kemudahan bagi siapapun yang mencari seorang dengan jasa yang anda cari</p>
                         </div>
                         <div class="row pt-5">
                             <div class="col-8">
