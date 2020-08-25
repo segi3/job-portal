@@ -50,9 +50,9 @@ Route::get('syarat-ketentuan', 'PageController@showSK');
 
 
 // admin
-Route::get('adminsuperscretloginY', 'AdminController@showLogin')->name('admin.showlogin');
+Route::get('admin/login', 'AdminController@showLogin')->name('admin.showlogin');
 Route::post('adminsuperscretloginY', 'AdminController@Login')->name('admin.login');
-Route::get('adminsuperscretregisterY', 'AdminController@showRegister')->name('admin.showregister');
+Route::get('admin/register', 'AdminController@showRegister')->name('admin.showregister');
 Route::post('adminsuperscretregisterY', 'AdminController@Register')->name('admin.register');
 
 Route::get('admin-login', 'AdminController@showLogin')->name('admin.showlogin');
