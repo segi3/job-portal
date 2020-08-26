@@ -28,6 +28,8 @@ class DashboardController extends Controller
             return view('dashboard.pages.student.home');
         } else if ($request->session()->get('role') == 'guest') {
             return view ('dashboard.pages.guest.home');
+        } else if ($request->session()->get('role') == 'mentor') {
+            return view ('dashboard.pages.mentor.home');
         }
         return view('/');
     }

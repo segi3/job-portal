@@ -19,6 +19,10 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="/" class="nav-link">Portal utama</a>
             </li>
+        @elseif ( session('role') == 'mentor')
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/" class="nav-link">Portal utama</a>
+            </li>
         @endif
         </ul>
 
@@ -36,7 +40,7 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-        
+
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">

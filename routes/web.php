@@ -46,6 +46,11 @@ Route::post('register-gs', 'GuestController@Register')->name('guest.register');
 
 Route::get('syarat-ketentuan', 'PageController@showSK');
 
+Route::get('mentor/login', 'MentorController@viewLogin')->name('mentor.viewLogin');
+Route::post('mentor/login', 'MentorController@Login')->name('mentor.login');
+
+Route::get('mentor/register', 'MentorController@viewRegister')->name('mentor.viewRegister');
+Route::post('mentor/register', 'MentorController@Register')->name('mentor.register');
 // Route::get('login-warning-test', 'PageController@showLoginWarning');
 
 
@@ -116,6 +121,7 @@ Route::post('/donasi/{id}', 'InvestasiController@donasi');
 
 // dashboard
 Route::get('dashboard', 'DashboardController@getHome')->middleware('LoginCheck');
+
 
 Route::group(['middleware' => 'LoginCheck', 'GuestCheck'], function(){
 
@@ -220,7 +226,7 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-students', 'DashboardController@getUnapprovedStudents');
     Route::put('admin/new-students/a/{student}', 'DashboardController@approveNewStudents')->name('student.approve');
     Route::put('admin/new-students/d/{student}', 'DashboardController@rejectNewStudents')->name('student.reject');
-    
+
     Route::get('admin/new-investees', 'DashboardController@getNewInvestees');
     Route::get('admin/approved-investees', 'DashboardController@getApprovedInvestees');
     Route::get('admin/unapproved-investees', 'DashboardController@getUnapprovedInvestees');
@@ -273,3 +279,7 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
 });
 
 
+
+Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
+
+});
