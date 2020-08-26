@@ -63,7 +63,7 @@ class AdminController extends Controller
             ]);
 
             Session::flash('success', 'User berhasil didaftarkan');
-            return redirect('/adminsuperscretloginY');
+            return redirect('/admin/login');
 
         }catch(\Illuminate\Database\QueryException $e){
 

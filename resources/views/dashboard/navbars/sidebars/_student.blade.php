@@ -155,8 +155,8 @@
                 </li>
 
                 <hr>
-                <a class="btn btn-primary" href="/dashboard/investee">Investasi</a><br>
-                <a class="btn btn-primary" href="/dashboard/IYT">ITS Youth Technopreneur</a>
+                <a class="btn btn-primary" style="color:white;" href="/dashboard/investee">Investee</a><br>
+                <a class="btn btn-primary" style="color:white;" href="/dashboard/IYT">ITS Youth Technopreneur</a>
 
             </ul>
         </nav>
