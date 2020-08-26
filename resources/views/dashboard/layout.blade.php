@@ -24,6 +24,8 @@
         @include('dashboard.navbars.sidebars._guest')
     @elseif (Request::segment(2) == 'investee')
         @include('dashboard.navbars.sidebars._investee')
+    @elseif (Request::segment(2) == 'IYT')
+        @include('dashboard.navbars.sidebars._iyt')
     @elseif( session('role') == 'student')
         @include('dashboard.navbars.sidebars._student')
     @endif

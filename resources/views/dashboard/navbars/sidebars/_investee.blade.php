@@ -22,23 +22,6 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-        <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
-            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>
-              IYT
-                <i class="right fas fa-angle-left"></i>
-            </p>
-            </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="/dashboard/investee/register-IYT" class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar IYT</p>
-                </a>
-            </li>
-            </ul>
-        </li>
 
         <li class="nav-item has-treeview
         {{ Request::is('dashboard/investee/create-project-investment') ? "menu-open" : "" }}

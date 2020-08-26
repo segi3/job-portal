@@ -21,19 +21,12 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item
-                {{ Request::is('dashboard/IYT/register-IYT') ? "active" : "" }}
-                ">
-                    <a href="/dashboard/IYT/register-IYT" class="nav-link
-                    {{ Request::is('/dashboard/IYT/register-IYT') ? "active" : "" }}
-                    ">
-                        <i class="far fa-clock nav-icon"></i>
-                        <p>
-                            Daftar IYT
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+            <li class="nav-item">
+                <a href="/dashboard/IYT/register-IYT" class="nav-link {{ Request::is('dashboard/IYT/register-IYT') ? "active" : "" }}">
+                    <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                    <p>Daftar IYT</p>
+                </a>
+            </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
