@@ -1,6 +1,6 @@
 @extends('dashboard.layout')
 
-@section('title', 'Register ITS Youth Technopreneur')
+@section('title', 'Daftar ITS Youth Technopreneur')
 
 @section('stylesheets')
 {{--  --}}
@@ -18,13 +18,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Register ITS Youth Technopreneur</h1>
+                <h1 class="m-0 text-dark">Daftar ITS Youth Technopreneur</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/dashboard/investee">Home</a></li>
-                    <li class="breadcrumb-item active">Manage-Investment</li>
-                    <li class="breadcrumb-item active">Register-IYT</li>
+                    <li class="breadcrumb-item"><a href="/dashboard/IYT">Home</a></li>
+                    <li class="breadcrumb-item active">IYT</li>
+                    <li class="breadcrumb-item active">Daftar-IYT</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -59,7 +59,7 @@
 
     <div class="container-fluid">
         <form method="POST" role="form" id="quickForm" enctype="multipart/form-data"
-            action="{{ route('dashboard.investee.createIYT') }}">
+            action="{{ route('dashboard.createIYT') }}">
             @csrf
             <div class="row">
                 {{-- Deskripsi Investasi --}}
