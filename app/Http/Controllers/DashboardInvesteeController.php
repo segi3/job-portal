@@ -290,7 +290,7 @@ class DashboardInvesteeController extends Controller
             return view('dashboard.pages.investee.create-funding-investment');
         }
     }
-    public function showProjectInvestorGuest()
+    public function showProjectInvestorGuest(Request $request)
     {
         $guestid= $request->session()->get('id');
         $investment = DB::table('order')

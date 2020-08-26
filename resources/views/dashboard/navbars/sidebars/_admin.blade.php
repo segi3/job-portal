@@ -40,7 +40,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="admin/new-students" class="nav-link {{ Request::is('admin/new-students') ? "active" : "" }}">
+                    <a href="/admin/new-students" class="nav-link {{ Request::is('admin/new-students') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>New Students</p>
                     </a>
