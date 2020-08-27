@@ -216,7 +216,7 @@ class DashboardEmployerController extends Controller
         try {
 
             $berkas= $request->file('order_rekrutmen');
-            $namaemp== str_replace(' ','_',$request->session()->get('name'),);
+            $namaemp= str_replace(' ','_',$request->session()->get('name'));
             $nama= str_replace(' ','_',$request->input('name'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $namaemp.'_'.$nama.'.'.$extension;

@@ -109,20 +109,24 @@
                             <textarea type="text" name="description" class="form-control" id="inputDescription" placeholder="Deskripsi Pekerjaan"></textarea>
                         </div>
                         <div class="form-group">
-                                <label for="" class="">{{ __('Form Order Rekrutmen') }}</label>
-								                <p>Unduh Form Order Rekrutmen berikut, diisi kemudian discan dan diupload pada bagian upload form</p>
-                                <a href="{{ route('download.form-order') }}" class="btn btn-sm btn-primary" style="margin-bottom: 15px;">Unduh Form</a>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                      </button>
-                                    </div>
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" name="order_rekrutmen" accept="application/pdf" id="order_rekrutmen" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label"  id="idform" for="order_rekrutmen">Upload Form</label>
-                                    </div>
-                                </div>
-                        </div>
+                                  <label for="contact_no" class="">{{ __('Form Order Rekrutmen') }}</label>
+                                  <p>Unduh Form Order Rekrutmen berikut, diisi kemudian discan dan diupload pada bagian upload form</p>
+                                  <a href="{{ route('download.form-order') }}" class="btn btn-sm btn-primary" style="margin-bottom: 15px;">Unduh Form</a>
+                                  <div class="input-group">
+                                      <div class="input-group-prepend">
+                                          <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
+                                                  aria-hidden="true"></i>
+                                          </button>
+                                      </div>
+                                      <div class="custom-file">
+                                          <label class="custom-file-label" id="idform"
+                                              for="order_rekrutmen">Upload Form</label>
+                                          <input type="file" class="custom-file-input" name="order_rekrutmen"
+                                              id="order_rekrutmen" accept="application/pdf"
+                                              aria-describedby="inputGroupFileAddon03">
+                                      </div>
+                                  </div>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -327,7 +331,7 @@
     </script>
 
   <script type="application/javascript">
-      $('#order_rekrutmen').change(function (e2) {
+       $('#order_rekrutmen').change(function (e2) {
           var fileName2 = e2.target.files[0].name;
           // dd(fileName2);
           $('#idform').html(fileName2);
