@@ -52,7 +52,7 @@
 
 			@endif
     <div class="container-fluid">
-        <form method="POST" role="form" id="quickForm" action="{{ route('dashboard.employer.createJob') }}">
+        <form method="POST" role="form" id="quickForm" enctype="multipart/form-data" action="{{ route('dashboard.employer.createJob') }}">
         @csrf
         <div class="row">
             <div class="col-lg-6">
