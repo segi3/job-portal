@@ -88,7 +88,6 @@ class EmployerController extends Controller
             'name' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'berkas_verifikasi'  => 'required|mimes:pdf|max:2048',
-            'order_rekrutmen'  => 'required|mimes:pdf|max:2048',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
             'city' => 'required',
@@ -138,11 +137,7 @@ class EmployerController extends Controller
             $tujuan = 'data_files/bukti_employer';
             $berkas->move($tujuan,$filename);
 
-            $form= $request->file('order_rekrutmen');
-            $extension= $form->getClientOriginalExtension();
-            $filenama= 'Form-order-rekrutmen_'.$nama.'_'.$email.'.'.$extension;
-            $path_tujuan = 'data_files/form_order_rekrutmen';
-            $form->move($path_tujuan,$filenama);
+            
 
             // $filecrop= Image::make($filelogo->path());
             // $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
@@ -152,7 +147,6 @@ class EmployerController extends Controller
                 'name' => $request->input('name'),
                 'logo' => $hashname,
                 'berkas_verifikasi' => $filename,
-                'order_rekrutmen' => $filenama,
                 'email' => $request->input('email'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),

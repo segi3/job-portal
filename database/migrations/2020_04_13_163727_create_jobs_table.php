@@ -27,6 +27,7 @@ class CreateJobsTable extends Migration
             $table->string('extra_skill')->nullable();
             $table->integer('expected_salary_high');
             $table->integer('expected_salary_low');
+            $table->string('order_rekrutmen');
             $table->timestamps();
         });
     }

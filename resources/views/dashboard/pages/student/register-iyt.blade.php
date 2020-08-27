@@ -23,7 +23,6 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard/IYT">Home</a></li>
-                    <li class="breadcrumb-item active">IYT</li>
                     <li class="breadcrumb-item active">Daftar-IYT</li>
                 </ol>
             </div><!-- /.col -->
@@ -59,7 +58,7 @@
 
     <div class="container-fluid">
         <form method="POST" role="form" id="quickForm" enctype="multipart/form-data"
-            action="{{ route('dashboard.createIYT') }}">
+            action="{{ route('post-register-iyt') }}">
             @csrf
             <div class="row">
                 {{-- Deskripsi Investasi --}}
@@ -117,10 +116,10 @@
                                 </div>
                             </div>
                             <input type="checkbox" name="termspolicy" id="termpolicy">
-                            <label>Anda Menyetujui Syarat dan Ketentuan dari ITSJobX</label><br /><br />
+                            <label>Saya Menyetujui Syarat dan Ketentuan dari ITSJobX</label><br /><br />
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="submitbtn btn btn-primary">Submit</button>
+                            <button type="submit" class="submitbtn btn btn-success">Daftar</button>
                         </div>
                     </div>
                 </div>

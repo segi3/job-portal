@@ -32,8 +32,8 @@
             <div class="col-lg-12 col-sm-12">
                 <div class="card menu-card">
                     <div class="card-body">
-                        <h5 class="card-title">Daftar ITS Youth Technopreneur</h5><br><br>
-                        <a href="/dashboard/IYT/register-IYT" class="float-right card-link stretched-link btn btn-sm btn-yl">Halaman Pendaftaran ITS Youth Technopreneur</a>
+                        <h5 class="card-title">Selamat datang</h5><br><br>
+                        <a href="/dashboard/IYT/register-IYT" class="float-right card-link stretched-link btn btn-sm btn-yl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure maxime repudiandae culpa consequuntur dolorum similique quaerat voluptates eos consequatur quod. Eos est magni corporis non iure quia ipsum dolor nisi!</a>
                     </div>
                 </div>
             </div>

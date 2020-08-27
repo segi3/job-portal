@@ -167,6 +167,9 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::get('dashboard/register-investee', 'DashboardInvesteeController@showRegister');
     Route::post('dashboard/register-investee', 'DashboardInvesteeController@registerNew')->name('post-register-investee');
     Route::get('dashboard/register-status', 'DashboardInvesteeController@getRegisterStatus');
+    Route::get('dashboard/register-IYT', 'DashboardIYTController@getCreateIYT');
+    Route::post('dashboard/register-IYT', 'DashboardIYTController@postCreateIYT')->name('post-register-iyt');
+    Route::get('dashboard/register-IYT-status', 'DashboardIYTController@getRegisterIYTStatus');
 
     // order list
     Route::get('dashboard/st/orders', 'DashboardGuestController@getOrderList');
@@ -185,9 +188,7 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/investee/upload-progress/{id}', 'DashboardInvesteeController@submitprogress')->middleware('InvesteeCheck')->name('dashboard.investee.upload-progress');
     Route::get('dashboard/investee/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->middleware('InvesteeCheck')->name('dashboard.investee.download-progress');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
-    Route::get('dashboard/IYT/register-IYT', 'DashboardIYTController@getCreateIYT')->name('dashboard.getCreateIYT');
-    Route::post('dashboard/IYT/post-register-IYT', 'DashboardIYTController@postCreateIYT')->name('dashboard.createIYT');
-    Route::get('dashboard/IYT', 'DashboardIYTController@getHomeIYT');
+    Route::get('dashboard/IYT', 'DashboardIYTController@getHomeIYT')->middleware('IYTCheck');
 });
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){

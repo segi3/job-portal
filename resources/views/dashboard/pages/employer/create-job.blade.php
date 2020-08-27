@@ -108,8 +108,22 @@
                             <label for="inputDescription">Deskripsi Pekerjaan</label>
                             <textarea type="text" name="description" class="form-control" id="inputDescription" placeholder="Deskripsi Pekerjaan"></textarea>
                         </div>
+                        <div class="form-group">
+                                <label for="" class="">{{ __('Form Order Rekrutmen') }}</label>
+								                <p>Unduh Form Order Rekrutmen berikut, diisi kemudian discan dan diupload pada bagian upload form</p>
+                                <a href="{{ route('download.form-order') }}" class="btn btn-sm btn-primary" style="margin-bottom: 15px;">Unduh Form</a>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                      </button>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="order_rekrutmen" accept="application/pdf" id="order_rekrutmen" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label"  id="idform" for="order_rekrutmen">Upload Form</label>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <div class="col-lg-6">
@@ -241,6 +255,10 @@
           kompensasi: {
             maxlength: 255,
           },
+          order_rekrutmen: {
+              required: true,
+              extension: "pdf",
+          },
         },
         messages: {
           name: {
@@ -288,6 +306,10 @@
           kompensasi: {
             maxlength: "Tidak dapat melebihi 255 karakter"
           },
+          order_rekrutmen: {
+              required: "Dibutuhkan",
+              extension: "File format tidak sesuai"
+          },
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
@@ -304,5 +326,12 @@
     });
     </script>
 
-
+  <script type="application/javascript">
+      $('#order_rekrutmen').change(function (e2) {
+          var fileName2 = e2.target.files[0].name;
+          // dd(fileName2);
+          $('#idform').html(fileName2);
+      });
+  </script>
 @endsection
+

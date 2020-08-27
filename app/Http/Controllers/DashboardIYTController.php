@@ -23,12 +23,35 @@ class DashboardIYTController extends Controller
 
     public function getCreateIYT()
     {
-        return view('dashboard.pages.iyt.create-iyt');
+        return view('dashboard.pages.student.register-iyt');
+    }
+
+    public function getRegisterIYTStatus(Request $request)
+    {
+        $id = $request->session()->get('id');
+
+        $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
+
+        // dd($investee);
+
+        if ($iyt)
+            return view('dashboard.pages.student.register-iyt-status')->with('iyt', $iyt);
+        else
+            return redirect('dashboard/register-IYT');
     }
 
     public function postCreateIYT(Request $request){
 
         $input = $request->all();
+        $id = $request->session()->get('id');
+        $student = DB::table('students')->find($id);
+
+        $iytCheck = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
+
+        if ($iytCheck){
+            Session::flash('error', 'Akun Investee sudah didaftarkan');
+            return redirect()->back();
+        }
 
         $validator = Validator::make($input, [
             'namaketua' => 'required|max:191',
@@ -59,12 +82,6 @@ class DashboardIYTController extends Controller
         try{
             $berkaspropbisnis= $request->file('proposalbisnis');
             $berkaspitchdesk= $request->file('pitchdesk');
-            $studentid= $request->session()->get('id');
-            $investeeid = DB::table('investee')
-                        ->select('investee.id')        
-                        ->where('student_id', '=', $studentid)
-                        ->Where('status', '=', '1')
-                        ->first();
             $studentname = $request->session()->get('name');
             $propbisnishash = md5('_PROPOSALBISNIS_'.$studentname.'_'.$request->input('namakelompok'));
             $pitchdeskhash = md5('_PITCHDESK_'.$studentname.'_'.$request->input('namakelompok'));
@@ -72,15 +89,15 @@ class DashboardIYTController extends Controller
             $tujuankeu = 'data_files/investee/IYT/Pitch Desk';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
-            $filenameinv= "ProposalBisnis_".$studentid.$investeeid->id.$propbisnishash.'.'.$extension;
-            $filenamekeu= "PitchDesk_".$studentid.$investeeid->id.$pitchdeskhash.'.'.$extension;
+            $filenameinv= "ProposalBisnis_".$student->id.$propbisnishash.'.'.$extension;
+            $filenamekeu= "PitchDesk_".$student->id.$pitchdeskhash.'.'.$extension;
             // $berkas->move($tujuan,$filename);
             $berkaspropbisnis->move($tujuaninv,$filenameinv);
             $berkaspitchdesk->move($tujuankeu,$filenamekeu);
 
             Investasi_IYT::create([
                 'nama_ketua'        => $request->input('namaketua'),
-                'investee_id'           => $investeeid->id,
+                'student_id'           => $student->id,
                 'status'                => 0,
                 'nama_kelompok'         => $request->input('namakelompok'),
                 'berkas_proposal_bisnis'=> $filenameinv,
@@ -88,7 +105,7 @@ class DashboardIYTController extends Controller
             ]);
 
             Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');
-            return view('dashboard.pages.iyt.create-iyt');
+            return redirect('dashboard/register-iyt-status');
         }
         catch(\Illuminate\Database\QueryException $e)
         {
@@ -98,7 +115,7 @@ class DashboardIYTController extends Controller
                 return redirect('/');
             }
             Session::flash('error', $errorMsg);
-            return view('dashboard.pages.iyt.create-iyt');
+            return redirect()->back();
         }
     }
 }

@@ -117,22 +117,6 @@
                                     </div>
                                 </div>
                             </div>
-							<div class="form-group">
-                                <label for="" class="">{{ __('Form Order Rekrutmen') }}</label><span class="red-str">*</span>
-								<p style="font-size: 12px;">Unduh Form Order Rekrutmen berikut, diisi kemudian discan dan diupload pada bagian upload form</p>
-                                <a href="{{ route('download.form-order') }}" class="btn btn-sm btn-primary" style="margin-bottom: 15px;">Unduh Form</a>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                      </button>
-                                    </div>
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" name="order_rekrutmen" accept="application/pdf" id="order_rekrutmen" aria-describedby="inputGroupFileAddon03">
-                                      <label class="custom-file-label"  id="idform" for="order_rekrutmen">Upload Form</label>
-                                    </div>
-                                </div>
-								
-                            </div>
                             <div class="form-group">
                                 <label for="" class="">{{ __('Logo Instansi/Perusahaan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">
@@ -180,11 +164,6 @@
 		var fileName2 = e2.target.files[0].name;
         // dd(fileName2);
 		$('#idberkas').html(fileName2);
-	});
-	$('#order_rekrutmen').change(function(e3){
-		var fileName3 = e3.target.files[0].name;
-        // dd(fileName3);
-		$('#idform').html(fileName3);
 	});
 </script>
 @endsection

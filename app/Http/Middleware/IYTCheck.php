@@ -18,7 +18,7 @@ class IYTCheck
         if($request->session()->get('iyt')==true){
             return $next($request);
         }else{
-            return redirect('/dashboard/register-status');
+            return redirect('/dashboard/register-IYT-status');
         }
     }
 }
