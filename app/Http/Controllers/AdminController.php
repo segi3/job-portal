@@ -36,7 +36,7 @@ class AdminController extends Controller
                 return redirect('/dashboard');
             }else{
                 // password salah
-                return redirect('/adminsuperscretloginY');
+                return redirect('/admin/login');
             }
         }else{
             // admin tidak ditemukan
