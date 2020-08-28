@@ -88,7 +88,6 @@ class EmployerController extends Controller
             'name' => 'required',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'berkas_verifikasi'  => 'required|mimes:pdf|max:2048',
-            'order_rekrutmen'  => 'required|mimes:pdf|max:2048',
             'email' => 'required|email|unique:employers',
             'address' => 'required',
             'city' => 'required',
@@ -127,7 +126,7 @@ class EmployerController extends Controller
             $extension= $filelogo->getClientOriginalExtension();
             $namafile=md5($email);
             $hashname= $namafile.'.'.$extension;
-            $tujuan_upload = 'data_files/employer_logo';
+            $tujuan_upload = 'data_files/Employer/employer_logo';
             $filelogo->move($tujuan_upload,$hashname);
 
             $berkas= $request->file('berkas_verifikasi');
@@ -135,14 +134,10 @@ class EmployerController extends Controller
             $email= md5($request->input('email'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $nama.'_'.$email.'.'.$extension;
-            $tujuan = 'data_files/bukti_employer';
+            $tujuan = 'data_files/Employer/berkas_verifikasi';
             $berkas->move($tujuan,$filename);
 
-            $form= $request->file('order_rekrutmen');
-            $extension= $form->getClientOriginalExtension();
-            $filenama= 'Form-order-rekrutmen_'.$nama.'_'.$email.'.'.$extension;
-            $path_tujuan = 'data_files/form_order_rekrutmen';
-            $form->move($path_tujuan,$filenama);
+            
 
             // $filecrop= Image::make($filelogo->path());
             // $filecrop->crop(400,400)->save($tujuan_upload.'/'.$hashname);
@@ -152,7 +147,6 @@ class EmployerController extends Controller
                 'name' => $request->input('name'),
                 'logo' => $hashname,
                 'berkas_verifikasi' => $filename,
-                'order_rekrutmen' => $filenama,
                 'email' => $request->input('email'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
@@ -193,7 +187,7 @@ class EmployerController extends Controller
         ->where($where)
         ->first();
 
-        $file = public_path('data_files/bukti_employer/'.$berkas_db->berkas);
+        $file = public_path('data_files/Employer/berkas_verifikasi/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 }

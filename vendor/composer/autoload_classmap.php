@@ -64,6 +64,7 @@ return array(
     'App\\Job' => $baseDir . '/app/Job.php',
     'App\\JobCategory' => $baseDir . '/app/JobCategory.php',
     'App\\Job_Categoy' => $baseDir . '/app/Job_Categoy.php',
+    'App\\Mentor' => $baseDir . '/app/Mentor.php',
     'App\\Order' => $baseDir . '/app/Order.php',
     'App\\Order_project_guest' => $baseDir . '/app/Order_project_guest.php',
     'App\\Order_project_student' => $baseDir . '/app/Order_project_student.php',

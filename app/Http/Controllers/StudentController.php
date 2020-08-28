@@ -35,10 +35,19 @@ class StudentController extends Controller
                                                     ->Where('status', '=', '1')
                                                     ->first();
 
+                    $isIYT = DB::table('investasi_iyt')->where('student_id', '=', $student->id)
+                                                    ->Where('status', '=', '1')
+                                                    ->first();
+
                     if ($isInvestee)
                         $isInvestee = true;
                     else
                         $isInvestee = false;
+
+                    if ($isIYT)
+                        $isIYT = true;
+                    else
+                        $isIYT = false;
                     
                     // dd($isInvestee);
                     
@@ -49,6 +58,7 @@ class StudentController extends Controller
                         'email' => $student->email,
                         'role' => 'student',
                         'investee' => $isInvestee,
+                        'iyt' => $isIYT,
                     ]);
                     Session::flash('success', 'Anda berhasil Login');
                     return redirect('/dashboard');
@@ -108,7 +118,7 @@ class StudentController extends Controller
             $email = md5($request->input('email'));
             $ext = $berkas->getClientOriginalExtension();
             $filename = $nama.'_'.$email.'.'.$ext;
-            $tujuan = 'data_files/berkas_student';
+            $tujuan = 'data_files/Student/berkas_validasi';
             
 
             Student::create([

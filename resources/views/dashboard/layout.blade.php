@@ -28,6 +28,8 @@
         @include('dashboard.navbars.sidebars._iyt')
     @elseif( session('role') == 'student')
         @include('dashboard.navbars.sidebars._student')
+    @elseif( session('role') == 'mentor')
+        @include('dashboard.navbars.sidebars._mentor')
     @endif
 
 

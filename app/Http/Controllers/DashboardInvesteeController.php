@@ -154,8 +154,8 @@ class DashboardInvesteeController extends Controller
             $studentname = $request->session()->get('name');
             $invhash = md5('_INV_'.$studentname.'_'.$request->input('description'));
             $keuhash = md5('_KEU_'.$studentname.'_'.$request->input('description'));
-            $tujuaninv = 'data_files/investee/Non-IYT/Project/proposal_investasi';
-            $tujuankeu = 'data_files/investee/Non-IYT/Project/lap_keu';
+            $tujuaninv = 'data_files/Student/Investee/Project/proposal_investasi';
+            $tujuankeu = 'data_files/Student/Investee/Project/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
             $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
@@ -249,8 +249,8 @@ class DashboardInvesteeController extends Controller
             $studentname = $request->session()->get('name');
             $invhash = md5('_INV_'.$studentname.'_'.$request->input('description'));
             $keuhash = md5('_KEU_'.$studentname.'_'.$request->input('description'));
-            $tujuaninv = 'data_files/investee/Non-IYT/Funding/proposal_investasi';
-            $tujuankeu = 'data_files/investee/Non-IYT/Funding/lap_keu';
+            $tujuaninv = 'data_files/Student/Investee/Funding/proposal_investasi';
+            $tujuankeu = 'data_files/Student/Investee/Funding/lap_keu';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
             $filenameinv= "Investment_".$studentid.$investeeid->id.$invhash.'.'.$extension;
@@ -371,7 +371,7 @@ class DashboardInvesteeController extends Controller
         $deskrip = $request->get('deskripsi_laporan');
         $berkas = 'Progress';
         $file_berkas = $berkas.'-'.$tgl.'-'.$deskrip.'.pdf';
-        $tujuan_upload = 'data_files/investee/Non-IYT/Project/Progress';
+        $tujuan_upload = 'data_files/Student/Investee/Project/Progress';
         $file->move($tujuan_upload,$file_berkas);
         $formatDate = \Carbon\Carbon::parse($request->input('tgl'))->format('Y-m-d');
         if($request->get('keterangan_tambahan') == NULL)
@@ -422,7 +422,7 @@ class DashboardInvesteeController extends Controller
         ->select('progres_project.berkas_laporan as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/investee/Non-IYT/Project/Progress/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/Investee/Project/Progress/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }    
 }

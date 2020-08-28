@@ -43,6 +43,7 @@
                                 <th>Job Name</th>
                                 <th>Job Employer</th>
                                 <th>Job type</th>
+                                <th>Form Order Rekrutmen</th>
                                 <th>Listed at</th>
                                 <th>Details</th>
                                 <th>Action</th>
@@ -55,6 +56,11 @@
                                     <td>{{ $job->name }}</td>
                                     <td>{{ $job->employer_name }}</td>
                                     <td>{{ $job->job_type }}</td>
+                                    <td>
+                                    <form action="{{ route('form-order.employer.download', $job->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                    </td>
                                     <td>{{ $job->created_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $job->id }}">

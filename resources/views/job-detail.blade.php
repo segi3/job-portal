@@ -63,7 +63,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="/data_files/employer_logo/{{  $job->logo  }}" alt="" class="img-logo">
+                                    <img src="/data_files/Employer/employer_logo/{{  $job->logo  }}" alt="" class="img-logo">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a><h4>{{ $job->name }}</h4></a>

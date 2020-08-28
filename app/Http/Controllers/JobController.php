@@ -92,7 +92,7 @@ class JobController extends Controller
         $file = $request->file('cv');
         $cv = 'cv';
         $file_cv = $cv.'-'.$id_stud.'-'.$id.'.pdf';
-        $tujuan_upload = 'data_files/CV';
+        $tujuan_upload = 'data_files/Student/Job/CV';
         $file->move($tujuan_upload,$file_cv);
         try 
         {
@@ -128,7 +128,7 @@ class JobController extends Controller
     {
       // dd($cv);
 
-      $file = public_path('data_files/CV/'.$cv.'.pdf');
+      $file = public_path('data_files/Student/Job/CV/'.$cv.'.pdf');
 
       $arr = explode('-', $cv);
 

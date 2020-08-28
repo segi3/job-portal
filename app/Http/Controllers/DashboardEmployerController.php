@@ -130,7 +130,7 @@ class DashboardEmployerController extends Controller
             $desc= md5($request->input('description'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
-            $tujuan = 'data_files/bukti_sewa_tempat';
+            $tujuan = 'data_files/Employer/Seminar/bukti_sewa_tempat';
             $berkas->move($tujuan,$filename);
         try{
             Seminar::create([
@@ -176,7 +176,7 @@ class DashboardEmployerController extends Controller
     //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
 
     //   $file = public_path('data_files/bukti_guests/'.$pdfname);
-      $file = public_path('data_files/bukti_sewa_tempat/'.$berkas_db->berkas);
+      $file = public_path('data_files/Employer/Seminar/bukti_sewa_tempat/'.$berkas_db->berkas);
       return response()->download($file, $berkas_db->berkas);
     }
 
@@ -202,6 +202,7 @@ class DashboardEmployerController extends Controller
             'expected_salary_high'  => 'required|max:11',
             'expected_salary_low'   => 'required|max:11',
             'kompensasi'            => 'max:255',
+            'order_rekrutmen'       => 'required|mimes:pdf|max:2048',
         ]);
 
         if (is_null($request->input('extra_skill'))){
@@ -213,6 +214,15 @@ class DashboardEmployerController extends Controller
         // dd($request->session()->get('id'));
 
         try {
+
+            $berkas= $request->file('order_rekrutmen');
+            $namaemp= str_replace(' ','_',$request->session()->get('name'));
+            $nama= str_replace(' ','_',$request->input('name'));
+            $extension= $berkas->getClientOriginalExtension();
+            $filename= $namaemp.'_'.$nama.'.'.$extension;
+            $tujuan = 'data_files/Employer/Job/Order Rekrutmen';
+            $berkas->move($tujuan,$filename);
+
             Job::create([
                 'name'                  => $request->input('name'),
                 'employer_id'           => $request->session()->get('id'),
@@ -227,6 +237,7 @@ class DashboardEmployerController extends Controller
                 'expected_salary_high'  => $request->input('expected_salary_high'),
                 'expected_salary_low'   => $request->input('expected_salary_low'),
                 'kompesasi'             => $request->input('kompensasi'), //typo di tabel, males benerin
+                'order_rekrutmen'       => $filename,
             ]);
 
             Session::flash('success', 'Job berhasil didaftarkan, silahkan tunggu konfirmasi job');

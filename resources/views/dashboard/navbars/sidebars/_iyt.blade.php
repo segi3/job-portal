@@ -22,9 +22,9 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="/dashboard/IYT/register-IYT" class="nav-link {{ Request::is('dashboard/IYT/register-IYT') ? "active" : "" }}">
+                <a href="/dashboard/IYT" class="nav-link {{ Request::is('dashboard/IYT') ? "active" : "" }}">
                     <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                    <p>Daftar IYT</p>
+                    <p>Example</p>
                 </a>
             </li>
             </ul>

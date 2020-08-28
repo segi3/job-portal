@@ -28,6 +28,8 @@ class DashboardController extends Controller
             return view('dashboard.pages.student.home');
         } else if ($request->session()->get('role') == 'guest') {
             return view ('dashboard.pages.guest.home');
+        } else if ($request->session()->get('role') == 'mentor') {
+            return view ('dashboard.pages.mentor.home');
         }
         return view('/');
     }
@@ -95,7 +97,7 @@ class DashboardController extends Controller
         ->select('students.berkas_validasi as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/berkas_student/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/berkas_validasi/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
     public function getNewServices()
@@ -434,7 +436,7 @@ class DashboardController extends Controller
         ->select('investasi_project.berkas_proposal_investasi as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/investee/Non-IYT/Project/proposal_investasi/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/Investee/Project/proposal_investasi/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
@@ -448,7 +450,7 @@ class DashboardController extends Controller
         ->select('investasi_project.berkas_laporan_keuangan as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/investee/Non-IYT/Project/lap_keu/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/Investee/Project/lap_keu/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
@@ -514,7 +516,7 @@ class DashboardController extends Controller
         ->select('investasi_funding.berkas_proposal_investasi as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/investee/Non-IYT/Funding/proposal_investasi/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/Investee/Funding/proposal_investasi/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
@@ -528,7 +530,7 @@ class DashboardController extends Controller
         ->select('investasi_funding.berkas_laporan_keuangan as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/investee/Non-IYT/Funding/lap_keu/'.$berkas_db->berkas);
+        $file = public_path('data_files/Student/Investee/Funding/lap_keu/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 
@@ -592,14 +594,14 @@ class DashboardController extends Controller
     public function downloadFormEmployer($form)
     {
         $where = [
-            'employers.id' => $form,
+            'jobs.id' => $form,
         ];
 
-        $berkas_db = DB::table('employers')
+        $berkas_db = DB::table('jobs')
         ->select('order_rekrutmen as berkas')
         ->where($where)
         ->first();
-        $file = public_path('data_files/form_order_rekrutmen/'.$berkas_db->berkas);
+        $file = public_path('data_files/Employer/Job/Order Rekrutmen/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 }
