@@ -98,6 +98,10 @@ Route::get('/download-order-form-employer/{form}','DashboardController@downloadF
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
 
+//iyt
+Route::get('/download-proposal-bisnis-iyt/{prop}', 'DashboardController@downloadProposalBisnis')->name('iyt.proposalbisnis.download');
+Route::get('/download-pitch-desk-iyt/{prop}', 'DashboardController@downloadPitchDesk')->name('iyt.pitchdesk.download');
+
 // investasi
 Route::get('/investasi-project', 'InvestasiController@showProjectIndex');
 Route::get('/investasi-project/{id}', 'InvestasiController@detailProject');
@@ -277,6 +281,11 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/unapproved-funding-investment', 'DashboardController@getUnapprovedFundInvestment');
     Route::put('admin/new-funding-investment/a/{fundinvestment}', 'DashboardController@approveNewFundInvestment')->name('funding.investment.approve');
     Route::put('admin/new-funding-investment/d/{fundinvestment}', 'DashboardController@rejectNewFundInvestment')->name('funding.investment.reject');
+
+    Route::get('admin/IYT-List-all', 'DashboardController@getListAllIYT');
+    Route::get('admin/IYT-Qualify', 'DashboardController@getListQualifyIYT');
+    Route::put('admin/IYT-List-all/a/{iyt}', 'DashboardController@approveIYT')->name('iyt.approve');
+    Route::put('admin/IYT-List-all/d/{iyt}', 'DashboardController@rejectIYT')->name('iyt.reject');
 });
 
 
