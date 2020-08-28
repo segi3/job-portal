@@ -118,7 +118,7 @@ class StudentController extends Controller
             $email = md5($request->input('email'));
             $ext = $berkas->getClientOriginalExtension();
             $filename = $nama.'_'.$email.'.'.$ext;
-            $tujuan = 'data_files/berkas_student';
+            $tujuan = 'data_files/Student/berkas_validasi';
             
 
             Student::create([

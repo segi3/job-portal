@@ -126,7 +126,7 @@ class EmployerController extends Controller
             $extension= $filelogo->getClientOriginalExtension();
             $namafile=md5($email);
             $hashname= $namafile.'.'.$extension;
-            $tujuan_upload = 'data_files/employer_logo';
+            $tujuan_upload = 'data_files/Employer/employer_logo';
             $filelogo->move($tujuan_upload,$hashname);
 
             $berkas= $request->file('berkas_verifikasi');
@@ -134,7 +134,7 @@ class EmployerController extends Controller
             $email= md5($request->input('email'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $nama.'_'.$email.'.'.$extension;
-            $tujuan = 'data_files/bukti_employer';
+            $tujuan = 'data_files/Employer/berkas_verifikasi';
             $berkas->move($tujuan,$filename);
 
             
@@ -187,7 +187,7 @@ class EmployerController extends Controller
         ->where($where)
         ->first();
 
-        $file = public_path('data_files/bukti_employer/'.$berkas_db->berkas);
+        $file = public_path('data_files/Employer/berkas_verifikasi/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 }

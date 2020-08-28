@@ -85,8 +85,8 @@ class DashboardIYTController extends Controller
             $studentname = $request->session()->get('name');
             $propbisnishash = md5('_PROPOSALBISNIS_'.$studentname.'_'.$request->input('namakelompok'));
             $pitchdeskhash = md5('_PITCHDESK_'.$studentname.'_'.$request->input('namakelompok'));
-            $tujuaninv = 'data_files/investee/IYT/Proposal Bisnis';
-            $tujuankeu = 'data_files/investee/IYT/Pitch Desk';
+            $tujuaninv = 'data_files/Student/IYT/Proposal Bisnis';
+            $tujuankeu = 'data_files/Student/IYT/Pitch Desk';
             $extension= 'pdf';
             // $desc= md5($request->input('description'));
             $filenameinv= "ProposalBisnis_".$student->id.$propbisnishash.'.'.$extension;

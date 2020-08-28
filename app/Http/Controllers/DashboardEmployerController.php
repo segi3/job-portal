@@ -130,7 +130,7 @@ class DashboardEmployerController extends Controller
             $desc= md5($request->input('description'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
-            $tujuan = 'data_files/bukti_sewa_tempat';
+            $tujuan = 'data_files/Employer/Seminar/bukti_sewa_tempat';
             $berkas->move($tujuan,$filename);
         try{
             Seminar::create([
@@ -176,7 +176,7 @@ class DashboardEmployerController extends Controller
     //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
 
     //   $file = public_path('data_files/bukti_guests/'.$pdfname);
-      $file = public_path('data_files/bukti_sewa_tempat/'.$berkas_db->berkas);
+      $file = public_path('data_files/Employer/Seminar/bukti_sewa_tempat/'.$berkas_db->berkas);
       return response()->download($file, $berkas_db->berkas);
     }
 
@@ -220,7 +220,7 @@ class DashboardEmployerController extends Controller
             $nama= str_replace(' ','_',$request->input('name'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $namaemp.'_'.$nama.'.'.$extension;
-            $tujuan = 'data_files/Employer/Order Rekrutmen';
+            $tujuan = 'data_files/Employer/Job/Order Rekrutmen';
             $berkas->move($tujuan,$filename);
 
             Job::create([

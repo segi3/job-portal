@@ -86,7 +86,7 @@
                     <div class="single_jobs white-bg d-flex justify-content-between">
                         <div class="jobs_left d-flex align-items-center">
                             <div class="thumb">
-                                <img src="/data_files/employer_logo/{{  $j->logo  }}" alt="" class="img-logo">
+                                <img src="/data_files/Employer/employer_logo/{{  $j->logo  }}" alt="" class="img-logo">
                             </div>
                             <div class="jobs_conetent">
                                 <a href=" {{ url('jobs/'.$j->id) }} ">
@@ -188,7 +188,7 @@
                     <div class="single_jobs white-bg d-flex justify-content-between">
                         <div class="jobs_left d-flex align-items-center">
                             <div class="thumb">
-                                <img src="/data_files/employer_logo/{{  $s->logo  }}" alt="" class="img-logo">
+                                <img src="/data_files/Employer/employer_logo/{{  $s->logo  }}" alt="" class="img-logo">
                             </div>
                             <div class="jobs_conetent">
                                 <a>

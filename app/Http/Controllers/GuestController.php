@@ -31,7 +31,7 @@ class GuestController extends Controller
     //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
 
     //   $file = public_path('data_files/bukti_guests/'.$pdfname);
-        $file = public_path('data_files/bukti_guests/'.$berkas_db->berkas);
+        $file = public_path('data_files/Guest/berkas_verifikasi/'.$berkas_db->berkas);
       return response()->download($file, $berkas_db->berkas);
     }
 
@@ -94,7 +94,7 @@ class GuestController extends Controller
             $email= md5($request->input('email'));
             $extension= $berkas->getClientOriginalExtension();
             $filename= $nama.'_'.$email.'.'.$extension;
-            $tujuan_upload = 'data_files/bukti_guests';
+            $tujuan_upload = 'data_files/Guest/berkas_verifikasi';
             $berkas->move($tujuan_upload,$filename);
 
 
