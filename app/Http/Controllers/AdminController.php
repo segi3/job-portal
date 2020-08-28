@@ -36,10 +36,13 @@ class AdminController extends Controller
                 return redirect('/dashboard');
             }else{
                 // password salah
+                Session::flash('error', 'Salah Password');
                 return redirect('/admin/login');
             }
         }else{
             // admin tidak ditemukan
+            Session::flash('error', 'User tidak dapat ditemukan');
+            return redirect('/admin/login');
         }
 
     }
