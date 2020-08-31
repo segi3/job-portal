@@ -19,7 +19,12 @@ class CreateSeminarsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('berkas_verifikasi');
+            $table->string('poster');
+            $table->string('profil_pembicara');
+            $table->string('target');
+            $table->string('materi');
             $table->integer('fee');
+            $table->date('waktu');
             $table->string('location');
             $table->string('contact_person');
             $table->string('contact_no');

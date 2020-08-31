@@ -4,6 +4,12 @@
 
 @section('stylesheets')
     {{--  --}}
+    <!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
 @endsection
 
 @section('content')
@@ -93,6 +99,23 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="inputTarget">Target Audience Seminar</label>
+                            <textarea type="text" name="target" class="form-control" id="inputTarget" placeholder="Target Audience Seminar"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputMateri">Materi Seminar</label>
+                            <textarea type="text" name="materi" class="form-control" id="inputMateri" placeholder="Materi Seminar"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="waktu" class="">{{ __('Waktu Seminar') }}</label><span class=""></span>
+                                <input type="text" name="waktu" placeholder="dd-mm-yyyy" value="{{ old('waktu') }}"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'dd-mm-yyyy'" required
+                                    class="single-input form-control datepicker">
+                            </div>
+
+                        <div class="form-group">
                             <label for="contact_no" class="">{{ __('Surat Bukti penyewaan Tempat') }}</label><span class="red-str">*</span>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -104,6 +127,34 @@
                                   <input type="file" class="custom-file-input" name="berkas_sewa" id="berkas_sewa" aria-describedby="inputGroupFileAddon03">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact_no" class="">{{ __('Profil Pembicara') }}</label><span class="red-str">*</span>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                  <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                                <div class="custom-file">
+                                  <label class="custom-file-label" id="idprofil" for="profil_pemb">Upload Berkas</label>
+                                  <input type="file" class="custom-file-input" name="profil_pemb" id="profil_pemb" aria-describedby="inputGroupFileAddon03">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="" class="">{{ __('Poster Seminar') }}</label><span class="red-str">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                      </button>
+                                    </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="poster" accept=".jpeg,.png,.jpg,.gif,.svg" id="poster" aria-describedby="inputGroupFileAddon03">
+                                      <label class="custom-file-label" id="idposter" for="poster">Upload Image</label>
+                                    </div>
+                                </div>
                         </div>
 
                     </div>
@@ -150,13 +201,36 @@
 <script src="{{ asset('dashboard_resources') }}/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="{{ asset('dashboard_resources') }}/plugins/jquery-validation/additional-methods.min.js"></script>
 
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
-    $('#berkas_sewa').change(function(e2){
-		var fileName2 = e2.target.files[0].name;
-        // dd(fileName2);
-		$('#idberkas').html(fileName2);
-	});
+    $(function () {
+        $(".datepicker").datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            todayHighlight: true,
+        });
+    });
 
+</script>
+<script type="text/javascript">
+    $('#berkas_sewa').change(function(e){
+		var fileName = e.target.files[0].name;
+        // dd(fileName);
+		$('#idberkas').html(fileName);
+	});
+    $('#profil_pemb').change(function (e1) {
+        var fileName1 = e1.target.files[0].name;
+        // dd(fileName1);
+        $('#idprofil').html(fileName1);
+    });
+  
+    $('#poster').change(function (e2) {
+        var fileName2 = e2.target.files[0].name;
+        // dd(fileName2);
+        $('#idposter').html(fileName2);
+    });
+  
     $(document).ready(function () {
       $.validator.setDefaults({
         submitHandler: function (form) {
@@ -198,6 +272,28 @@
             maxlength: 11,
             digits: true,
           },
+          berkas_sewa: {
+            required: true,
+            extension: "pdf",
+          },
+          profil_pemb: {
+            required: true,
+            extension: "pdf",
+          },
+          target: {
+            required: true,
+            maxlength: 255,
+          },
+          materi: {
+            required: true,
+            maxlength: 255,
+          },
+          waktu: {
+            required: true,
+          },
+          poster: {
+            required: true,
+          },
         },
         messages: {
           name: {
@@ -228,6 +324,28 @@
             maxlength: "Tidak dapat melebihi 11 karakter",
             digits: "Hanya masukkan angka"
           },
+          berkas_sewa: {
+            required: "File dibutuhkan",
+            extension: "Format file tidak sesuai",
+          },
+          profil_pemb: {
+            required: "File dibutuhkan",
+            extension: "Format file tidak sesuai",
+          },
+          target: {
+            required: "Silahkan masukkan target audience seminar",
+            maxlength: "Tidak dapat melebihi 255 karakter",
+          },
+          materi: {
+            required: "Silahkan masukkan materi seminar",
+            maxlength: "Tidak dapat melebihi 255 karakter",
+          },
+          waktu: {
+            required: "Dibutuhkan",
+          },
+          poster: {
+            required: "File dibutuhkan",
+          },
         },
         errorElement: 'span',
         errorPlacement: function (error, element) {
@@ -243,6 +361,7 @@
       });
     });
     </script>
+
 
 
 @endsection
