@@ -122,9 +122,14 @@ class DashboardEmployerController extends Controller
             'contact_person'=> 'required|max:255',
             'contact_no'    => 'required|max:14',
             'fee'           => 'required',
-            'berkas_sewa'   => 'required|mimes:pdf|max:2048'
+            'berkas_sewa'   => 'required|mimes:pdf|max:2048',
+            'profil_pemb'   => 'required|mimes:pdf|max:2048',
+            'waktu'       => 'required|date',
+            'target'=> 'required|max:255',
+            'materi'=> 'required|max:255',
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096'
         ]);
-        $berkas= $request->file('berkas_sewa');
+            $berkas= $request->file('berkas_sewa');
             $nama= str_replace(' ','_',$request->input('name'));
             $location = str_replace(' ','_',$request->input('location'));
             $desc= md5($request->input('description'));
@@ -132,6 +137,20 @@ class DashboardEmployerController extends Controller
             $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
             $tujuan = 'data_files/Employer/Seminar/bukti_sewa_tempat';
             $berkas->move($tujuan,$filename);
+
+            $berkas_profil= $request->file('profil_pemb');
+            $extension_profil= $berkas_profil->getClientOriginalExtension();
+            $filenama= 'Profil-pembicara_'.$nama.'_'.'_'.$location.'_'.$desc.'.'.$extension_profil;
+            $tujuannya = 'data_files/Employer/Seminar/Profil pembicara';
+            $berkas_profil->move($tujuannya,$filenama);
+
+            $fileposter = $request->file('poster');
+            $extension_poster= $fileposter->getClientOriginalExtension();
+            $namafile=  'Poster_'.$nama.'_'.'_'.$location.'_'.$desc.'.'.$extension_poster;
+            $tujuan_upload = 'data_files/Employer/Seminar/Poster';
+            $fileposter->move($tujuan_upload,$namafile);
+
+            $formatDate = \Carbon\Carbon::parse($request->input('waktu'))->format('Y-m-d');
         try{
             Seminar::create([
                 'name'                  => $request->input('name'),
@@ -143,6 +162,11 @@ class DashboardEmployerController extends Controller
                 'fee'                   => $request->input('fee'),
                 'employer_id'           => $request->session()->get('id'),
                 'berkas_verifikasi'     => $filename,
+                'waktu'                 => $formatDate,
+                'target'                => $request->input('target'),
+                'materi'                => $request->input('materi'),
+                'profil_pembicara'      => $filenama,
+                'poster'                => $namafile,
             ]);
 
             Session::flash('success', 'Seminar berhasil didaftarkan, silahkan tunggu konfirmasi seminar');
@@ -179,6 +203,47 @@ class DashboardEmployerController extends Controller
       $file = public_path('data_files/Employer/Seminar/bukti_sewa_tempat/'.$berkas_db->berkas);
       return response()->download($file, $berkas_db->berkas);
     }
+
+    public function downloadPoster($seminar)
+    {
+
+      $where = [
+          'seminars.id' => $seminar,
+        //   'job_student.job_id'     => $arr[2],
+      ];
+
+      $berkas_db = DB::table('seminars')
+      ->select('seminars.name as name', 'seminars.location as loc', 'seminars.description as desc','seminars.poster as berkas')
+      ->where($where)
+      ->first();
+
+    //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
+
+    //   $file = public_path('data_files/bukti_guests/'.$pdfname);
+      $file = public_path('data_files/Employer/Seminar/Poster/'.$berkas_db->berkas);
+      return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function downloadProfilPembicara($seminar)
+    {
+
+      $where = [
+          'seminars.id' => $seminar,
+        //   'job_student.job_id'     => $arr[2],
+      ];
+
+      $berkas_db = DB::table('seminars')
+      ->select('seminars.name as name', 'seminars.location as loc', 'seminars.description as desc','seminars.profil_pembicara as berkas')
+      ->where($where)
+      ->first();
+
+    //   $pdfname= str_replace(' ','_',$berkas_db->name).'_'.md5($berkas_db->email).'.pdf';
+
+    //   $file = public_path('data_files/bukti_guests/'.$pdfname);
+      $file = public_path('data_files/Employer/Seminar/Profil pembicara/'.$berkas_db->berkas);
+      return response()->download($file, $berkas_db->berkas);
+    }
+
 
     public function getCreateJob()
     {

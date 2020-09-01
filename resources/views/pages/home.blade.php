@@ -209,7 +209,7 @@
                         </div>
                         <div class="jobs_right">
                             <div class="apply_now">
-                                <a href="#" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Buy Now</a>
+                                <a href="{{ url('seminar/'.$s->id) }}" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">See detail</a>
                             </div>
                         </div>
                     </div>

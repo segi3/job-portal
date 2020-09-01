@@ -97,6 +97,8 @@ Route::get('/download-order-form-employer/{form}','DashboardController@downloadF
 
 //Seminar
 Route::get('/download-bukti-sewa-tempat/{seminar}', 'DashboardEmployerController@downloadBerkasBuktiSewa')->name('berkas.seminar.download');
+Route::get('/download-profil-pembicara/{seminar}', 'DashboardEmployerController@downloadProfilPembicara')->name('berkas.profil.download');
+Route::get('/download-poster/{seminar}', 'DashboardEmployerController@downloadPoster')->name('berkas.poster.download');
 
 //iyt
 Route::get('/download-proposal-bisnis-iyt/{prop}', 'DashboardController@downloadProposalBisnis')->name('iyt.proposalbisnis.download');

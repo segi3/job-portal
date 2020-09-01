@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="custom-file">
                                   <label class="custom-file-label" id="idberkas" for="berkas_sewa">Upload Berkas</label>
-                                  <input type="file" class="custom-file-input" name="berkas_sewa" id="berkas_sewa" aria-describedby="inputGroupFileAddon03">
+                                  <input type="file" class="custom-file-input" name="berkas_sewa" id="berkas_sewa" aria-describedby="inputGroupFileAddon03" accept="application/pdf"> 
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="custom-file">
                                   <label class="custom-file-label" id="idprofil" for="profil_pemb">Upload Berkas</label>
-                                  <input type="file" class="custom-file-input" name="profil_pemb" id="profil_pemb" aria-describedby="inputGroupFileAddon03">
+                                  <input type="file" class="custom-file-input" name="profil_pemb" id="profil_pemb" aria-describedby="inputGroupFileAddon03" accept="application/pdf">
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                                       </button>
                                     </div>
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" name="poster" accept=".jpeg,.png,.jpg,.gif,.svg" id="poster" aria-describedby="inputGroupFileAddon03">
+                                      <input type="file" class="custom-file-input" name="poster" accept="image/*" id="poster" aria-describedby="inputGroupFileAddon03">
                                       <label class="custom-file-label" id="idposter" for="poster">Upload Image</label>
                                     </div>
                                 </div>
@@ -230,7 +230,8 @@
         // dd(fileName2);
         $('#idposter').html(fileName2);
     });
-  
+    </script>
+    <script type="text/javascript">
     $(document).ready(function () {
       $.validator.setDefaults({
         submitHandler: function (form) {
@@ -344,7 +345,7 @@
             required: "Dibutuhkan",
           },
           poster: {
-            required: "File dibutuhkan",
+            required: "File poster dibutuhkan",
           },
         },
         errorElement: 'span',

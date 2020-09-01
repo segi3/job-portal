@@ -45,6 +45,8 @@
                             <th>Listed at</th>
                             <th>Detail</th>
                             <th>Berkas Bukti Sewa tempat</th>
+                            <th>Berkas Profil Pembicara</th>
+                            <th>Berkas Poster</th>
                             <th style="width: 150px;">Action</th>
                         </tr>
                         </thead>
@@ -89,6 +91,18 @@
                                                         <td>{{ $seminar->description }}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td>Materi seminar</td>
+                                                        <td>{{ $seminar->materi }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Target audience seminar</td>
+                                                        <td>{{ $seminar->target }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Waktu seminar</td>
+                                                        <td>{{ $seminar->waktu }}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>Contact Person</td>
                                                         <td>{{ $seminar->contact_person }}</td>
                                                     </tr>
@@ -120,6 +134,16 @@
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
                                 </td>
+                                <td>
+                                    <form action="{{ route('berkas.profil.download', $seminar->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('berkas.poster.download', $seminar->id) }}" method="get">
+                                      <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                    </form>
+                                </td>
 
                                 <td>
                                     <div class="row">
@@ -127,7 +151,7 @@
                                           <form action="{{ route('seminar.approve', $seminar->id) }}" method="post">
                                               {{ csrf_field() }}
                                               {{ method_field('put') }}
-                                              <button type="submit" class="btn btn-sm btn-success mr-4">approve</button>
+                                              <button type="submit" class="btn btn-sm btn-success mr-4">Approve</button>
                                           </form>
                                       </div>
                                       <div class="col-lg-6">

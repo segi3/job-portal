@@ -11,6 +11,11 @@
         width: auto;
         height: auto;
     }
+    .img-poster {
+        max-width: 100%;
+        max-height: 100%;
+        /* height: inherit !important; */
+    }
     div.single_jobs {
 
     }
@@ -63,7 +68,7 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="/data_files/Employer/employer_logo/{{  $job->logo  }}" alt="" class="img-logo">
+                                    <img src="/data_files/Employer/employer_logo/{{  $seminar->logo  }}" alt="" class="img-logo">
                                 </div>
                                 <div class="jobs_conetent">
                                     <a><h4>{{ $seminar->name }}</h4></a>
@@ -82,8 +87,20 @@
                             <p>{{ $seminar->description }}</p>
                         </div>
                         <div class="single_wrap">
+                            <h4>Seminar material</h4>
+                            <p>{{ $seminar->materi }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Seminar target</h4>
+                            <p>{{ $seminar->target }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Seminar schedule</h4>
+                            <p>{{ $seminar->waktu }}</p>
+                        </div>
+                        <div class="single_wrap">
                             <h4>Fee</h4>
-                            <p>{{ $seminar->fee }}</p>
+                            <p>Rp. {{ $seminar->fee }}</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Contact Person</h4>
@@ -92,6 +109,9 @@
                         <div class="single_wrap">
                             <h4>Contact Number</h4>
                             <p>{{ $seminar->contact_no }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <img src="/data_files/Employer/Seminar/Poster/{{  $seminar->poster  }}" alt="" class="img-poster">
                         </div>
                     </div>                
                 </div>
