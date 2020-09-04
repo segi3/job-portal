@@ -11,6 +11,11 @@
         width: auto;
         height: auto;
     }
+    .img-poster {
+        max-width: 100%;
+        max-height: 100%;
+        /* height: inherit !important; */
+    }
     div.single_jobs {
 
     }
@@ -82,6 +87,18 @@
                             <p>{{ $seminar->description }}</p>
                         </div>
                         <div class="single_wrap">
+                            <h4>Seminar material</h4>
+                            <p>{{ $seminar->materi }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Seminar target</h4>
+                            <p>{{ $seminar->target }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Seminar schedule</h4>
+                            <p>{{ $seminar->waktu }}</p>
+                        </div>
+                        <div class="single_wrap">
                             <h4>Fee</h4>
                             @if($seminar->fee == 0)
                             <p>Gratis</p>
@@ -96,6 +113,9 @@
                         <div class="single_wrap">
                             <h4>Contact Number</h4>
                             <p>{{ $seminar->contact_no }}</p>
+                        </div>
+                        <div class="single_wrap">
+                            <img src="/data_files/Employer/Seminar/Poster/{{  $seminar->poster  }}" alt="" class="img-poster">
                         </div>
                     </div>                
                 </div>

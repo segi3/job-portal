@@ -365,6 +365,37 @@
                 </li>
                 </ul>
             </li>
+
+            <li class="nav-item has-treeview
+                {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
+                {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
+            ">
+                <a href="#" class="nav-link
+                    {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
+                    {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
+                    ">
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                <p>
+                    Manage IYT
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/IYT-List-all" class="nav-link {{ Request::is('admin/IYT-List-all') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List of participants</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/IYT-Qualify" class="nav-link {{ Request::is('admin/IYT-Qualify') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>List Qualify</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

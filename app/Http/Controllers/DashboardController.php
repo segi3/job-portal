@@ -13,6 +13,7 @@ use App\Seminar;
 use App\Service;
 use App\Investasi_project;
 use App\Investasi_funding;
+use App\Investasi_iyt;
 use App\Investee;
 
 
@@ -602,6 +603,72 @@ class DashboardController extends Controller
         ->where($where)
         ->first();
         $file = public_path('data_files/Employer/Job/Order Rekrutmen/'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function getListAllIYT() {
+
+        $iyts = Investasi_iyt::where('investasi_iyt.status', '0')
+                ->leftjoin('students', 'students.id', 'investasi_iyt.student_id')
+                ->select('investasi_iyt.*', 'students.email')
+                ->paginate(20);
+
+        return view('dashboard.pages.admins.iyt-list-all')->with('iyts', $iyts);
+    }
+
+    public function approveIYT(Request $request, $id)
+    {
+        $investasi = Investasi_iyt::find($id);
+
+        $investasi->status = 1;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+    public function rejectIYT(Request $request, $id)
+    {
+        $investasi = Investasi_iyt::find($id);
+        $investasi->status = 0;
+        $investasi->admin_id = $request->session()->get('id');
+        $investasi->save();
+        return redirect()->back();
+    }
+
+
+    public function getListQualifyIYT()
+    {
+        $iyts = Investasi_iyt::where('investasi_iyt.status', '1')
+                ->leftjoin('students', 'students.id', 'investasi_iyt.student_id')
+                ->select('investasi_iyt.*', 'students.email')
+                ->paginate(20);
+
+        return view('dashboard.pages.admins.iyt-qualify')->with('iyts', $iyts);
+    }
+    public function downloadProposalBisnis($prop)
+    {
+        $where = [
+            'investasi_iyt.id' => $prop,
+        ];
+
+        $berkas_db = DB::table('investasi_iyt')
+        ->select('berkas_proposal_bisnis as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files/Student/IYT/Proposal Bisnis/'.$berkas_db->berkas);
+        return response()->download($file, $berkas_db->berkas);
+    }
+    public function downloadPitchDesk($prop)
+    {
+        $where = [
+            'investasi_iyt.id' => $prop,
+        ];
+
+        $berkas_db = DB::table('investasi_iyt')
+        ->select('berkas_pitch_desk as berkas')
+        ->where($where)
+        ->first();
+        $file = public_path('data_files/Student/IYT/Pitch Desk/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
     }
 }

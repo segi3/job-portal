@@ -105,7 +105,7 @@ class DashboardIYTController extends Controller
             ]);
 
             Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');
-            return redirect('dashboard/register-iyt-status');
+            return redirect('dashboard/register-IYT-status');
         }
         catch(\Illuminate\Database\QueryException $e)
         {
