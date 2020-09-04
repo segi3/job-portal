@@ -2,6 +2,99 @@
 
 /* * homepage */
 
+div.start-quote {
+    border: 1px red solid;
+    background: #ffffff !important;
+}
+
+div.start-quote p.quote {
+    font-weight: 270;
+    margin-top: 50px;
+}
+
+div.panel-area {
+    border: 1px red solid;
+    padding: 100px 100px;
+}
+
+div.panel-area div.pointer {
+    cursor: pointer;
+    margin-top: 60px;
+    border: 1px red solid;
+    padding: 20px;
+}
+
+div.pointer:hover {
+    background-color: rgb(255, 196, 21, 0.7);
+    border-radius: 2px;
+    -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -ms-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.start-text {
+    margin-top: 20px;
+}
+
+.bg-white {
+    background: #ffffff !important;
+}
+
+div.seminar-title{
+    /* background: #ffffff !important; */
+}
+
+div.seminar-banner {
+    border: 1px red solid;
+}
+
+div.seminar-area {
+    border: 1px red solid;
+}
+
+div.jasa-title {
+    /* background: #ffffff !important; */
+}
+
+h5#zero-entry {
+    text-align: center;
+}
+
+div.panel-area div.pointer:hover span {
+    color: #ffc415;
+    background-color: rgb(1, 56, 128);
+
+    -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    -ms-transition: background-color 0.2s ease-in, color 0.2s ease-in;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+div.end-quote p.quote {
+    font-weight: 270;
+    margin-top: 50px;
+    height: 10vh;
+}
+
+.iyt {
+    padding-top: 0;
+}
+
+.iyt img {
+    width: 100%;
+}
+
+div.end-quote div.container {
+    padding: 10vh 0;
+}
+
+
+
+
+
 /* Dropdown Button */
 
 li.med-q-992 {
@@ -81,6 +174,14 @@ li.med-q-992 {
     background-blend-mode: lighten; */
 }
 
+.bg-iyt {
+    background-image: url("../../img/home-iyt.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 496px;
+}
+
 .highlight-biru-kuning {
     background: rgb(1, 56, 128);
     color: #ffc415;
@@ -111,16 +212,6 @@ li.med-q-992 {
     margin: auto;
 }
 
-.boxed-btn3-home:hover span {
-    color: #ffc415;
-    background-color: rgb(1, 56, 128);
-
-    -webkit-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-    -moz-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-    -o-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-    -ms-transition: background-color 0.2s ease-in, color 0.2s ease-in;
-    transition: background-color 0.2s ease-in, color 0.2s ease-in;
-}
 
 
 .highlight-kuning-biru {
@@ -180,10 +271,6 @@ div.slider_text div.slider_span p.highlight-kuning-biru {
     .bg-img3 {
         margin-top: 20px;
     }
-}
-
-.start-text {
-    margin-top: 200px;
 }
 
 .bg-img1 {

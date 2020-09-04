@@ -57,7 +57,7 @@
                                                             Jasa dan Transportasi</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="/investasi">Investasi <i class="ti-angle-down"></i></a>
+                                            <li><a href="/investasi-fund">Investasi <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="/investasi-project">Project</a></li>
                                                     <li><a href="/investasi-fund">Funding</a></li>

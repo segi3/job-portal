@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<div class="popular_catagory_area" style="padding: 50px 0;">
+<div class="popular_catagory_area start-quote">
     <div class="container">
         <h3>Let's Start</h3>
         <p class="quote">"Tugas kita bukanlah untuk berhasil. Tugas kita adalah untuk mencoba, karena didalam mencoba
@@ -131,42 +131,53 @@
     </div>
 </div>
 
-<div class="popular_catagory_area" style="padding: 50px 0;">
+<div class="popular_catagory_area panel-area">
     <div class="container">
         <div class="row">
-            <a class="boxed-btn3-home col-lg-3 offset-lg-1 bg-img1 text-center col-sm-12" href="/login-er">
-                <div class="start-text">
-                    <span class="highlight-kuning-biru">POST THE JOB</span></br>
-                    <span class="highlight-kuning-biru-kecil">FOR COMPANY</span>
-                </div>
-            </a>
-            <a class="boxed-btn3-home col-lg-3 offset-lg-1 bg-img2 text-center col-sm-12" href="/login-st">
-                <div class="start-text">
-
-                    <span class="highlight-kuning-biru">FIND JOBS</span></br>
-                    <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
-
-                </div>
-            </a>
-            <a class="boxed-btn3-home col-lg-3 offset-lg-1 bg-img3 text-center col-sm-12" href="#">
-                <div class="start-text">
-
-                    <span class="highlight-kuning-biru">OTHER</span></br>
-                    <span class="highlight-kuning-biru">SERVICES</span>
-
-                </div>
-            </a>
+            <div class="col-lg-3 offset-lg-1 col-sm-12 pointer" onclick="location.href='/login-er'">
+                <div class="bg-img1"></div>
+                {{-- <a class="boxed-btn3-home bg-img1" href="/login-er"></a> --}}
+                    <div class="start-text text-center">
+                        <span class="highlight-kuning-biru">POST JOBS</span></br>
+                        <span class="highlight-kuning-biru-kecil">FOR COMPANY</span>
+                    </div>
+                
+            </div>
+            
+            <div class="col-lg-3 offset-lg-1 col-sm-12 pointer" onclick="location.href='/login-st'">
+                <div class="bg-img2"></div>
+                {{-- <a class="boxed-btn3-home bg-img2" href="/login-st"></a> --}}
+                    <div class="start-text text-center">
+    
+                        <span class="highlight-kuning-biru">FIND JOBS</span></br>
+                        <span class="highlight-kuning-biru-kecil">FOR STUDENT</span>
+    
+                    </div>
+                
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-sm-12 pointer" onclick="location.href='/jasa'">
+                <div class="bg-img3"></div>
+                {{-- <a class="boxed-btn3-home bg-img3" href="#"></a> --}}
+                    <div class="start-text text-center">
+    
+                        <span class="highlight-kuning-biru-kecil">OTHER</span></br>
+                        <span class="highlight-kuning-biru">SERVICES</span>
+    
+                    </div>
+               
+            </div>
+            
         </div>
     </div>
 </div>
 
-<div class="popular_catagory_area">
+<div class="popular_catagory_area bg-white">
     <div class="container">
         <h3>Seminar dan Pelatihan</h3>
     </div>
 </div>
 
-<div class="popular_catagory_area bg-seminar mb-5">
+<div class="popular_catagory_area bg-seminar seminar-banner">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 offset-lg-8 col-sm-12 text-right">
@@ -179,8 +190,10 @@
     </div>
 </div>
 
-<div class="job_listing_area" style="padding-top: 30px;">
+<div class="job_listing_area seminar-area" style="padding-top: 30px;">
     <div class="container">
+        @if(count($seminar) > 0)
+        <h3>Seminar Terbaru</h2>
         <div class="job_lists">
             <div class="row">
                 @foreach($seminar as $s)
@@ -209,7 +222,7 @@
                         </div>
                         <div class="jobs_right">
                             <div class="apply_now">
-                                <a href="#" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Buy Now</a>
+                                <a href="/seminar/{{ $s->id }}" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Lihat seminar</a>
                             </div>
                         </div>
                     </div>
@@ -217,16 +230,22 @@
                 @endforeach
             </div>
         </div>
+        @else
+        <div>
+            <h5 id="zero-entry" class="pt-3">Tidak ada seminar dan pelatihan untuk saat ini</h5>
+        </div>
+        
+        @endif
     </div>
 </div>
 
-<div class="popular_catagory_area">
+<div class="popular_catagory_area bg-white">
     <div class="container">
-        <h3>Cari Jasa</h3>
+        <h3>Jasa oleh Mahasiswa ITS</h3>
     </div>
 </div>
 
-<div class="popular_catagory_area bg-jasa mb-5">
+<div class="popular_catagory_area bg-jasa">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-12">
@@ -238,6 +257,7 @@
 
 <div class="job_listing_area" style="padding-top: 30px;">
     <div class="container">
+        @if(count($jasa) > 0)
         <div class="job_lists">
             <div class="row">
                 @foreach($jasa as $js)
@@ -254,7 +274,7 @@
                         </div>
                         <div class="jobs_right">
                             <div class="apply_now">
-                                <a href="#" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Use Now</a>
+                                <a href="{{ url('jobs/'.$js->id) }}" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Pesan Jasa</a>
                             </div>
                         </div>
                     </div>
@@ -262,11 +282,35 @@
                 @endforeach
             </div>
         </div>
+        @else
+        <div>
+            <h5 id="zero-entry" class="pt-3">Tidak jasa oleh mahasiswa untuk saat ini</h5>
+        </div>
+        @endif
+    </div>
+</div>
+
+<div class="popular_catagory_area bg-white">
+    <div class="container">
+        <h3>ITS Youth Technopreneur</h3>
+    </div>
+</div>
+
+<div class="popular_catagory_area iyt bg-white">
+    <img src="../../img/home-iyt.png" alt="">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-center">
+                <a class="boxed-btn3" href="its-youth-technopreneur">Daftar ITS Youth Technopreneur Sekarang!</a>
+            </div>
+        </div>
     </div>
 </div>
 
 
-<div class="popular_catagory_area" style="padding: 50px 0;">
+
+<div class="popular_catagory_area bg-white end-quote" style="padding: 50px 0;">
     <div class="container">
         <h3>Ayo mulai dari sekarang</h3>
         <p class="quote">"Anda mungkin bisa menunda, tapi waktu tidak akan menunggu"</br> -Benjamin Franklin</p>
