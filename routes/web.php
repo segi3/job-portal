@@ -22,6 +22,8 @@ Route::post('logout', function () {
 // portal
 Route::get('/', 'PageController@getHome');
 
+Route::get('its-youth-technopreneur', 'PageController@getIYT');
+
 
 //login register akun
 Route::get('login-welcome', 'PageController@showWelcomeLogin')->name('login-welcome');

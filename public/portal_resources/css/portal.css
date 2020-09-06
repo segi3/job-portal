@@ -3,7 +3,7 @@
 /* * homepage */
 
 div.start-quote {
-    border: 1px red solid;
+    /* border: 1px red solid; */
     background: #ffffff !important;
 }
 
@@ -13,14 +13,14 @@ div.start-quote p.quote {
 }
 
 div.panel-area {
-    border: 1px red solid;
+    /* border: 1px red solid; */
     padding: 100px 100px;
 }
 
 div.panel-area div.pointer {
     cursor: pointer;
     margin-top: 60px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     padding: 20px;
 }
 
@@ -47,11 +47,11 @@ div.seminar-title{
 }
 
 div.seminar-banner {
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 div.seminar-area {
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 div.jasa-title {
@@ -92,7 +92,72 @@ div.end-quote div.container {
 }
 
 
+/* * homepage iyt */
+.w-iyt{
+    background-color: rgb(1, 56, 128);
+}
 
+.badge-junior {
+    color: #ffffff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    padding: 3px 5px 3px 5px;
+}
+
+.badge-senior {
+    color: #ffffff;
+    background-color: #ffc415;
+    border-radius: 5px;
+    padding: 3px 5px 3px 5px;
+}
+
+.w-iyt p {
+    color: #ffffff;
+}
+
+.w-iyt ol li {
+    margin: 10px 0;
+    color: #ffffff;
+    list-style: decimal !important;
+}
+
+.w-iyt ol li a {
+    color: #ffc415;
+}
+
+.w-iyt ol li a:hover {
+    color: rgb(255, 196, 21, 0.7);
+}
+
+.w-iyt ol ul {
+    padding-left: 25px;
+}
+
+.w-iyt ul li {
+    color: #ffffff;
+    list-style-type: lower-alpha !important;
+}
+
+.w-iyt h1 {
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+div.timeline-area {
+    padding: 0;
+}
+
+.announce-iyt table {
+    margin-top: 100px;
+}
+
+.end-iyt {
+    background: rgb(255, 196, 21, 1) !important;
+}
+
+.end-iyt h3 {
+    color: #ffffff !important;
+}
 
 
 /* Dropdown Button */

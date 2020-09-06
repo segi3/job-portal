@@ -274,7 +274,7 @@
                         </div>
                         <div class="jobs_right">
                             <div class="apply_now">
-                                <a href="{{ url('jobs/'.$js->id) }}" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Pesan Jasa</a>
+                                <a href="{{ url('jasa/'.$js->id) }}" class="boxed-btn3" style="background-color:rgb(1, 56, 128);">Pesan Jasa</a>
                             </div>
                         </div>
                     </div>

@@ -49,6 +49,11 @@ class PageController extends Controller
         return view('pages.home', compact('jobcategory', 'jobcategorypop','job', 'seminar', 'jasa'));
     }
 
+    public function getIYT()
+    {
+        return view('pages.iyt-homepage');
+    }
+
     public function search(Request $request)
     {
         $jobcategory = DB::table('job_categories')->select('name','slug')->get();
