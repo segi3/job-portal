@@ -22,6 +22,7 @@ class CreateInvestasiIytTable extends Migration
             $table->string('berkas_pitch_desk');
             $table->string('berkas_proposal_bisnis');
             $table->bigInteger('admin_id')->nullable()->unsigned();
+            $table->bigInteger('batch_id')->nullable()->unsigned();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');

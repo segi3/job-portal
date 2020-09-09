@@ -140,17 +140,17 @@
                                     <div class="form-group">
                                         <label for="1alabel">Bagaimanakah struktur usaha?</label>
                                         <textarea type="text" name="indikator-1a" class="form-control" id="1alabel"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('1a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-1a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="1b">Bagaimanakah peran masing-masing bagian?</label>
                                         <textarea type="text" name="indikator-1b" class="form-control" id="1b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('1b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-1b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="1c">Apa sajakah kesepakatan yang telah dibuat?</label>
                                         <textarea type="text" name="indikator-1c" class="form-control" id="1c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('1c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-1c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -172,17 +172,17 @@
                                     <div class="form-group">
                                         <label for="2a">Seberapa banyak kita membeli stok?</label>
                                         <textarea type="text" name="indikator-2a" class="form-control" id="2a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('2a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-2a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="2b">Bagaimana membeli stok bahan baku ketika diawal usaha?</label>
                                         <textarea type="text" name="indikator-2b" class="form-control" id="2b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('2b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-2b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="2c">Hal apa sajakah yang perlu dipertimbangkan?</label>
                                         <textarea type="text" name="indikator-2c" class="form-control" id="2c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('2c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-2c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -202,17 +202,17 @@
                                     <div class="form-group">
                                         <label for="3a">Siapakah yg sebaiknya diawal melakukan proses produksi?</label>
                                         <textarea type="text" name="indikator-3a" class="form-control" id="3a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('3a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-3a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="3b">Bagaimana membuat proses produksi efisien?</label>
                                         <textarea type="text" name="indikator-3b" class="form-control" id="3b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('3b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-3b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="3c">Apakah alat produksi mutlak harus dimiliki diawal usaha?</label>
                                         <textarea type="text" name="indikator-3c" class="form-control" id="3c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('3c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-3c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -232,17 +232,17 @@
                                     <div class="form-group">
                                         <label for="4a">Bagaimana distribusi bahan baku ke rumah produksi?</label>
                                         <textarea type="text" name="indikator-4a" class="form-control" id="4a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('4a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-4a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="4b">Bagaimana strategi distribusi ke konsumen (delivery order)?</label>
                                         <textarea type="text" name="indikator-4b" class="form-control" id="4b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('4b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-4b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="4c">Berapa minimum produk bisa diantar?</label>
                                         <textarea type="text" name="indikator-4c" class="form-control" id="4c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('4c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-4c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -263,17 +263,17 @@
                                     <div class="form-group">
                                         <label for="5a">Apa sajakah strategi marketing yang dilakukan?</label>
                                         <textarea type="text" name="indikator-5a" class="form-control" id="5a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('5a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-5a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="5b">Berapa budget marketing tiap bulan?</label>
                                         <textarea type="text" name="indikator-5b" class="form-control" id="5b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('5b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-5b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="5c">Bagaimana mengukur keberhasilan marketing yang dilakukan?</label>
                                         <textarea type="text" name="indikator-5c" class="form-control" id="5c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('5c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-5c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -292,17 +292,17 @@
                                     <div class="form-group">
                                         <label for="6a">Apa yang dilakukan kalau ada konsumen marah?</label>
                                         <textarea type="text" name="indikator-6a" class="form-control" id="6a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('6a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-6a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="6b">Bagaimana mengetahui tingkat kepuasan konsumen?</label>
                                         <textarea type="text" name="indikator-6b" class="form-control" id="6b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('6b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-6b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="6c">Pelayanan apa yang diberikan setelah barang terjual?</label>
                                         <textarea type="text" name="indikator-6c" class="form-control" id="6c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('6c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-6c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -322,17 +322,17 @@
                                     <div class="form-group">
                                         <label for="7a">Seperti apakah program pengembangan produk?</label>
                                         <textarea type="text" name="indikator-7a" class="form-control" id="7a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('7a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-7a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="7b">Apa yang menjadi pertimbangan arah RnD?</label>
                                         <textarea type="text" name="indikator-7b" class="form-control" id="7b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('7b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-7b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="7c">Siapakah yang melakukan program RnD?</label>
                                         <textarea type="text" name="indikator-7c" class="form-control" id="7c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('7c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-7c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -351,17 +351,17 @@
                                     <div class="form-group">
                                         <label for="8a">Berapa biaya yang digunakan untuk start up?</label>
                                         <textarea type="text" name="indikator-8a" class="form-control" id="8a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('8a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-8a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="8b">Barang-barang apa saja yang dibeli saat start up?</label>
                                         <textarea type="text" name="indikator-8b" class="form-control" id="8b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('8b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-8b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="8c">Bagaimana cara menghemat biaya start up?</label>
                                         <textarea type="text" name="indikator-8c" class="form-control" id="8c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('8c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-8c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -382,17 +382,17 @@
                                     <div class="form-group">
                                         <label for="9a">Dimanakah proses produksi berjalan saat diawal?</label>
                                         <textarea type="text" name="indikator-9a" class="form-control" id="9a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('9a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-9a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="9b">Apakah perlu kita memilih posisi strategis?</label>
                                         <textarea type="text" name="indikator-9b" class="form-control" id="9b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('9b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-9b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="9c">Apa pertimbangan memilih lokasi?</label>
                                         <textarea type="text" name="indikator-9c" class="form-control" id="9c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('9c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-9c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -414,17 +414,17 @@
                                     <div class="form-group">
                                         <label for="10a">Bagaimanakah format pencatatan keuangan yang dilakukan?</label>
                                         <textarea type="text" name="indikator-10a" class="form-control" id="10a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('10a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-10a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="10b">Apa sajakah yang harus dicatat?</label>
                                         <textarea type="text" name="indikator-10b" class="form-control" id="10b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('10b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-10b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="10c">Bagaimana mengurangi faktor resiko, pencatatan tidak sama dengan barang yang terjual? </label>
                                         <textarea type="text" name="indikator-10c" class="form-control" id="10c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('10c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-10c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -443,17 +443,17 @@
                                     <div class="form-group">
                                         <label for="11a">Apa alasan memilih brand saat ini?</label>
                                         <textarea type="text" name="indikator-11a" class="form-control" id="11a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('11a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-11a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="11b">Apakah tips memilih logo yang tepat?</label>
                                         <textarea type="text" name="indikator-11b" class="form-control" id="11b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('11b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-11b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="11c">Apa tagline-nya? Dan apa pengaruhnya dengan positioning?</label>
                                         <textarea type="text" name="indikator-11c" class="form-control" id="11c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('11c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-11c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -474,17 +474,17 @@
                                     <div class="form-group">
                                         <label for="12a">Bagaimana cara merekrut karyawan?</label>
                                         <textarea type="text" name="indikator-12a" class="form-control" id="12a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('12a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-12a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="12b">Bagaimana cara perhitungan gaji karyawan diawal?</label>
                                         <textarea type="text" name="indikator-12b" class="form-control" id="12b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('12b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-12b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="12c">Bagaimana cara mengontrol karyawan? </label>
                                         <textarea type="text" name="indikator-12c" class="form-control" id="12c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('12c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-12c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -503,17 +503,17 @@
                                     <div class="form-group">
                                         <label for="13a">Bagaimana cara menentukan harga jual?</label>
                                         <textarea type="text" name="indikator-13a" class="form-control" id="13a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('13a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-13a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="13b">Seberapa besar profit yang bisa diambil?</label>
                                         <textarea type="text" name="indikator-13b" class="form-control" id="13b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('13b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-13b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="13c">Apabila ada pesaing dengan harga murah, apa yang harus dilakukan?</label>
                                         <textarea type="text" name="indikator-13c" class="form-control" id="13c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('13c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-13c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -533,17 +533,17 @@
                                     <div class="form-group">
                                         <label for="14a">Apakah dari awal sudah berbadan hukum?</label>
                                         <textarea type="text" name="indikator-14a" class="form-control" id="14a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('14a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-14a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="14b">Apakah keuntungan & kerugian punya badan hukum?</label>
                                         <textarea type="text" name="indikator-14b" class="form-control" id="14b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('14b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-14b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="14c">Apakah sudah mendaftarkan merek? Bgaiamana caranya?</label>
                                         <textarea type="text" name="indikator-14c" class="form-control" id="14c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('14c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-14c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -562,17 +562,17 @@
                                     <div class="form-group">
                                         <label for="15a">Apa sajakah pesaing usaha ini?</label>
                                         <textarea type="text" name="indikator-15a" class="form-control" id="15a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('15a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-15a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="15b">Bagaiamana strategi menghadapi mereka?</label>
                                         <textarea type="text" name="indikator-15b" class="form-control" id="15b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('15b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-15b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="15c">Apakah pernah terjadi konflik?</label>
                                         <textarea type="text" name="indikator-15c" class="form-control" id="15c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('15c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-15c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -591,17 +591,17 @@
                                     <div class="form-group">
                                         <label for="16a">Bagaimana cara menentukan gaji owner?</label>
                                         <textarea type="text" name="indikator-16a" class="form-control" id="16a"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('16a')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-16a')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="16b">Seberapa besar laba ditahan untuk keberlangsungan usaha?</label>
                                         <textarea type="text" name="indikator-16b" class="form-control" id="16b"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('16b')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-16b')  }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="16c">Apakah ada pengaruh kinerja antara owner yang digaji dengan tidak digaji?</label>
                                         <textarea type="text" name="indikator-16c" class="form-control" id="16c"
-                                            placeholder="Indikator ketercapaian ... ">{{  old('16c')  }}</textarea>
+                                            placeholder="Indikator ketercapaian ... ">{{  old('indikator-16c')  }}</textarea>
                                     </div>
                                 </div>
                             </div>

@@ -41,7 +41,8 @@
                         <tr>
                             <th>Nama Ketua</th>
                             <th>Nama Kelompok</th>
-                            <th>Email mahasiswa</th>       
+                            <th>Email mahasiswa</th>
+                            <th>Batch</th>
                             <th>Proposal Bisnis</th>
                             <th>Pitch Desk</th>
                             <th>Listed at</th>
@@ -54,6 +55,11 @@
                                 <td>{{ $iyt->nama_ketua }}</td>
                                 <td>{{ $iyt->nama_kelompok }}</td>
                                 <td>{{ $iyt->email }}</td>
+                                @php
+                                    $batch=App\IYTBatch::where('id',$iyt->batch_id)->get()->first();
+                                    // dd($batch);
+                                @endphp
+                                <td>{{ $batch->batch }}-{{$batch->IYTname}}</td>
                                 <td>
                                     <form action="{{ route('iyt.proposalbisnis.download', $iyt->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>

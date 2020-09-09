@@ -465,6 +465,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
     );
 
     public static $classMap = array (
+        'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Employer' => __DIR__ . '/../..' . '/app/Employer.php',
@@ -488,6 +489,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Http\\Controllers\\EmployerController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployerController.php',
         'App\\Http\\Controllers\\GuestController' => __DIR__ . '/../..' . '/app/Http/Controllers/GuestController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\IYTBatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/IYTBatchController.php',
         'App\\Http\\Controllers\\InvestasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/InvestasiController.php',
         'App\\Http\\Controllers\\JobController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobController.php',
         'App\\Http\\Controllers\\MentorController' => __DIR__ . '/../..' . '/app/Http/Controllers/MentorController.php',
@@ -518,6 +520,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Http\\Requests\\PasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PasswordRequest.php',
         'App\\Http\\Requests\\ProfileRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
+        'App\\IYTBatch' => __DIR__ . '/../..' . '/app/IYTBatch.php',
         'App\\Investasi' => __DIR__ . '/../..' . '/app/Investasi.php',
         'App\\InvestasiStudent' => __DIR__ . '/../..' . '/app/InvestasiStudent.php',
         'App\\Investasi_IYT' => __DIR__ . '/../..' . '/app/Investasi_IYT.php',
@@ -1469,6 +1472,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'Highlight\\RegExMatch' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExMatch.php',
         'Highlight\\RegExUtils' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExUtils.php',
         'Highlight\\Terminators' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Terminators.php',
+        'IYTBatchSeeder' => __DIR__ . '/../..' . '/database/seeds/IYTBatchSeeder.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
@@ -4090,6 +4094,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'StudentSeeder' => __DIR__ . '/../..' . '/database/seeds/StudentSeeder.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',

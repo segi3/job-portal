@@ -81,6 +81,16 @@
                                 {{-- <input type="text"> --}}
                             </div>
                             <div class="form-group">
+                                <label for="inputNamaKelompok">Batch</label>
+                                <select class="form-control" name="batch" id="idBatch">
+                                    <option></option>
+                                    @foreach ($iyt as $i)
+                                        <option value="{{ $i->id }}">{{ $i->batch }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="contact_no" class="">{{ __('Berkas Proposal Bisnis') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -230,6 +240,15 @@
         // dd(fileName2);
         $('#idlabelpitchdesk').html(fileName2);
     });
+
+// Select2
+
+$(document).ready(function() {
+    $('#idBatch').select2({
+        placeholder: "Pilih Batch",
+        allowClear: true
+    });
+});
 
 </script>
 

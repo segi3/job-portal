@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Employer' => $baseDir . '/app/Employer.php',
@@ -29,6 +30,7 @@ return array(
     'App\\Http\\Controllers\\EmployerController' => $baseDir . '/app/Http/Controllers/EmployerController.php',
     'App\\Http\\Controllers\\GuestController' => $baseDir . '/app/Http/Controllers/GuestController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\IYTBatchController' => $baseDir . '/app/Http/Controllers/IYTBatchController.php',
     'App\\Http\\Controllers\\InvestasiController' => $baseDir . '/app/Http/Controllers/InvestasiController.php',
     'App\\Http\\Controllers\\JobController' => $baseDir . '/app/Http/Controllers/JobController.php',
     'App\\Http\\Controllers\\MentorController' => $baseDir . '/app/Http/Controllers/MentorController.php',
@@ -59,6 +61,7 @@ return array(
     'App\\Http\\Requests\\PasswordRequest' => $baseDir . '/app/Http/Requests/PasswordRequest.php',
     'App\\Http\\Requests\\ProfileRequest' => $baseDir . '/app/Http/Requests/ProfileRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
+    'App\\IYTBatch' => $baseDir . '/app/IYTBatch.php',
     'App\\Investasi' => $baseDir . '/app/Investasi.php',
     'App\\InvestasiStudent' => $baseDir . '/app/InvestasiStudent.php',
     'App\\Investasi_IYT' => $baseDir . '/app/Investasi_IYT.php',
@@ -1010,6 +1013,7 @@ return array(
     'Highlight\\RegExMatch' => $vendorDir . '/scrivo/highlight.php/Highlight/RegExMatch.php',
     'Highlight\\RegExUtils' => $vendorDir . '/scrivo/highlight.php/Highlight/RegExUtils.php',
     'Highlight\\Terminators' => $vendorDir . '/scrivo/highlight.php/Highlight/Terminators.php',
+    'IYTBatchSeeder' => $baseDir . '/database/seeds/IYTBatchSeeder.php',
     'Illuminate\\Auth\\Access\\AuthorizationException' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
     'Illuminate\\Auth\\Access\\Gate' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
     'Illuminate\\Auth\\Access\\HandlesAuthorization' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
@@ -3631,6 +3635,7 @@ return array(
     'SebastianBergmann\\Type\\UnknownType' => $vendorDir . '/sebastian/type/src/UnknownType.php',
     'SebastianBergmann\\Type\\VoidType' => $vendorDir . '/sebastian/type/src/VoidType.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'StudentSeeder' => $baseDir . '/database/seeds/StudentSeeder.php',
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => $vendorDir . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
     'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => $vendorDir . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
