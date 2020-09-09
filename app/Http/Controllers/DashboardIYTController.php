@@ -17,8 +17,11 @@ use Session;
 
 class DashboardIYTController extends Controller
 {
-    public function getHomeIYT() {
-        return view('dashboard.pages.iyt.home');
+    public function getHomeIYT(Request $request) 
+    {
+        $id = $request->session()->get('id');
+        $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
+        return view('dashboard.pages.iyt.home')->with('iyt', $iyt);
     }
 
     public function getCreateIYT()

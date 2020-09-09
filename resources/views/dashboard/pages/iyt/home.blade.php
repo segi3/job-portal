@@ -3,7 +3,19 @@
 @section('title', "Dashboard!")
 
 @section('stylesheets')
-{{--  --}}
+<style>
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.first {
+  width: 10%;
+
+}
+.second {
+  width: 30%;
+}
+</style>
 @endsection
 
 @section('content')
@@ -17,7 +29,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard/IYT">Home</a></li>
-                    <li class="breadcrumb-item active">IYT</li>
+                    <li class="breadcrumb-item active"></li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -29,38 +41,58 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 col-sm-12">
-                <div class="card menu-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Selamat datang</h5><br><br>
-                        <a href="/dashboard/IYT/register-IYT" class="float-right card-link stretched-link btn btn-sm btn-yl">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure maxime repudiandae culpa consequuntur dolorum similique quaerat voluptates eos consequatur quod. Eos est magni corporis non iure quia ipsum dolor nisi!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
+                        <h5 class="m-0">Pengumuman ITS Youth Technopreneur</h5>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h5 class="m-0">Featured</h5>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">Special title treatment</h6>
-
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="first">Nama Kelompok</td>
+                                    <td class="second">: {{ $iyt->nama_kelompok }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Tahun</td>
+                                    <td class="second">:</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Nama Ketua</td>
+                                    <td class="second">: {{ $iyt->nama_ketua }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Tahun Masuk/Lulus</td>
+                                    <td class="second">: abcd</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Semester</td>
+                                    <td class="second">: abcd</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Kategori</td>
+                                    <td class="second">: abcd</td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Proposal Bisnis</td>
+                                    <td class="second">
+                                        <a href="{{ route('iyt.proposalbisnis.download', $iyt->id) }}">
+                                        <div style="height:100%;width:100%">
+                                            : Download
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="first">Pitch Desk</td>
+                                    <td class="second">
+                                        <a href="{{ route('iyt.pitchdesk.download', $iyt->id) }}">
+                                        <div style="height:100%;width:100%">
+                                            : Download
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
