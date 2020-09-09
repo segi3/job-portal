@@ -12,7 +12,8 @@ use App\Investasi_project;
 use App\Investasi_funding;
 use App\Investasi_IYT;
 use App\Student;
-
+use App\LaporanProgresBulanan;
+use Illuminate\Support\Facades\Redis;
 use Session;
 
 class DashboardIYTController extends Controller
@@ -114,6 +115,124 @@ class DashboardIYTController extends Controller
             if ($errorCode == 1062) {
                 return redirect('/');
             }
+            Session::flash('error', $errorMsg);
+            return redirect()->back();
+        }
+    }
+
+    public function getSubmitLaporanBulanan()
+    {
+        return view('dashboard.pages.iyt.laporan.submit-laporan-bulanan');
+    }
+
+    public function postSubmitLaporanBulanan(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'bulan-laporan' => 'required|gt:0',
+            'tahun-laporan' => 'required',
+            'berkas-laporan-keuangan' => 'required|mimes:pdf',
+        ]);
+        
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back()->withInput();
+        }
+
+        // dd($request->session()->get('name'));
+
+        // ! masih harus belum fungsional, belum final
+
+        try {
+            $berkas_laporan_keuangan = $request->file('berkas-laporan-keuangan');
+            $berkas_ext = $berkas_laporan_keuangan->getClientOriginalExtension();
+            $target_name = "asd.pdf"; // ! nunggu identifier unik iyt
+            // * format nama file = [identifier IYT]-[bulan]-[tahun]-progres-bulanan.pdf
+            $target_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan';
+            $berkas_laporan_keuangan->move($target_location, $target_name);
+
+            LaporanProgresBulanan::create([
+                'iyt_id' => '',
+                'berkas_laporan_keuangan' => $target_name,
+                'bulan' => $request->input('bulan-laporan'),
+                'tahun' => $request->input('tahun-laporan'),
+
+                '1a' => $request->input('indikator-1a'),
+                '1b' => $request->input('indikator-1b'),
+                '1c' => $request->input('indikator-1c'),
+
+                '2a' => $request->input('indikator-2a'),
+                '2b' => $request->input('indikator-2b'),
+                '2c' => $request->input('indikator-2c'),
+
+                '3a' => $request->input('indikator-3a'),
+                '3b' => $request->input('indikator-3b'),
+                '3c' => $request->input('indikator-3c'),
+
+                '4a' => $request->input('indikator-4a'),
+                '4b' => $request->input('indikator-4b'),
+                '4c' => $request->input('indikator-4c'),
+
+                '5a' => $request->input('indikator-5a'),
+                '5b' => $request->input('indikator-5b'),
+                '5c' => $request->input('indikator-5c'),
+
+                '6a' => $request->input('indikator-6a'),
+                '6b' => $request->input('indikator-6b'),
+                '6c' => $request->input('indikator-6c'),
+
+                '7a' => $request->input('indikator-7a'),
+                '7b' => $request->input('indikator-7b'),
+                '7c' => $request->input('indikator-7c'),
+
+                '8a' => $request->input('indikator-8a'),
+                '8b' => $request->input('indikator-8b'),
+                '8c' => $request->input('indikator-8c'),
+
+                '9a' => $request->input('indikator-9a'),
+                '9b' => $request->input('indikator-9b'),
+                '9c' => $request->input('indikator-9c'),
+
+                '10a' => $request->input('indikator-10a'),
+                '10b' => $request->input('indikator-10b'),
+                '10c' => $request->input('indikator-10c'),
+
+                '11a' => $request->input('indikator-11a'),
+                '11b' => $request->input('indikator-11b'),
+                '11c' => $request->input('indikator-11c'),
+
+                '12a' => $request->input('indikator-12a'),
+                '12b' => $request->input('indikator-12b'),
+                '12c' => $request->input('indikator-12c'),
+
+                '13a' => $request->input('indikator-13a'),
+                '13b' => $request->input('indikator-13b'),
+                '13c' => $request->input('indikator-13c'),
+
+                '14a' => $request->input('indikator-14a'),
+                '14b' => $request->input('indikator-14b'),
+                '14c' => $request->input('indikator-14c'),
+
+                '15a' => $request->input('indikator-15a'),
+                '15b' => $request->input('indikator-15b'),
+                '15c' => $request->input('indikator-15c'),
+
+                '16a' => $request->input('indikator-16a'),
+                '16b' => $request->input('indikator-16b'),
+                '16c' => $request->input('indikator-16c'),
+
+            ]);
+
+            Session::flash('success', 'Laporan berhasil di submit');
+            return redirect()->back();
+        }catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorMsg[1] = $e->errorInfo[2];
+
+            $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
+            $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
+            // dd($e);
             Session::flash('error', $errorMsg);
             return redirect()->back();
         }

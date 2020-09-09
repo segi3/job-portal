@@ -25,3 +25,17 @@
 .btn-yl {
     background-color: #ffc415;
 }
+
+/* * submit laporan */
+
+.proses-bisnis .catatan-pertanyaan p {
+    font-weight: 700;
+}
+
+.proses-bisnis {
+    margin-bottom: 40px;
+}
+
+.proses-bisnis:last-child {
+    margin-bottom: 0px;
+}

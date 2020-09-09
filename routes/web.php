@@ -196,8 +196,19 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck'], function() {
     Route::post('dashboard/investee/upload-progress/{id}', 'DashboardInvesteeController@submitprogress')->middleware('InvesteeCheck')->name('dashboard.investee.upload-progress');
     Route::get('dashboard/investee/download-progress/{berkas}', 'DashboardInvesteeController@downloadberkasprogres')->middleware('InvesteeCheck')->name('dashboard.investee.download-progress');
     Route::get('dashboard/investee/dummy', 'DashboardController@getInvestee')->middleware('InvesteeCheck');
+
     Route::get('dashboard/IYT', 'DashboardIYTController@getHomeIYT')->middleware('IYTCheck');
 });
+
+Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], function(){
+
+    Route::get('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
+    Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
+});
+
+// Route::get('submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
+// Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
+
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/create-job', 'DashboardEmployerController@getCreateJob');
