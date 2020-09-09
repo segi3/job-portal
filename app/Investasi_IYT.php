@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Investasi_IYT extends Model
 {
     protected $fillable = [
-       'nama_kelompok', 'status','student_id', 'nama_ketua','berkas_pitch_desk','berkas_proposal_bisnis', 'admin_id',
+       'nama_kelompok', 'status','student_id', 'nama_ketua','berkas_pitch_desk','berkas_proposal_bisnis', 'admin_id','batch_id'
     ];
     protected $table = 'investasi_iyt';
 }

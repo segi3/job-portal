@@ -15,6 +15,7 @@ use App\Investasi_project;
 use App\Investasi_funding;
 use App\Investasi_iyt;
 use App\Investee;
+use App\IYTBatch;
 
 
 class DashboardController extends Controller
@@ -613,6 +614,7 @@ class DashboardController extends Controller
                 ->select('investasi_iyt.*', 'students.email')
                 ->paginate(20);
 
+        // $batch= IYTBatch::where('id',$iyts)
         return view('dashboard.pages.admins.iyt-list-all')->with('iyts', $iyts);
     }
 
@@ -644,6 +646,43 @@ class DashboardController extends Controller
                 ->paginate(20);
 
         return view('dashboard.pages.admins.iyt-qualify')->with('iyts', $iyts);
+    }
+    public function viewCreateIYTBatch(){
+        return view('dashboard.pages.admins.iyt-create-batch');
+
+    }
+    public function createIYTBatch(Request $request){
+        $this->validate($request, [
+            'batch'      => 'required|numeric|unique:i_y_t_batches',
+            'start_date'      => 'required|date',
+            'end_date'   => 'required|date|afteror_equal:start_date',
+
+        ]);
+        $startDate = \Carbon\Carbon::parse($request->input('start_date'))->format('Y-m-d');
+        $endDate = \Carbon\Carbon::parse($request->input('end_date'))->format('Y-m-d');
+            // $formatDate = \Carbon\Carbon::parse($request->input('waktu'))->format('Y-m-d');
+        try{
+            IYTBatch::create([
+                'name'       => $request->input('IYTname'),
+                'batch'      => $request->input('batch'),
+                'start_date'      => $startDate,
+                'end_date'   => $endDate,
+            ]);
+
+            Session::flash('success', 'Batch IYT Baru telah berhasil dibuat');
+            return view('dashboard.pages.admins.iyt-create-batch');
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            $errorMsg = $e->errorInfo[2];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorMsg);
+            return view('dashboard.pages.admins.iyt-create-batch');
+        }
+
     }
     public function downloadProposalBisnis($prop)
     {

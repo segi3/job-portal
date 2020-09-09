@@ -12,7 +12,7 @@ use App\Investasi_project;
 use App\Investasi_funding;
 use App\Investasi_IYT;
 use App\Student;
-
+use Carbon\Carbon;
 use Session;
 
 class DashboardIYTController extends Controller
@@ -26,7 +26,18 @@ class DashboardIYTController extends Controller
 
     public function getCreateIYT()
     {
-        return view('dashboard.pages.student.register-iyt');
+
+        // $iyt = DB::table('i_y_t_batches')->where('start_date','<', $now)->where('end_date','>', $now)
+        //         ->orWhere('start_date','=', $now)->orWhere('end_date','=', $now)
+        //         ->get();
+        $iyt = DB::table('i_y_t_batches')
+        ->where(function ($query){
+            $now= Carbon::now()->format('Y-m-d');
+            $query->where('start_date','<=', $now);
+            $query->where('end_date','>=', $now);
+        })
+        ->get();
+        return view('dashboard.pages.student.register-iyt')->with('iyt', $iyt);
     }
 
     public function getRegisterIYTStatus(Request $request)
@@ -61,6 +72,7 @@ class DashboardIYTController extends Controller
             'namakelompok'      => 'required|max:191',
             'proposalbisnis'   => 'required|mimes:pdf|max:2048',
             'pitchdesk'   => 'required|mimes:pdf|max:2048',
+            'batch'     =>  'required'
         ]);
 
         if ($validator->fails()) {
@@ -81,7 +93,7 @@ class DashboardIYTController extends Controller
         //     'laporankeuangan'   => 'required|mimes:pdf|max:2048',
         //     'termpolicy'        => 'required',
         // ]);
-
+        // dd($request->input('batch'));
         try{
             $berkaspropbisnis= $request->file('proposalbisnis');
             $berkaspitchdesk= $request->file('pitchdesk');
@@ -105,6 +117,7 @@ class DashboardIYTController extends Controller
                 'nama_kelompok'         => $request->input('namakelompok'),
                 'berkas_proposal_bisnis'=> $filenameinv,
                 'berkas_pitch_desk'  => $filenamekeu,
+                'batch_id'          => $request->input('batch')
             ]);
 
             Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');

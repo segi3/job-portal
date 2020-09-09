@@ -367,12 +367,15 @@
             </li>
 
             <li class="nav-item has-treeview
+                {{ Request::is('admin/IYT-create-batch') ? "menu-open" : "" }}
                 {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
                 {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
             ">
                 <a href="#" class="nav-link
+                    {{ Request::is('admin/IYT-create-batch') ? "menu-open" : "" }}
                     {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
                     {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
+
                     ">
                 <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
@@ -381,6 +384,13 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                    <a href="/admin/IYT-create-batch" class="nav-link {{ Request::is('admin/IYT-create-batch') ? "active" : "" }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Create new batch</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="/admin/IYT-List-all" class="nav-link {{ Request::is('admin/IYT-List-all') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>

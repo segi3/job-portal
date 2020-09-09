@@ -290,6 +290,8 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
     Route::get('admin/IYT-Qualify', 'DashboardController@getListQualifyIYT');
     Route::put('admin/IYT-List-all/a/{iyt}', 'DashboardController@approveIYT')->name('iyt.approve');
     Route::put('admin/IYT-List-all/d/{iyt}', 'DashboardController@rejectIYT')->name('iyt.reject');
+    Route::get('admin/IYT-create-batch','DashboardController@viewCreateIYTBatch');
+    Route::post('admin/IYT-create-batch','DashboardController@createIYTBatch')->name('iyt.createBatch');
 });
 
 
