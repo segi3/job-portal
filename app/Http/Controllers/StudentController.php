@@ -9,7 +9,7 @@ use Session;
 use Validator;
 use App\Student;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 
 class StudentController extends Controller
 {
@@ -39,29 +39,47 @@ class StudentController extends Controller
                                                     ->Where('status', '=', '1')
                                                     ->first();
 
+                    $now = Carbon::now();
+                    $dn = $now->toDateString();
+
                     if ($isInvestee)
                         $isInvestee = true;
                     else
                         $isInvestee = false;
 
-                    if ($isIYT)
+                    if ($isIYT){
+                        $batch = DB::table('i_y_t_batches')->where('id', '=', $isIYT->batch_id)
+                        ->first();
+                        if($dn > $batch->end_date)
+                        {
+                            $isActive = false;
+                        }
+                        else
+                        {
+                            $isActive = true;
+                        }
                         $isIYT = true;
-                    else
+                    }
+                    else{
                         $isIYT = false;
+                    }
+
+                        
                     
-                    // dd($isInvestee);
+                    dd($isActive);
                     
-                    $request->session()->put([
-                        'login' => true,
-                        'id' => $student->id,
-                        'name' => $student->name,
-                        'email' => $student->email,
-                        'role' => 'student',
-                        'investee' => $isInvestee,
-                        'iyt' => $isIYT,
-                    ]);
-                    Session::flash('success', 'Anda berhasil Login');
-                    return redirect('/dashboard');
+                    // $request->session()->put([
+                    //     'login' => true,
+                    //     'id' => $student->id,
+                    //     'name' => $student->name,
+                    //     'email' => $student->email,
+                    //     'role' => 'student',
+                    //     'investee' => $isInvestee,
+                    //     'iyt' => $isIYT,
+                    //     'batch' => $isActive,
+                    // ]);
+                    // Session::flash('success', 'Anda berhasil Login');
+                    // return redirect('/dashboard');
                 }else{
                     Session::flash('error', 'Password tidak cocok');
                     return redirect()->route('student.showLogin');
