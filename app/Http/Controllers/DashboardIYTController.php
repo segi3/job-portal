@@ -56,6 +56,22 @@ class DashboardIYTController extends Controller
             return redirect('dashboard/register-IYT');
     }
 
+    protected function _nextInvoiceIYTNumber()
+    {
+        $now = Carbon::now();
+        $year = $now->year;
+        $lastIYT = Investasi_IYT::whereYear('created_at', '=', $year)->orderBy('created_at', 'desc')->first();
+
+        if($lastIYT) {
+
+            $lastInvoice = explode("-", $lastIYT->invoice_iyt);
+
+            return $lastInvoice[1] + 1;
+        }else {
+            return 1;
+        }
+    }
+
     public function postCreateIYT(Request $request){
 
         $input = $request->all();
@@ -111,6 +127,12 @@ class DashboardIYTController extends Controller
             // $berkas->move($tujuan,$filename);
             $berkaspropbisnis->move($tujuaninv,$filenameinv);
             $berkaspitchdesk->move($tujuankeu,$filenamekeu);
+            
+            $now = Carbon::now();
+            $year = $now->year;
+            $no = $this->_nextInvoiceIYTNumber();
+            $id_iyt = $year.'-'.$no;
+
 
             Investasi_IYT::create([
                 'nama_ketua'        => $request->input('namaketua'),
@@ -119,7 +141,8 @@ class DashboardIYTController extends Controller
                 'nama_kelompok'         => $request->input('namakelompok'),
                 'berkas_proposal_bisnis'=> $filenameinv,
                 'berkas_pitch_desk'  => $filenamekeu,
-                'batch_id'          => $request->input('batch')
+                'batch_id'          => $request->input('batch'),
+                'invoice_iyt'       => $id_iyt,
             ]);
 
             Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');

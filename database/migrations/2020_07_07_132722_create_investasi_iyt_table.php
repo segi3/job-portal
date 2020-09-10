@@ -16,6 +16,7 @@ class CreateInvestasiIytTable extends Migration
         Schema::create('investasi_iyt', function (Blueprint $table) {
             $table->id();
             $table->string('nama_ketua');
+            $table->string('invoice_iyt');
             $table->bigInteger('student_id')->nullable()->unsigned();
             $table->string('status', 1)->default('0');
             $table->string('nama_kelompok');
