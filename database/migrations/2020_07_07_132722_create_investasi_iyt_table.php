@@ -22,6 +22,10 @@ class CreateInvestasiIytTable extends Migration
             $table->string('nama_kelompok');
             $table->string('berkas_pitch_desk');
             $table->string('berkas_proposal_bisnis');
+            $table->string('tahun_masuk');
+            $table->string('tahun_keluar');
+            $table->string('kategori');
+            $table->integer('semester');
             $table->bigInteger('admin_id')->nullable()->unsigned();
             $table->bigInteger('batch_id')->nullable()->unsigned();
 

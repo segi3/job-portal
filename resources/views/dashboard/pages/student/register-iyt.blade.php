@@ -69,19 +69,19 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="inputNamaKetua">Nama Ketua Kelompok</label>
+                                <label for="inputNamaKetua">Nama Ketua Kelompok:</label>
                                 <input type="text" name="namaketua" value="{{ old('namaketua') }}"
                                     class="form-control" id="inputNamaKetua" placeholder="Nama Ketua Kelompok">
                                 {{-- <input type="text"> --}}
                             </div>
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Nama Kelompok</label>
+                                <label for="inputNamaKelompok">Nama Kelompok:</label>
                                 <input type="text" name="namakelompok" value="{{ old('namakelompok') }}"
                                     class="form-control" id="inputNamaKelompok" placeholder="Nama Kelompok">
                                 {{-- <input type="text"> --}}
                             </div>
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Batch</label>
+                                <label for="inputNamaKelompok">Batch:</label>
                                 <select class="form-control" name="batch" id="idBatch">
                                     <option></option>
                                     @foreach ($iyt as $i)
@@ -91,7 +91,33 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="contact_no" class="">{{ __('Berkas Proposal Bisnis') }}</label>
+                                <label for="inputNamaKelompok">Tahun Masuk Kuliah</label>
+                                <input type="text" name="tahunmasuk" value="{{ old('tahunmasuk') }}"
+                                    class="form-control" id="inputNamaKelompok" placeholder="Tahun Masuk Kuliah">
+                                {{-- <input type="text"> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNamaKelompok">Tahun Lulus Kuliah:</label>
+                                <input type="text" name="tahunlulus" value="{{ old('tahunlulus') }}"
+                                    class="form-control" id="inputNamaKelompok" placeholder="Tahun Lulus Kuliah">
+                                {{-- <input type="text"> --}}
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNamaKelompok">Kategori:</label>
+                                <select class="form-control" name="kategori" id="idKategori">
+                                    <option></option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Senior">Senior</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNamaKelompok">Semester:</label>
+                                <select class="form-control" name="semester" id="idSemester">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_no" class="">{{ __('Berkas Proposal Bisnis:') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
@@ -108,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="contact_no" class="">{{ __('Berkas Pitch Desk') }}</label><span
+                                <label for="contact_no" class="">{{ __('Berkas Pitch Desk:') }}</label><span
                                     class=""></span>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -250,6 +276,23 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function () {
+    $("#idKategori").change(function () {
+    var el = $(this);
+    if (el.val() === "Junior") {
+        $("#idSemester").append("<option value=1 >1</option>");
+        $("#idSemester").append("<option value=2 >2</option>");
+        $("#idSemester").append("<option value=3 >3</option>");
+        $("#idSemester").append("<option value=4 >4</option>");
+    } else if (el.val() === "Senior") {
+        $("#idSemester").append("<option value=5 >5</option>");
+        $("#idSemester").append("<option value=6 >6</option>");
+        $("#idSemester").append("<option value=7 >7</option>");
+        $("#idSemester").append("<option value=8 >8</option>");
+    }
+});
+
+});
 </script>
 
 @endsection

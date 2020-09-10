@@ -76,7 +76,7 @@ class StudentController extends Controller
                         'role' => 'student',
                         'investee' => $isInvestee,
                         'iyt' => $isIYT,
-                        'batch' => $isActive,
+                        // 'batch' => $isActive,
                     ]);
                     Session::flash('success', 'Anda berhasil Login');
                     return redirect('/dashboard');
