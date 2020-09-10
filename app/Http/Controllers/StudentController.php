@@ -66,20 +66,20 @@ class StudentController extends Controller
 
                         
                     
-                    dd($isActive);
+                    // dd($isActive);
                     
-                    // $request->session()->put([
-                    //     'login' => true,
-                    //     'id' => $student->id,
-                    //     'name' => $student->name,
-                    //     'email' => $student->email,
-                    //     'role' => 'student',
-                    //     'investee' => $isInvestee,
-                    //     'iyt' => $isIYT,
-                    //     'batch' => $isActive,
-                    // ]);
-                    // Session::flash('success', 'Anda berhasil Login');
-                    // return redirect('/dashboard');
+                    $request->session()->put([
+                        'login' => true,
+                        'id' => $student->id,
+                        'name' => $student->name,
+                        'email' => $student->email,
+                        'role' => 'student',
+                        'investee' => $isInvestee,
+                        'iyt' => $isIYT,
+                        'batch' => $isActive,
+                    ]);
+                    Session::flash('success', 'Anda berhasil Login');
+                    return redirect('/dashboard');
                 }else{
                     Session::flash('error', 'Password tidak cocok');
                     return redirect()->route('student.showLogin');
