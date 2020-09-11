@@ -23,7 +23,9 @@ class DashboardIYTController extends Controller
     {
         $id = $request->session()->get('id');
         $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
-        return view('dashboard.pages.iyt.home')->with('iyt', $iyt);
+        $getyear = explode("-", $iyt->invoice_iyt);
+        $year = $getyear[0];
+        return view('dashboard.pages.iyt.home')->with('iyt', $iyt)->with('year', $year);
     }
 
     public function getCreateIYT()
@@ -148,7 +150,7 @@ class DashboardIYTController extends Controller
                 'batch_id'          => $request->input('batch'),
                 'invoice_iyt'       => $id_iyt,
                 'tahun_masuk'       => $request->input('tahunmasuk'),
-                'tahun_lulus'       => $request->input('tahunlulus'),
+                'tahun_keluar'       => $request->input('tahunlulus'),
                 'kategori'       => $request->input('kategori'),
                 'semester'         => $request->input('semester'),
             ]);

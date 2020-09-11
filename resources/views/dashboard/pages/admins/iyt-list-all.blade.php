@@ -41,10 +41,11 @@
                         <tr>
                             <th>Nama Ketua</th>
                             <th>Nama Kelompok</th>
-                            <th>Email mahasiswa</th>
+                            
                             <th>Batch</th>
                             <th>Proposal Bisnis</th>
                             <th>Pitch Desk</th>
+                            <th>Other Detail</th>
                             <th>Listed at</th>
                             <th style="width: 200px;">Action</th>
                         </tr>
@@ -54,7 +55,6 @@
                             <tr>
                                 <td>{{ $iyt->nama_ketua }}</td>
                                 <td>{{ $iyt->nama_kelompok }}</td>
-                                <td>{{ $iyt->email }}</td>
                                 @php
                                     $batch=App\IYTBatch::where('id',$iyt->batch_id)->get()->first();
                                     // dd($batch);
@@ -70,6 +70,58 @@
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
                                 </td>
+                                <td>
+
+                                    <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-{{ $iyt->id }}">
+                                        Other Details
+                                    </button>
+                                    <div class="modal fade" id="modal-{{ $iyt->id }}">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">IYT Other Details</h4>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <table class="table table-borderless">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Email Mahasiswa</td>
+                                                        <td>: {{ $iyt->email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tahun masuk/lulus</td>
+                                                        <td>: {{ $iyt->tahun_masuk }} / {{ $iyt->tahun_keluar }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kategori</td>
+                                                        @if( $iyt->kategori == 'Senior')
+                                                            <td class="second">: <span class="badge badge-warning"> {{ $iyt->kategori }} </span></td>
+                                                        @else
+                                                            <td class="second">: <span class="badge badge-primary"> {{ $iyt->kategori }} </span></td>
+                                                        @endif
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Semester</td>
+                                                        <td>: {{ $iyt->semester }}</td>
+                                                    </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                      <!-- /.modal -->
+                                </td>
+
                                 <td>{{ $iyt->created_at }}</td>
                                 <td>
                                     <div class="row">

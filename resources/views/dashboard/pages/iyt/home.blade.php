@@ -55,7 +55,7 @@ table {
                                 </tr>
                                 <tr>
                                     <td class="first">Tahun</td>
-                                    <td class="second">:</td>
+                                    <td class="second">: {{ $year }}</td>
                                 </tr>
                                 <tr>
                                     <td class="first">Nama Ketua</td>
@@ -63,15 +63,19 @@ table {
                                 </tr>
                                 <tr>
                                     <td class="first">Tahun Masuk/Lulus</td>
-                                    <td class="second">: abcd</td>
+                                    <td class="second">: {{ $iyt->tahun_masuk }} / {{  $iyt->tahun_keluar }}</td>
                                 </tr>
                                 <tr>
                                     <td class="first">Semester</td>
-                                    <td class="second">: abcd</td>
+                                    <td class="second">: {{ $iyt->semester }}</td>
                                 </tr>
                                 <tr>
                                     <td class="first">Kategori</td>
-                                    <td class="second">: abcd</td>
+                                    @if( $iyt->kategori == 'Senior')
+                                        <td class="second">: <span class="badge badge-warning"> {{ $iyt->kategori }} </span></td>
+                                    @else
+                                        <td class="second">: <span class="badge badge-primary"> {{ $iyt->kategori }} </span></td>
+                                    @endif
                                 </tr>
                                 <tr>
                                     <td class="first">Proposal Bisnis</td>
