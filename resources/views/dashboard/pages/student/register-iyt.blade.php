@@ -7,21 +7,16 @@
 <style>
 .flex-container{
     display: flex;
-    clear:left
-}
-.labelform{
-    text-align: right;
-    float:left;
-    margin-right: 5px;
-    margin-top: 5px;
 }
 #idKategori{
-    width: 20%;
+    display: inline-block;
+    width: 30%;
 }
 #idSemester{
-    width: 20%;
+    display: inline-block;
+    width: 30%;
 }
-p{
+.ket{
     color: grey;
     font-size: 13px;
 }
@@ -46,6 +41,7 @@ p{
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard/IYT">Home</a></li>
+                    <li class="breadcrumb-item active">IYT</li>
                     <li class="breadcrumb-item active">Daftar-IYT</li>
                 </ol>
             </div><!-- /.col -->
@@ -117,10 +113,10 @@ p{
                             </div>
                             <div class="flex-container">
                             <div class="form-group" style="flex-basis: 48%;">
-                                <label for="inputNamaKelompok">Tahun Masuk Kuliah</label>
+                                <label for="inputNamaKelompok">Tahun Masuk Kuliah:</label>
                                 <input type="text" name="tahunmasuk" value="{{ old('tahunmasuk') }}"
                                     class="form-control" id="tahunmasuk" placeholder="Tahun Masuk Kuliah"
-                                    onchange="gantiTahun(this)">
+                                    onChange="gantiTahun(this)">
                                 {{-- <input type="text"> --}}
                             </div>
                             <div style="flex-basis: 4%;"></div>
@@ -131,7 +127,6 @@ p{
                                 {{-- <input type="text"> --}}
                             </div>
                             </div>
-                            <div class="new">
                             <div class="form-group">
                                 <label for="inputNamaKelompok" class="labelform">Kategori:</label>
                                 <select class="form-control" name="kategori" id="idKategori">
@@ -145,8 +140,8 @@ p{
                                 <select class="form-control" name="semester" id="idSemester">
                                 </select>
                             </div>
-                            <p>Kategori Junior untuk semester 1-4, Kategori Senior untuk Semester 5 ke atas.</p>
-                            </div>
+                            
+                            <p class="ket">Kategori Junior untuk semester 1-4, Kategori Senior untuk Semester 5 ke atas.</p>
                             <div class="flex-container">
                             <div class="form-group" style="flex-basis: 48%;">
                                 <label for="contact_no" class="">{{ __('Berkas Proposal Bisnis:') }}</label>
@@ -376,11 +371,9 @@ $(document).ready(function() {
     });
 });
 
-
-// <script type="text/javascript">
-//   function gantiTahun(input1) {
-//     var input2 = document.getElementById('tahunlulus');
-//     input2.value = int(input1.value) + 4;
-//   }
-//
+  function gantiTahun(input1) {
+    var input2 = document.getElementById('tahunlulus');
+    input2.value = parseInt(input1.value,10)+4;
+  }
+</script>
 @endsection
