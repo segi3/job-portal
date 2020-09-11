@@ -4,6 +4,29 @@
 
 @section('stylesheets')
 {{--  --}}
+<style>
+.flex-container{
+    display: flex;
+    clear:left
+}
+.labelform{
+    text-align: right;
+    float:left;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+#idKategori{
+    width: 20%;
+}
+#idSemester{
+    width: 20%;
+}
+p{
+    color: grey;
+    font-size: 13px;
+}
+</style>
+
 <!--  jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- Bootstrap Date-Picker Plugin -->
@@ -74,6 +97,8 @@
                                     class="form-control" id="inputNamaKetua" placeholder="Nama Ketua Kelompok">
                                 {{-- <input type="text"> --}}
                             </div>
+                            <div>
+                            </div>
                             <div class="form-group">
                                 <label for="inputNamaKelompok">Nama Kelompok:</label>
                                 <input type="text" name="namakelompok" value="{{ old('namakelompok') }}"
@@ -90,20 +115,25 @@
 
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="flex-container">
+                            <div class="form-group" style="flex-basis: 48%;">
                                 <label for="inputNamaKelompok">Tahun Masuk Kuliah</label>
                                 <input type="text" name="tahunmasuk" value="{{ old('tahunmasuk') }}"
-                                    class="form-control" id="inputNamaKelompok" placeholder="Tahun Masuk Kuliah">
+                                    class="form-control" id="tahunmasuk" placeholder="Tahun Masuk Kuliah"
+                                    onchange="gantiTahun(this)">
                                 {{-- <input type="text"> --}}
                             </div>
-                            <div class="form-group">
+                            <div style="flex-basis: 4%;"></div>
+                            <div class="form-group" style="flex-basis: 48%;">
                                 <label for="inputNamaKelompok">Tahun Lulus Kuliah:</label>
                                 <input type="text" name="tahunlulus" value="{{ old('tahunlulus') }}"
-                                    class="form-control" id="inputNamaKelompok" placeholder="Tahun Lulus Kuliah">
+                                    class="form-control" id="tahunlulus" placeholder="Tahun Lulus Kuliah">
                                 {{-- <input type="text"> --}}
                             </div>
+                            </div>
+                            <div class="new">
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Kategori:</label>
+                                <label for="inputNamaKelompok" class="labelform">Kategori:</label>
                                 <select class="form-control" name="kategori" id="idKategori">
                                     <option></option>
                                     <option value="Junior">Junior</option>
@@ -111,12 +141,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Semester:</label>
+                                <label for="inputNamaKelompok"  class="labelform">Semester:</label>
                                 <select class="form-control" name="semester" id="idSemester">
-                                    <option></option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <p>Kategori Junior untuk semester 1-4, Kategori Senior untuk Semester 5 ke atas.</p>
+                            </div>
+                            <div class="flex-container">
+                            <div class="form-group" style="flex-basis: 48%;">
                                 <label for="contact_no" class="">{{ __('Berkas Proposal Bisnis:') }}</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -133,7 +165,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div style="flex-basis: 4%;">
+                            </div>
+                            <div class="form-group" style="flex-basis: 48%;">
                                 <label for="contact_no" class="">{{ __('Berkas Pitch Desk:') }}</label><span
                                     class=""></span>
                                 <div class="input-group">
@@ -151,11 +185,12 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
                             <input type="checkbox" name="termspolicy" id="termpolicy">
                             <label>Saya Menyetujui Syarat dan Ketentuan dari ITSJobX</label><br /><br />
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="submitbtn btn btn-success">Daftar</button>
+                            <button type="submit" class="submitbtn btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -214,7 +249,25 @@
                     required: true,
                     extension: "pdf",
                 },
-
+                tahunmasuk: {
+                    required: true,
+                    digits: true,
+                    maxlength: 4,
+                },
+                tahunlulus: {
+                    required: true,
+                    digits: true,
+                    maxlength: 4,
+                },
+                kategori:{
+                    required: true;
+                }
+                semester:{
+                    required: true;
+                }
+                batch:{
+                    required: true;
+                }
             },
             messages: {
                 namaketua: {
@@ -234,6 +287,25 @@
                 termspolicy: {
                     required: "Anda belum menyetujui syarat dan ketentuan"
                 },
+                tahunmasuk:{
+                    required: "Silahkan masukkan nominal",
+                    digits: "Hanya masukkan angka",
+                    maxlength: "Tidak dapat melebihi 4 digit"
+                },
+                tahunlulus:{
+                    required: "Silahkan masukkan nominal",
+                    digits: "Hanya masukkan angka",
+                    maxlength: "Tidak dapat melebihi 4 digit"
+                },
+                kategori:{
+                    required: "Kategori diperlukan";
+                }
+                semester:{
+                    required: "Semester diperlukan";
+                }
+                batch:{
+                    required: "Batch diperlukan";
+                }
             },
 
             errorElement: 'span',
@@ -280,19 +352,35 @@ $(document).ready(function () {
     $("#idKategori").change(function () {
     var el = $(this);
     if (el.val() === "Junior") {
+        $("#idSemester").find('option').remove();
+        $("#idSemester").append("<option></option>");
         $("#idSemester").append("<option value=1 >1</option>");
         $("#idSemester").append("<option value=2 >2</option>");
         $("#idSemester").append("<option value=3 >3</option>");
         $("#idSemester").append("<option value=4 >4</option>");
     } else if (el.val() === "Senior") {
+        $("#idSemester").find('option').remove();
+        $("#idSemester").append("<option></option>");
         $("#idSemester").append("<option value=5 >5</option>");
         $("#idSemester").append("<option value=6 >6</option>");
         $("#idSemester").append("<option value=7 >7</option>");
         $("#idSemester").append("<option value=8 >8</option>");
     }
+    });
 });
 
+$(document).ready(function() {
+    $('#idKategori').select2({
+        placeholder: "Pilih Kategori",
+        allowClear: true
+    });
 });
-</script>
 
+
+// <script type="text/javascript">
+//   function gantiTahun(input1) {
+//     var input2 = document.getElementById('tahunlulus');
+//     input2.value = int(input1.value) + 4;
+//   }
+//
 @endsection

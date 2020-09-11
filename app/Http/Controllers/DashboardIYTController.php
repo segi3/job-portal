@@ -90,7 +90,11 @@ class DashboardIYTController extends Controller
             'namakelompok'      => 'required|max:191',
             'proposalbisnis'   => 'required|mimes:pdf|max:2048',
             'pitchdesk'   => 'required|mimes:pdf|max:2048',
-            'batch'     =>  'required'
+            'batch'     =>  'required',
+            'tahunmasuk'  => 'required|max:4',
+            'tahunlulus'   => 'required|max:4',
+            'semester'  => 'required',
+            'kategori' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -143,6 +147,10 @@ class DashboardIYTController extends Controller
                 'berkas_pitch_desk'  => $filenamekeu,
                 'batch_id'          => $request->input('batch'),
                 'invoice_iyt'       => $id_iyt,
+                'tahun_masuk'       => $request->input('tahunmasuk'),
+                'tahun_lulus'       => $request->input('tahunlulus'),
+                'kategori'       => $request->input('kategori'),
+                'semester'         => $request->input('semester'),
             ]);
 
             Session::flash('success', 'Kelompok berhasil didaftarkan dan akan diseleksi, silahkan tunggu hasil pengumuman dari pihak admin');
