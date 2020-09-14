@@ -19,11 +19,11 @@ class CreateLaporanKontrolBulanansTable extends Migration
             $table->bigInteger('iyt_id')->nullable()->unsigned();
             $table->foreign('iyt_id')->references('id')->on('investasi_iyt')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('berkas_laporan_keuangan');
-            $table->string('berkas_laporan_dokumentasi')->nullable();
-
             $table->string('bulan');
             $table->string('tahun');
+
+            $table->string('berkas_laporan_keuangan');
+            $table->string('berkas_laporan_dokumentasi')->nullable();
 
             // * jawaban
 

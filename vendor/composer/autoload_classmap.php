@@ -72,6 +72,7 @@ return array(
     'App\\Job' => $baseDir . '/app/Job.php',
     'App\\JobCategory' => $baseDir . '/app/JobCategory.php',
     'App\\Job_Categoy' => $baseDir . '/app/Job_Categoy.php',
+    'App\\LaporanKemajuan' => $baseDir . '/app/LaporanKemajuan.php',
     'App\\LaporanKontrolBulanan' => $baseDir . '/app/LaporanKontrolBulanan.php',
     'App\\LaporanProgresBulanan' => $baseDir . '/app/LaporanProgresBulanan.php',
     'App\\Mentor' => $baseDir . '/app/Mentor.php',

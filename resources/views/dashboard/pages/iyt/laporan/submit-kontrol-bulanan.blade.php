@@ -95,8 +95,8 @@
                                     <div class="form-group">
                                         <label for="input-tahun">Tahun</label>
                                         <select name="tahun-laporan" class="form-control" id="input-tahun">
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
+                                            <option value="2020" {{ (old('tahun-laporan') == '2020' ? "selected":"") }}>2020</option>
+                                            <option value="2021" {{ (old('tahun-laporan') == '2021' ? "selected":"") }}>2021</option>
                                         </select>
                                     </div>
                                 </div>

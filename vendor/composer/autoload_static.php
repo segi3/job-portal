@@ -531,6 +531,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Job' => __DIR__ . '/../..' . '/app/Job.php',
         'App\\JobCategory' => __DIR__ . '/../..' . '/app/JobCategory.php',
         'App\\Job_Categoy' => __DIR__ . '/../..' . '/app/Job_Categoy.php',
+        'App\\LaporanKemajuan' => __DIR__ . '/../..' . '/app/LaporanKemajuan.php',
         'App\\LaporanKontrolBulanan' => __DIR__ . '/../..' . '/app/LaporanKontrolBulanan.php',
         'App\\LaporanProgresBulanan' => __DIR__ . '/../..' . '/app/LaporanProgresBulanan.php',
         'App\\Mentor' => __DIR__ . '/../..' . '/app/Mentor.php',
