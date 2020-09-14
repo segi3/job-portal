@@ -204,6 +204,7 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
 
     Route::get('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
     Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
+    Route::get('dashboard/IYT/notulensi', 'IytMentoringController@showIYTNotulensi');
 });
 
 // Route::get('submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
@@ -310,5 +311,11 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
 
 
 Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
+    Route::get('mentor/IYT-create-mentoring','IytMentoringController@showCreateMentoring');
+    Route::post('mentor/IYT-create-mentoring','IytMentoringController@createMentoring')->name('iyt.createMentoring');
+    Route::get('mentor/IYT-mentoring','DashboardController@viewCreateIYTBatch');
+    Route::get('/download-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@downloadDokumentasi')->name('iyt.mentoring.download.dokumentasi');
+    Route::put('/upload-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@uploadDokumentasi')->name('iyt.mentoring.upload.dokumentasi');
+
 
 });

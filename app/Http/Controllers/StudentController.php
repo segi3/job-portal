@@ -38,7 +38,7 @@ class StudentController extends Controller
                     $isIYT = DB::table('investasi_iyt')->where('student_id', '=', $student->id)
                                                     ->Where('status', '=', '1')
                                                     ->first();
-
+                    $IYT=$isIYT;
                     $now = Carbon::now();
                     $dn = $now->toDateString();
 
@@ -64,10 +64,10 @@ class StudentController extends Controller
                         $isIYT = false;
                     }
 
-                        
-                    
+
+
                     // dd($isActive);
-                    
+
                     $request->session()->put([
                         'login' => true,
                         'id' => $student->id,
@@ -76,6 +76,8 @@ class StudentController extends Controller
                         'role' => 'student',
                         'investee' => $isInvestee,
                         'iyt' => $isIYT,
+                        'iyt-data' => $IYT,
+
                         // 'batch' => $isActive,
                     ]);
                     Session::flash('success', 'Anda berhasil Login');
@@ -137,7 +139,7 @@ class StudentController extends Controller
             $ext = $berkas->getClientOriginalExtension();
             $filename = $nama.'_'.$email.'.'.$ext;
             $tujuan = 'data_files/Student/berkas_validasi';
-            
+
 
             Student::create([
                 'email'         => $request->input('email'),

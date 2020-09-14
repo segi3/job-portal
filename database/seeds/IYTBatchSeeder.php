@@ -11,7 +11,7 @@ class IYTBatchSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('students')->insert([
+        DB::table('i_y_t_batches')->insert([
             'IYTname' => 'ITS 1',
             'batch' => '1',
             'start_date' => '2020-09-02',
@@ -19,7 +19,7 @@ class IYTBatchSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('students')->insert([
+        DB::table('i_y_t_batches')->insert([
             'IYTname' => 'ITS 2',
             'batch' => '2',
             'start_date' => '2020-09-04',
@@ -27,7 +27,7 @@ class IYTBatchSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('students')->insert([
+        DB::table('i_y_t_batches')->insert([
             'IYTname' => 'ITS 3',
             'batch' => '3',
             'start_date' => '2020-09-04',
@@ -35,7 +35,7 @@ class IYTBatchSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('students')->insert([
+        DB::table('i_y_t_batches')->insert([
             'IYTname' => 'ITS 4',
             'batch' => '4',
             'start_date' => '2020-09-05',
