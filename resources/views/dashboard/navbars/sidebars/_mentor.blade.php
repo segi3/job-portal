@@ -3,7 +3,7 @@
     <a href="/dashboard" class="brand-link">
     <img src="/img/dashboard_logo.png" alt="ALogo ITS" class="brand-image img-circle elevation-3"
         style="opacity: .8">
-    <span class="brand-text font-weight-light">ITS JobX mentor</span>
+    <span class="brand-text font-weight-light">ITS JobX Mentor</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,12 +13,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
         <li class="nav-item has-treeview
-        {{ Request::is('mentor/#1') ? "menu-open" : "" }}
+        {{ Request::is('mentor/IYT-create-mentoring') ? "menu-open" : "" }}
         {{ Request::is('mentor/#2') ? "menu-open" : "" }}
         {{ Request::is('mentor/#3') ? "menu-open" : "" }}
         ">
             <a href="#" class="nav-link
-            {{ Request::is('mentor/#1') ? "active" : "" }}
+            {{ Request::is('mentor/IYT-create-mentoring') ? "active" : "" }}
             {{ Request::is('mentor/#2') ? "active" : "" }}
             {{ Request::is('mentor/#3') ? "active" : "" }}
             ">
@@ -30,9 +30,9 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="mentor/#1" class="nav-link {{ Request::is('mentor/#1') ? "active" : "" }}">
+                <a href="/mentor/IYT-create-mentoring" class="nav-link {{ Request::is('mentor/IYT-create-mentoring') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>#1</p>
+                <p>IYT Create Mentoring</p>
                 </a>
             </li>
             <li class="nav-item">
