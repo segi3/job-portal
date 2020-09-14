@@ -75,18 +75,18 @@
                                         <label for="input-bulan">Laporan untuk bulan</label>
                                         <select name="bulan-laporan" class="form-control" id="input-bulan">
                                             <option value="0">-pilih bulan-</option>
-                                            <option value="1">Januari</option>
-                                            <option value="2">Februari</option>
-                                            <option value="3">Maret</option>
-                                            <option value="4">April</option>
-                                            <option value="5">Mei</option>
-                                            <option value="6">Juni</option>
-                                            <option value="7">Juli</option>
-                                            <option value="8">Agustus</option>
-                                            <option value="9">September</option>
-                                            <option value="10">Oktober</option>
-                                            <option value="11">November</option>
-                                            <option value="12">Desember</option>
+                                            <option value="1" {{ (old('bulan-laporan') == '1' ? "selected":"") }}>Januari</option>
+                                            <option value="2" {{ (old('bulan-laporan') == '2' ? "selected":"") }}>Februari</option>
+                                            <option value="3" {{ (old('bulan-laporan') == '3' ? "selected":"") }}>Maret</option>
+                                            <option value="4" {{ (old('bulan-laporan') == '4' ? "selected":"") }}>April</option>
+                                            <option value="5" {{ (old('bulan-laporan') == '5' ? "selected":"") }}>Mei</option>
+                                            <option value="6" {{ (old('bulan-laporan') == '6' ? "selected":"") }}>Juni</option>
+                                            <option value="7" {{ (old('bulan-laporan') == '7' ? "selected":"") }}>Juli</option>
+                                            <option value="8" {{ (old('bulan-laporan') == '8' ? "selected":"") }}>Agustus</option>
+                                            <option value="9" {{ (old('bulan-laporan') == '9' ? "selected":"") }}>September</option>
+                                            <option value="10" {{ (old('bulan-laporan') == '10' ? "selected":"") }}>Oktober</option>
+                                            <option value="11" {{ (old('bulan-laporan') == '11' ? "selected":"") }}>November</option>
+                                            <option value="12" {{ (old('bulan-laporan') == '12' ? "selected":"") }}>Desember</option>
                                         </select>
                                     </div>
                                 </div>

@@ -13,6 +13,7 @@ use App\Investasi_funding;
 use App\Investasi_IYT;
 use App\Student;
 use App\LaporanProgresBulanan;
+use App\LaporanKontrolBulanan;
 use Illuminate\Support\Facades\Redis;
 use Carbon\Carbon;
 use Session;
@@ -189,17 +190,16 @@ class DashboardIYTController extends Controller
             Session::flash('error', $validator->errors()->all());
             return redirect()->back()->withInput();
         }
-
-        // dd($request->session()->get('name'));
-
         // ! masih harus belum fungsional, belum final
 
         try {
             $berkas_laporan_keuangan = $request->file('berkas-laporan-keuangan');
             $berkas_ext = $berkas_laporan_keuangan->getClientOriginalExtension();
-            $target_name = "asd.pdf"; // ! nunggu identifier unik iyt
-            // * format nama file = [identifier IYT]-[bulan]-[tahun]-progres-bulanan.pdf
-            $target_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan';
+
+            $target_name = 'asd' . $berkas_ext; // ! nunggu identifier unik iyt
+            // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-keuangan.pdf
+
+            $target_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan/Laporan_Keuangan';
             $berkas_laporan_keuangan->move($target_location, $target_name);
 
             LaporanProgresBulanan::create([
@@ -284,7 +284,122 @@ class DashboardIYTController extends Controller
             $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
             // dd($e);
             Session::flash('error', $errorMsg);
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
+    }
+
+    public function getSubmitKontrolBulanan()
+    {
+        return view('dashboard.pages.iyt.laporan.submit-kontrol-bulanan');
+    }
+
+    public function postSubmitKontrolBulanan(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'bulan-laporan' => 'required|gt:0',
+            'tahun-laporan' => 'required',
+            'berkas-laporan-rekapitulasi' => 'required|mimes:pdf',
+            'berkas-dokumentasi' => 'mimes:pdf',
+        ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back()->withInput();
+        }else if ($request->input('indikator-4') == 'Ada' && !$request->file('berkas-dokumentasi')){
+            $errorMsg[1] = 'Pilih tidak ada dokumentasi jika tidak mengupload file dokumentasi pada indikator 4';
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();
+        }
+
+        try {
+            $berkas_laporan_rekapitulasi = $request->file('berkas-laporan-rekapitulasi');
+            $berkas_ext = $berkas_laporan_rekapitulasi->getClientOriginalExtension();
+
+            $target_name_rekapitulasi = 'asd' . $berkas_ext; //! nunggu identifier unik iyt
+            //  * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-rekapitulasi.pdf
+
+            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Kontrol-Bulanan/Laporan-Rekaptulasi';
+            $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
+
+            if($request->file('berkas-dokumentasi')) {
+                $berkas_laporan_dokumentasi = $request->file('berkas-laporan-dokumentasi');
+                $berkas_ext_dokumentasi = $berkas_laporan_dokumentasi->getClientOriginalExtension();
+
+                $target_name_dokumentasi = 'asd' . $berkas_ext_dokumentasi;
+                // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-dokumentasi.pdf
+
+                $target_location_dokumentasi = 'data_files/Student/IYT/Laporan/Kontrol-Bulanan/Laporan-Dokumentasi';
+                $berkas_laporan_dokumentasi->move($target_location_dokumentasi, $target_name_dokumentasi);
+
+            }else{
+                $target_name_dokumentasi = null;
+            }
+
+            // ! asih error engga ada iyt_id
+            LaporanKontrolBulanan::create([
+                'iyt_id' => '',
+                'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
+                'berkas_laporan_dokumentasi' => $target_name_dokumentasi,
+                'bulan' => $request->input('bulan-laporan'),
+                'tahun' => $request->input('tahun-laporan'),
+
+                'indikator-1a' => $this->_pisahIndikator($request->input('indikator-1a')),
+                'nilai-1a' => $this->_pisahNilai($request->input('indikator-1a')),
+                'komentar-1a' => $request->input('komentar-1a'),
+
+                'indikator-1b' => $this->_pisahIndikator($request->input('indikator-1b')),
+                'nilai-1b' => $this->_pisahNilai($request->input('indikator-1b')),
+                'komentar-1b' => $request->input('komentar-1b'),
+
+                'indikator-2a' => $this->_pisahIndikator($request->input('indikator-2a')),
+                'nilai-2a' => $this->_pisahNilai($request->input('indikator-2a')),
+                'komentar-2a' => $request->input('komentar-2a'),
+
+                'indikator-2b' => $this->_pisahIndikator($request->input('indikator-2b')),
+                'nilai-2b' => $this->_pisahNilai($request->input('indikator-2b')),
+                'komentar-2b' => $request->input('komentar-2b'),
+
+                'indikator-2c' => $this->_pisahIndikator($request->input('indikator-2c')),
+                'nilai-2c' => $this->_pisahNilai($request->input('indikator-2c')),
+                'komentar-2c' => $request->input('komentar-2c'),
+
+                'indikator-2d' => $this->_pisahIndikator($request->input('indikator-2d')),
+                'nilai-2d' => $this->_pisahNilai($request->input('indikator-2d')),
+                'komentar-2d' => $request->input('komentar-2d'),
+
+                'indikator-3a' => $this->_pisahIndikator($request->input('indikator-3a')),
+                'nilai-3a' => $this->_pisahNilai($request->input('indikator-3a')),
+                'komentar-3a' => $request->input('komentar-3a'),
+
+                'indikator-3b' => $this->_pisahIndikator($request->input('indikator-3b')),
+                'nilai-3b' => $this->_pisahNilai($request->input('indikator-3b')),
+                'komentar-3b' => $request->input('komentar-3b'),
+            ]);
+
+        }catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorMsg[1] = $e->errorInfo[2];
+
+            $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
+            $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
+            // $errorMsg[3] = $e->errorInfo[2]; 
+            // dd($e);
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();;
+        }
+    }
+
+    protected function _pisahNilai($string){
+        $pisah = explode(".", $string);
+
+        return $pisah[0];
+    }
+
+    protected function _pisahIndikator($string){
+        $pisah = explode(".", $string);
+
+        return $pisah[1];
     }
 }

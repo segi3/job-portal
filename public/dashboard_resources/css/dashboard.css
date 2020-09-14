@@ -26,7 +26,7 @@
     background-color: #ffc415;
 }
 
-/* * submit laporan */
+/* * submit laporan bulanan */
 
 .proses-bisnis .catatan-pertanyaan p {
     font-weight: 700;
@@ -38,4 +38,17 @@
 
 .proses-bisnis:last-child {
     margin-bottom: 0px;
+}
+
+/* * submit kontrol bulanan */
+
+.judul-aspek p {
+    font-weight: 700;
+}
+
+.sub-indikator {
+    margin-left: 25px;
+}
+hr.divider {
+    margin: 40px 0px 40px 0px;
 }

@@ -17,9 +17,12 @@ class CreateLaporanProgresBulanansTable extends Migration
             $table->id();
 
             $table->bigInteger('iyt_id')->nullable()->unsigned();
-            $table->string('berkas_laporan_keuangan');
+            $table->foreign('iyt_id')->references('id')->on('investasi_iyt')->onDelete('cascade')->onUpdate('cascade');
+
             $table->string('bulan');
             $table->string('tahun');
+
+            $table->string('berkas_laporan_keuangan');
 
             // * jawaban
 
@@ -88,7 +91,6 @@ class CreateLaporanProgresBulanansTable extends Migration
             $table->text('16c');
 
 
-            $table->foreign('iyt_id')->references('id')->on('investasi_iyt')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

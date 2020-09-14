@@ -42,9 +42,11 @@
                 </li>
                 <li class="nav-item has-treeview
                     {{ Request::is('dashboard/IYT/submit-laporan-bulanan') ? "menu-open" : "" }}
+                    {{ Request::is('dashboard/IYT/submit-kontrol-bulanan') ? "menu-open" : "" }}
                     ">
                     <a href="#" class="nav-link
                     {{ Request::is('dashboard/IYT/submit-laporan-bulanan') ? "active" : "" }}
+                    {{ Request::is('dashboard/IYT/submit-kontrol-bulanan') ? "active" : "" }}
                     ">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>
@@ -57,7 +59,14 @@
                             <a href="/dashboard/IYT/submit-laporan-bulanan"
                                 class="nav-link {{ Request::is('dashboard/IYT/submit-laporan-bulanan') ? "active" : "" }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Progres Laporan Bulanan</p>
+                                <p>Laporan Progres Bulanan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dashboard/IYT/submit-kontrol-bulanan"
+                                class="nav-link {{ Request::is('dashboard/IYT/submit-laporan-bulanan') ? "active" : "" }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Laporan Kontrol Bulanan</p>
                             </a>
                         </li>
                     </ul>

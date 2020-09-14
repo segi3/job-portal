@@ -208,6 +208,8 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
 
 // Route::get('submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
 // Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
+Route::get('submit-kontrol-bulanan', 'DashboardIYTController@getSubmitKontrolBulanan');
+Route::post('submit-laporan-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
 
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
