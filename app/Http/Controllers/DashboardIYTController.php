@@ -41,6 +41,7 @@ class DashboardIYTController extends Controller
             $now= Carbon::now()->format('Y-m-d');
             $query->where('start_date','<=', $now);
             $query->where('end_date','>=', $now);
+            $query->where('status','=', 1);
         })
         ->get();
         return view('dashboard.pages.student.register-iyt')->with('iyt', $iyt);

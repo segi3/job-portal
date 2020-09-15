@@ -666,6 +666,7 @@ class DashboardController extends Controller
                 'name'       => $request->input('IYTname'),
                 'batch'      => $request->input('batch'),
                 'start_date'      => $startDate,
+                'status'        => 1,
                 'end_date'   => $endDate,
             ]);
 
@@ -709,5 +710,37 @@ class DashboardController extends Controller
         ->first();
         $file = public_path('data_files/Student/IYT/Pitch Desk/'.$berkas_db->berkas);
         return response()->download($file, $berkas_db->berkas);
+    }
+
+    public function getActiveBatches()
+    {
+        $batches = IYTBatch::where('status', '1')
+        ->select('*')
+        ->paginate(20);
+        return view('dashboard.pages.admins.active-batch')->with('batches', $batches);
+    }
+
+    public function getNonActiveBatches()
+    {
+        $batches = IYTBatch::where('status', '0')
+        ->select('*')
+        ->paginate(20);
+        return view('dashboard.pages.admins.non-active-batch')->with('batches', $batches);
+    }
+
+    public function changeToActive(Request $request, $id)
+    {
+        $batches = IYTBatch::find($id);
+        $batches->status = 1;
+        $batches->save();
+        return redirect()->back();
+    }
+
+    public function changeToNonActive(Request $request, $id)
+    {
+        $batches = IYTBatch::find($id);
+        $batches->status = 0;
+        $batches->save();
+        return redirect()->back();
     }
 }

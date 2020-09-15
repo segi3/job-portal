@@ -118,5 +118,31 @@ class IytMentoringController extends Controller
         return redirect()->back();
     }
 
+    public function showListPeserta()
+    {
+        $iyts= DB::table('investasi_iyt')
+                    ->select('*')
+                    ->where('status','=',1)
+                    ->paginate(10);
 
+        return view('dashboard.pages.mentor.list-peserta')->with('iyts',$iyts);
+    }
+
+    public function showDetailPeserta($id)
+    {
+        
+        $iyt= DB::table('investasi_iyt')
+                    ->select('*')
+                    ->where('status','=',1)
+                    ->where('id','=', $id)
+                    ->first();
+        
+        $mentorings = DB::table('iyt_mentorings')
+                    ->join('mentors','iyt_mentorings.mentor_id','=','mentors.id')
+                    ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
+                    ->select('*','iyt_mentorings.id as mentoring_id')
+                    ->where('investasi_iyt_id','=',$id)
+                    ->paginate(10);
+        return view('dashboard.pages.mentor.detail-peserta')->with('iyt',$iyt)->with('mentorings',$mentorings);
+    }
 }

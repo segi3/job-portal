@@ -8,6 +8,6 @@ class IYTBatch extends Model
 {
     //
     protected $fillable = [
-        'IYTname','batch', 'start_date', 'end_date'
+        'IYTname','batch','status', 'start_date', 'end_date'
     ];
 }

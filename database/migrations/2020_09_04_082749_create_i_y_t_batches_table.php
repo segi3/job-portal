@@ -15,6 +15,7 @@ class CreateIYTBatchesTable extends Migration
     {
         Schema::create('i_y_t_batches', function (Blueprint $table) {
             $table->id();
+            $table->integer('status');
             $table->string('IYTname', 100)->nullable()->default('IYT ITS');
             $table->string('batch');
             $table->date('start_date');

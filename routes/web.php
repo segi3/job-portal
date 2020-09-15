@@ -305,6 +305,10 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
 
     Route::get('admin/IYT-List-all', 'DashboardController@getListAllIYT');
     Route::get('admin/IYT-Qualify', 'DashboardController@getListQualifyIYT');
+    Route::get('admin/active-batches', 'DashboardController@getActiveBatches');
+    Route::get('admin/non-active-batches', 'DashboardController@getNonActiveBatches');
+    Route::put('admin/new-batch/a/{id}', 'DashboardController@changeToActive')->name('batch.active');
+    Route::put('admin/new-batch/d/{id}', 'DashboardController@changeToNonActive')->name('batch.non-active');
     Route::put('admin/IYT-List-all/a/{iyt}', 'DashboardController@approveIYT')->name('iyt.approve');
     Route::put('admin/IYT-List-all/d/{iyt}', 'DashboardController@rejectIYT')->name('iyt.reject');
     Route::get('admin/IYT-create-batch','DashboardController@viewCreateIYTBatch');
@@ -317,6 +321,8 @@ Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
     Route::get('mentor/IYT-create-mentoring','IytMentoringController@showCreateMentoring');
     Route::post('mentor/IYT-create-mentoring','IytMentoringController@createMentoring')->name('iyt.createMentoring');
     Route::get('mentor/IYT-mentoring','DashboardController@viewCreateIYTBatch');
+    Route::get('mentor/list-peserta-IYT','IytMentoringController@showListPeserta');
+    Route::get('mentor/list-peserta-IYT/detail/{id}', 'IytMentoringController@showDetailPeserta')->name('mentor.detail-peserta');
     Route::get('/download-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@downloadDokumentasi')->name('iyt.mentoring.download.dokumentasi');
     Route::put('/upload-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@uploadDokumentasi')->name('iyt.mentoring.upload.dokumentasi');
 
