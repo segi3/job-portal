@@ -320,6 +320,8 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
 Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
     Route::get('mentor/IYT-create-mentoring','IytMentoringController@showCreateMentoring');
     Route::post('mentor/IYT-create-mentoring','IytMentoringController@createMentoring')->name('iyt.createMentoring');
+    Route::put('mentor/IYT-comment/{id}','IytMentoringController@postComment')->name('iyt.postComment');
+    Route::put('mentor/IYT-edit-comment/{id}','IytMentoringController@editComment')->name('iyt.editComment');
     Route::get('mentor/IYT-mentoring','DashboardController@viewCreateIYTBatch');
     Route::get('mentor/list-peserta-IYT','IytMentoringController@showListPeserta');
     Route::get('mentor/list-peserta-IYT/detail/{id}', 'IytMentoringController@showDetailPeserta')->name('mentor.detail-peserta');

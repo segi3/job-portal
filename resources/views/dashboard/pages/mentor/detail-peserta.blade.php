@@ -16,6 +16,9 @@
   width: 30%;
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -140,10 +143,10 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-block btn-primary modalbtn1" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modalone-{{ $mentoring->mentoring_id }}">
+                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->mentoring_id }}">
                                             Komentar
                                         </button>
-                                        <div class="modal modal_mentor fade" id="modalone-{{ $mentoring->mentoring_id }}">
+                                        <div class="modal fade" id="modal-{{ $mentoring->mentoring_id }}">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
@@ -157,44 +160,77 @@
                                                     
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-default closebtn1" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 </div>
                                                 </div>
                                                 <!-- /.modal-content -->
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
+                                        
                                     </td>
                                     <td>
-                                        <!-- <button type="button" class="btn btn-sm btn-block btn-primary modalbtn2" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modaltwo-{{ $mentoring->mentoring_id }}">
-                                            Tambah Komentar
-                                        </button>
-                                        <div class="modal modal_mentor fade" id="modaltwo-{{ $mentoring->mentoring_id }}">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Masukkan komentar</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <form method="POST" role="form" id="quickForm" action="">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="inputName">Komentar</label>
-                                                        <textarea name="name" class="form-control" id="inputKomentar" placeholder="Komentar">
+                                        @if ( $mentoring->komentar === 'Belum ada Komentar')
+                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
+                                                Tambahkan Komentar
+                                            </button>
+                                            <div class="modal fade" id="modal2-{{ $mentoring->mentoring_id }}">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Masukkan Komentar</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('iyt.postComment', $mentoring->id) }}" method="post" id="postComment">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('put') }}
+                                                                    <textarea name="komentar" class="form-control" id="inputKomentar" placeholder="Komentar"></textarea>
+                                                            </form>
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-primary">Submit</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
                                                     </div>
-                                                </form>
-                                                    
+                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="submit" class="submitbtn btn btn-primary">Submit</button>
-                                                    <button type="button" class="btn btn-default closebtn2" data-dismiss="modal">Close</button>
-                                                </div>
-                                                </div>
+                                                <!-- /.modal-dialog -->
                                             </div>
-                                        </div> -->
+                                        @else
+                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
+                                                Edit Komentar
+                                            </button>
+                                            <div class="modal fade" id="modal2-{{ $mentoring->mentoring_id }}">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit Komentar</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('iyt.editComment', $mentoring->id) }}" method="post" id="editComment">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('put') }}
+                                                                    <textarea name="komentar" class="form-control" id="inputKomentar" >{{ $mentoring->komentar }}</textarea>
+                                                            </form>
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button onclick="form_submit2()" type="submit" class="submitbtn btn btn-primary">Edit</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -203,7 +239,139 @@
                     </div>
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $mentorings->links() }}
+                        {{ $mentorings->appends(array_except(Request::query(), 'mentorings_page'))->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="m-0">Tabel Laporan Bulanan</h5>
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-bordered table-responsive-sm">
+                            <thead>
+                            <tr>
+                                <th>Tanggal Submit</th>
+                                <th>Laporan Bulan</th>
+                                <th>Isi Laporan</th>
+                                <th>Berkas Laporan Keuangan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($progress as $progres)
+                                <tr>       
+                                    <td>{{ $progres->created_at }}</td>
+                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        {{ $progress->appends(array_except(Request::query(), 'progress_page'))->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="m-0">Tabel Laporan Bulanan</h5>
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-bordered table-responsive-sm">
+                            <thead>
+                            <tr>
+                                <th>Tanggal Submit</th>
+                                <th>Laporan Bulan</th>
+                                <th>Isi Laporan</th>
+                                <th>Berkas Laporan Keuangan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($kontrol as $progres)
+                                <tr>       
+                                    <td>{{ $progres->created_at }}</td>
+                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        {{ $kontrol->appends(array_except(Request::query(), 'kontrol_page'))->links() }}
+                        {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li> --}}
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="m-0">Tabel Laporan Kemajuan</h5>
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-bordered table-responsive-sm">
+                            <thead>
+                            <tr>
+                                <th>Tanggal Submit</th>
+                                <th>Laporan Bulan</th>
+                                <th>Isi Laporan</th>
+                                <th>Berkas Laporan Rekapitulasi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($kemajuan as $progres)
+                                <tr>       
+                                    <td>{{ $progres->created_at }}</td>
+                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                    <td>
+                                        <a href="#"></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                        {{ $kemajuan->appends(array_except(Request::query(), 'kemajuan_page'))->links() }}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -219,4 +387,13 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+  function form_submit1() {
+    document.getElementById("postComment").submit();
+   }  
+  function form_submit2() {
+    document.getElementById("editComment").submit();
+   }     
+  </script>
+
 @endsection

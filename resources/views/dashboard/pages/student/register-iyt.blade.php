@@ -10,11 +10,11 @@
 }
 #idKategori{
     display: inline-block;
-    width: 30%;
+    width: 200px;
 }
 #idSemester{
     display: inline-block;
-    width: 30%;
+    width: 200px;
 }
 .ket{
     color: grey;

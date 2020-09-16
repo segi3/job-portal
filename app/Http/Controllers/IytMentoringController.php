@@ -143,6 +143,84 @@ class IytMentoringController extends Controller
                     ->select('*','iyt_mentorings.id as mentoring_id')
                     ->where('investasi_iyt_id','=',$id)
                     ->paginate(10);
-        return view('dashboard.pages.mentor.detail-peserta')->with('iyt',$iyt)->with('mentorings',$mentorings);
+        $mentorings->setPageName('mentorings_page');
+        
+        $progress =  DB::table('laporan_progres_bulanan')
+                    ->select('*')
+                    ->where('iyt_id','=',$iyt->id)
+                    ->paginate(10);
+        $progress->setPageName('progress_page');
+        
+        $kontrol =  DB::table('laporan_kontrol_bulanan')
+                    ->select('*')
+                    ->where('iyt_id','=',$iyt->id)
+                    ->paginate(10);
+        $kontrol->setPageName('kontrol_page');
+        $kemajuan =  DB::table('laporan_kemajuan')
+                    ->select('*')
+                    ->where('iyt_id','=',$iyt->id)
+                    ->paginate(10);
+        $kemajuan->setPageName('kemajuan_page');
+        return view('dashboard.pages.mentor.detail-peserta')->with('iyt',$iyt)->with('mentorings',$mentorings)->with('progress',$progress)->with('kontrol',$kontrol)->with('kemajuan',$kemajuan);
+    }
+
+    public function postComment(Request $request, $id)
+    {
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'komentar'  => 'required|max:255',
+        ]);
+        
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back()->withInput();
+        }
+        try {
+            $mentor_id = $request->session()->get('id');
+            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('investasi_iyt_id','=', $id)->first();
+            $iyt->komentar = $request->input('komentar');
+            $iyt->save();
+            Session::flash('success', 'Komentar berhasil ditambahkan');
+            // return view('dashboard.pages.mentor.create-iyt-mentoring');
+            return redirect()->back();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorCode);
+            return redirect()->back();
+        }
+    }
+    public function editComment(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'komentar'         => 'required|max:255',
+        ]);
+        
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back()->withInput();
+        }
+        try {
+            $mentor_id = $request->session()->get('id');
+            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('investasi_iyt_id','=', $id)->first();
+            $iyt->komentar = $request->input('komentar');
+            $iyt->save();
+            Session::flash('success', 'Berhasil edit komentar');
+            // return view('dashboard.pages.mentor.create-iyt-mentoring');
+            return redirect()->back();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorCode);
+            return redirect()->back();
+        }
     }
 }

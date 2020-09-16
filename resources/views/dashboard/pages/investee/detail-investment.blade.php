@@ -136,7 +136,7 @@
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $investor->links() }}
+                        {{ $investor->appends(array_except(Request::query(), 'investor_page'))->links() }}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -256,7 +256,8 @@
                     <!-- card-body -->
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $listprogres->links() }}
+                        {{ $listprogres->appends(array_except(Request::query(), 'listprogres_page'))->links() }}
+
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>

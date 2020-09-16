@@ -12,6 +12,7 @@ use App\Investasi_project;
 use App\Investasi_funding;
 use App\Investasi_IYT;
 use App\Student;
+use App\IYTBatch;
 use App\LaporanProgresBulanan;
 use App\LaporanKontrolBulanan;
 use App\LaporanKemajuan;
@@ -63,9 +64,10 @@ class DashboardIYTController extends Controller
 
     protected function _nextInvoiceIYTNumber()
     {
-        $now = Carbon::now();
-        $year = $now->year;
-        $lastIYT = Investasi_IYT::whereYear('created_at', '=', $year)->orderBy('created_at', 'desc')->first();
+        // $now = Carbon::now();
+        // $year = $now->year;
+        $year = IYTBatch::where('status', '=', '1')->first();
+        $lastIYT = Investasi_IYT::where('batch_id', '=', $year->batch)->orderBy('invoice_iyt')->first();
 
         if($lastIYT) {
 

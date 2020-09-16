@@ -336,6 +336,7 @@ class DashboardInvesteeController extends Controller
                         ->where('status', '=', 'paid')
                         ->where('tipe_investasi', '=', 'project')
                         ->paginate(8);
+        $investor->setPageName('investor_page');
         // if($investor->role == 'student')
         // {
         //     $detinvestor = DB::table('students')
@@ -355,6 +356,7 @@ class DashboardInvesteeController extends Controller
                         -> where('progres_project.project_id','=', $id)
                         -> orderByRaw('tgl DESC')
                         ->paginate(8);
+        $listprogres->setPageName('listprogres_page');
         return view('dashboard.pages.investee.detail-investment',compact('investor','listprogres','investment'));
     }
 
