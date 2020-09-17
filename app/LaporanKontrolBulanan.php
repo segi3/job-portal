@@ -9,20 +9,20 @@ class LaporanKontrolBulanan extends Model
     protected $table = 'laporan_kontrol_bulanan';
 
     protected $fillable = [
-        'iyt_id',
+        'iyt_invoice',
         'berkas_laporan_keuangan', 'berkas_laporan_dokumentasi',
         'bulan', 'tahun',
 
-        'indikator-1a', 'nilai-1a', 'komentar-1a',
-        'indikator-1b', 'nilai-1b', 'komentar-1b',
+        'indikator_1a', 'nilai_1a', 'komentar_1a',
+        'indikator_1b', 'nilai_1b', 'komentar_1b',
 
-        'indikator-2a', 'nilai-2a', 'komentar-2a',
-        'indikator-2b', 'nilai-2b', 'komentar-2b',
-        'indikator-2c', 'nilai-2c', 'komentar-2c',
-        'indikator-2d', 'nilai-2d', 'komentar-2d',
+        'indikator_2a', 'nilai_2a', 'komentar_2a',
+        'indikator_2b', 'nilai_2b', 'komentar_2b',
+        'indikator_2c', 'nilai_2c', 'komentar_2c',
+        'indikator_2d', 'nilai_2d', 'komentar_2d',
 
-        'indikator-3a', 'nilai-3a', 'komentar-3a',
-        'indikator-3b', 'nilai-3b', 'komentar-3b',
+        'indikator_3a', 'nilai_3a', 'komentar_3a',
+        'indikator_3b', 'nilai_3b', 'komentar_3b',
 
     ];
 }
