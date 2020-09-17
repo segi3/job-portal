@@ -132,16 +132,17 @@ class IytMentoringController extends Controller
     {
         
         $iyt= DB::table('investasi_iyt')
-                    ->select('*')
-                    ->where('status','=',1)
-                    ->where('id','=', $id)
+                    ->join('i_y_t_batches','i_y_t_batches.id','=','investasi_iyt.batch_id')
+                    ->select('investasi_iyt.*','i_y_t_batches.batch')
+                    ->where('investasi_iyt.status','=',1)
+                    ->where('investasi_iyt.id','=', $id)
                     ->first();
         
         $mentorings = DB::table('iyt_mentorings')
                     ->join('mentors','iyt_mentorings.mentor_id','=','mentors.id')
                     ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
                     ->select('*','iyt_mentorings.id as mentoring_id')
-                    ->where('investasi_iyt_id','=',$id)
+                    ->where('iyt_mentorings.investasi_iyt_id','=',$id)
                     ->paginate(10);
         $mentorings->setPageName('mentorings_page');
         

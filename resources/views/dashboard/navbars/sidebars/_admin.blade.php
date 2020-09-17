@@ -368,15 +368,13 @@
 
             <li class="nav-item has-treeview
                 {{ Request::is('admin/IYT-create-batch') ? "menu-open" : "" }}
-                {{ Request::is('admin/active-batches') ? "menu-open" : "" }}
-                {{ Request::is('admin/non-active-batches') ? "menu-open" : "" }}
+                {{ Request::is('admin/list-batches') ? "menu-open" : "" }}
                 {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
                 {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
             ">
                 <a href="#" class="nav-link
                     {{ Request::is('admin/IYT-create-batch') ? "menu-open" : "" }}
-                    {{ Request::is('admin/active-batches') ? "menu-open" : "" }}
-                    {{ Request::is('admin/non-active-batches') ? "menu-open" : "" }}
+                    {{ Request::is('admin/list-batches') ? "menu-open" : "" }}
                     {{ Request::is('admin/IYT-List-all') ? "menu-open" : "" }}
                     {{ Request::is('admin/IYT-Qualify') ? "menu-open" : "" }}
 
@@ -396,15 +394,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/active-batches" class="nav-link {{ Request::is('admin/active-batches') ? "active" : "" }}">
+                    <a href="/admin/list-batches" class="nav-link {{ Request::is('admin/list-batches') ? "active" : "" }}">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Active Batches</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/non-active-batches" class="nav-link {{ Request::is('admin/non-active-batches') ? "active" : "" }}">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Non-active Batches</p>
+                    <p>List Batches</p>
                     </a>
                 </li>
                 <li class="nav-item">

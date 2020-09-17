@@ -41,8 +41,7 @@
                         <tr>
                             <th>Nama Ketua</th>
                             <th>Nama Kelompok</th>
-                            
-                            <th>Batch</th>
+                            <th>Tahun</th>
                             <th>Proposal Bisnis</th>
                             <th>Pitch Desk</th>
                             <th>Other Detail</th>

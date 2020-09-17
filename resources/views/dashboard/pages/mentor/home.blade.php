@@ -29,22 +29,22 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-6 col-sm-6">
                 <div class="card menu-card">
                     <div class="card-body">
-                        <h5 class="card-title">#1</h5><br><br>
+                        <h5 class="card-title">Mentoring dengan kelompok IYT</h5><br><br>
 
-                        <a href="/dashboard/mt/#" class="float-right card-link stretched-link btn btn-sm btn-yl">#1</a>
+                        <a href="mentor/IYT-create-mentoring" class="float-right card-link stretched-link btn btn-sm btn-yl">Buat Jadwal</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-6 col-sm-6">
                 <div class="card menu-card">
                     <div class="card-body">
-                        <h5 class="card-title">#2</h5><br><br>
+                        <h5 class="card-title">Daftar kelompok peserta IYT</h5><br><br>
 
-                        <a href="/dashboard/mt/#2"
-                            class="float-right card-link stretched-link btn btn-sm btn-yl">#2</a>
+                        <a href="mentor/list-peserta-IYT"
+                            class="float-right card-link stretched-link btn btn-sm btn-yl">Lihat daftar</a>
                     </div>
                 </div>
             </div>

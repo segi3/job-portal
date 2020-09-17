@@ -60,8 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="first">Tahun</td>
-                                    <td class="second">: 
-                                        <?php $year = explode('-',$iyt->invoice_iyt); echo $year[0]; ?>
+                                    <td class="second">: {{ $iyt->batch }}
                                     </td>
                                 </tr>
                                 <tr>
