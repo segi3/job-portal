@@ -55,9 +55,9 @@
                                 <td>{{ $batch->start_date }}</td>
                                 <td>{{ $batch->end_date }}</td>
                                 @if( $batch->status == 1)
-                                    <td>Active</td>
+                                    <td><span class="badge badge-success" style="font-size:15px">Active</span></td>
                                 @else
-                                    <td>Non-Active</td>
+                                    <td><span class="badge badge-danger" style="font-size:15px">Non-Active</span></td>
                                 @endif
                                 <td>
                                 @if( $batch->status == 1)
