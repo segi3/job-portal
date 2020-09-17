@@ -205,16 +205,23 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
     Route::get('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
     Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
     Route::get('dashboard/IYT/notulensi', 'IytMentoringController@showIYTNotulensi');
+
+    Route::get('dashboard/IYT/submit-kontrol-bulanan', 'DashboardIYTController@getSubmitKontrolBulanan');
+    Route::post('dashboard/IYT/submit-kontrol-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
+
+    Route::get('dashboard/IYT/submit-laporan-kemajuan', 'DashboardIYTController@getSubmitLaporanKemajuan');
+    Route::post('dashboard/IYT/submit-laporan-kemajuan', 'DashboardIYTController@postSubmitLaporanKemajuan')->name('dashboard.iyt.submit-laporan-kemajuan');
+
 });
 
+// ! route buat testing doang
 // Route::get('submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
 // Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
-Route::get('submit-kontrol-bulanan', 'DashboardIYTController@getSubmitKontrolBulanan');
-Route::post('submit-laporan-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
-
-Route::get('submit-laporan-kemajuan', 'DashboardIYTController@getSubmitLaporanKemajuan');
-Route::post('submit-laporan-kemajuan', 'DashboardIYTController@postSubmitLaporanKemajuan')->name('dashboard.iyt.submit-laporan-kemajuan');
-
+// Route::get('submit-kontrol-bulanan', 'DashboardIYTController@getSubmitKontrolBulanan');
+// Route::post('submit-kontrol-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
+// Route::get('submit-laporan-kemajuan', 'DashboardIYTController@getSubmitLaporanKemajuan');
+// Route::post('submit-laporan-kemajuan', 'DashboardIYTController@postSubmitLaporanKemajuan')->name('dashboard.iyt.submit-laporan-kemajuan');
+Route::get('dashboard/IYT/lihat-laporan-bulanan/{id}', 'IytMentoringController@getLaporanBulanan');
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/create-job', 'DashboardEmployerController@getCreateJob');

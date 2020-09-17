@@ -31,7 +31,8 @@ class CreateInvestasiIytTable extends Migration
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->foreign('batch_id')->references('id')->on('i_y_t_batches')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }

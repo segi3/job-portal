@@ -15,6 +15,12 @@ class CreateIytMentoringsTable extends Migration
     {
         Schema::create('iyt_mentorings', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('investasi_iyt_id')->nullable()->unsigned();
+            $table->foreign('investasi_iyt_id')->references('id')->on('investasi_iyt')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('mentor_id')->nullable()->unsigned();
+            $table->foreign('mentor_id')->references('id')->on('mentors')->onDelete('cascade')->onUpdate('cascade');
+
             $table->string('judul')->default('Topik Mentoring');
             $table->date('tgl_mentoring');
             $table->string('dokumentasi')->nullable();

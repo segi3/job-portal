@@ -224,4 +224,29 @@ class IytMentoringController extends Controller
             return redirect()->back();
         }
     }
+
+    public function getLaporanBulanan(Request $request, $id)
+    {
+        $where_laporan = [
+            'laporan_bulanan.id' => $id
+        ];
+
+        $progres_bulanan = DB::table('laporan_bulanan')
+                            ->where($where_laporan)
+                            ->first();
+
+        $where_iyt = [
+            'investasi_iyt.invoice_iyt' => $progres_bulanan->iyt_invoice
+        ];
+        
+        $kelompok_iyt = DB::table('investasi_iyt')
+                        ->where($where_iyt)
+                        ->first();
+
+        // dd($kelompok_iyt);
+
+        // dd($progres_bulanan);
+
+        return view('dashboard.pages.iyt.laporan.view-laporan-bulanan')->with('laporan', $progres_bulanan)->with('data_kelompok', $kelompok_iyt);
+    }
 }

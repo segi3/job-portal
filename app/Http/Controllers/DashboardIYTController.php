@@ -186,6 +186,8 @@ class DashboardIYTController extends Controller
 
     public function postSubmitLaporanBulanan(Request $request)
     {
+        // dd($request);
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -211,74 +213,74 @@ class DashboardIYTController extends Controller
             $berkas_laporan_keuangan->move($target_location, $target_name);
 
             LaporanProgresBulanan::create([
-                'iyt_id' => '',
+                'iyt_invoice' => '2020-1',
                 'berkas_laporan_keuangan' => $target_name,
                 'bulan' => $request->input('bulan-laporan'),
                 'tahun' => $request->input('tahun-laporan'),
 
-                '1a' => $request->input('indikator-1a'),
-                '1b' => $request->input('indikator-1b'),
-                '1c' => $request->input('indikator-1c'),
+                'indikator_1a' => $request->input('indikator-1a'),
+                'indikator_1b' => $request->input('indikator-1b'),
+                'indikator_1c' => $request->input('indikator-1c'),
 
-                '2a' => $request->input('indikator-2a'),
-                '2b' => $request->input('indikator-2b'),
-                '2c' => $request->input('indikator-2c'),
+                'indikator_2a' => $request->input('indikator-2a'),
+                'indikator_2b' => $request->input('indikator-2b'),
+                'indikator_2c' => $request->input('indikator-2c'),
 
-                '3a' => $request->input('indikator-3a'),
-                '3b' => $request->input('indikator-3b'),
-                '3c' => $request->input('indikator-3c'),
+                'indikator_3a' => $request->input('indikator-3a'),
+                'indikator_3b' => $request->input('indikator-3b'),
+                'indikator_3c' => $request->input('indikator-3c'),
 
-                '4a' => $request->input('indikator-4a'),
-                '4b' => $request->input('indikator-4b'),
-                '4c' => $request->input('indikator-4c'),
+                'indikator_4a' => $request->input('indikator-4a'),
+                'indikator_4b' => $request->input('indikator-4b'),
+                'indikator_4c' => $request->input('indikator-4c'),
 
-                '5a' => $request->input('indikator-5a'),
-                '5b' => $request->input('indikator-5b'),
-                '5c' => $request->input('indikator-5c'),
+                'indikator_5a' => $request->input('indikator-5a'),
+                'indikator_5b' => $request->input('indikator-5b'),
+                'indikator_5c' => $request->input('indikator-5c'),
 
-                '6a' => $request->input('indikator-6a'),
-                '6b' => $request->input('indikator-6b'),
-                '6c' => $request->input('indikator-6c'),
+                'indikator_6a' => $request->input('indikator-6a'),
+                'indikator_6b' => $request->input('indikator-6b'),
+                'indikator_6c' => $request->input('indikator-6c'),
 
-                '7a' => $request->input('indikator-7a'),
-                '7b' => $request->input('indikator-7b'),
-                '7c' => $request->input('indikator-7c'),
+                'indikator_7a' => $request->input('indikator-7a'),
+                'indikator_7b' => $request->input('indikator-7b'),
+                'indikator_7c' => $request->input('indikator-7c'),
 
-                '8a' => $request->input('indikator-8a'),
-                '8b' => $request->input('indikator-8b'),
-                '8c' => $request->input('indikator-8c'),
+                'indikator_8a' => $request->input('indikator-8a'),
+                'indikator_8b' => $request->input('indikator-8b'),
+                'indikator_8c' => $request->input('indikator-8c'),
 
-                '9a' => $request->input('indikator-9a'),
-                '9b' => $request->input('indikator-9b'),
-                '9c' => $request->input('indikator-9c'),
+                'indikator_9a' => $request->input('indikator-9a'),
+                'indikator_9b' => $request->input('indikator-9b'),
+                'indikator_9c' => $request->input('indikator-9c'),
 
-                '10a' => $request->input('indikator-10a'),
-                '10b' => $request->input('indikator-10b'),
-                '10c' => $request->input('indikator-10c'),
+                'indikator_10a' => $request->input('indikator-10a'),
+                'indikator_10b' => $request->input('indikator-10b'),
+                'indikator_10c' => $request->input('indikator-10c'),
 
-                '11a' => $request->input('indikator-11a'),
-                '11b' => $request->input('indikator-11b'),
-                '11c' => $request->input('indikator-11c'),
+                'indikator_11a' => $request->input('indikator-11a'),
+                'indikator_11b' => $request->input('indikator-11b'),
+                'indikator_11c' => $request->input('indikator-11c'),
 
-                '12a' => $request->input('indikator-12a'),
-                '12b' => $request->input('indikator-12b'),
-                '12c' => $request->input('indikator-12c'),
+                'indikator_12a' => $request->input('indikator-12a'),
+                'indikator_12b' => $request->input('indikator-12b'),
+                'indikator_12c' => $request->input('indikator-12c'),
 
-                '13a' => $request->input('indikator-13a'),
-                '13b' => $request->input('indikator-13b'),
-                '13c' => $request->input('indikator-13c'),
+                'indikator_13a' => $request->input('indikator-13a'),
+                'indikator_13b' => $request->input('indikator-13b'),
+                'indikator_13c' => $request->input('indikator-13c'),
 
-                '14a' => $request->input('indikator-14a'),
-                '14b' => $request->input('indikator-14b'),
-                '14c' => $request->input('indikator-14c'),
+                'indikator_14a' => $request->input('indikator-14a'),
+                'indikator_14b' => $request->input('indikator-14b'),
+                'indikator_14c' => $request->input('indikator-14c'),
 
-                '15a' => $request->input('indikator-15a'),
-                '15b' => $request->input('indikator-15b'),
-                '15c' => $request->input('indikator-15c'),
+                'indikator_15a' => $request->input('indikator-15a'),
+                'indikator_15b' => $request->input('indikator-15b'),
+                'indikator_15c' => $request->input('indikator-15c'),
 
-                '16a' => $request->input('indikator-16a'),
-                '16b' => $request->input('indikator-16b'),
-                '16c' => $request->input('indikator-16c'),
+                'indikator_16a' => $request->input('indikator-16a'),
+                'indikator_16b' => $request->input('indikator-16b'),
+                'indikator_16c' => $request->input('indikator-16c'),
 
             ]);
 
@@ -345,9 +347,9 @@ class DashboardIYTController extends Controller
                 $target_name_dokumentasi = null;
             }
 
-            // ! asih error engga ada iyt_id
+            // ! asih error engga ada iyt_id, 2020-1 itu placeholder doang
             LaporanKontrolBulanan::create([
-                'iyt_id' => '',
+                'iyt_invoice' => '2020-1',
                 'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
                 'berkas_laporan_dokumentasi' => $target_name_dokumentasi,
                 'bulan' => $request->input('bulan-laporan'),
@@ -392,7 +394,7 @@ class DashboardIYTController extends Controller
 
             $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
             $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
-            // $errorMsg[3] = $e->errorInfo[2]; 
+            $errorMsg[3] = $e->errorInfo[2]; 
             // dd($e);
             Session::flash('error', $errorMsg);
             return redirect()->back()->withInput();;
@@ -418,6 +420,7 @@ class DashboardIYTController extends Controller
 
     public function postSubmitLaporanKemajuan(Request $request)
     {
+        
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -450,7 +453,7 @@ class DashboardIYTController extends Controller
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
             LaporanKemajuan::creaate([
-                'iyt_id' => '',
+                'iyt_invoice' => '',
                 'bulan' => $request->input('bulan-laporan'),
                 'tahun' => $request->input('tahun-laporan'),
                 'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
