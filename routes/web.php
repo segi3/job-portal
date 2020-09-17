@@ -312,8 +312,7 @@ Route::group(['middleware' => 'LoginCheck', 'AdminCheck'], function(){
 
     Route::get('admin/IYT-List-all', 'DashboardController@getListAllIYT');
     Route::get('admin/IYT-Qualify', 'DashboardController@getListQualifyIYT');
-    Route::get('admin/active-batches', 'DashboardController@getActiveBatches');
-    Route::get('admin/non-active-batches', 'DashboardController@getNonActiveBatches');
+    Route::get('admin/list-batches', 'DashboardController@getListBatches');
     Route::put('admin/new-batch/a/{id}', 'DashboardController@changeToActive')->name('batch.active');
     Route::put('admin/new-batch/d/{id}', 'DashboardController@changeToNonActive')->name('batch.non-active');
     Route::put('admin/IYT-List-all/a/{iyt}', 'DashboardController@approveIYT')->name('iyt.approve');

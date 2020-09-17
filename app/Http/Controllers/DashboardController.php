@@ -712,21 +712,19 @@ class DashboardController extends Controller
         return response()->download($file, $berkas_db->berkas);
     }
 
-    public function getActiveBatches()
+    public function getListBatches()
     {
-        $batches = IYTBatch::where('status', '1')
-        ->select('*')
-        ->paginate(20);
-        return view('dashboard.pages.admins.active-batch')->with('batches', $batches);
+        $batches = DB::table('i_y_t_batches')->paginate(20);
+        return view('dashboard.pages.admins.list-batch')->with('batches', $batches);
     }
 
-    public function getNonActiveBatches()
-    {
-        $batches = IYTBatch::where('status', '0')
-        ->select('*')
-        ->paginate(20);
-        return view('dashboard.pages.admins.non-active-batch')->with('batches', $batches);
-    }
+    // public function getNonActiveBatches()
+    // {
+    //     $batches = IYTBatch::where('status', '0')
+    //     ->select('*')
+    //     ->paginate(20);
+    //     return view('dashboard.pages.admins.non-active-batch')->with('batches', $batches);
+    // }
 
     public function changeToActive(Request $request, $id)
     {
