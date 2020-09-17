@@ -16,8 +16,7 @@ class CreateLaporanKemajuansTable extends Migration
         Schema::create('laporan_kemajuan', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('iyt_id')->nullable()->unsigned();
-            $table->foreign('iyt_id')->references('id')->on('investasi_iyt')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('iyt_invoice');
 
             $table->string('bulan');
             $table->string('tahun');

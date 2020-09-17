@@ -15,6 +15,8 @@ class CreateMentorsTable extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('admin_id')->nullable()->unsigned();
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nip');
             $table->string('name');
             $table->string('mobile_no');
