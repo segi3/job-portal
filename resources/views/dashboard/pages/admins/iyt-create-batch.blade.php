@@ -65,12 +65,12 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputSalaryHigh">Nama</label>
-                            <input type="text" name="name" class="form-control" id="idName" placeholder="Nama Batch(Optional)" value="IYT ITS">
+                            <label for="inputSalaryHigh">Judul IYT</label>
+                            <input type="text" name="name" class="form-control" id="idName" placeholder="Judul" value="IYT ITS">
                         </div>
                         <div class="form-group">
-                          <label for="inputSalaryLow">Batch</label>
-                          <input type="text" name="batch" class="form-control" id="idBatch" placeholder="Batch #">
+                          <label for="inputSalaryLow">Tahun IYT</label>
+                          <input type="text" name="batch" class="form-control" id="idBatch" placeholder="Tahun">
                       </div>
                       <div class="form-group">
                         <label for="duedate" class="">Tanggal Pembukaan Pendaftaran</label><span class=""></span>

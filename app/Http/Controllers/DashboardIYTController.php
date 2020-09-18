@@ -229,23 +229,26 @@ class DashboardIYTController extends Controller
             Session::flash('error', $validator->errors()->all());
             return redirect()->back()->withInput();
         }
-        // ! masih harus belum fungsional, belum final
+        
+        $identifier_iyt = $request->session()->get('invoice');
+        $bulan_laporan = $request->input('bulan-laporan');
+        $tahun_laporan = $request->input('tahun-laporan');
 
         try {
             $berkas_laporan_keuangan = $request->file('berkas-laporan-keuangan');
             $berkas_ext = $berkas_laporan_keuangan->getClientOriginalExtension();
 
-            $target_name = 'asd' . '.' . $berkas_ext; // ! nunggu identifier unik iyt
+            $target_name = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-keuangan.' . $berkas_ext;
             // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-keuangan.pdf
 
             $target_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan/Laporan_Keuangan';
             $berkas_laporan_keuangan->move($target_location, $target_name);
 
             LaporanProgresBulanan::create([
-                'iyt_invoice' => '2020-1',
+                'iyt_invoice' => $identifier_iyt,
                 'berkas_laporan_keuangan' => $target_name,
-                'bulan' => $request->input('bulan-laporan'),
-                'tahun' => $request->input('tahun-laporan'),
+                'bulan' => $bulan_laporan,
+                'tahun' => $tahun_laporan,
 
                 'indikator_1a' => $request->input('indikator-1a'),
                 'indikator_1b' => $request->input('indikator-1b'),
@@ -354,21 +357,25 @@ class DashboardIYTController extends Controller
             return redirect()->back()->withInput();
         }
 
+        $identifier_iyt = $request->session()->get('invoice');
+        $bulan_laporan = $request->input('bulan-laporan');
+        $tahun_laporan = $request->input('tahun-laporan');
+
         try {
             $berkas_laporan_rekapitulasi = $request->file('berkas-laporan-rekapitulasi');
             $berkas_ext = $berkas_laporan_rekapitulasi->getClientOriginalExtension();
 
-            $target_name_rekapitulasi = 'asd' . '.' . $berkas_ext; //! nunggu identifier unik iyt
+            $target_name_rekapitulasi = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-rekapitulasi.' . $berkas_ext;
             //  * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-rekapitulasi.pdf
 
-            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Kontrol-Bulanan/Laporan-Rekaptulasi';
+            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan-Rekaptulasi';
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
             if($request->file('berkas-dokumentasi')) {
                 $berkas_laporan_dokumentasi = $request->file('berkas-dokumentasi');
                 $berkas_ext_dokumentasi = $berkas_laporan_dokumentasi->getClientOriginalExtension();
 
-                $target_name_dokumentasi = 'dokum' . '.' . $berkas_ext_dokumentasi;
+                $target_name_dokumentasi = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-dokumentasi.' . $berkas_ext_dokumentasi;
                 // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-dokumentasi.pdf
 
                 $target_location_dokumentasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan-Dokumentasi';
@@ -380,11 +387,11 @@ class DashboardIYTController extends Controller
 
             // ! asih error engga ada iyt_id, 2020-1 itu placeholder doang
             LaporanKontrolBulanan::create([
-                'iyt_invoice' => '2020-1',
+                'iyt_invoice' => $identifier_iyt,
                 'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
                 'berkas_laporan_dokumentasi' => $target_name_dokumentasi,
-                'bulan' => $request->input('bulan-laporan'),
-                'tahun' => $request->input('tahun-laporan'),
+                'bulan' => $bulan_laporan,
+                'tahun' => $tahun_laporan,
 
                 'indikator_1a' => $this->_pisahIndikator($request->input('indikator-1a')),
                 'nilai_1a' => $this->_pisahNilai($request->input('indikator-1a')),
@@ -469,12 +476,16 @@ class DashboardIYTController extends Controller
             return redirect()->back()->withInput();
         }
 
+        $identifier_iyt = $request->session()->get('invoice');
+        $bulan_laporan = $request->input('bulan-laporan');
+        $tahun_laporan = $request->input('tahun-laporan');
+
         try {
             // * laporan kemajuan
             $berkas_laporan_kemajuan = $request->file('berkas-laporan-kemajuan');
             $berkas_laporan_kemajuan_extension = $berkas_laporan_kemajuan->getClientOriginalExtension();
 
-            $target_name_kemajuan = 'asd' . '.' . $berkas_laporan_kemajuan_extension;
+            $target_name_kemajuan = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-kemajuan.' . $berkas_laporan_kemajuan_extension;
             $target_location_kemajuan = 'data_files/Student/IYT/Laporan/Laporan_Kemajuan';
             $berkas_laporan_kemajuan->move($target_location_kemajuan, $target_name_kemajuan);
 
@@ -482,14 +493,14 @@ class DashboardIYTController extends Controller
             $berkas_laporan_rekapitulasi = $request->file('berkas-laporan-rekapitulasi');
             $berkas_laporan_rekapitulasi_extension = $berkas_laporan_rekapitulasi->getClientOriginalExtension();
 
-            $target_name_rekapitulasi = 'asd' . '.' . $berkas_laporan_rekapitulasi_extension;
-            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Laporan_Keuangan';
+            $target_name_rekapitulasi = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-rekapitulasi.' . $berkas_laporan_rekapitulasi_extension;
+            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Laporan_Kemajuan/Laporan_Rekapitulasi';
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
             LaporanKemajuan::creaate([
-                'iyt_invoice' => '',
-                'bulan' => $request->input('bulan-laporan'),
-                'tahun' => $request->input('tahun-laporan'),
+                'iyt_invoice' => $identifier_iyt,
+                'bulan' => $bulan_laporan,
+                'tahun' => $tahun_laporan,
                 'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
                 'berkas_laporan_kemajuan' => $target_name_kemajuan,
             ]);
