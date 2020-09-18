@@ -102,14 +102,9 @@
                                 {{-- <input type="text"> --}}
                             </div>
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Batch:</label>
-                                <select class="form-control" name="batch" id="idBatch">
-                                    <option></option>
-                                    @foreach ($iyt as $i)
-                                        <option value="{{ $i->id }}">{{ $i->batch }}</option>
-                                    @endforeach
-
-                                </select>
+                                <label for="inputNamaKelompok">Tahun: {{ $iyt->batch }}</label> 
+                                <input type="hidden" name="batch" value="{{ $iyt->id }}"
+                                    class="form-control" id="idBatch">
                             </div>
                             <div class="flex-container">
                             <div class="form-group" style="flex-basis: 48%;">
@@ -335,13 +330,6 @@
     });
 
 // Select2
-
-$(document).ready(function() {
-    $('#idBatch').select2({
-        placeholder: "Pilih Batch",
-        allowClear: true
-    });
-});
 
 $(document).ready(function () {
     $("#idKategori").change(function () {

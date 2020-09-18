@@ -28,38 +28,73 @@ class DashboardIYTController extends Controller
         $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
         $getyear = explode("-", $iyt->invoice_iyt);
         $year = $getyear[0];
+        
         return view('dashboard.pages.iyt.home')->with('iyt', $iyt)->with('year', $year);
     }
 
-    public function getCreateIYT()
+    public function getCreateIYT(Request $request)
     {
 
         // $iyt = DB::table('i_y_t_batches')->where('start_date','<', $now)->where('end_date','>', $now)
         //         ->orWhere('start_date','=', $now)->orWhere('end_date','=', $now)
         //         ->get();
-        $iyt = DB::table('i_y_t_batches')
+        $batch = DB::table('i_y_t_batches')
         ->where(function ($query){
             $now= Carbon::now()->format('Y-m-d');
             $query->where('start_date','<=', $now);
             $query->where('end_date','>=', $now);
-            $query->where('status','=', 1);
+            $query->where('status','=', '1');
+            $query->orderBy('updated_at');
         })
-        ->get();
-        return view('dashboard.pages.student.register-iyt')->with('iyt', $iyt);
+        ->first();
+
+        $id = $request->session()->get('id');
+        $IYT = DB::table('investasi_iyt')
+        ->leftjoin('i_y_t_batches', 'i_y_t_batches.id', 'investasi_iyt.batch_id')
+        ->where('i_y_t_batches.status', '=', '1')
+        ->where('investasi_iyt.student_id', '=', $id)
+        ->select('*', 'investasi_iyt.id as iyt_id')
+        ->first();
+
+        if($IYT){
+            return redirect('dashboard/register-IYT-status');
+        }
+        else{
+            if($batch){
+                return view('dashboard.pages.student.register-iyt')->with('batch', $batch);
+            }
+            else{
+                return view('dashboard.pages.student.register-iyt-not-avail');
+            }   
+        }
     }
 
     public function getRegisterIYTStatus(Request $request)
     {
         $id = $request->session()->get('id');
 
-        $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
-
+        $IYT = DB::table('investasi_iyt')
+        ->leftjoin('i_y_t_batches', 'i_y_t_batches.id', 'investasi_iyt.batch_id')
+        ->where('i_y_t_batches.status', '=', '1')
+        ->where('investasi_iyt.student_id', '=', $id)
+        ->select('*', 'investasi_iyt.id as iyt_id', 'investasi_iyt.status as status_iyt')
+        ->first();
+        
         // dd($investee);
 
-        if ($iyt)
-            return view('dashboard.pages.student.register-iyt-status')->with('iyt', $iyt);
-        else
+        if ($IYT){
+            if($IYT->status_iyt == 1){
+                return redirect('dashboard/IYT');
+            }
+            else
+            {
+                $iyt = DB::table('investasi_iyt')->where('id', '=', $IYT->iyt_id)->first();
+                return view('dashboard.pages.student.register-iyt-status')->with('iyt', $iyt);
+            }       
+        }
+        else{
             return redirect('dashboard/register-IYT');
+        }
     }
 
     protected function _nextInvoiceIYTNumber()

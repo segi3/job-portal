@@ -35,10 +35,13 @@ class StudentController extends Controller
                                                     ->Where('status', '=', '1')
                                                     ->first();
 
-                    $isIYT = DB::table('investasi_iyt')->where('student_id', '=', $student->id)
-                                                    ->Where('status', '=', '1')
-                                                    ->first();
-                    $IYT=$isIYT;
+                    
+                    $IYT = DB::table('investasi_iyt')
+                                ->leftjoin('i_y_t_batches', 'i_y_t_batches.id', 'investasi_iyt.batch_id')
+                                ->where('i_y_t_batches.status', '=', '1')
+                                ->where('investasi_iyt.student_id', '=', $student->id)
+                                ->select('*', 'investasi_iyt.status as status_iyt')
+                                ->first();
                     $now = Carbon::now();
                     $dn = $now->toDateString();
 
@@ -47,20 +50,18 @@ class StudentController extends Controller
                     else
                         $isInvestee = false;
 
-                    if ($isIYT){
-                        $batch = DB::table('i_y_t_batches')->where('id', '=', $isIYT->batch_id)
-                        ->first();
-                        if($dn > $batch->end_date)
-                        {
-                            $isActive = false;
-                        }
+                    if ($IYT){
+                        $invoice= $IYT->invoice_iyt;
+                        if($IYT->status_iyt == 1){
+                            $isIYT = true;
+                        } 
                         else
                         {
-                            $isActive = true;
+                            $isIYT = false;
                         }
-                        $isIYT = true;
                     }
                     else{
+                        $invoice=0;
                         $isIYT = false;
                     }
 
@@ -75,8 +76,8 @@ class StudentController extends Controller
                         'email' => $student->email,
                         'role' => 'student',
                         'investee' => $isInvestee,
-                        'iyt' => $isIYT,
-                        'iyt-data' => $IYT,
+                        'invoice' => $invoice,
+                        'iyt' => $isIYT
 
                         // 'batch' => $isActive,
                     ]);
