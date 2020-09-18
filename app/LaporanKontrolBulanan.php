@@ -10,7 +10,7 @@ class LaporanKontrolBulanan extends Model
 
     protected $fillable = [
         'iyt_invoice',
-        'berkas_laporan_keuangan', 'berkas_laporan_dokumentasi',
+        'berkas_laporan_rekapitulasi', 'berkas_laporan_dokumentasi',
         'bulan', 'tahun',
 
         'indikator_1a', 'nilai_1a', 'komentar_1a',
@@ -24,5 +24,6 @@ class LaporanKontrolBulanan extends Model
         'indikator_3a', 'nilai_3a', 'komentar_3a',
         'indikator_3b', 'nilai_3b', 'komentar_3b',
 
+        'rekomendasi_reviewer', 'alasan_reviewer', 'mentor_id',
     ];
 }

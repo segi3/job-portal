@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'InvesteeCheck' => \App\Http\Middleware\InvesteeCheck::class,
         'GuestStudentCheck' => \App\Http\Middleware\GuestStudentCheck::class,
         'IYTCheck' => \App\Http\Middleware\IYTCheck::class,
+        'IytMentorCheck' => \App\Http\Middleware\IytMentorCheck::class,
     ];
 }

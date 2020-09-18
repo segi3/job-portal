@@ -214,6 +214,12 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
 
 });
 
+Route::group(['middleware' => 'LoginCheck', 'IytMentorCheck'], function(){
+    Route::get('dashboard/IYT/lihat-laporan-bulanan/{id}', 'IytMentoringController@getLaporanBulanan');
+    Route::get('dashboard/IYT/lihat-kontrol-bulanan/{id}', 'IytMentoringController@getKontrolBulanan');
+});
+
+
 // ! route buat testing doang
 // Route::get('submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
 // Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
@@ -221,7 +227,10 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
 // Route::post('submit-kontrol-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
 // Route::get('submit-laporan-kemajuan', 'DashboardIYTController@getSubmitLaporanKemajuan');
 // Route::post('submit-laporan-kemajuan', 'DashboardIYTController@postSubmitLaporanKemajuan')->name('dashboard.iyt.submit-laporan-kemajuan');
-Route::get('dashboard/IYT/lihat-laporan-bulanan/{id}', 'IytMentoringController@getLaporanBulanan');
+// Route::get('dashboard/IYT/lihat-laporan-bulanan/{id}', 'IytMentoringController@getLaporanBulanan');
+// Route::get('dashboard/IYT/lihat-kontrol-bulanan/{id}', 'IytMentoringController@getKontrolBulanan');
+// Route::put('dashboard/mentor/tambah-rekomendasi-kontrol-bulanan', 'IytMentoringController@updateKontrolBulanan')->name('laporan.progres-bulanan.update');
+
 
 Route::group(['middleware' => 'LoginCheck', 'EmployerCheck'], function(){
     Route::get('dashboard/er/create-job', 'DashboardEmployerController@getCreateJob');
@@ -334,5 +343,7 @@ Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
     Route::get('/download-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@downloadDokumentasi')->name('iyt.mentoring.download.dokumentasi');
     Route::put('/upload-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@uploadDokumentasi')->name('iyt.mentoring.upload.dokumentasi');
 
+    // * update laporan kontrol bulanan
+    Route::put('dashboard/mentor/tambah-rekomendasi-kontrol-bulanan', 'IytMentoringController@updateKontrolBulanan')->name('laporan.progres-bulanan.update');
 
 });

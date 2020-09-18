@@ -182,8 +182,6 @@ class DashboardIYTController extends Controller
 
     public function postSubmitLaporanBulanan(Request $request)
     {
-        // dd($request);
-
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -301,6 +299,8 @@ class DashboardIYTController extends Controller
 
     public function postSubmitKontrolBulanan(Request $request)
     {
+        // dd($request);
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -330,10 +330,10 @@ class DashboardIYTController extends Controller
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
             if($request->file('berkas-dokumentasi')) {
-                $berkas_laporan_dokumentasi = $request->file('berkas-laporan-dokumentasi');
+                $berkas_laporan_dokumentasi = $request->file('berkas-dokumentasi');
                 $berkas_ext_dokumentasi = $berkas_laporan_dokumentasi->getClientOriginalExtension();
 
-                $target_name_dokumentasi = 'asd' . '.' . $berkas_ext_dokumentasi;
+                $target_name_dokumentasi = 'dokum' . '.' . $berkas_ext_dokumentasi;
                 // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-dokumentasi.pdf
 
                 $target_location_dokumentasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan-Dokumentasi';
@@ -351,38 +351,41 @@ class DashboardIYTController extends Controller
                 'bulan' => $request->input('bulan-laporan'),
                 'tahun' => $request->input('tahun-laporan'),
 
-                'indikator-1a' => $this->_pisahIndikator($request->input('indikator-1a')),
-                'nilai-1a' => $this->_pisahNilai($request->input('indikator-1a')),
-                'komentar-1a' => $request->input('komentar-1a'),
+                'indikator_1a' => $this->_pisahIndikator($request->input('indikator-1a')),
+                'nilai_1a' => $this->_pisahNilai($request->input('indikator-1a')),
+                'komentar_1a' => $request->input('komentar-1a'),
 
-                'indikator-1b' => $this->_pisahIndikator($request->input('indikator-1b')),
-                'nilai-1b' => $this->_pisahNilai($request->input('indikator-1b')),
-                'komentar-1b' => $request->input('komentar-1b'),
+                'indikator_1b' => $this->_pisahIndikator($request->input('indikator-1b')),
+                'nilai_1b' => $this->_pisahNilai($request->input('indikator-1b')),
+                'komentar_1b' => $request->input('komentar-1b'),
 
-                'indikator-2a' => $this->_pisahIndikator($request->input('indikator-2a')),
-                'nilai-2a' => $this->_pisahNilai($request->input('indikator-2a')),
-                'komentar-2a' => $request->input('komentar-2a'),
+                'indikator_2a' => $this->_pisahIndikator($request->input('indikator-2a')),
+                'nilai_2a' => $this->_pisahNilai($request->input('indikator-2a')),
+                'komentar_2a' => $request->input('komentar-2a'),
 
-                'indikator-2b' => $this->_pisahIndikator($request->input('indikator-2b')),
-                'nilai-2b' => $this->_pisahNilai($request->input('indikator-2b')),
-                'komentar-2b' => $request->input('komentar-2b'),
+                'indikator_2b' => $this->_pisahIndikator($request->input('indikator-2b')),
+                'nilai_2b' => $this->_pisahNilai($request->input('indikator-2b')),
+                'komentar_2b' => $request->input('komentar-2b'),
 
-                'indikator-2c' => $this->_pisahIndikator($request->input('indikator-2c')),
-                'nilai-2c' => $this->_pisahNilai($request->input('indikator-2c')),
-                'komentar-2c' => $request->input('komentar-2c'),
+                'indikator_2c' => $this->_pisahIndikator($request->input('indikator-2c')),
+                'nilai_2c' => $this->_pisahNilai($request->input('indikator-2c')),
+                'komentar_2c' => $request->input('komentar-2c'),
 
-                'indikator-2d' => $this->_pisahIndikator($request->input('indikator-2d')),
-                'nilai-2d' => $this->_pisahNilai($request->input('indikator-2d')),
-                'komentar-2d' => $request->input('komentar-2d'),
+                'indikator_2d' => $this->_pisahIndikator($request->input('indikator-2d')),
+                'nilai_2d' => $this->_pisahNilai($request->input('indikator-2d')),
+                'komentar_2d' => $request->input('komentar-2d'),
 
-                'indikator-3a' => $this->_pisahIndikator($request->input('indikator-3a')),
-                'nilai-3a' => $this->_pisahNilai($request->input('indikator-3a')),
-                'komentar-3a' => $request->input('komentar-3a'),
+                'indikator_3a' => $this->_pisahIndikator($request->input('indikator-3a')),
+                'nilai_3a' => $this->_pisahNilai($request->input('indikator-3a')),
+                'komentar_3a' => $request->input('komentar-3a'),
 
-                'indikator-3b' => $this->_pisahIndikator($request->input('indikator-3b')),
-                'nilai-3b' => $this->_pisahNilai($request->input('indikator-3b')),
-                'komentar-3b' => $request->input('komentar-3b'),
+                'indikator_3b' => $this->_pisahIndikator($request->input('indikator-3b')),
+                'nilai_3b' => $this->_pisahNilai($request->input('indikator-3b')),
+                'komentar_3b' => $request->input('komentar-3b'),
             ]);
+
+            Session::flash('success', 'Laporan berhasil di submit');
+            return redirect()->back();
 
         }catch(\Illuminate\Database\QueryException $e)
         {
@@ -466,7 +469,7 @@ class DashboardIYTController extends Controller
             // $errorMsg[3] = $e->errorInfo[2]; 
             // dd($e);
             Session::flash('error', $errorMsg);
-            return redirect()->back()->withInput();;
+            return redirect()->back()->withInput();
         }
     }
 }

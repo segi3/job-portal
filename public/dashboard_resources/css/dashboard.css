@@ -52,3 +52,16 @@
 hr.divider {
     margin: 40px 0px 40px 0px;
 }
+
+/* * view kontrol bulanan */
+.indikator-v {
+    
+}
+
+.penilaian-v {
+    margin: 10px 0px 50px 0px;
+}
+
+.sub-penilaian-v {
+    margin-left: 25px;
+}

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Session;
 use Validator;
 use Illuminate\Support\Facades\DB;
+use App\LaporanKontrolBulanan;
 
 class IytMentoringController extends Controller
 {
@@ -225,7 +226,42 @@ class IytMentoringController extends Controller
         }
     }
 
-    public function getLaporanBulanan(Request $request, $id)
+    protected function _numToMonth($month)
+    {
+        $string = '';
+
+        switch($month){
+            case 1:
+                $string = 'Januari'; break;
+            case 2:
+                $string = 'Februari'; break;
+            case 3:
+                $string = 'Maret'; break;
+            case 4:
+                $string = 'April'; break;
+            case 5:
+                $string = 'Mei'; break;
+            case 6:
+                $string = 'Juni'; break;
+            case 7:
+                $string = 'Juli'; break;
+            case 8:
+                $string = 'Agustus'; break;
+            case 9:
+                $string = 'September'; break;
+            case 10:
+                $string = 'Oktober'; break;
+            case 11:
+                $string = 'November'; break;
+            case 12:
+                $string = 'Desember'; break;
+        }
+
+        return $string;
+
+    }
+
+    public function getLaporanBulanan($id)
     {
         $where_laporan = [
             'laporan_bulanan.id' => $id
@@ -235,6 +271,9 @@ class IytMentoringController extends Controller
                             ->where($where_laporan)
                             ->first();
 
+        $progres_bulanan->bulan = $this->_numToMonth($progres_bulanan->bulan);
+
+
         $where_iyt = [
             'investasi_iyt.invoice_iyt' => $progres_bulanan->iyt_invoice
         ];
@@ -242,11 +281,82 @@ class IytMentoringController extends Controller
         $kelompok_iyt = DB::table('investasi_iyt')
                         ->where($where_iyt)
                         ->first();
+        
 
         // dd($kelompok_iyt);
 
         // dd($progres_bulanan);
 
         return view('dashboard.pages.iyt.laporan.view-laporan-bulanan')->with('laporan', $progres_bulanan)->with('data_kelompok', $kelompok_iyt);
+    }
+
+    public function getKontrolBulanan($id)
+    {
+        $where_laporan = [
+            'laporan_kontrol_bulanan.id' => $id
+        ];
+
+        $kontrol_bulanan = DB::table('laporan_kontrol_bulanan')
+                            ->where($where_laporan)
+                            ->first();
+
+        $kontrol_bulanan->bulan = $this->_numToMonth($kontrol_bulanan->bulan);
+
+        // dd($kontrol_bulanan);
+        
+        $where_iyt = [
+            'investasi_iyt.invoice_iyt' => $kontrol_bulanan->iyt_invoice
+        ];
+        
+        $kelompok_iyt = DB::table('investasi_iyt')
+                        ->where($where_iyt)
+                        ->first();
+        
+        $where_mentor = [
+            'mentors.id' => $kontrol_bulanan->mentor_id
+        ];
+
+        $mentor = DB::table('mentors')->where($where_mentor)->first();
+        
+        return view('dashboard.pages.iyt.laporan.view-kontrol-bulanan')
+                ->with('laporan', $kontrol_bulanan)
+                ->with('data_kelompok', $kelompok_iyt)
+                ->with('mentor', $mentor);
+    }
+
+    public function updateKontrolBulanan(Request $request)
+    {
+        // dd($request);
+
+        $where_laporan = [
+            'laporan_kontrol_bulanan.id' => $request->input('laporan_id')
+        ];
+
+        try{
+            $laporan = LaporanKontrolBulanan::find($request->input('laporan_id'));
+
+            $laporan->rekomendasi_reviewer = $request->input('rekomendasi-reviewer');
+            $laporan->alasan_reviewer = $request->input('alasan-reviewer');
+            $laporan->mentor_id = $request->session()->get('id');
+
+            $laporan->save();
+
+            Session::flash('success', 'Berhasil update rekomendasi');
+            return redirect()->back();
+
+        }catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorMsg[1] = $e->errorInfo[2];
+
+            $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
+            $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
+            // $errorMsg[3] = $e->errorInfo[2]; 
+            // dd($e);
+
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();
+        }
+
+        
     }
 }

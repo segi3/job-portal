@@ -21,7 +21,7 @@ class CreateLaporanKontrolBulanansTable extends Migration
             $table->string('bulan');
             $table->string('tahun');
 
-            $table->string('berkas_laporan_keuangan');
+            $table->string('berkas_laporan_rekapitulasi');
             $table->string('berkas_laporan_dokumentasi')->nullable();
 
             // * jawaban
@@ -57,6 +57,10 @@ class CreateLaporanKontrolBulanansTable extends Migration
             $table->string('indikator_3b');
             $table->string('nilai_3b');
             $table->text('komentar_3b');
+
+            $table->string('rekomendasi_reviewer')->default('belum_review');
+            $table->text('alasan_reviewer')->default('belum_review');
+            $table->string('mentor_id')->nullable();
 
             $table->timestamps();
         });
