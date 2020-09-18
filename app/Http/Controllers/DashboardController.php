@@ -625,9 +625,6 @@ class DashboardController extends Controller
         $investasi->status = 1;
         $investasi->admin_id = $request->session()->get('id');
         $investasi->save();
-        $request->session()->put([
-            'iyt' => true,
-        ]);
         return redirect()->back();
     }
 
@@ -637,9 +634,6 @@ class DashboardController extends Controller
         $investasi->status = 0;
         $investasi->admin_id = $request->session()->get('id');
         $investasi->save();
-        $request->session()->put([
-            'iyt' => false,
-        ]);
         return redirect()->back();
     }
 
