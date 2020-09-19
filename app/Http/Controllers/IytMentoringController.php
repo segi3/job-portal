@@ -168,6 +168,7 @@ class IytMentoringController extends Controller
 
     public function postComment(Request $request, $id)
     {
+        // dd($request->input('komentar'));
         $input = $request->all();
         $validator = Validator::make($input, [
             'komentar'  => 'required|max:255',
@@ -179,7 +180,7 @@ class IytMentoringController extends Controller
         }
         try {
             $mentor_id = $request->session()->get('id');
-            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('investasi_iyt_id','=', $id)->first();
+            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('id','=', $id)->first();
             $iyt->komentar = $request->input('komentar');
             $iyt->save();
             Session::flash('success', 'Komentar berhasil ditambahkan');
@@ -198,32 +199,33 @@ class IytMentoringController extends Controller
     }
     public function editComment(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'komentar'         => 'required|max:255',
-        ]);
+        dd($id);
+        // $input = $request->all();
+        // $validator = Validator::make($input, [
+        //     'komentar'  => 'required|max:255',
+        // ]);
         
-        if ($validator->fails()) {
-            Session::flash('error', $validator->errors());
-            return redirect()->back()->withInput();
-        }
-        try {
-            $mentor_id = $request->session()->get('id');
-            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('investasi_iyt_id','=', $id)->first();
-            $iyt->komentar = $request->input('komentar');
-            $iyt->save();
-            Session::flash('success', 'Berhasil edit komentar');
-            // return view('dashboard.pages.mentor.create-iyt-mentoring');
-            return redirect()->back();
-        }
-        catch(\Illuminate\Database\QueryException $e)
-        {
-            $errorCode = $e->errorInfo[1];
-            if ($errorCode == 1062) {
-                return redirect('/');
-            }
-            Session::flash('error', $errorCode);
-            return redirect()->back();
-        }
+        // if ($validator->fails()) {
+        //     Session::flash('error', $validator->errors());
+        //     return redirect()->back()->withInput();
+        // }
+        // try {
+        //     $mentor_id = $request->session()->get('id');
+        //     $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('id','=', $id)->first();
+        //     $iyt->komentar = $request->input('komentar');
+        //     $iyt->save();
+        //     Session::flash('success', 'Komentar berhasil ditambahkan');
+        //     return redirect()->back();
+        // }
+        // catch(\Illuminate\Database\QueryException $e)
+        // {
+        //     $errorCode = $e->errorInfo[1];
+        //     if ($errorCode == 1062) {
+        //         return redirect('/');
+        //     }
+        //     Session::flash('error', $errorCode);
+        //     return redirect()->back();
+        // }
     }
 
     protected function _numToMonth($month)

@@ -16,9 +16,6 @@
   width: 30%;
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -183,9 +180,10 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('iyt.postComment', $mentoring->id) }}" method="post" id="postComment">
+                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->mentoring_id]) }}" method="post" id="postComment">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('put') }}
+                                                                <input type="hidden" name="ids[]" value="{{$mentoring->mentoring_id}}" disabled>
                                                                     <textarea name="komentar" class="form-control" id="inputKomentar" placeholder="Komentar"></textarea>
                                                             </form>
                                                             
@@ -200,28 +198,27 @@
                                                 <!-- /.modal-dialog -->
                                             </div>
                                         @else
-                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
+                                            <button type="button" class="btn btn-sm btn-block btn-warning" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
                                                 Edit Komentar
                                             </button>
                                             <div class="modal fade" id="modal2-{{ $mentoring->mentoring_id }}">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
-                                                        <div class="modal-header">
+                                                    <div class="modal-header">
                                                             <h4 class="modal-title">Edit Komentar</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('iyt.editComment', $mentoring->id) }}" method="post" id="editComment">
+                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->mentoring_id]) }}" method="post" id="postComment">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('put') }}
-                                                                    <textarea name="komentar" class="form-control" id="inputKomentar" >{{ $mentoring->komentar }}</textarea>
+                                                                    <textarea name="komentar" class="form-control" id="inputKomentar">{{ $mentoring->komentar }}</textarea>
                                                             </form>
-                                                            
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
-                                                            <button onclick="form_submit2()" type="submit" class="submitbtn btn btn-primary">Edit</button>
+                                                            <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-warning">Edit</button>
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
@@ -462,10 +459,7 @@
 <script type="text/javascript">
   function form_submit1() {
     document.getElementById("postComment").submit();
-   }  
-  function form_submit2() {
-    document.getElementById("editComment").submit();
-   }     
+   }       
   </script>
 
 @endsection
