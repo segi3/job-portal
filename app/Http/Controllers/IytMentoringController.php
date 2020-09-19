@@ -144,25 +144,25 @@ class IytMentoringController extends Controller
                     ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
                     ->select('*','iyt_mentorings.id as mentoring_id')
                     ->where('iyt_mentorings.investasi_iyt_id','=',$id)
-                    ->paginate(10);
-        $mentorings->setPageName('mentorings_page');
+                    ->paginate(10, ['*'], 'mentorings');
+        // $mentorings->setPageName('mentorings_page');
         
-        $progress =  DB::table('laporan_progres_bulanan')
+        $progress =  DB::table('laporan_bulanan')
                     ->select('*')
-                    ->where('iyt_id','=',$iyt->id)
-                    ->paginate(10);
-        $progress->setPageName('progress_page');
+                    ->where('iyt_invoice','=',$iyt->invoice_iyt)
+                    ->paginate(10, ['*'], 'laporan_bulanan');
+        // $progress->setPageName('progress_page');
         
         $kontrol =  DB::table('laporan_kontrol_bulanan')
                     ->select('*')
-                    ->where('iyt_id','=',$iyt->id)
-                    ->paginate(10);
-        $kontrol->setPageName('kontrol_page');
+                    ->where('iyt_invoice','=',$iyt->invoice_iyt)
+                    ->paginate(10, ['*'], 'laporan_kontrol_bulanan');
+        // $kontrol->setPageName('kontrol_page');
         $kemajuan =  DB::table('laporan_kemajuan')
                     ->select('*')
-                    ->where('iyt_id','=',$iyt->id)
-                    ->paginate(10);
-        $kemajuan->setPageName('kemajuan_page');
+                    ->where('iyt_invoice','=',$iyt->invoice_iyt)
+                    ->paginate(10, ['*'], 'laporan_kemajuan');
+        // $kemajuan->setPageName('kemajuan_page');
         return view('dashboard.pages.mentor.detail-peserta')->with('iyt',$iyt)->with('mentorings',$mentorings)->with('progress',$progress)->with('kontrol',$kontrol)->with('kemajuan',$kemajuan);
     }
 

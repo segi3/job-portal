@@ -238,7 +238,8 @@
                     </div>
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $mentorings->appends(array_except(Request::query(), 'mentorings_page'))->links() }}
+                        {{$mentorings->links()}}
+                        
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -268,7 +269,31 @@
                             @foreach($progress as $progres)
                                 <tr>       
                                     <td>{{ $progres->created_at }}</td>
-                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    @if( $progres->bulan == 1)
+                                        <td>Januari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 2)
+                                        <td>Februari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 3)
+                                        <td>Maret - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 4)
+                                        <td>April - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 5)
+                                        <td>Mei - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 6)
+                                        <td>Juni - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 7)
+                                        <td>Juli - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 8)
+                                        <td>Agustus - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 9)
+                                        <td>September - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 10)
+                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                    @elseif( $progres->bulan == 11)
+                                        <td>November - {{ $progres->tahun }}</td>
+                                    @else
+                                        <td>Desember - {{ $progres->tahun }}</td>
+                                    @endif
                                     <td>
                                         <a href="#"></a>
                                     </td>
@@ -282,7 +307,7 @@
                     </div>
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $progress->appends(array_except(Request::query(), 'progress_page'))->links() }}
+                        {{$progress->links()}}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -312,7 +337,31 @@
                             @foreach($kontrol as $progres)
                                 <tr>       
                                     <td>{{ $progres->created_at }}</td>
-                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    @if( $progres->bulan == 1)
+                                        <td>Januari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 2)
+                                        <td>Februari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 3)
+                                        <td>Maret - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 4)
+                                        <td>April - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 5)
+                                        <td>Mei - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 6)
+                                        <td>Juni - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 7)
+                                        <td>Juli - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 8)
+                                        <td>Agustus - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 9)
+                                        <td>September - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 10)
+                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                    @elseif( $progres->bulan == 11)
+                                        <td>November - {{ $progres->tahun }}</td>
+                                    @else
+                                        <td>Desember - {{ $progres->tahun }}</td>
+                                    @endif
                                     <td>
                                         <a href="#"></a>
                                     </td>
@@ -326,7 +375,7 @@
                     </div>
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $kontrol->appends(array_except(Request::query(), 'kontrol_page'))->links() }}
+                        {{$kontrol->links()}}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -356,7 +405,31 @@
                             @foreach($kemajuan as $progres)
                                 <tr>       
                                     <td>{{ $progres->created_at }}</td>
-                                    <td>{{ $progres->bulan }} {{ $progres->tahun }}</td>
+                                    @if( $progres->bulan == 1)
+                                        <td>Januari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 2)
+                                        <td>Februari - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 3)
+                                        <td>Maret - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 4)
+                                        <td>April - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 5)
+                                        <td>Mei - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 6)
+                                        <td>Juni - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 7)
+                                        <td>Juli - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 8)
+                                        <td>Agustus - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 9)
+                                        <td>September - {{ $progres->tahun }}</td>
+                                    @elseif( $progres->bulan == 10)
+                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                    @elseif( $progres->bulan == 11)
+                                        <td>November - {{ $progres->tahun }}</td>
+                                    @else
+                                        <td>Desember - {{ $progres->tahun }}</td>
+                                    @endif
                                     <td>
                                         <a href="#"></a>
                                     </td>
@@ -370,7 +443,7 @@
                     </div>
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $kemajuan->appends(array_except(Request::query(), 'kemajuan_page'))->links() }}
+                        {{$kemajuan->links()}}
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>

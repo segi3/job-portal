@@ -102,8 +102,8 @@
                                 {{-- <input type="text"> --}}
                             </div>
                             <div class="form-group">
-                                <label for="inputNamaKelompok">Tahun: {{ $iyt->batch }}</label> 
-                                <input type="hidden" name="batch" value="{{ $iyt->id }}"
+                                <label for="inputNamaKelompok">Tahun: {{ $batch->batch }}</label> 
+                                <input type="hidden" name="batch" value="{{ $batch->id }}"
                                     class="form-control" id="idBatch">
                             </div>
                             <div class="flex-container">
