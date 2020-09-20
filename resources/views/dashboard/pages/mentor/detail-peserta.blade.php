@@ -185,12 +185,14 @@
                                                                 {{ method_field('put') }}
                                                                 <input type="hidden" name="ids[]" value="{{$mentoring->mentoring_id}}" disabled>
                                                                     <textarea name="komentar" class="form-control" id="inputKomentar" placeholder="Komentar"></textarea>
+                                                                    <button type="submit" class="submitbtn btn btn-primary">Submit</button>
+                                                                    <!-- <input type="submit" value="Submit"> -->
                                                             </form>
                                                             
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
-                                                            <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-primary">Submit</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            <!-- <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-primary">Submit</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->
@@ -215,11 +217,11 @@
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('put') }}
                                                                     <textarea name="komentar" class="form-control" id="inputKomentar">{{ $mentoring->komentar }}</textarea>
+                                                                    <button type="submit" class="submitbtn btn btn-warning">Edit</button>
+                                                                    <!-- <input type="submit" value="Edit"> -->
                                                             </form>
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
-                                                            <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-warning">Edit</button>
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->
@@ -456,10 +458,5 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
-  function form_submit1() {
-    document.getElementById("postComment").submit();
-   }       
-  </script>
 
 @endsection
