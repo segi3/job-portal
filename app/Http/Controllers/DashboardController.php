@@ -661,14 +661,30 @@ class DashboardController extends Controller
         $startDate = \Carbon\Carbon::parse($request->input('start_date'))->format('Y-m-d');
         $endDate = \Carbon\Carbon::parse($request->input('end_date'))->format('Y-m-d');
             // $formatDate = \Carbon\Carbon::parse($request->input('waktu'))->format('Y-m-d');
+        $batch = DB::table('i_y_t_batches')
+            ->where('status','=','1')
+            ->first();
         try{
-            IYTBatch::create([
-                'name'       => $request->input('IYTname'),
-                'batch'      => $request->input('batch'),
-                'start_date'      => $startDate,
-                'status'        => 1,
-                'end_date'   => $endDate,
-            ]);
+            if($batch)
+            {
+                IYTBatch::create([
+                    'name'       => $request->input('IYTname'),
+                    'batch'      => $request->input('batch'),
+                    'start_date'      => $startDate,
+                    'status'        => 0,
+                    'end_date'   => $endDate,
+                ]);
+            }
+            else
+            {
+                IYTBatch::create([
+                    'name'       => $request->input('IYTname'),
+                    'batch'      => $request->input('batch'),
+                    'start_date'      => $startDate,
+                    'status'        => 1,
+                    'end_date'   => $endDate,
+                ]);
+            }
 
             Session::flash('success', 'Batch IYT Baru telah berhasil dibuat');
             return view('dashboard.pages.admins.iyt-create-batch');
