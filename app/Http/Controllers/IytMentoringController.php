@@ -63,18 +63,18 @@ class IytMentoringController extends Controller
 
     public function showIYTNotulensi(Request $request)
     {
-        $iytid=$request->session()->get('iyt-data')->id;
+        $iytid=$request->session()->get('invoice');
 
         $mentorings = DB::table('iyt_mentorings')
                     ->join('mentors','iyt_mentorings.mentor_id','=','mentors.id')
                     ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
                     ->select('*','iyt_mentorings.id as mentoring_id')
-                    ->where('investasi_iyt_id','=',$iytid)
+                    ->where('investasi_iyt.invoice_iyt','=',$iytid)
                     ->paginate(10);
 
         // dd($mentorings);
         // return view('dashboard.pages.iyt.notulensi.iyt-notulensi');
-        return view('dashboard.pages.iyt.notulensi.iyt-notulensi', compact('mentorings','iytid'));
+        return view('dashboard.pages.iyt.notulensi.iyt-notulensi', compact('mentorings'));
     }
 
     public function downloadDokumentasi($idmentoring)
