@@ -304,6 +304,10 @@ class IytMentoringController extends Controller
 
         $kontrol_bulanan->bulan = $this->_numToMonth($kontrol_bulanan->bulan);
 
+        $kontrol_bulanan->alasan_reviewer = explode("|", $kontrol_bulanan->alasan_reviewer);
+
+        // dd($kontrol_bulanan->alasan_reviewer);
+
         // dd($kontrol_bulanan);
         
         $where_iyt = [
@@ -319,6 +323,8 @@ class IytMentoringController extends Controller
         ];
 
         $mentor = DB::table('mentors')->where($where_mentor)->first();
+
+        // dd($mentor);
         
         return view('dashboard.pages.iyt.laporan.view-kontrol-bulanan')
                 ->with('laporan', $kontrol_bulanan)
@@ -328,17 +334,25 @@ class IytMentoringController extends Controller
 
     public function updateKontrolBulanan(Request $request)
     {
-        // dd($request);
+        $alasan = $request->input('alasan_reviewer');
+        $string_alasan = '';
 
-        $where_laporan = [
-            'laporan_kontrol_bulanan.id' => $request->input('laporan_id')
-        ];
+        // * nge gabung array alasan jadi satu
+        $last_key = array_search(end($alasan), $alasan);
+        foreach ($alasan as $poin => $value){
+            if ($poin == $last_key) {
+                $string_alasan = $string_alasan . $value;
+            }else {
+                $string_alasan = $string_alasan . $value . '|';
+            }
+            
+        };
 
         try{
             $laporan = LaporanKontrolBulanan::find($request->input('laporan_id'));
 
             $laporan->rekomendasi_reviewer = $request->input('rekomendasi-reviewer');
-            $laporan->alasan_reviewer = $request->input('alasan-reviewer');
+            $laporan->alasan_reviewer = $string_alasan;
             $laporan->mentor_id = $request->session()->get('id');
 
             $laporan->save();

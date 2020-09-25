@@ -65,3 +65,17 @@ hr.divider {
 .sub-penilaian-v {
     margin-left: 25px;
 }
+
+.komentar-judul {
+    font-weight: 700;
+}
+
+.konten-review {
+    margin-bottom: 25px;
+}
+
+.red-no-review {
+    color: red;
+    font-weight: 700;
+    margin-bottom: 25px;
+}

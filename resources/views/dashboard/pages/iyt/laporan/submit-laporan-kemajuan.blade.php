@@ -101,44 +101,56 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="laporan-kemajuan" class="">{{ __('Berkas Laporan kemajuan') }}</label><span
-                                    class="red-str">*</span>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
-                                                aria-hidden="true"></i>
-                                        </button>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div>
+                                        Dowload Template Laporan Kemajuan <a href="/download/template-laporan-kemajuan">disini</a>
                                     </div>
-                                    <div class="custom-file">
-                                        <label class="custom-file-label" id="laporan-kemajuan"
-                                            for="berkas-laporan-kemajuan">Upload Berkas</label>
-                                        <input type="file" class="custom-file-input" name="berkas-laporan-kemajuan"
-                                            id="berkas-laporan-kemajuan" aria-describedby="inputGroupFileAddon03"
-                                            accept="application/pdf">
+                                    <div class="form-group">
+                                        <label for="laporan-kemajuan" class="">{{ __('Berkas Laporan kemajuan') }}</label><span
+                                            class="red-str">*</span>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
+                                                        aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" id="laporan-kemajuan"
+                                                    for="berkas-laporan-kemajuan">Upload Berkas</label>
+                                                <input type="file" class="custom-file-input" name="berkas-laporan-kemajuan"
+                                                    id="berkas-laporan-kemajuan" aria-describedby="inputGroupFileAddon03"
+                                                    accept="application/pdf">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div>
+                                        Dowload Template Laporan Rekapitulasi <a href="/download/template-laporan-rekapitulasi">disini</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="laporan-rekapitulasi" class="">{{ __('Berkas Laporan rekapitulasi') }}</label><span
+                                            class="red-str">*</span>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
+                                                        aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <div class="custom-file">
+                                                <label class="custom-file-label" id="laporan-rekapitulasi"
+                                                    for="berkas-laporan-rekapitulasi">Upload Berkas</label>
+                                                <input type="file" class="custom-file-input" name="berkas-laporan-rekapitulasi"
+                                                    id="berkas-laporan-rekapitulasi" aria-describedby="inputGroupFileAddon03"
+                                                    accept="application/pdf">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="laporan-rekapitulasi" class="">{{ __('Berkas Laporan rekapitulasi') }}</label><span
-                                    class="red-str">*</span>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload"
-                                                aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                    <div class="custom-file">
-                                        <label class="custom-file-label" id="laporan-rekapitulasi"
-                                            for="berkas-laporan-rekapitulasi">Upload Berkas</label>
-                                        <input type="file" class="custom-file-input" name="berkas-laporan-rekapitulasi"
-                                            id="berkas-laporan-rekapitulasi" aria-describedby="inputGroupFileAddon03"
-                                            accept="application/pdf">
-                                    </div>
-                                </div>
-                            </div>
+                           
+                           
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="submitbtn btn btn-primary">Submit</button>

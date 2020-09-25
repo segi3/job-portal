@@ -18,7 +18,9 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                     <li class="breadcrumb-item active">IYT</li>
-                    <li class="breadcrumb-item active">Submit-Laporan-Bulanan</li>
+                    <li class="breadcrumb-item active">{{ $data_kelompok->nama_kelompok }}</li>
+                    <li class="breadcrumb-item active">Laporan-Bulanan</li>
+                    <li class="breadcrumb-item active">{{ $laporan->bulan }}-{{ $laporan->tahun }}</li>
                 </ol>
             </div>
         </div>
@@ -111,19 +113,19 @@
                                     <div class="form-group">
                                         <label for="1alabel">Bagaimanakah struktur usaha?</label>
                                         <p>
-                                            {{ $laporan->indikator_1a }}
+                                            {!! nl2br(e($laporan->indikator_1a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="1b">Bagaimanakah peran masing-masing bagian?</label>
                                         <p>
-                                            {{ $laporan->indikator_1b }}
+                                            {!! nl2br(e($laporan->indikator_1b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="1c">Apa sajakah kesepakatan yang telah dibuat?</label>
                                         <p>
-                                            {{ $laporan->indikator_1c }}
+                                            {!! nl2br(e($laporan->indikator_1c)) !!}
                                         </p>                                    
                                     </div>
                                 </div>
@@ -146,19 +148,19 @@
                                     <div class="form-group">
                                         <label for="2a">Seberapa banyak kita membeli stok?</label>
                                         <p>
-                                            {{ $laporan->indikator_2a }}
+                                            {!! nl2br(e($laporan->indikator_2a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="2b">Bagaimana membeli stok bahan baku ketika diawal usaha?</label>
                                         <p>
-                                            {{ $laporan->indikator_2b }}
+                                            {!! nl2br(e($laporan->indikator_2b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="2c">Hal apa sajakah yang perlu dipertimbangkan?</label>
                                         <p>
-                                            {{ $laporan->indikator_2c }}
+                                            {!! nl2br(e($laporan->indikator_2c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -179,19 +181,19 @@
                                     <div class="form-group">
                                         <label for="3a">Siapakah yg sebaiknya diawal melakukan proses produksi?</label>
                                         <p>
-                                            {{ $laporan->indikator_3a }}
+                                            {!! nl2br(e($laporan->indikator_3a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="3b">Bagaimana membuat proses produksi efisien?</label>
                                         <p>
-                                            {{ $laporan->indikator_3b }}
+                                            {!! nl2br(e($laporan->indikator_3b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="3c">Apakah alat produksi mutlak harus dimiliki diawal usaha?</label>
                                         <p>
-                                            {{ $laporan->indikator_3c }}
+                                            {!! nl2br(e($laporan->indikator_3c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -212,19 +214,19 @@
                                     <div class="form-group">
                                         <label for="4a">Bagaimana distribusi bahan baku ke rumah produksi?</label>
                                         <p>
-                                            {{ $laporan->indikator_4a }}
+                                            {!! nl2br(e($laporan->indikator_4a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="4b">Bagaimana strategi distribusi ke konsumen (delivery order)?</label>
                                         <p>
-                                            {{ $laporan->indikator_4b }}
+                                            {!! nl2br(e($laporan->indikator_4b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="4c">Berapa minimum produk bisa diantar?</label>
                                         <p>
-                                            {{ $laporan->indikator_4c }}
+                                            {!! nl2br(e($laporan->indikator_4c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -246,19 +248,19 @@
                                     <div class="form-group">
                                         <label for="5a">Apa sajakah strategi marketing yang dilakukan?</label>
                                         <p>
-                                            {{ $laporan->indikator_5a }}
+                                            {!! nl2br(e($laporan->indikator_5a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="5b">Berapa budget marketing tiap bulan?</label>
                                         <p>
-                                            {{ $laporan->indikator_5b }}
+                                            {!! nl2br(e($laporan->indikator_5b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="5c">Bagaimana mengukur keberhasilan marketing yang dilakukan?</label>
                                         <p>
-                                            {{ $laporan->indikator_5c }}
+                                            {!! nl2br(e($laporan->indikator_5c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -278,19 +280,19 @@
                                     <div class="form-group">
                                         <label for="6a">Apa yang dilakukan kalau ada konsumen marah?</label>
                                         <p>
-                                            {{ $laporan->indikator_6a }}
+                                            {!! nl2br(e($laporan->indikator_6a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="6b">Bagaimana mengetahui tingkat kepuasan konsumen?</label>
                                         <p>
-                                            {{ $laporan->indikator_6b }}
+                                            {!! nl2br(e($laporan->indikator_6b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="6c">Pelayanan apa yang diberikan setelah barang terjual?</label>
                                         <p>
-                                            {{ $laporan->indikator_6c }}
+                                            {!! nl2br(e($laporan->indikator_6c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -311,19 +313,19 @@
                                     <div class="form-group">
                                         <label for="7a">Seperti apakah program pengembangan produk?</label>
                                         <p>
-                                            {{ $laporan->indikator_7a }}
+                                            {!! nl2br(e($laporan->indikator_7a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="7b">Apa yang menjadi pertimbangan arah RnD?</label>
                                         <p>
-                                            {{ $laporan->indikator_7b }}
+                                            {!! nl2br(e($laporan->indikator_7b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="7c">Siapakah yang melakukan program RnD?</label>
                                         <p>
-                                            {{ $laporan->indikator_7c }}
+                                            {!! nl2br(e($laporan->indikator_7c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -343,19 +345,19 @@
                                     <div class="form-group">
                                         <label for="8a">Berapa biaya yang digunakan untuk start up?</label>
                                         <p>
-                                            {{ $laporan->indikator_8a }}
+                                            {!! nl2br(e($laporan->indikator_8a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="8b">Barang-barang apa saja yang dibeli saat start up?</label>
                                         <p>
-                                            {{ $laporan->indikator_8b }}
+                                            {!! nl2br(e($laporan->indikator_8b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="8c">Bagaimana cara menghemat biaya start up?</label>
                                         <p>
-                                            {{ $laporan->indikator_8c }}
+                                            {!! nl2br(e($laporan->indikator_8c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -377,19 +379,19 @@
                                     <div class="form-group">
                                         <label for="9a">Dimanakah proses produksi berjalan saat diawal?</label>
                                         <p>
-                                            {{ $laporan->indikator_9a }}
+                                            {!! nl2br(e($laporan->indikator_9a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="9b">Apakah perlu kita memilih posisi strategis?</label>
                                         <p>
-                                            {{ $laporan->indikator_9b }}
+                                            {!! nl2br(e($laporan->indikator_9b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="9c">Apa pertimbangan memilih lokasi?</label>
                                         <p>
-                                            {{ $laporan->indikator_9c }}
+                                            {!! nl2br(e($laporan->indikator_9c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -412,19 +414,19 @@
                                     <div class="form-group">
                                         <label for="10a">Bagaimanakah format pencatatan keuangan yang dilakukan?</label>
                                         <p>
-                                            {{ $laporan->indikator_10a }}
+                                            {!! nl2br(e($laporan->indikator_10a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="10b">Apa sajakah yang harus dicatat?</label>
                                         <p>
-                                            {{ $laporan->indikator_10b }}
+                                            {!! nl2br(e($laporan->indikator_10b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="10c">Bagaimana mengurangi faktor resiko, pencatatan tidak sama dengan barang yang terjual? </label>
                                         <p>
-                                            {{ $laporan->indikator_10c }}
+                                            {!! nl2br(e($laporan->indikator_10c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -444,19 +446,19 @@
                                     <div class="form-group">
                                         <label for="11a">Apa alasan memilih brand saat ini?</label>
                                         <p>
-                                            {{ $laporan->indikator_11a }}
+                                            {!! nl2br(e($laporan->indikator_11a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="11b">Apakah tips memilih logo yang tepat?</label>
                                         <p>
-                                            {{ $laporan->indikator_11b }}
+                                            {!! nl2br(e($laporan->indikator_11b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="11c">Apa tagline-nya? Dan apa pengaruhnya dengan positioning?</label>
                                         <p>
-                                            {{ $laporan->indikator_11c }}
+                                            {!! nl2br(e($laporan->indikator_11c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -478,19 +480,19 @@
                                     <div class="form-group">
                                         <label for="12a">Bagaimana cara merekrut karyawan?</label>
                                         <p>
-                                            {{ $laporan->indikator_12a }}
+                                            {!! nl2br(e($laporan->indikator_12a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="12b">Bagaimana cara perhitungan gaji karyawan diawal?</label>
                                         <p>
-                                            {{ $laporan->indikator_12b }}
+                                            {!! nl2br(e($laporan->indikator_12b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="12c">Bagaimana cara mengontrol karyawan? </label>
                                         <p>
-                                            {{ $laporan->indikator_12c }}
+                                            {!! nl2br(e($laporan->indikator_12c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -510,19 +512,19 @@
                                     <div class="form-group">
                                         <label for="13a">Bagaimana cara menentukan harga jual?</label>
                                         <p>
-                                            {{ $laporan->indikator_13a }}
+                                            {!! nl2br(e($laporan->indikator_13a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="13b">Seberapa besar profit yang bisa diambil?</label>
                                         <p>
-                                            {{ $laporan->indikator_13b }}
+                                            {!! nl2br(e($laporan->indikator_13b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="13c">Apabila ada pesaing dengan harga murah, apa yang harus dilakukan?</label>
                                         <p>
-                                            {{ $laporan->indikator_13c }}
+                                            {!! nl2br(e($laporan->indikator_13c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -543,19 +545,19 @@
                                     <div class="form-group">
                                         <label for="14a">Apakah dari awal sudah berbadan hukum?</label>
                                         <p>
-                                            {{ $laporan->indikator_14a }}
+                                            {!! nl2br(e($laporan->indikator_14a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="14b">Apakah keuntungan & kerugian punya badan hukum?</label>
                                         <p>
-                                            {{ $laporan->indikator_14b }}
+                                            {!! nl2br(e($laporan->indikator_14b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="14c">Apakah sudah mendaftarkan merek? Bgaiamana caranya?</label>
                                         <p>
-                                            {{ $laporan->indikator_14c }}
+                                            {!! nl2br(e($laporan->indikator_14c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -575,19 +577,19 @@
                                     <div class="form-group">
                                         <label for="15a">Apa sajakah pesaing usaha ini?</label>
                                         <p>
-                                            {{ $laporan->indikator_15a }}
+                                            {!! nl2br(e($laporan->indikator_15a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="15b">Bagaiamana strategi menghadapi mereka?</label>
                                         <p>
-                                            {{ $laporan->indikator_15b }}
+                                            {!! nl2br(e($laporan->indikator_15b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="15c">Apakah pernah terjadi konflik?</label>
                                         <p>
-                                            {{ $laporan->indikator_15c }}
+                                            {!! nl2br(e($laporan->indikator_15c)) !!}
                                         </p>
                                     </div>
                                 </div>
@@ -607,19 +609,19 @@
                                     <div class="form-group">
                                         <label for="16a">Bagaimana cara menentukan gaji owner?</label>
                                         <p>
-                                            {{ $laporan->indikator_16a }}
+                                            {!! nl2br(e($laporan->indikator_16a)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="16b">Seberapa besar laba ditahan untuk keberlangsungan usaha?</label>
                                         <p>
-                                            {{ $laporan->indikator_16b }}
+                                            {!! nl2br(e($laporan->indikator_16b)) !!}
                                         </p>
                                     </div>
                                     <div class="form-group">
                                         <label for="16c">Apakah ada pengaruh kinerja antara owner yang digaji dengan tidak digaji?</label>
                                         <p>
-                                            {{ $laporan->indikator_16c }}
+                                            {!! nl2br(e($laporan->indikator_16c)) !!}
                                         </p>
                                     </div>
                                 </div>

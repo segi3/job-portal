@@ -101,7 +101,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div>
+                                Dowload Template Laporan Rekapitulasi <a href="/download/template-laporan-rekapitulasi">disini</a>
+                            </div>
                             <div class="form-group">
                                 <label for="laporan-rekapitulasi" class="">{{ __('Berkas Laporan rekapitulasi') }}</label><span
                                     class="red-str">*</span>
@@ -144,23 +146,23 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1a" id="pilihan-1a-4"
                                                     value="4.Berjalan dengan keuntungan dan terus meningkat" {{ (old('indikator-1a') == '4.Berjalan dengan keuntungan dan terus meningkat' ? "checked":"") }}>
-                                                <label for="pilihan-1a-4">[Nilai=4] Berjalan dengan keuntungan dan terus
-                                                    meningkat</label>
+                                                <label for="pilihan-1a-4"> Berjalan dengan keuntungan dan terus
+                                                    meningkat (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1a" id="pilihan-1a-3"
                                                     value="3.Berjalan dengan keuntungan stabil" {{ (old('indikator-1a') == '3.Berjalan dengan keuntungan stabil' ? "checked":"") }}>
-                                                <label for="pilihan-1a-3">[Nilai=3] Berjalan dengan keuntungan stabil</label>
+                                                <label for="pilihan-1a-3"> Berjalan dengan keuntungan stabil (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1a" id="pilihan-1a-2"
                                                     value="2.Berjalan tetapi rugi" {{ (old('indikator-1a') == '2.Berjalan tetapi rugi' ? "checked":"") }}>
-                                                <label for="pilihan-1a-2">[Nilai=2] Berjalan tetapi rugi</label>
+                                                <label for="pilihan-1a-2"> Berjalan tetapi rugi (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1a" id="pilihan-1a-1"
                                                     value="1.Tidak berjalan" {{ (old('indikator-1a') == '1.Tidak berjalan' ? "checked":"") }}>
-                                                <label for="pilihan-1a-1">[Nilai=1] Tidak berjalan</label>
+                                                <label for="pilihan-1a-1"> Tidak berjalan (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -177,22 +179,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1b" id="pilihan-1b-4"
                                                     value="4.Saya lanjutkan dan terus saya kembangkan" {{ (old('indikator-1b') == '4.Saya lanjutkan dan terus saya kembangkan' ? "checked":"") }}>
-                                                <label for="pilihan-1b-4">[Nilai=4] Saya lanjutkan dan terus saya kembangkan</label>
+                                                <label for="pilihan-1b-4"> Saya lanjutkan dan terus saya kembangkan (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1b" id="pilihan-1b-3"
                                                     value="3.Saya lanjutkan seadanya dulu" {{ (old('indikator-1b') == '3.Saya lanjutkan seadanya dulu' ? "checked":"") }}>
-                                                <label for="pilihan-1b-3">[Nilai=3] Saya lanjutkan seadanya dulu</label>
+                                                <label for="pilihan-1b-3"> Saya lanjutkan seadanya dulu (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1b" id="pilihan-1b-2"
                                                     value="2.Saya lanjutkan tetapi dengan beberapa syarat" {{ (old('indikator-1b') == '2.Saya lanjutkan tetapi dengan beberapa syarat' ? "checked":"") }}>
-                                                <label for="pilihan-1b-2">[Nilai=2] Saya lanjutkan tetapi dengan beberapa syarat</label>
+                                                <label for="pilihan-1b-2"> Saya lanjutkan tetapi dengan beberapa syarat (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-1b" id="pilihan-1b-1"
                                                     value="1.Tidak saya lanjutkan" {{ (old('indikator-1b') == '1.Tidak saya lanjutkan' ? "checked":"") }}>
-                                                <label for="pilihan-1b-1">[Nilai=1] Tidak saya lanjutkan</label>
+                                                <label for="pilihan-1b-1"> Tidak saya lanjutkan (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -219,22 +221,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2a" id="pilihan-2a-4"
                                                     value="4.Berjalan tepat sesuai dengan proposal IYT" {{ (old('indikator-2a') == '4.Berjalan tepat sesuai dengan proposal IYT' ? "checked":"") }}>
-                                                <label for="pilihan-2a-4">[Nilai=4] Berjalan tepat sesuai dengan proposal IYT</label>
+                                                <label for="pilihan-2a-4"> Berjalan tepat sesuai dengan proposal IYT (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2a" id="pilihan-2a-3"
                                                     value="3.Berjalan dengan sedikit modifikasi proposal IYT" {{ (old('indikator-2a') == '3.Berjalan dengan sedikit modifikasi proposal IYT' ? "checked":"") }}>
-                                                <label for="pilihan-2a-3">[Nilai=3] Berjalan dengan sedikit modifikasi proposal IYT</label>
+                                                <label for="pilihan-2a-3"> Berjalan dengan sedikit modifikasi proposal IYT (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2a" id="pilihan-2a-2"
                                                     value="2.Berjalan dengan banyak modifikasi proposal IYT" {{ (old('indikator-2a') == '2.Berjalan dengan banyak modifikasi proposal IYT' ? "checked":"") }}>
-                                                <label for="pilihan-2a-2">[Nilai=2] Berjalan dengan banyak modifikasi proposal IYT</label>
+                                                <label for="pilihan-2a-2"> Berjalan dengan banyak modifikasi proposal IYT (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2a" id="pilihan-2a-1"
                                                     value="1.Tidak berjalan" {{ (old('indikator-2a') == '1.Tidak berjalan' ? "checked":"") }}>
-                                                <label for="pilihan-2a-1">[Nilai=1] Tidak berjalan</label>
+                                                <label for="pilihan-2a-1"> Tidak berjalan (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -251,22 +253,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2b" id="pilihan-2b-4"
                                                     value="4.Sudah diperbaiki dan sudah ada rencana perbaikan" {{ (old('indikator-2b') == '4.Sudah diperbaiki dan sudah ada rencana perbaikan' ? "checked":"") }}>
-                                                <label for="pilihan-2b-4">[Nilai=4] Sudah diperbaiki dan sudah ada rencana perbaikan</label>
+                                                <label for="pilihan-2b-4"> Sudah diperbaiki dan sudah ada rencana perbaikan (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2b" id="pilihan-2b-3"
                                                     value="3.Akan diperbaiki dan sudah ada rencana perbaikan" {{ (old('indikator-2b') == '3.Akan diperbaiki dan sudah ada rencana perbaikan' ? "checked":"") }}>
-                                                <label for="pilihan-2b-3">[Nilai=3] Akan diperbaiki dan sudah ada rencana perbaikan</label>
+                                                <label for="pilihan-2b-3"> Akan diperbaiki dan sudah ada rencana perbaikan (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2b" id="pilihan-2b-2"
                                                     value="2.Akan dperbaiki tapi belum ada rencana perbaikan" {{ (old('indikator-2b') == '2.Akan dperbaiki tapi belum ada rencana perbaikan' ? "checked":"") }}>
-                                                <label for="pilihan-2b-2">[Nilai=2] Akan dperbaiki tapi belum ada rencana perbaikan</label>
+                                                <label for="pilihan-2b-2"> Akan dperbaiki tapi belum ada rencana perbaikan (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2b" id="pilihan-2b-1"
                                                     value="1.Tidak ada upaya perbaikan" {{ (old('indikator-2b') == '1.Tidak ada upaya perbaikan' ? "checked":"") }}>
-                                                <label for="pilihan-2b-1">[Nilai=1] Tidak ada upaya perbaikan</label>
+                                                <label for="pilihan-2b-1"> Tidak ada upaya perbaikan (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -283,22 +285,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2c" id="pilihan-2c-4"
                                                     value="4.Profit meningkat" {{ (old('indikator-2c') == '4.Profit meningkat' ? "checked":"") }}>
-                                                <label for="pilihan-2c-4">[Nilai=4] Profit meningkat</label>
+                                                <label for="pilihan-2c-4"> Profit meningkat (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2c" id="pilihan-2c-3"
                                                     value="3.Profit stabil" {{ (old('indikator-2c') == '3.Profit stabil' ? "checked":"") }}>
-                                                <label for="pilihan-2c-3">[Nilai=3] Profit stabil</label>
+                                                <label for="pilihan-2c-3"> Profit stabil (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2c" id="pilihan-2c-2"
                                                     value="2.Profit menurun" {{ (old('indikator-2c') == '2.Profit menurun' ? "checked":"") }}>
-                                                <label for="pilihan-2c-2">[Nilai=2] Profit menurun</label>
+                                                <label for="pilihan-2c-2"> Profit menurun (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2c" id="pilihan-2c-1"
                                                     value="1.Tidak profit" {{ (old('indikator-2c') == '1.Tidak profit' ? "checked":"") }}>
-                                                <label for="pilihan-2c-1">[Nilai=1] Tidak profit</label>
+                                                <label for="pilihan-2c-1"> Tidak profit (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -315,22 +317,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2d" id="pilihan-2d-4"
                                                     value="4.Sudah dilakukan pengembangan bisnis dan ada rencana pengembangan bisnis" {{ (old('indikator-2d') == '4.Sudah dilakukan pengembangan bisnis dan ada rencana pengembangan bisnis' ? "checked":"") }}>
-                                                <label for="pilihan-2d-4">[Nilai=4] Sudah dilakukan pengembangan bisnis dan ada rencana pengembangan bisnis</label>
+                                                <label for="pilihan-2d-4"> Sudah dilakukan pengembangan bisnis dan ada rencana pengembangan bisnis (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2d" id="pilihan-2d-3"
                                                     value="3.Sudah ada pengembangan bisnis tetapi tidak ada rencana pengembangan bisnis" {{ (old('indikator-2d') == '3.Sudah ada pengembangan bisnis tetapi tidak ada rencana pengembangan bisnis' ? "checked":"") }}>
-                                                <label for="pilihan-2d-3">[Nilai=3] Sudah ada pengembangan bisnis tetapi tidak ada rencana pengembangan bisnis</label>
+                                                <label for="pilihan-2d-3"> Sudah ada pengembangan bisnis tetapi tidak ada rencana pengembangan bisnis (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2d" id="pilihan-2d-2"
                                                     value="2.Belum ada pengembangan bisnis tetapi sudah ada rencana pengembangan bisnis" {{ (old('indikator-2d') == '2.Belum ada pengembangan bisnis tetapi sudah ada rencana pengembangan bisnis' ? "checked":"") }}>
-                                                <label for="pilihan-2d-2">[Nilai=2] Belum ada pengembangan bisnis tetapi sudah ada rencana pengembangan bisnis</label>
+                                                <label for="pilihan-2d-2"> Belum ada pengembangan bisnis tetapi sudah ada rencana pengembangan bisnis (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-2d" id="pilihan-2d-1"
                                                     value="1.Tidak ada rencana pengembangan bisnis" {{ (old('indikator-2d') == '1.Tidak ada rencana pengembangan bisnis' ? "checked":"") }}>
-                                                <label for="pilihan-2d-1">[Nilai=1] Tidak ada rencana pengembangan bisnis</label>
+                                                <label for="pilihan-2d-1"> Tidak ada rencana pengembangan bisnis (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -358,22 +360,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3a" id="pilihan-3a-4"
                                                     value="4.Sangat sehat dan tercatat rapih" {{ (old('indikator-3a') == '4.Sangat sehat dan tercatat rapih' ? "checked":"") }}>
-                                                <label for="pilihan-3a-4">[Nilai=4] Sangat sehat dan tercatat rapih</label>
+                                                <label for="pilihan-3a-4"> Sangat sehat dan tercatat rapih (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3a" id="pilihan-3a-3"
                                                     value="3.Sehat tetapi tidak tercatat" {{ (old('indikator-3a') == '3.Sehat tetapi tidak tercatat' ? "checked":"") }}>
-                                                <label for="pilihan-3a-3">[Nilai=3] Berjalan dengan keuntungan stabil</label>
+                                                <label for="pilihan-3a-3"> Berjalan dengan keuntungan stabil (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3a" id="pilihan-3a-2"
                                                     value="2.Tidak sehat dan tercatat rapi" {{ (old('indikator-3a') == '2.Tidak sehat dan tercatat rapi' ? "checked":"") }}>
-                                                <label for="pilihan-3a-2">[Nilai=2] Tidak sehat dan tercatat rapi</label>
+                                                <label for="pilihan-3a-2"> Tidak sehat dan tercatat rapi (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3a" id="pilihan-3a-1"
                                                     value="1.Tidak sehat dan tidak tercatat rapih" {{ (old('indikator-3a') == '1.Tidak sehat dan tidak tercatat rapih' ? "checked":"") }}>
-                                                <label for="pilihan-3a-1">[Nilai=1] Tidak sehat dan tidak tercatat rapih</label>
+                                                <label for="pilihan-3a-1"> Tidak sehat dan tidak tercatat rapih (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -390,22 +392,22 @@
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3b" id="pilihan-3b-4"
                                                     value="4.Banyak set dan terinventarisir" {{ (old('indikator-3b') == '4.Banyak set dan terinventarisir' ? "checked":"") }}>
-                                                <label for="pilihan-3b-4">[Nilai=4] Banyak set dan terinventarisir</label>
+                                                <label for="pilihan-3b-4"> Banyak set dan terinventarisir (4)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3b" id="pilihan-3b-3"
                                                     value="3.Banyak aset tetapi tidak terinventarisir" {{ (old('indikator-3b') == '3.Banyak aset tetapi tidak terinventarisir' ? "checked":"") }}>
-                                                <label for="pilihan-3b-3">[Nilai=3] Banyak aset tetapi tidak terinventarisir</label>
+                                                <label for="pilihan-3b-3"> Banyak aset tetapi tidak terinventarisir (3)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3b" id="pilihan-3b-2"
                                                     value="2.Tidak banyak aset tetapi terinventarisir" {{ (old('indikator-3b') == '2.Tidak banyak aset tetapi terinventarisir' ? "checked":"") }}>
-                                                <label for="pilihan-3b-2">[Nilai=2] Tidak banyak aset tetapi terinventarisir</label>
+                                                <label for="pilihan-3b-2"> Tidak banyak aset tetapi terinventarisir (2)</label>
                                             </div>
                                             <div class="sub-indikator">
                                                 <input type="radio" name="indikator-3b" id="pilihan-3b-1"
                                                     value="1.Tidak ada aset" {{ (old('indikator-3b') == '1.Tidak ada aset' ? "checked":"") }}>
-                                                <label for="pilihan-3b-1">[Nilai=1] Tidak ada aset</label>
+                                                <label for="pilihan-3b-1"> Tidak ada aset (1)</label>
                                             </div>
                                         </div>
                                         <div class="form-group">

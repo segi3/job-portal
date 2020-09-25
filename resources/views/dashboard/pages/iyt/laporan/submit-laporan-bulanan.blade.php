@@ -100,7 +100,9 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div>
+                                Dowload Cover Laporan Keuangan <a href="/download/cover-laporan-keuangan">disini</a>
+                            </div>
                             <div class="form-group">
                                 <label for="laporan-keuangan" class="">{{ __('Berkas Laporan Keuangan') }}</label><span class="red-str">*</span>
                                 <div class="input-group">

@@ -497,13 +497,16 @@ class DashboardIYTController extends Controller
             $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Laporan_Kemajuan/Laporan_Rekapitulasi';
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
-            LaporanKemajuan::creaate([
+            LaporanKemajuan::create([
                 'iyt_invoice' => $identifier_iyt,
                 'bulan' => $bulan_laporan,
                 'tahun' => $tahun_laporan,
                 'berkas_laporan_rekapitulasi' => $target_name_rekapitulasi,
                 'berkas_laporan_kemajuan' => $target_name_kemajuan,
             ]);
+
+            Session::flash('success', 'Laporan berhasil di submit');
+            return redirect()->back();
 
 
         }catch(\Illuminate\Database\QueryException $e)
@@ -517,5 +520,28 @@ class DashboardIYTController extends Controller
             Session::flash('error', $errorMsg);
             return redirect()->back()->withInput();
         }
+    }
+
+    public function downloadTempateCoverKeuangan()
+    {
+        // dd('download cover keuangan');
+
+        $file = public_path('data_files/Student/IYT/COVER-LAP-KEUANGAN.docx');
+        return response()->download($file, 'COVER LAPORAN KEUANGAN.docx');
+
+    }
+
+    public function downloadTemplateRekap()
+    {
+        // dd('download template rekapitulasi');
+
+        $file = public_path('data_files/Student/IYT/REKAPITULASI.docx');
+        return response()->download($file, 'TEMPLATE REKAPITULASI.docx');
+    }
+
+    public function downloadTemplateKemajuan()
+    {
+        $file = public_path('data_files/Student/IYT/FORMAT-KEMAJUAN-6-BULAN.docx');
+        return response()->download($file, 'LAPORAN KEMAJUAN.docx');
     }
 }
