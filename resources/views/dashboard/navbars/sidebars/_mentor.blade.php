@@ -40,12 +40,12 @@
 
         <li class="nav-item has-treeview
         {{ Request::is('mentor/IYT-create-mentoring') ? "menu-open" : "" }}
-        {{ Request::is('mentor/#2') ? "menu-open" : "" }}
+        {{ Request::is('mentor/IYT-list-mentoring') ? "menu-open" : "" }}
         {{ Request::is('mentor/#3') ? "menu-open" : "" }}
         ">
             <a href="#" class="nav-link
             {{ Request::is('mentor/IYT-create-mentoring') ? "active" : "" }}
-            {{ Request::is('mentor/#2') ? "active" : "" }}
+            {{ Request::is('mentor/IYT-list-mentoring') ? "active" : "" }}
             {{ Request::is('mentor/#3') ? "active" : "" }}
             ">
             <i class="nav-icon fas fa-address-card"></i>
@@ -55,6 +55,12 @@
             </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="/mentor/IYT-list-mentoring" class="nav-link {{ Request::is('mentor/IYT-list-mentoring') ? "active" : "" }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List Jadwal</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="/mentor/IYT-create-mentoring" class="nav-link {{ Request::is('mentor/IYT-create-mentoring') ? "active" : "" }}">
                 <i class="far fa-circle nav-icon"></i>
