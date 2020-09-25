@@ -206,7 +206,6 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
     Route::get('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@getSubmitLaporanBulanan');
     Route::post('dashboard/IYT/submit-laporan-bulanan', 'DashboardIYTController@postSubmitLaporanBulanan')->name('dashboard.iyt.submit-laporan-bulanan');
     Route::get('dashboard/IYT/notulensi', 'IytMentoringController@showIYTNotulensi');
-    Route::put('dashboard/IYT-notulensi/{id}','IytMentoringController@postNotulensi')->name('iyt.postNotulensi');
 
     Route::get('dashboard/IYT/submit-kontrol-bulanan', 'DashboardIYTController@getSubmitKontrolBulanan');
     Route::post('dashboard/IYT/submit-kontrol-bulanan', 'DashboardIYTController@postSubmitKontrolBulanan')->name('dashboard.iyt.submit-kontrol-bulanan');
@@ -219,10 +218,12 @@ Route::group(['middleware' => 'LoginCheck', 'StudentCheck', 'IYTCheck'], functio
 Route::group(['middleware' => 'LoginCheck', 'IytMentorCheck'], function(){
     Route::get('dashboard/IYT/lihat-laporan-bulanan/{id}', 'IytMentoringController@getLaporanBulanan');
     Route::get('dashboard/IYT/lihat-kontrol-bulanan/{id}', 'IytMentoringController@getKontrolBulanan');
-    
+
     Route::get('download/cover-laporan-keuangan', 'DashboardIYTController@downloadTempateCoverKeuangan');
     Route::get('download/template-laporan-rekapitulasi', 'DashboardIYTController@downloadTemplateRekap');
     Route::get('download/template-laporan-kemajuan', 'DashboardIYTController@downloadTemplateKemajuan');
+
+
 });
 
 
@@ -350,7 +351,11 @@ Route::group(['middleware' => 'LoginCheck', 'MentorCheck'], function(){
     Route::get('mentor/list-peserta-IYT/detail/{id}', 'IytMentoringController@showDetailPeserta')->name('mentor.detail-peserta');
     Route::get('/download-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@downloadDokumentasi')->name('iyt.mentoring.download.dokumentasi');
     Route::put('/upload-dokumentasi-mentoring/{idmentoring}', 'IytMentoringController@uploadDokumentasi')->name('iyt.mentoring.upload.dokumentasi');
-
+    Route::get('/download-laporan-bulanan/{name}', 'IytMentoringController@downloadLaporanBulanan')->name('download.iyt.laporan.bulanan');
+    Route::get('/download-laporan-kontrol-bulanan-dokumentasi/{name}', 'IytMentoringController@downloadLaporanKontrolDokumentasi')->name('download.iyt.laporan.kontrol.dokumentasi');
+    Route::get('/download-laporan-kontrol-bulanan-rekapitulasi/{name}', 'IytMentoringController@downloadLaporanKontrolRekapitulasi')->name('download.iyt.laporan.kontrol.rekapitulasi');
+    Route::get('/download-laporan-kemajuan/{name}', 'IytMentoringController@downloadLaporanKemajuanKemajuan')->name('download.iyt.laporan.kemajuan.kemajuan');
+    Route::get('/download-laporan-kemajuan-rekapitulasi/{name}', 'IytMentoringController@downloadLaporanKemajuanRekapitulasi')->name('download.iyt.laporan.kemajuan.rekapitulasi');
     // * update laporan kontrol bulanan
     Route::put('dashboard/mentor/tambah-rekomendasi-kontrol-bulanan', 'IytMentoringController@updateKontrolBulanan')->name('laporan.kontrol-bulanan.update');
 

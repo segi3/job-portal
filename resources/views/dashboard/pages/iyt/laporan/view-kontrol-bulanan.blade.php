@@ -82,7 +82,7 @@
                                         laporan untuk : bulan {{ $laporan->bulan }} tahun {{ $laporan->tahun }}
                                     </div>
                                     <div>
-                                        laporan rekapitulasi : <a href="#">link download berkas</a>
+                                        laporan rekapitulasi : <a href="{{route('download.iyt.laporan.kontrol.rekapitulasi',$laporan->berkas_laporan_rekapitulasi)}}">Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <hr class="divider">
@@ -280,14 +280,14 @@
                                 <div class="indikator">
                                     <div class="penilaian">
                                         <p>
-                                            <a href="#">Link download file</a>
+                                            <a href="{{route('download.iyt.laporan.kontrol.dokumentasi',$laporan->berkas_laporan_dokumentasi)}}">Download</a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                     <form method="POST" role="form" id="quickForm" action="{{ route('laporan.kontrol-bulanan.update') }}">
                         {{ csrf_field() }}
                         {{ method_field('put') }}
-                        
+
                         <div class="card">
 
                             <div class="card-header">
@@ -330,7 +330,7 @@
                                             </div>
                                         </div>
                                         <div class="konten-review">
-                                            
+
                                             <div class="komentar-judul">
                                                 Alasan Reviewer:
                                             </div>
@@ -346,7 +346,7 @@
                                                         Team work
                                                     </label>
                                                 </div>
-        
+
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="Ketua tidak mendukung" id="cb-2"
                                                         name="alasan_reviewer[]"
@@ -358,7 +358,7 @@
                                                         Ketua tidak mendukung
                                                     </label>
                                                 </div>
-        
+
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="Sulit mengatur waktu" id="cb-3"
                                                         name="alasan_reviewer[]"
@@ -370,7 +370,7 @@
                                                         Sulit mengatur waktu
                                                     </label>
                                                 </div>
-        
+
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="Tidak ada bimbingan" id="cb-4"
                                                         name="alasan_reviewer[]"
@@ -382,7 +382,7 @@
                                                         Tidak ada bimbingan
                                                     </label>
                                                 </div>
-        
+
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="Tidak ada semangat" id="cb-5"
                                                         name="alasan_reviewer[]"
@@ -394,7 +394,7 @@
                                                         Tidak ada semangat
                                                     </label>
                                                 </div>
-        
+
                                                 <div class="form-group" style="margin-top: 25px;">
                                                     <label for="textarea-alasan">Alasan lain:</label>
                                                     <textarea type="text" name="alasan_reviewer[]" class="form-control" id="textarea-alasan"
@@ -402,8 +402,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
-                                    
+
+
                                         <input type="hidden" name="laporan_id" value="{{ $laporan->id }}" />
 
                                         <div>
@@ -436,9 +436,9 @@
                                 <div class="col-lg-12">
                                     <div>
                                         <span class="komentar-judul">
-                                            Rekomendasi Reviewer: 
+                                            Rekomendasi Reviewer:
                                         </span>
-                                        
+
                                         @if( $laporan->rekomendasi_reviewer == "lanjut" )
                                             <span>Lanjut</span>
                                         @elseif( $laporan->rekomendasi_reviewer == "tidak_lanjut" )

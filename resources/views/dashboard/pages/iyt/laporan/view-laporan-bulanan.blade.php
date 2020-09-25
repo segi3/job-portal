@@ -83,7 +83,7 @@
                                         laporan untuk : bulan {{ $laporan->bulan }} tahun {{ $laporan->tahun }}
                                     </div>
                                     <div>
-                                        laporan keuangan : <a href="#">link download berkas</a>
+                                        laporan keuangan : <a href="{{route('download.iyt.laporan.bulanan',$laporan->berkas_laporan_keuangan)}}">Download berkas</a>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                         <label for="1c">Apa sajakah kesepakatan yang telah dibuat?</label>
                                         <p>
                                             {!! nl2br(e($laporan->indikator_1c)) !!}
-                                        </p>                                    
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -629,7 +629,7 @@
 
                         </div>
                         <div class="card-footer">
-                            
+
                         </div>
                     </div>
                 </div>

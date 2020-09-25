@@ -22,13 +22,13 @@ use Session;
 
 class DashboardIYTController extends Controller
 {
-    public function getHomeIYT(Request $request) 
+    public function getHomeIYT(Request $request)
     {
         $id = $request->session()->get('id');
         $iyt = DB::table('investasi_iyt')->where('student_id', '=', $id)->first();
         $getyear = explode("-", $iyt->invoice_iyt);
         $year = $getyear[0];
-        
+
         return view('dashboard.pages.iyt.home')->with('iyt', $iyt)->with('year', $year);
     }
 
@@ -65,7 +65,7 @@ class DashboardIYTController extends Controller
             }
             else{
                 return view('dashboard.pages.student.register-iyt-not-avail');
-            }   
+            }
         }
     }
 
@@ -79,7 +79,7 @@ class DashboardIYTController extends Controller
         ->where('investasi_iyt.student_id', '=', $id)
         ->select('*', 'investasi_iyt.id as iyt_id', 'investasi_iyt.status as status_iyt')
         ->first();
-        
+
         // dd($investee);
 
         if ($IYT){
@@ -90,7 +90,7 @@ class DashboardIYTController extends Controller
             {
                 $iyt = DB::table('investasi_iyt')->where('id', '=', $IYT->iyt_id)->first();
                 return view('dashboard.pages.student.register-iyt-status')->with('iyt', $iyt);
-            }       
+            }
         }
         else{
             return redirect('dashboard/register-IYT');
@@ -173,7 +173,7 @@ class DashboardIYTController extends Controller
             // $berkas->move($tujuan,$filename);
             $berkaspropbisnis->move($tujuaninv,$filenameinv);
             $berkaspitchdesk->move($tujuankeu,$filenamekeu);
-            
+
             $now = Carbon::now();
             $year = $now->year;
             $no = $this->_nextInvoiceIYTNumber();
@@ -224,12 +224,12 @@ class DashboardIYTController extends Controller
             'tahun-laporan' => 'required',
             'berkas-laporan-keuangan' => 'required|mimes:pdf',
         ]);
-        
+
         if ($validator->fails()) {
             Session::flash('error', $validator->errors()->all());
             return redirect()->back()->withInput();
         }
-        
+
         $identifier_iyt = $request->session()->get('invoice');
         $bulan_laporan = $request->input('bulan-laporan');
         $tahun_laporan = $request->input('tahun-laporan');
@@ -368,7 +368,7 @@ class DashboardIYTController extends Controller
             $target_name_rekapitulasi = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-rekapitulasi.' . $berkas_ext;
             //  * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-rekapitulasi.pdf
 
-            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan-Rekaptulasi';
+            $target_location_rekapitulasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Rekapitulasi';
             $berkas_laporan_rekapitulasi->move($target_location_rekapitulasi, $target_name_rekapitulasi);
 
             if($request->file('berkas-dokumentasi')) {
@@ -378,7 +378,7 @@ class DashboardIYTController extends Controller
                 $target_name_dokumentasi = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-laporan-dokumentasi.' . $berkas_ext_dokumentasi;
                 // * format nama file = [identifier IYT]-[bulan]-[tahun]-laporan-dokumentasi.pdf
 
-                $target_location_dokumentasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan-Dokumentasi';
+                $target_location_dokumentasi = 'data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Dokumentasi';
                 $berkas_laporan_dokumentasi->move($target_location_dokumentasi, $target_name_dokumentasi);
 
             }else{
@@ -435,7 +435,7 @@ class DashboardIYTController extends Controller
 
             $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
             $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
-            $errorMsg[3] = $e->errorInfo[2]; 
+            $errorMsg[3] = $e->errorInfo[2];
             // dd($e);
             Session::flash('error', $errorMsg);
             return redirect()->back()->withInput();;
@@ -461,7 +461,7 @@ class DashboardIYTController extends Controller
 
     public function postSubmitLaporanKemajuan(Request $request)
     {
-        
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
@@ -515,7 +515,7 @@ class DashboardIYTController extends Controller
 
             $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
             $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
-            // $errorMsg[3] = $e->errorInfo[2]; 
+            // $errorMsg[3] = $e->errorInfo[2];
             // dd($e);
             Session::flash('error', $errorMsg);
             return redirect()->back()->withInput();
@@ -544,4 +544,6 @@ class DashboardIYTController extends Controller
         $file = public_path('data_files/Student/IYT/FORMAT-KEMAJUAN-6-BULAN.docx');
         return response()->download($file, 'LAPORAN KEMAJUAN.docx');
     }
+
+
 }

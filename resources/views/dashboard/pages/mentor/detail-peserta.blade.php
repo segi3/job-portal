@@ -124,7 +124,7 @@
                             <tbody>
 
                             @foreach($mentorings as $mentoring)
-                                <tr>       
+                                <tr>
                                     <td>{{ $mentoring->tgl_mentoring }}</td>
                                     <td>{{ $mentoring->name }}</td>
                                     <td>{{ $mentoring->judul }}</td>
@@ -154,7 +154,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>{{ $mentoring->notulensi }}</p>
-                                                    
+
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>{{ $mentoring->komentar }}</p>
-                                                    
+
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -190,7 +190,7 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
-                                        
+
                                     </td>
                                     <td>
                                         @if ( $mentoring->komentar === 'Belum ada Komentar')
@@ -215,7 +215,7 @@
                                                                     <button style="margin-top: 5px;" type="submit" class="submitbtn btn btn-primary">Submit</button>
                                                                     <!-- <input type="submit" value="Submit"> -->
                                                             </form>
-                                                            
+
                                                         </div>
                                                         <div class="modal-footer justify-content-between">
                                                             <!-- <button onclick="form_submit1()" type="submit" class="submitbtn btn btn-primary">Submit</button>
@@ -265,7 +265,7 @@
                     <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
                         {{$mentorings->links()}}
-                        
+
                         {{-- <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -293,7 +293,7 @@
                             <tbody>
 
                             @foreach($progress as $progres)
-                                <tr>       
+                                <tr>
                                     <td>{{ $progres->created_at }}</td>
                                     @if( $progres->bulan == 1)
                                         <td>Januari - {{ $progres->tahun }}</td>
@@ -314,7 +314,7 @@
                                     @elseif( $progres->bulan == 9)
                                         <td>September - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 10)
-                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                        <td>Oktober - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 11)
                                         <td>November - {{ $progres->tahun }}</td>
                                     @else
@@ -324,7 +324,7 @@
                                         <a href="#"></a>
                                     </td>
                                     <td>
-                                        <a href="#"></a>
+                                        <a href='{{route('download.iyt.laporan.bulanan',$progres->berkas_laporan_keuangan)}}'>Download</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -346,7 +346,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="m-0">Tabel Laporan Bulanan</h5>
+                        <h5 class="m-0">Tabel Laporan Kontrol Bulanan</h5>
                     </div>
                     <div class="card-body">
                     <table class="table table-bordered table-responsive-sm">
@@ -355,13 +355,14 @@
                                 <th>Tanggal Submit</th>
                                 <th>Laporan Bulan</th>
                                 <th>Isi Laporan</th>
-                                <th>Berkas Laporan Keuangan</th>
+                                <th>Berkas Laporan Rekapitulasi</th>
+                                <th>Berkas Laporan Dokumentasi</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             @foreach($kontrol as $progres)
-                                <tr>       
+                                <tr>
                                     <td>{{ $progres->created_at }}</td>
                                     @if( $progres->bulan == 1)
                                         <td>Januari - {{ $progres->tahun }}</td>
@@ -382,7 +383,7 @@
                                     @elseif( $progres->bulan == 9)
                                         <td>September - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 10)
-                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                        <td>Oktober - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 11)
                                         <td>November - {{ $progres->tahun }}</td>
                                     @else
@@ -392,7 +393,12 @@
                                         <a href="#"></a>
                                     </td>
                                     <td>
-                                        <a href="#"></a>
+                                        <a href='{{route('download.iyt.laporan.kontrol.rekapitulasi',$progres->berkas_laporan_rekapitulasi)}}'>Download</a>
+
+                                    </td>
+                                    <td>
+                                        <a href='{{route('download.iyt.laporan.kontrol.dokumentasi',$progres->berkas_laporan_dokumentasi)}}'>Download</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -422,14 +428,14 @@
                             <tr>
                                 <th>Tanggal Submit</th>
                                 <th>Laporan Bulan</th>
-                                <th>Isi Laporan</th>
+                                <th>Berkas Laporan Kemajuan</th>
                                 <th>Berkas Laporan Rekapitulasi</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             @foreach($kemajuan as $progres)
-                                <tr>       
+                                <tr>
                                     <td>{{ $progres->created_at }}</td>
                                     @if( $progres->bulan == 1)
                                         <td>Januari - {{ $progres->tahun }}</td>
@@ -450,17 +456,17 @@
                                     @elseif( $progres->bulan == 9)
                                         <td>September - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 10)
-                                        <td>Oktober - {{ $progres->tahun }}</td>    
+                                        <td>Oktober - {{ $progres->tahun }}</td>
                                     @elseif( $progres->bulan == 11)
                                         <td>November - {{ $progres->tahun }}</td>
                                     @else
                                         <td>Desember - {{ $progres->tahun }}</td>
                                     @endif
                                     <td>
-                                        <a href="#"></a>
+                                        <a href="{{route("download.iyt.laporan.kemajuan.kemajuan",$progres->berkas_laporan_kemajuan)}}">Download</a>
                                     </td>
                                     <td>
-                                        <a href="#"></a>
+                                        <a href="{{route("download.iyt.laporan.kemajuan.rekapitulasi",$progres->berkas_laporan_rekapitulasi)}}">Download</a>
                                     </td>
                                 </tr>
                             @endforeach

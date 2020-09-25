@@ -108,7 +108,7 @@ class IytMentoringController extends Controller
         ->first();
         $file = public_path('data_files/Student/IYT/Mentoring/Dokumentasi/'.$berkas_db->dokumentasi);
         return response()->download($file, $berkas_db->dokumentasi);
-        
+
     }
 
     public function uploadDokumentasi($idmentoring, Request $request){
@@ -153,7 +153,7 @@ class IytMentoringController extends Controller
 
     public function showDetailPeserta($id, Request $request)
     {
-        
+
         $iyt= DB::table('investasi_iyt')
                     ->join('i_y_t_batches','i_y_t_batches.id','=','investasi_iyt.batch_id')
                     ->select('investasi_iyt.*','i_y_t_batches.batch')
@@ -172,13 +172,13 @@ class IytMentoringController extends Controller
                     ->where('mentors.id','=', $ment_id)
                     ->paginate(10, ['*'], 'mentorings');
         // $mentorings->setPageName('mentorings_page');
-        
+
         $progress =  DB::table('laporan_bulanan')
                     ->select('*')
                     ->where('iyt_invoice','=',$iyt->invoice_iyt)
                     ->paginate(10, ['*'], 'laporan_bulanan');
         // $progress->setPageName('progress_page');
-        
+
         $kontrol =  DB::table('laporan_kontrol_bulanan')
                     ->select('*')
                     ->where('iyt_invoice','=',$iyt->invoice_iyt)
@@ -199,7 +199,7 @@ class IytMentoringController extends Controller
         $validator = Validator::make($input, [
             'komentar'  => 'required|max:1000',
         ]);
-        
+
         if ($validator->fails()) {
             Session::flash('error', $validator->errors());
             return redirect()->back()->withInput();
@@ -230,7 +230,7 @@ class IytMentoringController extends Controller
         $validator = Validator::make($input, [
             'notulensi'  => 'required|max:1000',
         ]);
-        
+
         if ($validator->fails()) {
             Session::flash('error', $validator->errors());
             return redirect()->back()->withInput();
@@ -260,7 +260,7 @@ class IytMentoringController extends Controller
         // $validator = Validator::make($input, [
         //     'komentar'  => 'required|max:255',
         // ]);
-        
+
         // if ($validator->fails()) {
         //     Session::flash('error', $validator->errors());
         //     return redirect()->back()->withInput();
@@ -335,11 +335,11 @@ class IytMentoringController extends Controller
         $where_iyt = [
             'investasi_iyt.invoice_iyt' => $progres_bulanan->iyt_invoice
         ];
-        
+
         $kelompok_iyt = DB::table('investasi_iyt')
                         ->where($where_iyt)
                         ->first();
-        
+
 
         // dd($kelompok_iyt);
 
@@ -365,15 +365,15 @@ class IytMentoringController extends Controller
         // dd($kontrol_bulanan->alasan_reviewer);
 
         // dd($kontrol_bulanan);
-        
+
         $where_iyt = [
             'investasi_iyt.invoice_iyt' => $kontrol_bulanan->iyt_invoice
         ];
-        
+
         $kelompok_iyt = DB::table('investasi_iyt')
                         ->where($where_iyt)
                         ->first();
-        
+
         $where_mentor = [
             'mentors.id' => $kontrol_bulanan->mentor_id
         ];
@@ -381,7 +381,7 @@ class IytMentoringController extends Controller
         $mentor = DB::table('mentors')->where($where_mentor)->first();
 
         // dd($mentor);
-        
+
         return view('dashboard.pages.iyt.laporan.view-kontrol-bulanan')
                 ->with('laporan', $kontrol_bulanan)
                 ->with('data_kelompok', $kelompok_iyt)
@@ -401,7 +401,7 @@ class IytMentoringController extends Controller
             }else {
                 $string_alasan = $string_alasan . $value . '|';
             }
-            
+
         };
 
         try{
@@ -422,13 +422,45 @@ class IytMentoringController extends Controller
 
             $errorMsg[1] = 'Kode error : '.$e->errorInfo[1];
             $errorMsg[2] = "Terdapat kesalahan dalam database, silahkan input ulang";
-            // $errorMsg[3] = $e->errorInfo[2]; 
+            // $errorMsg[3] = $e->errorInfo[2];
             // dd($e);
 
             Session::flash('error', $errorMsg);
             return redirect()->back()->withInput();
         }
 
-        
+
     }
+    public function downloadLaporanBulanan($namaBerkas)
+    {
+        $file = public_path('data_files/Student/IYT/Laporan/Progres_Bulanan/Laporan_Keuangan/'.$namaBerkas);
+        return response()->download($file, $namaBerkas);
+    }
+
+    public function downloadLaporanKontrolDokumentasi($namaBerkas)
+    {
+        $file = public_path('data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Dokumentasi/'.$namaBerkas);
+        return response()->download($file, $namaBerkas);
+    }
+
+    public function downloadLaporanKontrolRekapitulasi($namaBerkas)
+    {
+        $file = public_path('data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Rekapitulasi/'.$namaBerkas);
+        return response()->download($file, $namaBerkas);
+    }
+
+    public function downloadLaporanKemajuanRekapitulasi($namaBerkas)
+    {
+        $file = public_path('data_files/Student/IYT/Laporan/Laporan_Kemajuan/Laporan_Rekapitulasi/'.$namaBerkas);
+        return response()->download($file, $namaBerkas);
+    }
+
+    public function downloadLaporanKemajuanKemajuan($namaBerkas)
+    {
+        $file = public_path('data_files/Student/IYT/Laporan/Laporan_Kemajuan/'.$namaBerkas);
+        return response()->download($file, $namaBerkas);
+    }
+
+
+
 }
