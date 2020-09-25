@@ -27,7 +27,24 @@ class DashboardController extends Controller
         } elseif ($request->session()->get('role') == 'employer') {
             return view('dashboard.pages.employer.home');
         } elseif ($request->session()->get('role') == 'student') {
-            return view('dashboard.pages.student.home');
+
+            // * cek apa pernah daftar iyt atau belum
+            $id = $request->session()->get('id');
+
+            $IYT = DB::table('investasi_iyt')
+                ->leftjoin('i_y_t_batches', 'i_y_t_batches.id', 'investasi_iyt.batch_id')
+                ->where('i_y_t_batches.status', '=', '1')
+                ->where('investasi_iyt.student_id', '=', $id)
+                ->select('*', 'investasi_iyt.id as iyt_id', 'investasi_iyt.status as status_iyt')
+                ->first();
+
+            if (!$IYT) {
+                $IYT = null;
+            }
+
+            return view('dashboard.pages.student.home')->with('iyt', $IYT);
+            
+
         } else if ($request->session()->get('role') == 'guest') {
             return view ('dashboard.pages.guest.home');
         } else if ($request->session()->get('role') == 'mentor') {

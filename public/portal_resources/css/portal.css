@@ -93,6 +93,11 @@ div.end-quote div.container {
 
 
 /* * homepage iyt */
+
+.req-daftar {
+    font-size: 11px;
+    color: lightslategrey;
+}
 .w-iyt{
     background-color: rgb(1, 56, 128);
 }

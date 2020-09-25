@@ -28,6 +28,12 @@
                         maiores error sed.</p>
 
                 </div>
+                <div>
+                    <a class="boxed-btn3" href="/dashboard/IYT">Daftar ITS Youth Technopreneur!</a>
+                    <p class="req-daftar">
+                        Sebelum daftar, harus buat akun student terlebih dahulu
+                    </p>
+                </div>
             </div>
         </div>
     </div>

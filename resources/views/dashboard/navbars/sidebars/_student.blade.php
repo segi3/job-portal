@@ -155,9 +155,10 @@
                 </li>
 
                 <hr>
-                <a class="btn btn-primary" style="color:white;" href="/dashboard/investee">Investee</a><br>
+                <a class="btn btn-primary" style="color:white; margin-bottom: 10px;" href="/dashboard/investee">Investee</a>
+                @if( session('iyt') == true )
                 <a class="btn btn-primary" style="color:white;" href="/dashboard/IYT">ITS Youth Technopreneur</a>
-
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -61,7 +61,7 @@ class StudentController extends Controller
                         }
                     }
                     else{
-                        $invoice=0;
+                        $invoice = 0;
                         $isIYT = false;
                     }
 

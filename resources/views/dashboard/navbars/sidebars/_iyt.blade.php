@@ -80,6 +80,8 @@
                         </li>
                     </ul>
                 </li>
+
+                <a class="btn btn-primary" style="color:white;" href="/dashboard">Dashboard Student</a>
             </ul>
         </nav>
     </div>
