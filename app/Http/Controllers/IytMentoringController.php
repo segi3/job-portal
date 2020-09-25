@@ -151,6 +151,17 @@ class IytMentoringController extends Controller
         return view('dashboard.pages.mentor.list-peserta')->with('iyts',$iyts);
     }
 
+    public function showListMentoring()
+    {
+        $schedules= DB::table('iyt_mentorings')
+                    ->join('i_y_t_batches','i_y_t_batches.id','=','iyt_mentorings.batch_id')
+                    ->select('*')
+                    ->where('i_y_t_batches.status','=',1)
+                    ->paginate(10);
+
+        return view('dashboard.pages.mentor.list-jadwal')->with('schedules',$schedules);
+    }
+
     public function showDetailPeserta($id, Request $request)
     {
         
