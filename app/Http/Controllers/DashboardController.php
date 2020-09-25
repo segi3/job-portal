@@ -609,11 +609,17 @@ class DashboardController extends Controller
 
     public function getListAllIYT() {
 
-        $iyts = Investasi_iyt::where('investasi_iyt.status', '0')
-                ->leftjoin('students', 'students.id', 'investasi_iyt.student_id')
+        $batch = DB::table('i_y_t_batches')
+                ->select('id')
+                ->where('status','=', 1 )
+                ->first();
+        $iyts= DB::table('investasi_iyt')
+                ->join('students', 'students.id', '=','investasi_iyt.student_id')
+                ->select('investasi_iyt.*','i_y_t_batches.batch')
+                ->where('investasi_iyt.status','=','0')
+                ->where('batch_id','=', $batch->id)
                 ->select('investasi_iyt.*', 'students.email')
                 ->paginate(20);
-
         // $batch= IYTBatch::where('id',$iyts)
         return view('dashboard.pages.admins.iyt-list-all')->with('iyts', $iyts);
     }
@@ -640,8 +646,15 @@ class DashboardController extends Controller
 
     public function getListQualifyIYT()
     {
-        $iyts = Investasi_iyt::where('investasi_iyt.status', '1')
-                ->leftjoin('students', 'students.id', 'investasi_iyt.student_id')
+        $batch = DB::table('i_y_t_batches')
+                ->select('id')
+                ->where('status','=', 1 )
+                ->first();
+        $iyts= DB::table('investasi_iyt')
+                ->join('students', 'students.id', '=','investasi_iyt.student_id')
+                ->select('investasi_iyt.*','i_y_t_batches.batch')
+                ->where('investasi_iyt.status','=','1')
+                ->where('batch_id','=', $batch->id)
                 ->select('investasi_iyt.*', 'students.email')
                 ->paginate(20);
 
