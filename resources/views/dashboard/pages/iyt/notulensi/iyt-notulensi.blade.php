@@ -43,7 +43,9 @@
                                 <th>Tanggal</th>
                                 <th>Mentor</th>
                                 <th>Judul</th>
+                                <th>Link Mentoring</th>
                                 <th>Dokumentasi</th>
+                                <th>Notulensi</th>
                                 <th>Komentar</th>
                                 {{-- <th style="width: 100px;">Action</th> --}}
                             </tr>
@@ -52,13 +54,13 @@
 
                             @foreach($mentorings as $mentoring)
                                 <tr>
-                                    
                                     <td>{{ $mentoring->tgl_mentoring }}</td>
                                     <td>{{ $mentoring->name }}</td>
                                     <td>{{ $mentoring->judul }}</td>
+                                    <td>{{ $mentoring->link }}</td>
                                     <td>
                                         @if (empty($mentoring->dokumentasi))
-                                            <form action="{{ route('iyt.mentoring.upload.dokumentasi', $mentoring->mentoring_id) }}" id="uploadForm" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('iyt.mentoring.upload.dokumentasi', $mentoring->notulensi_id) }}" id="uploadForm" method="post" enctype="multipart/form-data">
                                                 {{ csrf_field() }}
                                                 {{ method_field('put') }}
 
@@ -76,7 +78,7 @@
                                                 </div>
                                             </form>
                                         @else
-                                            <form action="{{ route('iyt.mentoring.download.dokumentasi', $mentoring->mentoring_id) }}" method="get">
+                                            <form action="{{ route('iyt.mentoring.download.dokumentasi', $mentoring->notulensi_id) }}" method="get">
                                                 {{ csrf_field() }}
                                                 {{ method_field('get') }}
                                                 <button type="submit" class="btn btn-sm btn-block btn-link" style="border: 2px solid; border-radius: 40px;">Download</button>
@@ -84,11 +86,68 @@
                                         @endif
                                     </td>
                                     <td>
+                                        @if ($mentoring->notulensi === 'Belum ada Notulensi')
+                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->notulensi_id }}">
+                                               Tambah Notulensi
+                                            </button>
+                                            <div class="modal fade" id="modal2-{{ $mentoring->notulensi_id }}">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                            <h4 class="modal-title">Tambahkan notulensi</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('iyt.postNotulensi', ['id' => $mentoring->notulensi_id]) }}" method="post" id="postNotulensi">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('put') }}
+                                                                    <textarea name="notulensi" class="form-control" id="inputNotulensi"></textarea>
+                                                                    <button style="margin-top: 5px;" type="submit" class="submitbtn btn btn-primary">Submit</button>
+                                                                    <!-- <input type="submit" value="Edit"> -->
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        @else
+                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal3-{{ $mentoring->notulensi_id }}">
+                                                Notulensi
+                                            </button>
+                                            <div class="modal fade" id="modal3-{{ $mentoring->notulensi_id }}">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Notulensi Peserta</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>{{ $mentoring->notulensi }}</p>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td>
                                         {{-- td --}}
-                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->mentoring_id }}">
+                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->notulensi_id }}">
                                             Komentar
                                         </button>
-                                        <div class="modal fade" id="modal-{{ $mentoring->mentoring_id }}">
+                                        <div class="modal fade" id="modal-{{ $mentoring->notulensi_id }}">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                 <div class="modal-header">

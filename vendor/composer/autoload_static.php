@@ -511,6 +511,7 @@ class ComposerStaticInite3843aedab468e304af0920d79d013c7
         'App\\Http\\Middleware\\GuestStudentCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/GuestStudentCheck.php',
         'App\\Http\\Middleware\\IYTCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/IYTCheck.php',
         'App\\Http\\Middleware\\InvesteeCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/InvesteeCheck.php',
+        'App\\Http\\Middleware\\IytMentorCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/IytMentorCheck.php',
         'App\\Http\\Middleware\\LoginCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/LoginCheck.php',
         'App\\Http\\Middleware\\LoginTrue' => __DIR__ . '/../..' . '/app/Http/Middleware/LoginTrue.php',
         'App\\Http\\Middleware\\MentorCheck' => __DIR__ . '/../..' . '/app/Http/Middleware/MentorCheck.php',

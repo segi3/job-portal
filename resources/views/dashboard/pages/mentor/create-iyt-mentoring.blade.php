@@ -76,24 +76,9 @@
                                 required
                                 class="single-input form-control datepicker">
                         </div>
-                        @php
-                            $kelompok = DB::table('investasi_iyt')
-                            ->select('nama_kelompok','id','nama_ketua')
-                            ->get();
-                        @endphp
                         <div class="form-group">
-                            <label for="inputKelompok">{{ __('Kelompok') }}</label>
-                            <select name="kelompok" class="form-control" id="inputKelompok">
-
-                                @if ($kelompok->count()>0)
-                                @foreach ($kelompok as $kel)
-                                    <option value="{{ $kel->id }}">{{ $kel->nama_kelompok }} - {{ $kel->nama_ketua }}</option>
-                                @endforeach
-                                @else
-                                    <option value="">{{ "Belum ada Kelompok" }}</option>
-                                @endif
-
-                            </select>
+                            <label for="inputLink">{{ __('Link Mentoring') }}</label>
+                            <input type="text" name="link" class="form-control" id="inputLink" value="{{ old('link') }}" placeholder="Link Mentoring">
                         </div>
 
 

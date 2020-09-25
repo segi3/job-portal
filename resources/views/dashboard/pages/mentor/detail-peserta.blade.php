@@ -116,6 +116,7 @@
                                 <th>Mentor</th>
                                 <th>Judul</th>
                                 <th>Dokumentasi</th>
+                                <th>Notulensi</th>
                                 <th>Komentar</th>
                                 <th>Action</th>
                             </tr>
@@ -131,7 +132,7 @@
                                         @if (empty($mentoring->dokumentasi))
                                             Belum ada dokumentasi
                                         @else
-                                            <form action="{{ route('iyt.mentoring.download.dokumentasi', $mentoring->mentoring_id) }}" method="get">
+                                            <form action="{{ route('iyt.mentoring.download.dokumentasi', $mentoring->notulensi_id) }}" method="get">
                                                 {{ csrf_field() }}
                                                 {{ method_field('get') }}
                                                 <button type="submit" class="btn btn-sm btn-block btn-link" style="border: 2px solid; border-radius: 40px;">Download</button>
@@ -139,10 +140,36 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->mentoring_id }}">
+                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal3-{{ $mentoring->notulensi_id }}">
+                                            Notulensi
+                                        </button>
+                                        <div class="modal fade" id="modal3-{{ $mentoring->notulensi_id }}">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Notulensi Peserta</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>{{ $mentoring->notulensi }}</p>
+                                                    
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->notulensi_id }}">
                                             Komentar
                                         </button>
-                                        <div class="modal fade" id="modal-{{ $mentoring->mentoring_id }}">
+                                        <div class="modal fade" id="modal-{{ $mentoring->notulensi_id }}">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                 <div class="modal-header">
@@ -167,10 +194,10 @@
                                     </td>
                                     <td>
                                         @if ( $mentoring->komentar === 'Belum ada Komentar')
-                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
+                                            <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->notulensi_id }}">
                                                 Tambahkan Komentar
                                             </button>
-                                            <div class="modal fade" id="modal2-{{ $mentoring->mentoring_id }}">
+                                            <div class="modal fade" id="modal2-{{ $mentoring->notulensi_id }}">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -180,12 +207,12 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->mentoring_id]) }}" method="post" id="postComment">
+                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->notulensi_id]) }}" method="post" id="postComment">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('put') }}
-                                                                <input type="hidden" name="ids[]" value="{{$mentoring->mentoring_id}}" disabled>
+                                                                <!-- <input type="hidden" name="ids[]" value="{{$mentoring->notulensi_id}}" disabled> -->
                                                                     <textarea name="komentar" class="form-control" id="inputKomentar" placeholder="Komentar"></textarea>
-                                                                    <button type="submit" class="submitbtn btn btn-primary">Submit</button>
+                                                                    <button style="margin-top: 5px;" type="submit" class="submitbtn btn btn-primary">Submit</button>
                                                                     <!-- <input type="submit" value="Submit"> -->
                                                             </form>
                                                             
@@ -200,10 +227,10 @@
                                                 <!-- /.modal-dialog -->
                                             </div>
                                         @else
-                                            <button type="button" class="btn btn-sm btn-block btn-warning" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->mentoring_id }}">
+                                            <button type="button" class="btn btn-sm btn-block btn-warning" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->notulensi_id }}">
                                                 Edit Komentar
                                             </button>
-                                            <div class="modal fade" id="modal2-{{ $mentoring->mentoring_id }}">
+                                            <div class="modal fade" id="modal2-{{ $mentoring->notulensi_id }}">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                     <div class="modal-header">
@@ -213,11 +240,11 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->mentoring_id]) }}" method="post" id="postComment">
+                                                            <form action="{{ route('iyt.postComment', ['id' => $mentoring->notulensi_id]) }}" method="post" id="postComment">
                                                                 {{ csrf_field() }}
                                                                 {{ method_field('put') }}
                                                                     <textarea name="komentar" class="form-control" id="inputKomentar">{{ $mentoring->komentar }}</textarea>
-                                                                    <button type="submit" class="submitbtn btn btn-warning">Edit</button>
+                                                                    <button style="margin-top: 5px;" type="submit" class="submitbtn btn btn-warning">Edit</button>
                                                                     <!-- <input type="submit" value="Edit"> -->
                                                             </form>
                                                         </div>

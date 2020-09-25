@@ -51,6 +51,7 @@ return array(
     'App\\Http\\Middleware\\GuestStudentCheck' => $baseDir . '/app/Http/Middleware/GuestStudentCheck.php',
     'App\\Http\\Middleware\\IYTCheck' => $baseDir . '/app/Http/Middleware/IYTCheck.php',
     'App\\Http\\Middleware\\InvesteeCheck' => $baseDir . '/app/Http/Middleware/InvesteeCheck.php',
+    'App\\Http\\Middleware\\IytMentorCheck' => $baseDir . '/app/Http/Middleware/IytMentorCheck.php',
     'App\\Http\\Middleware\\LoginCheck' => $baseDir . '/app/Http/Middleware/LoginCheck.php',
     'App\\Http\\Middleware\\LoginTrue' => $baseDir . '/app/Http/Middleware/LoginTrue.php',
     'App\\Http\\Middleware\\MentorCheck' => $baseDir . '/app/Http/Middleware/MentorCheck.php',

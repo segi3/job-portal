@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\iyt_mentoring;
+use App\Notulensi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
@@ -29,7 +30,7 @@ class IytMentoringController extends Controller
                                 'required',
                                 'after_or_equal:' . date('d-m-Y'), // not 'now' string
                                 ],
-            'kelompok'        => 'required'
+            'link'        => 'required'
 
         ]);
 
@@ -37,15 +38,33 @@ class IytMentoringController extends Controller
             Session::flash('error', $validator->errors());
             return redirect()->back()->withInput();
         }
+        $batch = DB::table('i_y_t_batches')
+                    ->select('id')
+                    ->where('status','=', 1)
+                    ->first();
+        $iyts = DB::table('investasi_iyt')
+                    ->select('id')
+                    ->where('status','=', '1')
+                    ->where('batch_id', '=', $batch->id)
+                    ->get();
+
         try {
             $formatDate = \Carbon\Carbon::parse($request->input('tanggal'))->format('Y-m-d');
-            iyt_mentoring::create([
+            $data = iyt_mentoring::create([
                 'judul'         => $request->input('judul'),
                 'tgl_mentoring' => $formatDate,
-                'investasi_iyt_id' => $request->input('kelompok'),
+                'link'          => $request->input('link'),
+                'batch_id'      => $batch->id,
                 'mentor_id'     => $request->session()->get('id'),
-
             ]);
+            $mentoring_id = $data->id;
+            foreach($iyts as $iyt )
+            {
+                Notulensi::create([
+                    'mentoring_id'  => $mentoring_id,
+                    'iyt_id'        => $iyt->id,
+                ]);
+            }
             Session::flash('success', 'Mentoring berhasil dijadwalkan');
             // return view('dashboard.pages.mentor.create-iyt-mentoring');
             return redirect()->back();
@@ -65,10 +84,11 @@ class IytMentoringController extends Controller
     {
         $iytid=$request->session()->get('invoice');
 
-        $mentorings = DB::table('iyt_mentorings')
+        $mentorings = DB::table('notulensi')
+                    ->join('iyt_mentorings','iyt_mentorings.id','=','notulensi.mentoring_id')
                     ->join('mentors','iyt_mentorings.mentor_id','=','mentors.id')
-                    ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
-                    ->select('*','iyt_mentorings.id as mentoring_id')
+                    ->join('investasi_iyt','notulensi.iyt_id','=','investasi_iyt.id')
+                    ->select('*','notulensi.id as notulensi_id')
                     ->where('investasi_iyt.invoice_iyt','=',$iytid)
                     ->paginate(10);
 
@@ -80,10 +100,10 @@ class IytMentoringController extends Controller
     public function downloadDokumentasi($idmentoring)
     {
         $where = [
-            'iyt_mentorings.id' => $idmentoring,
+            'notulensi.id' => $idmentoring,
         ];
 
-        $berkas_db = DB::table('iyt_mentorings')
+        $berkas_db = DB::table('notulensi')
         ->where($where)
         ->first();
         $file = public_path('data_files/Student/IYT/Mentoring/Dokumentasi/'.$berkas_db->dokumentasi);
@@ -94,7 +114,7 @@ class IytMentoringController extends Controller
     public function uploadDokumentasi($idmentoring, Request $request){
         // dd($idmentoring);
         $where = [
-            'iyt_mentorings.id' => $idmentoring,
+            'notulensi.id' => $idmentoring,
         ];
 
         $this->validate($request, [
@@ -109,7 +129,7 @@ class IytMentoringController extends Controller
         // dd($filename);
         $dokumentasi->move($tujuan,$filename);
 
-        $acc = DB::table('iyt_mentorings')
+        $acc = DB::table('notulensi')
                     ->where($where)
                     ->update([
                         'dokumentasi' => $filename,
@@ -122,14 +142,16 @@ class IytMentoringController extends Controller
     public function showListPeserta()
     {
         $iyts= DB::table('investasi_iyt')
+                    ->join('i_y_t_batches','i_y_t_batches.id','=','investasi_iyt.batch_id')
                     ->select('*')
-                    ->where('status','=',1)
+                    ->where('investasi_iyt.status','=','1')
+                    ->where('i_y_t_batches.status','=',1)
                     ->paginate(10);
 
         return view('dashboard.pages.mentor.list-peserta')->with('iyts',$iyts);
     }
 
-    public function showDetailPeserta($id)
+    public function showDetailPeserta($id, Request $request)
     {
         
         $iyt= DB::table('investasi_iyt')
@@ -138,12 +160,16 @@ class IytMentoringController extends Controller
                     ->where('investasi_iyt.status','=',1)
                     ->where('investasi_iyt.id','=', $id)
                     ->first();
-        
+        $ment_id = $request->session()->get('id');
         $mentorings = DB::table('iyt_mentorings')
                     ->join('mentors','iyt_mentorings.mentor_id','=','mentors.id')
-                    ->join('investasi_iyt','iyt_mentorings.investasi_iyt_id','=','investasi_iyt.id')
-                    ->select('*','iyt_mentorings.id as mentoring_id')
-                    ->where('iyt_mentorings.investasi_iyt_id','=',$id)
+                    ->join('notulensi','iyt_mentorings.id','=','notulensi.mentoring_id')
+                    ->join('investasi_iyt','investasi_iyt.id','=','notulensi.iyt_id')
+                    ->join('i_y_t_batches', 'i_y_t_batches.id', '=','iyt_mentorings.batch_id')
+                    ->select('i_y_t_batches.*','mentors.name', 'iyt_mentorings.*', 'notulensi.*','notulensi.id as notulensi_id')
+                    ->where('notulensi.iyt_id','=',$id)
+                    ->where('i_y_t_batches.status','=',1)
+                    ->where('mentors.id','=', $ment_id)
                     ->paginate(10, ['*'], 'mentorings');
         // $mentorings->setPageName('mentorings_page');
         
@@ -171,7 +197,7 @@ class IytMentoringController extends Controller
         // dd($request->input('komentar'));
         $input = $request->all();
         $validator = Validator::make($input, [
-            'komentar'  => 'required|max:255',
+            'komentar'  => 'required|max:1000',
         ]);
         
         if ($validator->fails()) {
@@ -180,10 +206,40 @@ class IytMentoringController extends Controller
         }
         try {
             $mentor_id = $request->session()->get('id');
-            $iyt= iyt_mentoring::where('mentor_id','=',$mentor_id)->where('id','=', $id)->first();
+            $iyt= Notulensi::where('id','=', $id)->first();
             $iyt->komentar = $request->input('komentar');
             $iyt->save();
             Session::flash('success', 'Komentar berhasil ditambahkan');
+            // return view('dashboard.pages.mentor.create-iyt-mentoring');
+            return redirect()->back();
+        }
+        catch(\Illuminate\Database\QueryException $e)
+        {
+            $errorCode = $e->errorInfo[1];
+            if ($errorCode == 1062) {
+                return redirect('/');
+            }
+            Session::flash('error', $errorCode);
+            return redirect()->back();
+        }
+    }
+    public function postNotulensi(Request $request, $id)
+    {
+        // dd($request->input('komentar'));
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'notulensi'  => 'required|max:1000',
+        ]);
+        
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->back()->withInput();
+        }
+        try {
+            $iyt= Notulensi::where('id','=', $id)->first();
+            $iyt->notulensi = $request->input('notulensi');
+            $iyt->save();
+            Session::flash('success', 'Notulensi berhasil ditambahkan');
             // return view('dashboard.pages.mentor.create-iyt-mentoring');
             return redirect()->back();
         }
