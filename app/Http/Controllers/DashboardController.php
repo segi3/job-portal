@@ -13,7 +13,7 @@ use App\Seminar;
 use App\Service;
 use App\Investasi_project;
 use App\Investasi_funding;
-use App\Investasi_iyt;
+use App\Investasi_IYT;
 use App\Investee;
 use App\IYTBatch;
 
@@ -643,7 +643,7 @@ class DashboardController extends Controller
 
     public function approveIYT(Request $request, $id)
     {
-        $investasi = Investasi_iyt::find($id);
+        $investasi = Investasi_IYT::find($id);
 
         $investasi->status = 1;
         $investasi->admin_id = $request->session()->get('id');
@@ -653,7 +653,7 @@ class DashboardController extends Controller
 
     public function rejectIYT(Request $request, $id)
     {
-        $investasi = Investasi_iyt::find($id);
+        $investasi = Investasi_IYT::find($id);
         $investasi->status = 0;
         $investasi->admin_id = $request->session()->get('id');
         $investasi->save();
