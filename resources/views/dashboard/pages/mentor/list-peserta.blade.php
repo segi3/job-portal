@@ -59,7 +59,7 @@
                                         <td><span class="badge badge-primary"> {{ $iyt->kategori }} </span></td>
                                     @endif
                                     <td>
-                                        <a href="{{ url('mentor/list-peserta-IYT/detail/'.$iyt->id) }}">Halaman Detail</a>
+                                        <a href="{{ url('mentor/list-peserta-IYT/detail/'.$iyt->iyt_id) }}">Halaman Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

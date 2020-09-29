@@ -143,7 +143,7 @@ class IytMentoringController extends Controller
     {
         $iyts= DB::table('investasi_iyt')
                     ->join('i_y_t_batches','i_y_t_batches.id','=','investasi_iyt.batch_id')
-                    ->select('*')
+                    ->select('investasi_iyt.nama_ketua','investasi_iyt.nama_kelompok','investasi_iyt.kategori','investasi_iyt.id as iyt_id')
                     ->where('investasi_iyt.status','=','1')
                     ->where('i_y_t_batches.status','=',1)
                     ->paginate(10);
