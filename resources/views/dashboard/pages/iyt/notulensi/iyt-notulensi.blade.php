@@ -57,7 +57,7 @@
                                     <td>{{ $mentoring->tgl_mentoring }}</td>
                                     <td>{{ $mentoring->name }}</td>
                                     <td>{{ $mentoring->judul }}</td>
-                                    <td>{{ $mentoring->link }}</td>
+                                    <td><td><a href="http://{{$mentoring->link}}" target="_blank">Link</a></td></td>
                                     <td>
                                         @if (empty($mentoring->dokumentasi))
                                             <form action="{{ route('iyt.mentoring.upload.dokumentasi', $mentoring->notulensi_id) }}" id="uploadForm" method="post" enctype="multipart/form-data">

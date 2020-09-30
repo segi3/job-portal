@@ -44,7 +44,7 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Status</th>
-                            <th style="width: 150px;">Action</th>
+                            <th style="width: 225px;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -60,19 +60,33 @@
                                     <td><span class="badge badge-danger" style="font-size:15px">Non-Active</span></td>
                                 @endif
                                 <td>
-                                @if( $batch->status == 1)
-                                    <form action="{{ route('batch.non-active', $batch->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('put') }}
-                                        <button type="submit" class="btn btn-sm btn-danger"> Change to Non-Active</button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('batch.active', $batch->id) }}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('put') }}
-                                        <button type="submit" class="btn btn-sm btn-success"> Change to Active</button>
-                                    </form>
-                                @endif
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                        @if( $batch->status == 1)
+                                            <form action="{{ route('batch.non-active', $batch->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-danger"> Change to Non-Active</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('batch.active', $batch->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('put') }}
+                                                <button type="submit" class="btn btn-sm btn-success"> Change to Active</button>
+                                            </form>
+                                        @endif
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <a class="btn btn-sm btn-warning" href="{{ URL::to('admin/IYT-edit-batch/'.$batch->id) }}">Edit</a>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <form action="{{ route('batch.delete', $batch->id) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('delete') }}
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

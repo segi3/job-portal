@@ -681,6 +681,17 @@ class DashboardController extends Controller
         return view('dashboard.pages.admins.iyt-create-batch');
 
     }
+
+    public function viewEditIYTBatch($id){
+        $batch = DB::table('i_y_t_batches')
+            ->where('id','=',$id)
+            ->first();
+        $startDate = \Carbon\Carbon::parse($batch->start_date)->format('d-m-Y');
+        $endDate = \Carbon\Carbon::parse($batch->end_date)->format('d-m-Y');
+        // dd($startDate, $endDate);
+        return view('dashboard.pages.admins.edit-batch')->with('batch', $batch)->with('startDate',  $startDate)->with('endDate',  $endDate);
+
+    }
     public function createIYTBatch(Request $request){
         $this->validate($request, [
             'batch'      => 'required|numeric|unique:i_y_t_batches',
@@ -729,6 +740,23 @@ class DashboardController extends Controller
             Session::flash('error', $errorMsg);
             return view('dashboard.pages.admins.iyt-create-batch');
         }
+
+    }
+
+    public function EditIYTBatch(Request $request, $id){
+        $this->validate($request, [
+            'start_date'      => 'required|date',
+            'end_date'   => 'required|date|afteror_equal:start_date',
+
+        ]);
+        $startDate = \Carbon\Carbon::parse($request->input('start_date'))->format('Y-m-d');
+        $endDate = \Carbon\Carbon::parse($request->input('end_date'))->format('Y-m-d');
+            // $formatDate = \Carbon\Carbon::parse($request->input('waktu'))->format('Y-m-d');
+        $batches = IYTBatch::find($id);
+        $batches->start_date = $startDate;
+        $batches->end_date = $endDate;
+        $batches->save();
+        return redirect('admin/list-batches');
 
     }
     public function downloadProposalBisnis($prop)
@@ -785,6 +813,14 @@ class DashboardController extends Controller
         $batches = IYTBatch::find($id);
         $batches->status = 0;
         $batches->save();
+        return redirect()->back();
+    }
+
+    public function deleteIYTBatch(Request $request, $id)
+    {
+        $batches = IYTBatch::find($id);
+        $batches->delete();
+        Session::flash('message', 'Sukses menghapus batch!');
         return redirect()->back();
     }
 }

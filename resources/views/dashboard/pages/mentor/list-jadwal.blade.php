@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ $schedule->judul }}</td>
                                     <td>{{ $schedule->tgl_mentoring }}</td>
-                                    <td>{{ $schedule->link }}</td>
+                                    <td><a href="http://{{$schedule->link}}" target="_blank">Link</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
