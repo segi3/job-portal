@@ -57,6 +57,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        
                         <li class="nav-item">
                             <a href="/dashboard/IYT/submit-laporan-bulanan"
                                 class="nav-link {{ Request::is('dashboard/IYT/submit-laporan-bulanan') ? "active" : "" }}">
@@ -64,6 +65,8 @@
                                 <p>Laporan Progres Bulanan</p>
                             </a>
                         </li>
+                        
+                        @if( session('tingkat_iyt') == 'Senior')
                         <li class="nav-item">
                             <a href="/dashboard/IYT/submit-kontrol-bulanan"
                                 class="nav-link {{ Request::is('dashboard/IYT/submit-kontrol-bulanan') ? "active" : "" }}">
@@ -71,6 +74,8 @@
                                 <p>Laporan Kontrol Bulanan</p>
                             </a>
                         </li>
+                        @endif
+                        
                         <li class="nav-item">
                             <a href="/dashboard/IYT/submit-laporan-kemajuan"
                                 class="nav-link {{ Request::is('dashboard/IYT/submit-laporan-kemajuan') ? "active" : "" }}">

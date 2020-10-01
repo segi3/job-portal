@@ -40,7 +40,7 @@ class StudentController extends Controller
                                 ->leftjoin('i_y_t_batches', 'i_y_t_batches.id', 'investasi_iyt.batch_id')
                                 ->where('i_y_t_batches.status', '=', '1')
                                 ->where('investasi_iyt.student_id', '=', $student->id)
-                                ->select('*', 'investasi_iyt.status as status_iyt')
+                                ->select('*', 'investasi_iyt.status as status_iyt', 'investasi_iyt.kategori as tingkat_iyt')
                                 ->first();
                     $now = Carbon::now();
                     $dn = $now->toDateString();
@@ -51,21 +51,21 @@ class StudentController extends Controller
                         $isInvestee = false;
 
                     if ($IYT){
+
                         $invoice= $IYT->invoice_iyt;
+                        $tingkat_iyt = $IYT->tingkat_iyt;
+
                         if($IYT->status_iyt == 1){
                             $isIYT = true;
-                        } 
-                        else
-                        {
+                        }else{
                             $isIYT = false;
                         }
                     }
                     else{
                         $invoice = 0;
+                        $tingkat_iyt = 0;
                         $isIYT = false;
                     }
-
-
 
                     // dd($isActive);
 
@@ -76,8 +76,10 @@ class StudentController extends Controller
                         'email' => $student->email,
                         'role' => 'student',
                         'investee' => $isInvestee,
+
                         'invoice' => $invoice,
-                        'iyt' => $isIYT
+                        'iyt' => $isIYT,
+                        'tingkat_iyt' => $tingkat_iyt,
 
                         // 'batch' => $isActive,
                     ]);
