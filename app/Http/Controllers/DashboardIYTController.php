@@ -234,6 +234,20 @@ class DashboardIYTController extends Controller
         $bulan_laporan = $request->input('bulan-laporan');
         $tahun_laporan = $request->input('tahun-laporan');
 
+        // ! cek laporan untuk bulan dan tahun exist atau engga
+        $laporan_exist = LaporanProgresBulanan::where([
+            'iyt_invoice' => $identifier_iyt,
+            'bulan' => $bulan_laporan,
+            'tahun' => $tahun_laporan,
+        ])->first();
+
+        if ($laporan_exist != null) {
+            $errorMsg[1] = 'Laporan untuk bulan '. $bulan_laporan .' dan tahun '. $tahun_laporan .' sudah ada';
+
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();
+        }
+
         try {
             $berkas_laporan_keuangan = $request->file('berkas-laporan-keuangan');
             $berkas_ext = $berkas_laporan_keuangan->getClientOriginalExtension();
@@ -361,6 +375,20 @@ class DashboardIYTController extends Controller
         $bulan_laporan = $request->input('bulan-laporan');
         $tahun_laporan = $request->input('tahun-laporan');
 
+        // ! cek laporan untuk bulan dan tahun exist atau engga
+        $laporan_exist = LaporanKontrolBulanan::where([
+            'iyt_invoice' => $identifier_iyt,
+            'bulan' => $bulan_laporan,
+            'tahun' => $tahun_laporan,
+        ])->first();
+
+        if ($laporan_exist != null) {
+            $errorMsg[1] = 'Laporan untuk bulan '. $bulan_laporan .' dan tahun '. $tahun_laporan .' sudah ada';
+
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();
+        }
+
         try {
             $berkas_laporan_rekapitulasi = $request->file('berkas-laporan-rekapitulasi');
             $berkas_ext = $berkas_laporan_rekapitulasi->getClientOriginalExtension();
@@ -479,6 +507,20 @@ class DashboardIYTController extends Controller
         $identifier_iyt = $request->session()->get('invoice');
         $bulan_laporan = $request->input('bulan-laporan');
         $tahun_laporan = $request->input('tahun-laporan');
+
+        // ! cek laporan untuk bu;an dan tahun exist atau engga
+        $laporan_exist = LaporanKemajuan::where([
+            'iyt_invoice' => $identifier_iyt,
+            'bulan' => $bulan_laporan,
+            'tahun' => $tahun_laporan,
+        ])->first();
+
+        if ($laporan_exist != null) {
+            $errorMsg[1] = 'Laporan untuk bulan '. $bulan_laporan .' dan tahun '. $tahun_laporan .' sudah ada';
+
+            Session::flash('error', $errorMsg);
+            return redirect()->back()->withInput();
+        }
 
         try {
             // * laporan kemajuan
