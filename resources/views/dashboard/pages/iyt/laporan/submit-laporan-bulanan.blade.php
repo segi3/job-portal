@@ -103,19 +103,39 @@
                             <div>
                                 Dowload Cover Laporan Keuangan <a href="/download/cover-laporan-keuangan">disini</a>
                             </div>
-                            <div class="form-group">
-                                <label for="laporan-keuangan" class="">{{ __('Berkas Laporan Keuangan') }}</label><span class="red-str">*</span>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                      </button>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="laporan-keuangan" class="">{{ __('Berkas Laporan Keuangan') }}</label><span class="red-str">*</span>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                              </button>
+                                            </div>
+                                            <div class="custom-file">
+                                              <label class="custom-file-label" id="laporan-keuangan" for="berkas-laporan-keuangan">Upload Berkas</label>
+                                              <input type="file" class="custom-file-input" name="berkas-laporan-keuangan" id="berkas-laporan-keuangan" aria-describedby="inputGroupFileAddon03" accept="application/pdf"> 
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="custom-file">
-                                      <label class="custom-file-label" id="laporan-keuangan" for="berkas-laporan-keuangan">Upload Berkas</label>
-                                      <input type="file" class="custom-file-input" name="berkas-laporan-keuangan" id="berkas-laporan-keuangan" aria-describedby="inputGroupFileAddon03" accept="application/pdf"> 
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="laporan-keuangan" class="">{{ __('Berkas Kwitansi') }}</label><span class="red-str">*</span>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                              </button>
+                                            </div>
+                                            <div class="custom-file">
+                                              <label class="custom-file-label" id="kwitansi" for="berkas-kwitansi">Upload Berkas</label>
+                                              <input type="file" class="custom-file-input" name="berkas-kwitansi" id="berkas-kwitansi" aria-describedby="inputGroupFileAddon03" accept="application/pdf"> 
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -951,6 +971,11 @@
 		var fileName = e.target.files[0].name;
         // dd(fileName);
         $('#laporan-keuangan').html(fileName);
+	});
+    $('#berkas-kwitansi').change(function(e){
+		var fileName = e.target.files[0].name;
+        // dd(fileName);
+        $('#kwitansi').html(fileName);
 	});
 </script>
 

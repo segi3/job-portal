@@ -10,7 +10,7 @@ class LaporanProgresBulanan extends Model
 
     protected $fillable = [
         'iyt_invoice',
-        'berkas_laporan_keuangan',
+        'berkas_laporan_keuangan', 'berkas_kwitansi',
         'bulan',
         'tahun',
         'indikator_1a', 'indikator_1b', 'indikator_1c', 'indikator_2a', 'indikator_2b', 'indikator_2c', 'indikator_3a', 'indikator_3b', 'indikator_3c', 'indikator_4a', 'indikator_4b', 'indikator_4c', 'indikator_5a', 'indikator_5b', 'indikator_5c',

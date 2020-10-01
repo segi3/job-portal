@@ -217,12 +217,15 @@ class DashboardIYTController extends Controller
 
     public function postSubmitLaporanBulanan(Request $request)
     {
+        // dd($request);
+
         $input = $request->all();
 
         $validator = Validator::make($input, [
             'bulan-laporan' => 'required|gt:0',
             'tahun-laporan' => 'required',
             'berkas-laporan-keuangan' => 'required|mimes:pdf',
+            'berkas-kwitansi' => 'required|mimes:pdf'
         ]);
 
         if ($validator->fails()) {
@@ -258,9 +261,19 @@ class DashboardIYTController extends Controller
             $target_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan/Laporan_Keuangan';
             $berkas_laporan_keuangan->move($target_location, $target_name);
 
+            $berkas_kwitansi = $request->file('berkas-kwitansi');
+            $berkas_kwitansi_ext = $berkas_kwitansi->getClientOriginalExtension();
+
+            // * format nama file = [identifier iyt]-[bulan]-[tahun]-kwitansi.pdf
+            $target_kwitansi_name = $identifier_iyt . '-b' . $bulan_laporan . '-t' . $tahun_laporan . '-kwitansi.' . $berkas_kwitansi_ext;
+
+            $target_kwitansi_location = 'data_files/Student/IYT/Laporan/Progres_Bulanan/Kwitansi';
+            $berkas_kwitansi->move($target_kwitansi_location, $target_kwitansi_name);
+
             LaporanProgresBulanan::create([
                 'iyt_invoice' => $identifier_iyt,
                 'berkas_laporan_keuangan' => $target_name,
+                'berkas_kwitansi' => $target_kwitansi_name,
                 'bulan' => $bulan_laporan,
                 'tahun' => $tahun_laporan,
 

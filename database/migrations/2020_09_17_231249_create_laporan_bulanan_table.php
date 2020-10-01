@@ -22,6 +22,7 @@ class CreateLaporanBulananTable extends Migration
             $table->string('tahun');
 
             $table->string('berkas_laporan_keuangan');
+            $table->string('berkas_kwitansi');
 
             $table->text('indikator_1a');
             $table->text('indikator_1b');

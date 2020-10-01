@@ -287,6 +287,7 @@
                                 <th>Tanggal Submit</th>
                                 <th>Laporan Bulan</th>
                                 <th>Isi Laporan</th>
+                                <th>Berkas Kwitansi</th>
                                 <th>Berkas Laporan Keuangan</th>
                             </tr>
                             </thead>
@@ -321,7 +322,10 @@
                                         <td>Desember - {{ $progres->tahun }}</td>
                                     @endif
                                     <td>
-                                        <a href="#"></a>
+                                        <a href="{{route('lihat-laporan-bulanan',$progres->id)}}">Lihat isi Laporan</a>
+                                    </td>
+                                    <td>
+                                        <a href='{{route('download.iyt.laporan.kwitansi',$progres->berkas_kwitansi)}}'>Download</a>
                                     </td>
                                     <td>
                                         <a href='{{route('download.iyt.laporan.bulanan',$progres->berkas_laporan_keuangan)}}'>Download</a>
@@ -390,15 +394,17 @@
                                         <td>Desember - {{ $progres->tahun }}</td>
                                     @endif
                                     <td>
-                                        <a href="#"></a>
+                                        <a href="{{route('lihat-kontrol-bulanan', $progres->id)}}">Lihat isi Laporan</a>
                                     </td>
                                     <td>
                                         <a href='{{route('download.iyt.laporan.kontrol.rekapitulasi',$progres->berkas_laporan_rekapitulasi)}}'>Download</a>
-
                                     </td>
                                     <td>
-                                        <a href='{{route('download.iyt.laporan.kontrol.dokumentasi',$progres->berkas_laporan_dokumentasi)}}'>Download</a>
-
+                                        @if ($progres->berkas_laporan_dokumentasi == null)
+                                        <span>-</span>
+                                        @else
+                                        <a href='{{route('download.iyt.laporan.kontrol.dokumentasi', $progres->berkas_laporan_dokumentasi)}}'>Download</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

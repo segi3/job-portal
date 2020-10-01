@@ -444,33 +444,108 @@ class IytMentoringController extends Controller
     }
     public function downloadLaporanBulanan($namaBerkas)
     {
+        $kelompok_iyt = DB::table('laporan_bulanan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_bulanan.iyt_invoice')
+                        ->where([
+                            'berkas_laporan_keuangan' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_bulanan.bulan as bulan', 'laporan_bulanan.tahun as tahun')
+                        ->first();
+        
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-laporan-keuangan.' . $exploded[1];
+
         $file = public_path('data_files/Student/IYT/Laporan/Progres_Bulanan/Laporan_Keuangan/'.$namaBerkas);
-        return response()->download($file, $namaBerkas);
+        return response()->download($file, $nama_download);
+    }
+
+    public function downloadLaporanKwitansi($namaBerkas)
+    {
+        $kelompok_iyt = DB::table('laporan_bulanan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_bulanan.iyt_invoice')
+                        ->where([
+                            'berkas_kwitansi' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_bulanan.bulan as bulan', 'laporan_bulanan.tahun as tahun')
+                        ->first();
+        
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-kwitansi.' . $exploded[1];
+
+        $file = public_path('data_files/Student/IYT/Laporan/Progres_Bulanan/Kwitansi/'.$namaBerkas);
+        return response()->download($file, $nama_download);
     }
 
     public function downloadLaporanKontrolDokumentasi($namaBerkas)
     {
+        $kelompok_iyt = DB::table('laporan_kontrol_bulanan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_kontrol_bulanan.iyt_invoice')
+                        ->where([
+                            'berkas_laporan_dokumentasi' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_kontrol_bulanan.bulan as bulan', 'laporan_kontrol_bulanan.tahun as tahun')
+                        ->first();
+        
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-dokumentasi.' . $exploded[1];
+        
         $file = public_path('data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Dokumentasi/'.$namaBerkas);
-        return response()->download($file, $namaBerkas);
+        return response()->download($file, $nama_download);
     }
 
     public function downloadLaporanKontrolRekapitulasi($namaBerkas)
     {
+        $kelompok_iyt = DB::table('laporan_kontrol_bulanan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_kontrol_bulanan.iyt_invoice')
+                        ->where([
+                            'berkas_laporan_rekapitulasi' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_kontrol_bulanan.bulan as bulan', 'laporan_kontrol_bulanan.tahun as tahun', 'laporan_kontrol_bulanan.berkas_laporan_rekapitulasi')
+                        ->first();
+
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-rekapitulasi-kontrol-bulanan.' . $exploded[1];
+
         $file = public_path('data_files/Student/IYT/Laporan/Kontrol_Bulanan/Laporan_Rekapitulasi/'.$namaBerkas);
-        return response()->download($file, $namaBerkas);
+        return response()->download($file, $nama_download);
     }
 
     public function downloadLaporanKemajuanRekapitulasi($namaBerkas)
     {
+        $kelompok_iyt = DB::table('laporan_kemajuan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_kemajuan.iyt_invoice')
+                        ->where([
+                            'berkas_laporan_rekapitulasi' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_kemajuan.bulan as bulan', 'laporan_kemajuan.tahun as tahun', 'laporan_kemajuan.berkas_laporan_rekapitulasi')
+                        ->first();
+        
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-rekapitulasi-kemajuan.' . $exploded[1];
+                
         $file = public_path('data_files/Student/IYT/Laporan/Laporan_Kemajuan/Laporan_Rekapitulasi/'.$namaBerkas);
-        return response()->download($file, $namaBerkas);
+        return response()->download($file, $nama_download);
     }
 
-    public function downloadLaporanKemajuanKemajuan($namaBerkas)
+    public function downloadLaporanKemajuan($namaBerkas)
     {
+        $kelompok_iyt = DB::table('laporan_kemajuan')
+                        ->join('investasi_iyt', 'investasi_iyt.invoice_iyt', 'laporan_kemajuan.iyt_invoice')
+                        ->where([
+                            'berkas_laporan_kemajuan' => $namaBerkas
+                        ])
+                        ->select('investasi_iyt.nama_kelompok as nama_kelompok', 'laporan_kemajuan.bulan as bulan', 'laporan_kemajuan.tahun as tahun', 'laporan_kemajuan.berkas_laporan_rekapitulasi')
+                        ->first();
+        
+        $exploded = explode(".", $namaBerkas);
+        $nama_download = $kelompok_iyt->nama_kelompok . '-' . $this->_numToMonth($kelompok_iyt->bulan) . '-' . $kelompok_iyt->tahun . '-laporan-kemajuan.' . $exploded[1];
+        
         $file = public_path('data_files/Student/IYT/Laporan/Laporan_Kemajuan/'.$namaBerkas);
-        return response()->download($file, $namaBerkas);
+
+        return response()->download($file, $nama_download);
     }
+
+    
 
 
 

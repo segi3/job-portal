@@ -280,7 +280,11 @@
                                 <div class="indikator">
                                     <div class="penilaian">
                                         <p>
-                                            <a href="{{route('download.iyt.laporan.kontrol.dokumentasi',$laporan->berkas_laporan_dokumentasi)}}">Download</a>
+                                            @if ($laporan->berkas_laporan_dokumentasi == null)
+                                        <span>Tidak ada</span>
+                                        @else
+                                        <a href='{{route('download.iyt.laporan.kontrol.dokumentasi', $laporan->berkas_laporan_dokumentasi)}}'>Download</a>
+                                        @endif
                                         </p>
                                     </div>
                                 </div>
