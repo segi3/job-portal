@@ -134,7 +134,7 @@ class DashboardController extends Controller
 
     public function getApprovedServices()
     {
-        $services = Service::where('status', '1')
+        $services = Service::where('services.status', '1')
                     ->leftjoin('students', 'students.id', 'services.student_id')
                     ->leftjoin('job_categories', 'job_categories.id', 'services.job_category_id')
                     ->select('services.*', 'students.name as stdname', 'job_categories.name as category_name')
@@ -145,7 +145,7 @@ class DashboardController extends Controller
 
     public function getUnapprovedServices()
     {
-        $services = Service::where('status', '2')
+        $services = Service::where('services.status', '2')
                     ->leftjoin('students', 'students.id', 'services.student_id')
                     ->leftjoin('job_categories', 'job_categories.id', 'services.job_category_id')
                     ->select('services.*', 'students.name as stdname', 'job_categories.name as category_name')

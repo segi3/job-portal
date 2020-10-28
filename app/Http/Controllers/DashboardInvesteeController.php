@@ -370,9 +370,9 @@ class DashboardInvesteeController extends Controller
         ]);
         $file = $request->file('berkas_laporan');
         $tgl = $request->get('tgl');
-        $deskrip = $request->get('deskripsi_laporan');
+        $deskrip = \Carbon\Carbon::now()->format('YmdHs');
         $berkas = 'Progress';
-        $file_berkas = $berkas.'-'.$tgl.'-'.$deskrip.'.pdf';
+        $file_berkas = $berkas.'_'.$tgl.'_'.$deskrip.'.pdf';
         $tujuan_upload = 'data_files/Student/Investee/Project/Progress';
         $file->move($tujuan_upload,$file_berkas);
         $formatDate = \Carbon\Carbon::parse($request->input('tgl'))->format('Y-m-d');

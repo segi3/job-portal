@@ -193,9 +193,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col text-center">
                             <button type="submit" class="submitbtn btn btn-primary">Submit</button>
-                        </div>
                         </div>
                 </form>
             </div>
@@ -206,52 +204,56 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                    @foreach($listprogres as $list)
-                    <ul class="list-group">
-                        <li class="list-group-item" data-toggle="modal" data-target="#modal-{{ $list->id }}">{{ $list->deskripsi_laporan }} ({{ $list->tgl }})</li>
-                            <div class="modal fade" id="modal-{{ $list->id }}">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Progress Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                    @if(count($listprogres) == 0)
+                        <h6 style="text-align: center;"><b>Belum ada project progress</b></h6>
+                    @else
+                        @foreach($listprogres as $list)
+                        <ul class="list-group">
+                            <li class="list-group-item" data-toggle="modal" data-target="#modal-{{ $list->id }}">{{ $list->deskripsi_laporan }} ({{ $list->tgl }})</li>
+                                <div class="modal fade" id="modal-{{ $list->id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Progress Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tanggal</td>
+                                                            <td>: {{ $list->tgl }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Deskripsi Laporan</td>
+                                                            <td>: {{ $list->deskripsi_laporan }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Keterangan tambahan</td>
+                                                            <td>: {{ $list->keterangan_tambahan }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Berkas Laporan</td>
+                                                            <td>
+                                                                <form action="{{ route('dashboard.investee.download-progress', $list->id) }}" method="get">
+                                                                    <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <table class="table table-borderless">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Tanggal</td>
-                                                        <td>: {{ $list->tgl }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Deskripsi Laporan</td>
-                                                        <td>: {{ $list->deskripsi_laporan }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Keterangan tambahan</td>
-                                                        <td>: {{ $list->keterangan_tambahan }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Berkas Laporan</td>
-                                                        <td>
-                                                            <form action="{{ route('dashboard.investee.download-progress', $list->id) }}" method="get">
-                                                                <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            <!-- /.modal-content -->
                                     </div>
-                                          <!-- /.modal-content -->
+                                            <!-- /.modal-dialog -->
                                 </div>
-                                        <!-- /.modal-dialog -->
-                            </div>
-                              <!-- /.modal -->
-                    </ul>
-                    @endforeach
+                                <!-- /.modal -->
+                        </ul>
+                        @endforeach
+                    @endif
                     </div>
                     <!-- card-body -->
                     <div class="card-footer clearfix">
