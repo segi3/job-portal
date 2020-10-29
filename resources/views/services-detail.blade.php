@@ -136,7 +136,7 @@
                 <form method="GET" action="/login-gs" class="mb-4">
                     <div class="submit_btn mt-5">
                         <button type="submit" class="boxed-btn3 w-100">
-                            {{ __('Login sebagai guest utuk Apply Job!') }}
+                            {{ __('Login sebagai guest utuk pesan jasa!') }}
                         </button>
                     </div>
                 </form>
