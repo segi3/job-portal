@@ -117,8 +117,8 @@
                                 <th>Judul</th>
                                 <th>Dokumentasi</th>
                                 <th>Notulensi</th>
-                                <th>Komentar</th>
-                                <th>Action</th>
+                                {{-- <th>Lihat Komentar</th> --}}
+                                <th width="200px">Komentar</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -165,7 +165,7 @@
                                             <!-- /.modal-dialog -->
                                         </div>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal-{{ $mentoring->notulensi_id }}">
                                             Komentar
                                         </button>
@@ -191,7 +191,7 @@
                                             <!-- /.modal-dialog -->
                                         </div>
 
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @if ( $mentoring->komentar === 'Belum ada Komentar')
                                             <button type="button" class="btn btn-sm btn-block btn-primary" style="border: 2px solid; border-radius: 40px;" data-toggle="modal" data-target="#modal2-{{ $mentoring->notulensi_id }}">
