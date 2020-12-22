@@ -123,7 +123,7 @@ class ServicesController extends Controller
             ),
          );
           DB::table('guest_services')->insert($data);
-          Session::flash('success', 'Berhasil apply job');
+          Session::flash('success', 'Berhasil apply jasa');
           return redirect()->back();
         }
         catch(\Illuminate\Database\QueryException $e)
