@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use Validator;
 use App\Admin;
 
 class AdminController extends Controller
@@ -57,6 +58,19 @@ class AdminController extends Controller
     // mendaftarkan admin
     public function Register(Request $request) {
 
+        $validator = Validator::make($request->all(), [
+            'name'  => 'required',
+            'email' => 'required|email|unique:admins',
+            'password' => 'required',
+            'mobile_no' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            // dd($validator->errors()->all());
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back()->withInput();
+        }
+
         try {
             Admin::create([
                 'name' => $request->input('name'),
@@ -72,7 +86,7 @@ class AdminController extends Controller
 
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return redirect('/admin/login');
+                return redirect('/admin/register');
             }
         }
     }

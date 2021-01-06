@@ -19,6 +19,21 @@
 <div class="container mt-lg-10 mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if (Session::has('success'))
+
+				<div class="alert alert-success" role="alert">
+					<strong>Success:</strong> {{ Session::get('success') }}
+				</div>
+
+            @elseif (Session::has('error'))
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        @foreach (Session::get('error') as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
