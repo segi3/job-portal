@@ -125,10 +125,12 @@
                 </li>
 
                 <li class="nav-item has-treeview
-                {{ Request::is('dashboard/st/job-approval') ? "menu-open" : "" }}
+                {{ Request::is('dashboard/st/orders') ? "menu-open" : "" }}
+                {{ Request::is('dashboard/st/on-going-project-list') ? "menu-open" : "" }}
                 ">
                     <a href="#" class="nav-link
-                    {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}
+                    {{ Request::is('dashboard/st/orders') ? "active" : "" }}
+                    {{ Request::is('dashboard/st/on-going-project-list') ? "active" : "" }}
                     ">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
                         <p>
@@ -139,7 +141,7 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/dashboard/st/orders"
-                                class="nav-link {{ Request::is('dashboard/st/job-approval') ? "active" : "" }}">
+                                class="nav-link {{ Request::is('dashboard/st/orders') ? "active" : "" }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Orders</p>
                             </a>
