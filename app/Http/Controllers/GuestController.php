@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Http\Request;
 use App\Guest;
+use Validator;
 use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
@@ -76,8 +77,7 @@ class GuestController extends Controller
     public function Register(Request $request)
     {
         // dd($request);
-
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'email'      => 'required|email|unique:guests',
             'password'   => 'required|min:8',
             'password_confirmation' => 'required|min:8|same:password',
@@ -87,6 +87,11 @@ class GuestController extends Controller
             'mobile_no'  => 'required|min:10|max:14',
             'berkas'     => 'required|mimes:pdf|max:2048'
         ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back()->withInput();
+        }
 
         try {
             $berkas= $request->file('berkas');
@@ -118,7 +123,7 @@ class GuestController extends Controller
             $errorCode = $e->errorInfo[1];
             $errorMsg = $e->errorInfo[2];
             if ($errorCode == 1062) {
-                return redirect('/');
+                return redirect('/register-gs');
             }
             Session::flash('error', $errorMsg);
             return redirect()->back();
