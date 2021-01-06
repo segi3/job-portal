@@ -75,13 +75,13 @@
                                     </td>
                                     <td>
                                         @if ($service->status_pekerjaan == 0)
-                                            <form action="{{ route('service.done', $service->id) }}" method="post">
+                                            <form action="{{ route('service.done', $service->pivot_id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('put') }}
                                                 <button type="submit" class="btn btn-sm btn-block btn-success mr-4">Selesai</button>
                                             </form>
                                         @elseif ($service->status_pekerjaan == 1)
-                                            <form action="{{ route('service.notdone', $service->id) }}" method="post">
+                                            <form action="{{ route('service.notdone', $service->pivot_id) }}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('put') }}
                                                 <button type="submit" class="btn btn-sm btn-block btn-danger mr-4">Batal</button>

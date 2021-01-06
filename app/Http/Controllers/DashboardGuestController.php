@@ -22,7 +22,7 @@ class DashboardGuestController extends Controller
                     ->join('services', 'guest_services.service_id', 'services.id')
                     ->join('students', 'services.student_id', 'students.id')
                     ->where($where)
-                    ->select('services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
+                    ->select('guest_services.id as pivot_id', 'services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
                     ->paginate(20);
         // dd($services);
 
@@ -40,7 +40,7 @@ class DashboardGuestController extends Controller
                     ->join('services', 'guest_services.service_id', 'services.id')
                     ->join('students', 'services.student_id', 'students.id')
                     ->where($where)
-                    ->select('services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
+                    ->select('guest_services.id as pivot_id', 'services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
                     ->paginate(20);
         // dd($services);
 
@@ -59,7 +59,7 @@ class DashboardGuestController extends Controller
                     ->join('services', 'guest_services.service_id', 'services.id')
                     ->join('students', 'services.student_id', 'students.id')
                     ->where($where)
-                    ->select('services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
+                    ->select('guest_services.id as pivot_id', 'services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
                     ->paginate(20);
         // dd($services);
 
@@ -78,7 +78,7 @@ class DashboardGuestController extends Controller
                     ->join('services', 'guest_services.service_id', 'services.id')
                     ->join('students', 'services.student_id', 'students.id')
                     ->where($where)
-                    ->select('services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
+                    ->select('guest_services.id as pivot_id', 'services.id as id','guest_services.status_pekerjaan', 'guest_services.updated_at', 'students.name as stdname', 'services.name as servname', 'guest_services.status')
                     ->paginate(20);
         // dd($services);
 
