@@ -101,7 +101,7 @@ class EmployerController extends Controller
         ]);
 
         if ($validator->fails()) {
-            Session::flash('error', $validator->errors());
+            Session::flash('error', $validator->errors()->all());
             return redirect()->back()->withInput();
         }
 
@@ -170,7 +170,7 @@ class EmployerController extends Controller
             $errorCode = $e->errorInfo[1];
             $errorMsg = $e->errorInfo[2];
             if ($errorCode == 1062) {
-                return redirect('/');
+                return redirect('/register-er');
             }
             Session::flash('error', $errorMsg);
             return redirect()->back();
