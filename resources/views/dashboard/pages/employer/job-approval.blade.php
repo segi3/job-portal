@@ -42,8 +42,8 @@
                                 <th>Job Name</th>
                                 <th>Job type</th>
                                 <th>Job Location</th>
-                                <th>Details</th>
                                 <th>Last Updated</th>
+                                <th>Details</th>
                                 <th style="width: 154px">Status</th>
                             </tr>
                             </thead>
