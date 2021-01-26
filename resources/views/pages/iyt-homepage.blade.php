@@ -18,14 +18,10 @@
             <div class="col-lg-6 col-sm-12">
                 <div class="section_title mb-40" style="margin-bottom: 10px;">
                     <h1>Apa itu ITS Youth Technopreneur?</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt facilis magnam, odit, unde
-                        libero cumque beatae quaerat totam explicabo quibusdam reprehenderit ullam soluta quos vitae
-                        magni impedit culpa suscipit provident? Sit, vel? Praesentium nobis ab autem accusamus
-                        maiores error sed.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt facilis magnam, odit, unde
-                        libero cumque beatae quaerat totam explicabo quibusdam reprehenderit ullam soluta quos vitae
-                        magni impedit culpa suscipit provident? Sit, vel? Praesentium nobis ab autem accusamus
-                        maiores error sed.</p>
+                    <p>IYT merupakan kompetisi wirausaha berbasis teknologi tingkat ITS sekaligus program pengembangan usaha Mahasiswa.
+                       Mahasiswa ITS yang memiliki ide bisnis ataupun yang baru menjalankan bisnis selama 1 tahun dapat mengikuti kompetisi ini dan jika lolos akan memperoleh pendanaan, pendampingan, monitoring dan evaluasi.
+                       Program ini diselenggarakan oleh Subdirektorat Pengembangan Karir dan Kewirausahaan Mahasiswa (PK2M) Direktorat Kemahasiswaan ITS. Program ini dirancang untuk menumbuhkan bibit-bibit wirausahawan berbasis teknologi agar mahasiswa dapat menciptakan produk teknologi inovatif yang dapat berguna di masyarakat.</p>
+                    <br>
 
                 </div>
                 <div>

@@ -64,11 +64,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Penjelasan investasi</h5>
+                            <h5 class="card-title">Penjelasan investee</h5>
 
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's
-                                content.
+                                Investee adalah tempat dimana investor melakukan penanaman modal atau melakukan penyertaan modal
                             </p>
                         </div>
                     </div>

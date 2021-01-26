@@ -69,11 +69,9 @@
                                 <h6 class="card-title">Apa itu IYT?</h6>
 
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor quam nec risus blandit, ac suscipit massa volutpat. Quisque nec massa aliquet, vestibulum orci in, finibus urna. Quisque lobortis, lacus eget rhoncus venenatis, mi leo placerat quam, sit amet ultrices sapien ligula accumsan odio. Nullam tincidunt risus sagittis, dapibus velit ac, lobortis massa. Fusce facilisis feugiat lectus tincidunt porta. Donec vulputate justo purus, vel fermentum dolor fringilla a. Suspendisse id vulputate felis. Quisque volutpat vel purus eu vestibulum.
-        
-                                    Vestibulum diam leo, luctus nec purus a, cursus interdum erat. Sed semper est quis ante elementum, sit amet lacinia lectus condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla ut consectetur sapien. Praesent lacinia ipsum et ante scelerisque placerat. Donec a augue metus. Quisque aliquam venenatis elementum. Praesent sed quam et magna ultrices iaculis. Mauris efficitur nibh risus, ac placerat eros convallis mollis. Vivamus sodales sodales sem eu consequat. Etiam consectetur, eros vel ullamcorper porta, lectus ex hendrerit tellus, commodo molestie nisi nisl vestibulum lectus. Sed eu gravida urna. Fusce tristique ut urna nec hendrerit. 
+                                    IYT merupakan kompetisi wirausaha berbasis teknologi tingkat ITS sekaligus program pengembangan usaha Mahasiswa. Mahasiswa ITS yang memiliki ide bisnis ataupun yang baru menjalankan bisnis selama 1 tahun dapat mengikuti kompetisi ini dan jika lolos akan memperoleh pendanaan, pendampingan, monitoring dan evaluasi. Program ini diselenggarakan oleh Subdirektorat Pengembangan Karir dan Kewirausahaan Mahasiswa (PK2M) Direktorat Kemahasiswaan ITS. Program ini dirancang untuk menumbuhkan bibit-bibit wirausahawan berbasis teknologi agar mahasiswa dapat menciptakan produk teknologi inovatif yang dapat berguna di masyarakat.
                                 </p>
-        
+
                                 <a href="/its-youth-technopreneur" class="btn btn-primary">Halaman IYT</a>
                             </div>
                             @if ( $iyt != null )
@@ -87,7 +85,7 @@
                                 </div>
                             @endif
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
