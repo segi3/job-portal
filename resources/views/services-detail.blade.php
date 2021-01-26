@@ -144,7 +144,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="job_sumary">
-                    
+
                     <div class="summery_header">
                         <h3>Informasi Penyedia Layanan</h3>
                     </div>
@@ -160,7 +160,7 @@
                     </div>
                     @else
                     <div class="job_content">
-                        <span>Login sebagai untuk melihat informasi</span>
+                        <span>Login sebagai guest untuk melihat informasi</span>
                     </div>
                     @endif
                 </div>

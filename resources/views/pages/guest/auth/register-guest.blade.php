@@ -94,7 +94,7 @@
                                 class="single-input">
                         </div>
                         <div class="form-group">
-                            <label for="contact_no" class="">{{ __('Berkas Verifikasi') }}</label><span
+                            <label for="contact_no" class="">{{ __('Berkas KTP') }}</label><span
                                 class="red-str">*</span>
                             <div class="input-group">
                                 <div class="input-group-prepend">
