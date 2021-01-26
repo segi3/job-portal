@@ -70,8 +70,13 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Nama</label>
-                                <input value="{{  $student->name  }}" type="text" name="name" class="form-control"
-                                    id="inputName" placeholder="Nama" disabled>
+                                <input value="{{  $student->name  }}" type="text" name="name2" class="form-control"
+                                    id="inputName2" placeholder="Nama" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Nama</label>
+                                <input value="{{  $student->name  }}" type="hidden" name="name" class="form-control"
+                                    id="inputName" placeholder="Nama">
                             </div>
 
                             <div class="form-group">
@@ -89,8 +94,13 @@
 
                             <div class="form-group">
                                 <label for="inputNRP">NRP</label>
-                                <input value="{{  $student->nrp  }}" type="text" name="nrp" class="form-control"
-                                    id="inputNRP" placeholder="NRP" disabled>
+                                <input value="{{  $student->nrp  }}" type="text" name="nrp2" class="form-control"
+                                    id="inputNRP2" placeholder="NRP" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNRP">NRP</label>
+                                <input value="{{  $student->nrp  }}" type="hidden" name="nrp" class="form-control"
+                                    id="inputNRP" placeholder="NRP">
                             </div>
 
                             <div class="form-group">
@@ -154,8 +164,13 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputEmail">Email</label>
-                                        <input value="{{  $student->email  }}" type="text" name="email"
-                                            class="form-control" id="inputEmail" placeholder="Email" disabled>
+                                        <input value="{{  $student->email  }}" type="text" name="email2"
+                                            class="form-control" id="inputEmail2" placeholder="Email" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail">Email</label>
+                                        <input value="{{  $student->email  }}" type="hidden" name="email"
+                                            class="form-control" id="inputEmail" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMobileNo">Mobile Number</label>

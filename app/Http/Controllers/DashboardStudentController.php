@@ -346,7 +346,7 @@ class DashboardStudentController extends Controller
     {
         $studentid= $request->session()->get('id');
         $order = DB::table('order')
-                    ->select('order.id_investee')        
+                    ->select('order.id_investee')
                     ->where('id_investor', '=', $studentid)
                     ->where('status', '=', 'paid')
                     ->where('role', '=', 'student')
@@ -356,9 +356,9 @@ class DashboardStudentController extends Controller
         $investee = DB::table('investee')
                     ->select('investee.*')
                     ->where('id', '=', $order->id_investee)
-                    ->first();    
+                    ->first();
         $investment = DB::table('investasi_project')
-                    ->select('investasi_project.*') 
+                    ->select('investasi_project.*')
                     ->where('investasi_project.id', '=', $id)
                     ->first();
         $listprogres = DB::table('progres_project')
