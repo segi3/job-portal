@@ -49,7 +49,7 @@
                         class="nav-link {{ Request::is('dashboard/gs/list-jasa-inprogress') ? "active" : "" }}">
                         <i class="far fa-hourglass nav-icon"></i>
                         <p>
-                            Services In Proggres
+                            Services In Progress
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>

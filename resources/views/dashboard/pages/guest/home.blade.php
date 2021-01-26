@@ -35,7 +35,7 @@
                         <h5 class="card-title">Cari jasa</h5><br><br>
 
                         <a href="/jasa"
-                            class="float-right card-link stretched-link btn btn-sm btn-yl">Halaman New Job</a>
+                            class="float-right card-link stretched-link btn btn-sm btn-yl">Halaman List Jasa</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{--<div class="row">
             <!-- /.col-md-6 -->
             <div class="col-lg-12">
                 <div class="card">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <!-- /.col-md-6 -->
-        </div>
+        </div> --}}
         <!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
