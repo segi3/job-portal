@@ -44,7 +44,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Jadi investor</h5><br><br>
 
-                        <a href="/dashboard/st/create-service" class="float-right card-link stretched-link btn btn-sm btn-yl">Halaman Investasi</a>
+                        <a href="/investasi-fund" class="float-right card-link stretched-link btn btn-sm btn-yl">Halaman Investasi</a>
                     </div>
                 </div>
             </div>
