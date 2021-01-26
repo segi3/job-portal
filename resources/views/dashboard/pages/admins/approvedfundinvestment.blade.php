@@ -74,7 +74,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Target dana</td>
-                                                        <td>{{ $invest->target}}</td>
+                                                        <td>{{ $invest->donasi_target}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Tangga jatuh Tempo</td>
