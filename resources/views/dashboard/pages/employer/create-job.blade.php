@@ -144,7 +144,7 @@
 
                         <div class="form-group">
                             <label for="inputReqSkill">Required skill</label>
-                            <textarea type="text" name="required_skill" class="form-control" id="inputReqSkill" placeholder="Kemampuan yang dibutuhkan unuk pekerjaan"></textarea>
+                            <textarea type="text" name="required_skill" class="form-control" id="inputReqSkill" placeholder="Kemampuan yang dibutuhkan untuk pekerjaan"></textarea>
                         </div>
 
                         <div class="form-group">

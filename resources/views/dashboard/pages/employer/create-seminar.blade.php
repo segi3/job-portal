@@ -115,7 +115,7 @@
                                     class="single-input form-control datepicker">
                             </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="contact_no" class="">{{ __('Surat Bukti penyewaan Tempat') }}</label><span class="red-str">*</span>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -127,7 +127,7 @@
                                   <input type="file" class="custom-file-input" name="berkas_sewa" id="berkas_sewa" aria-describedby="inputGroupFileAddon03" accept="application/pdf"> 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="contact_no" class="">{{ __('Profil Pembicara') }}</label><span class="red-str">*</span>

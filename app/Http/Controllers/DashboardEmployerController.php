@@ -122,21 +122,22 @@ class DashboardEmployerController extends Controller
             'contact_person'=> 'required|max:255',
             'contact_no'    => 'required|max:14',
             'fee'           => 'required',
-            'berkas_sewa'   => 'required|mimes:pdf|max:2048',
+            // 'berkas_sewa'   => 'required|mimes:pdf|max:2048',
             'profil_pemb'   => 'required|mimes:pdf|max:2048',
             'waktu'       => 'required|date',
             'target'=> 'required|max:255',
             'materi'=> 'required|max:255',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096'
         ]);
-            $berkas= $request->file('berkas_sewa');
+            // $berkas= $request->file('berkas_sewa');
             $nama= str_replace(' ','_',$request->input('name'));
             $location = str_replace(' ','_',$request->input('location'));
             $desc= md5($request->input('description'));
-            $extension= $berkas->getClientOriginalExtension();
-            $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
-            $tujuan = 'data_files/Employer/Seminar/bukti_sewa_tempat';
-            $berkas->move($tujuan,$filename);
+
+            // $extension= $berkas->getClientOriginalExtension();
+            // $filename= $nama.'_'.'_'.$location.'_'.$desc.'.'.$extension;
+            // $tujuan = 'data_files/Employer/Seminar/bukti_sewa_tempat';
+            // $berkas->move($tujuan,$filename);
 
             $berkas_profil= $request->file('profil_pemb');
             $extension_profil= $berkas_profil->getClientOriginalExtension();
@@ -161,7 +162,7 @@ class DashboardEmployerController extends Controller
                 'contact_no'            => $request->input('contact_no'),
                 'fee'                   => $request->input('fee'),
                 'employer_id'           => $request->session()->get('id'),
-                'berkas_verifikasi'     => $filename,
+                // 'berkas_verifikasi'     => $filename,
                 'waktu'                 => $formatDate,
                 'target'                => $request->input('target'),
                 'materi'                => $request->input('materi'),

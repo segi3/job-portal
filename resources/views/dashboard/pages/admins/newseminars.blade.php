@@ -44,7 +44,7 @@
                             <th>Fee</th>
                             <th>Listed at</th>
                             <th>Detail</th>
-                            <th>Berkas Bukti Sewa tempat</th>
+                            {{-- <th>Berkas Bukti Sewa tempat</th> --}}
                             <th>Berkas Profil Pembicara</th>
                             <th>Berkas Poster</th>
                             <th style="width: 150px;">Action</th>
@@ -129,11 +129,11 @@
                                       <!-- /.modal -->
                                 </td>
 
-                                <td>
+                                {{-- <td>
                                     <form action="{{ route('berkas.seminar.download', $seminar->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
                                     </form>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <form action="{{ route('berkas.profil.download', $seminar->id) }}" method="get">
                                       <button type="submit" class="btn btn-sm btn-block btn-primary mr-4">Download</button>
